@@ -1,0 +1,361 @@
+
+* {
+	
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	
+	font-family: 'Optima LT W01 Medium';
+}
+
+footer {
+
+	background-color: #696A6D;
+	width: 100%;
+	padding-top: 30px;
+	box-sizing:border-box;
+	z-index: 300;
+	-webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.9);
+	box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.9);
+	
+}
+
+div #menulogin {
+	
+	text-align: center;
+	width: 100%;
+	padding-top: 100px;
+	box-sizing:border-box;
+	font-family: 'OptimaRegular';
+
+}
+
+div .panel-heading {
+	
+	font-family: 'OptimaRegular';
+	font-size: 2em;
+}
+
+.contenedor {
+	
+	width: 100%;
+	margin: 0 auto;
+	overflow:hidden;
+}
+
+
+
+@media screen and (min-width: 480px) {
+	
+	div .panel-default {
+
+	 width: 60%;
+	 margin: 0 auto;
+	 height: 0 auto;
+
+	}
+
+}
+
+@media screen and (min-width: 1366px) {
+	
+	div .panel-default {
+
+	 width: 100%;
+	 margin: 0 auto;
+	 height: 0 auto;
+
+	}
+
+}
+
+.panel-menu {
+	
+	font-size: 1.2em;
+	font-family: 'Optima LT W01 Medium';
+}
+
+#palenque {
+	
+	font-size: 1.5em;
+	font-family: 'Optima LT W01 Medium';
+
+}
+
+#reinscripcion {
+	
+	font-size: 1em;
+	font-family: 'Optima LT W01 Medium';
+}
+
+#select {
+	
+	font-size: 1.2em;
+	font-family: 'Optima LT W01 Medium';
+
+}
+
+#select-menu {
+	
+	font-size: 1.2em;
+	font-family: 'Optima LT W01 Medium';
+	padding-left: 11.5%;
+
+}
+
+.titulo-reinscripcion {
+	
+	font-size: 1.5em;
+	font-family: 'Optima LT W01 Medium';
+	color: #910e56;
+}
+
+#semestre {
+	
+	padding-right: 20%;
+	font-family: 'Optima LT W01 Medium';
+}
+
+.letra-menu {
+	
+	font-size: 3em;
+}
+
+
+
+						
+ .link-welcome {
+
+ 	color: #910e56;
+	
+}
+
+.link {
+	
+	color:white;
+	font-size: 1.5em;
+}
+
+div .col-md-8 {
+	
+	margin-bottom: 5%;
+}
+
+#preparatoria {
+	
+	font-size: 1.5em;
+	  font-family: 'Optima LT W01 Medium';
+
+
+}
+
+#licenciaturas {
+	
+	  margin-left: 15%;
+	  font-size: 1.5em;
+	    font-family: 'Optima LT W01 Medium';
+
+
+}
+
+#posgrados {
+	
+	margin-left: 15%;
+	font-size: 1.5em;
+	  font-family: 'Optima LT W01 Medium';
+
+
+}
+
+.white {
+	
+	color: #C3C3C5;
+	 font-family: 'Optima LT W01 Medium';
+
+}
+
+.white-welcome {
+	
+	font-size: 1.5em;
+	color: #C3C3C5;
+	 font-family: 'Optima LT W01 Medium';
+
+}
+
+.tomato {
+	
+	color: white;
+}
+
+.parrafos {
+	
+	color: #848484;
+	font-size: 1.5em;
+	  font-family: 'Optima LT W01 Medium';
+
+}
+
+#tamaños {
+	
+	font-size: 3em;
+	font-family: 'Optima LT W01 Medium';
+
+}
+
+.blur {
+	
+	min-height: inherit;
+	background-color: rgba(0,0,0,.5);
+}
+
+#tittle {
+	
+	font-size: 5em;
+	color: #910e56;
+	text-align: center;
+	padding-top: 20%;
+	font-family: 'Optima LT W01 Medium';
+
+}
+
+#principal {
+	
+	font-size: 5em;
+	color: #910e56;
+	text-align: center;
+	padding-top: 10%;
+	  font-family: 'Optima LT W01 Medium';
+
+
+}
+
+#subtitle {
+	
+	font-size: 2.5em;
+	color: #910e56;
+	text-align: center;
+	margin-top: 1%;
+	font-family: 'Optima LT W01 Medium';
+
+}
+
+.btn-web {
+	
+	font-size: 2.5em;
+	font-family: 'Optima LT W01 Medium';
+	margin-right: 70px;
+	margin-left: 40px;
+	background-color: transpaent;
+	boder: 1px solid white;
+	color: #910e56;
+	margin-top: 10%;
+	-webkit-transition: background-color .5s, border .5s;
+	-o-transition: background-color .5s, border .5s;
+	-moz-transition: background-color .5s, border .5s;
+}
+
+.btn-web:hover {
+	
+	background-color: white;
+	boder: 5px solid white;
+	color: tomato;
+	cursor: pointer;
+	-webkit-transition: background-color .5s, border .5s;
+	-o-transition: background-color .5s, border .5s;
+	-moz-transition: background-color .5s, border .5s;
+
+}
+
+
+#login {
+	
+	  font-family: 'Optima LT W01 Medium';
+
+}
+
+.cel {
+	
+	font-size: 3em;
+	margin-left: 18%;
+	margin-top: 20%;
+	color: #910e56;
+	padding-top: 10%;
+	font-family: 'Optima LT W01 Medium';
+
+
+}
+
+.lista-ul {
+	
+	font-size: 1em;
+	color: #910e56;
+
+}
+
+.parrafos-welcome{
+	
+	color: #2F4F4F;
+	font-size: 1.5em;
+	font-family: 'Optima LT W01 Medium';
+	padding-bottom: 10px;
+}
+
+	.parrafos-welcome{
+	
+	color: #848484;
+	font-size: 1em;
+	font-family: 'Optima LT W01 Medium';
+	padding-bottom: 10px;
+}
+
+
+	.cel {
+	
+	font-size: 4em;
+	color: #910e56;
+	text-align: center;
+	padding-top: 10%;
+	font-family: 'Optima LT W01 Medium';
+
+
+}
+
+	
+	#title {
+	
+	font-size: 4em;
+	color: #910e56;
+	text-align: center;
+	padding-top: 100%;
+	font-family: 'Optima LT W01 Medium';
+
+}
+
+.btn-web {
+	
+	
+	font-size: 1em;
+	background-color: transpaent;
+	boder: 1px solid white;
+	color: #910e56;
+	margin-top: 2%;
+	-webkit-transition: background-color .5s, border .5s;
+	-o-transition: background-color .5s, border .5s;
+	-moz-transition: background-color .5s, border .5s;
+}
+
+.btn-web:hover {
+	
+	font-size: 1em;
+	background-color: white;
+	boder: 5px solid white;
+	color: tomato;
+	cursor: pointer;
+	-webkit-transition: background-color .5s, border .5s;
+	-o-transition: background-color .5s, border .5s;
+	-moz-transition: background-color .5s, border .5s;
+
+}
+

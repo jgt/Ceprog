@@ -1,0 +1,248 @@
+.header {
+	
+	background-image: url('/img/fondoinicio.jpg');
+	min-height: 34vh;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+
+
+}
+
+.blur {
+	
+	min-height: inherit;
+	background-color: rgba(0,0,0,.5);
+}
+
+
+#fondo {
+	
+	background-image: url('https://download.unsplash.com/photo-1429371527702-1bfdc0eeea7d');
+	min-height: 50vh;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+
+}
+
+
+.parrafos-home{
+	
+	color: #848484;
+	font-size: 1.5em;
+	font-family: 'Optima LT W01 Medium';
+	padding-bottom: 10px;
+}
+
+#formulario {
+	
+
+	margin-top: 2%;
+	margin-right: 0%;
+	mrgin-left: 50%;
+
+	
+}
+
+.foto {
+	
+
+	max-width: 100%;
+    height: auto;
+    width: auto/9; /* Bug de ie8 */
+	margin-top: 370%;
+	margin-bottom: 40%;
+	border-radius: 50%; /* Borde redondeado */
+	box-shadow: 0px 0px 15px #000; /* Sombra */
+	padding: 3%;
+	border:0;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+
+.foto:hover {
+
+box-shadow: 0; /* Con esto eliminamos la sombra */
+border-radius: 0; /* Con esto eliminamos el borde redondeado */
+-moz-transition: all 1s;
+-webkit-transition: all 1s;
+-o-transition: all 1s;
+-ms-transition: all 1s;
+cursor:pointer;
+
+}
+
+.foto-m8 {
+	
+	max-width: 22%;
+    height: auto;
+    width: auto/9; /* Bug de ie8 */
+    margin-left: 5%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	border-radius: 50%; /* Borde redondeado */
+	box-shadow: 0px 0px 15px #000; /* Sombra */
+	padding: 0.7%;
+	border:0;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+.foto-m8:hover {
+
+box-shadow: 0; /* Con esto eliminamos la sombra */
+border-radius: 0; /* Con esto eliminamos el borde redondeado */
+-moz-transition: all 1s;
+-webkit-transition: all 1s;
+-o-transition: all 1s;
+-ms-transition: all 1s;
+cursor:pointer;
+
+}
+
+
+.foto-m8-dos {
+	
+	max-width: 22%;
+    height: auto;
+    width: auto/9; /* Bug de ie8 */
+    margin-left: 21%;
+	margin-top: 0%;
+	margin-bottom: 0.2%;
+	border-radius: 50%; /* Borde redondeado */
+	box-shadow: 0px 0px 15px #000; /* Sombra */
+	padding: 0.7%;
+	border:0;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+.foto-m8-dos:hover {
+
+box-shadow: 0; /* Con esto eliminamos la sombra */
+border-radius: 0; /* Con esto eliminamos el borde redondeado */
+-moz-transition: all 1s;
+-webkit-transition: all 1s;
+-o-transition: all 1s;
+-ms-transition: all 1s;
+cursor:pointer;
+
+}
+
+#principal-home {
+	
+	font-size: 4em;
+	color: #910e56;
+	text-align: center;
+	padding-top: 10%;
+	font-family: 'Optima LT W01 Medium';
+
+
+}
+
+.parrafo-homes {
+	
+	color: #848484;
+	font-size: 1.2em;
+	font-family: 'Optima LT W01 Medium';
+	padding-bottom: 10px;
+}
+
+@media(max-width: 500px) {
+	
+
+	.foto {
+	
+
+	max-width: 22%;
+    height: auto;
+    width: auto/9; /* Bug de ie8 */
+	margin-top: 10%;
+	margin-left: 40%;
+	border-radius: 50%; /* Borde redondeado */
+	box-shadow: 0px 0px 15px #000; /* Sombra */
+	padding: 1%;
+	border:0;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+
+.foto:hover {
+
+box-shadow: 0; /* Con esto eliminamos la sombra */
+border-radius: 0; /* Con esto eliminamos el borde redondeado */
+-moz-transition: all 1s;
+-webkit-transition: all 1s;
+-o-transition: all 1s;
+cursor:pointer;
+
+}
+
+.foto-m8 {
+	
+	max-width: 22%;
+    height: auto;
+    width: auto/9; /* Bug de ie8 */
+    margin-left: 5%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	border-radius: 50%; /* Borde redondeado */
+	box-shadow: 0px 0px 15px #000; /* Sombra */
+	padding: 0.7%;
+	border:0;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+.foto-m8:hover {
+
+box-shadow: 0; /* Con esto eliminamos la sombra */
+border-radius: 0; /* Con esto eliminamos el borde redondeado */
+-moz-transition: all 1s;
+-webkit-transition: all 1s;
+-o-transition: all 1s;
+cursor:pointer;
+
+}
+
+
+.foto-m8-dos {
+	
+	max-width: 22%;
+    height: auto;
+    width: auto/9; /* Bug de ie8 */
+    margin-left: 21%;
+	margin-top: 0%;
+	margin-bottom: 0.2%;
+	border-radius: 50%; /* Borde redondeado */
+	box-shadow: 0px 0px 15px #000; /* Sombra */
+	padding: 0.7%;
+	border:0;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+.foto-m8-dos:hover {
+
+box-shadow: 0; /* Con esto eliminamos la sombra */
+border-radius: 0; /* Con esto eliminamos el borde redondeado */
+-moz-transition: all 1s;
+-webkit-transition: all 1s;
+-o-transition: all 1s;
+cursor:pointer;
+
+}
+
+}
+
+
+

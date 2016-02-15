@@ -1,0 +1,14 @@
+<script>
+
+		$('#tag_list').select2();
+		$('#materia_list').select2();
+		$('#rubrica_list').select2();
+		$('#carrera_list').select2();
+		$('#user_list').select2();
+		$('#semestre_list').select2();
+		$('#carreraT_list').select2();
+		$('#semestreT_list').select2();
+		$('#role_list').select2();
+
+
+	</script>
