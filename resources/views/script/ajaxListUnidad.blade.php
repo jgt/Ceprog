@@ -20,6 +20,8 @@
 		    $('div#vizuaUnidad').addClass('alert');
 		    $('div#VunidadE').addClass('alert');
 		    $('#listRub').addClass('alert');
+		    $('#prflistTuto').addClass('alert');	
+		    $('#listTutAlm').addClass('alert');
 			var link = $('#uniList').attr('href');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -774,7 +776,6 @@
 
           $(resp.archivo).each(function(key, value){
 
-          	console.log(value);
             var objeto = value;
             $('#nameAuth').val(value.usuario);
             $('#nameAct').val(value.actividad.actividad);  
@@ -917,7 +918,8 @@
 
             $(resp.calAlum).each(function(key, value){
 
-              notasRubricas.append("<tr><td>"+value+"</td></tr>");
+
+              notasRubricas.append("<tr><td>"+value.rubrica+": </td><td>"+value.nota+"</td></tr>");
 
 
             });
@@ -927,7 +929,7 @@
               notasRubricas.append("<tr><td><strong>Promedio: </strong>"+value.promedio+"</td></tr>");
 
             });
-              
+     rubrica
 
 
           });
@@ -1049,8 +1051,5 @@
 
 			}
 
-
-
-
-
+			
 </script>

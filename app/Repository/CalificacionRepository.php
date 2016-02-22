@@ -59,7 +59,7 @@ class CalificacionRepository extends BaseRepository {
 
 		foreach ($calificacion->rubricas as $rubrica) {
 			
-			$detalles = [$rubrica->name, $rubrica->pivot->nota];
+			$detalles = [ 'rubrica' => $rubrica->name, 'nota' => $rubrica->pivot->nota];
 
 			return $detalles;
 		}

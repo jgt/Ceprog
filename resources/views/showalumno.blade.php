@@ -28,10 +28,6 @@
             <td class="desc">{{ $unidad->unidad }}</td>
           </tr>
           <tr>
-            <td class="service">Materia</td>
-            <td class="desc">{{ $unidad->materia }}</td>
-          </tr>
-          <tr>
             <td class="service">Seriacion</td>
             <td class="desc">{{ $unidad->seriacion }}</td>
           </tr>
@@ -40,22 +36,10 @@
             <td class="desc">{{ $unidad->clave }}</td>
           </tr>
           <tr>
-            <td class="service">Semestre</td>
-            <td class="desc">{{ $unidad->semestre }}</td>
-          </tr>
-          <tr>
             <td class="service">Tema</td>
             <td class="desc">{{ $unidad->tema }}</td>
           </tr>
-          <tr>
-            <td class="service">Subtemas</td>
-            <td class="desc">
-            	
-            	@foreach($unidad->subtemas as $subtema)
-				<ul><li>{{ $subtema->subtemas}} {{$subtema->descripcion}}</li></ul>
-				@endforeach
-            </td>
-          </tr>
+  
         
           <hr>
         </tbody>

@@ -49,9 +49,12 @@ class VideosController extends Controller {
 	public function allVideos($id, Request $request)
 	{
 
-		$materia = Materia::find($id);
-		$videos = $materia->videos()->paginate(5);
-		return view('include.verVideos', compact('materia', 'videos'));
+		$tutorial = Tutorial::find($id);
+		
+		if($request->ajax())
+		{
+			return response()->json($tutorial);
+		}
 	}
 
 
@@ -107,7 +110,7 @@ class VideosController extends Controller {
 
 		}
 
-		if($request->ajax)
+		if($request->ajax())
 		{
 
 			return response()->json($video);
@@ -125,43 +128,35 @@ class VideosController extends Controller {
 	{
 
 		$dir = public_path().'/tutoriales';
-		$files = $request->file('file');
+		$file = $request->file('archivo');
 
-		foreach($files as $file)
-		{
 			$fileName = $file->getClientOriginalName();
-			$entry = Video::where('original_filename',  $fileName)->get();
 
-			if (count($entry) > 0) {
-				
-				return respuesta::json([
-
-            		'success' => false,
-            		'errors' => 'No se puede subir ',
-
-            		]);
-			}
-
-			$file->move($dir, $fileName);
+			$ruta = $file->move($dir, $fileName);
 
 			$tutorial = Tutorial::create([
 
 				'mime' => $file->getClientMimeType(),
 				'original_filename' => 	$fileName,
-				'filename' => $file->getfilename()
+				'filename' => $file->getfilename(),
+				'ruta' => $ruta
 
 				]);
 
+			$tutorial->attachRole($request->get('role_list'));
 			$tutorial->save();
-		}
 
 	}
 
-	public function allTutorial()
+	public function allTutorial(Request $request)
 	{
 		$tutoriales = Tutorial::all();
 
-		return view('verTutorial', compact('tutoriales'));
+		if($request->ajax())
+		{
+
+			return response()->json($tutoriales);
+		}
 	}
 
 	public function dwTutorial($fileName)
@@ -174,7 +169,7 @@ class VideosController extends Controller {
 
 	}
 
-	public function dlTutorial($id)
+	public function dlTutorial($id, Request $request)
 	{
 
 		$tutorial = Tutorial::find($id);
@@ -191,9 +186,11 @@ class VideosController extends Controller {
 
 		}
 
-		flash()->overlay('Ha sido borrado sactifactoriamente', 'El video '.$tutorial->original_filename );
+		if($request->ajax())
+		{
 
-		return redirect()->back();
+			return response()->json($tutorial);
+		}
 	}
 
 }

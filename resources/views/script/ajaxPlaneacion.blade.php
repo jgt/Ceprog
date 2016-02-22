@@ -24,6 +24,8 @@ $(document).on('ready', function(){
          $('div#vizuaUnidad').addClass('alert');
          $('div#notasRubricas').addClass('alert');
          $('#listRub').addClass('alert');
+         $('#prflistTuto').addClass('alert');
+         $('#listTutAlm').addClass('alert');
 
 		$.get(route, function(resp){
 

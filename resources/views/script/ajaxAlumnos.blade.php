@@ -22,6 +22,7 @@
 			$('div#calAct').addClass('alert');
 			$('div#notasRubricas').addClass('alert');
 			$('#listRub').addClass('alert');
+			$('#listTutAlm').addClass('alert');
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');

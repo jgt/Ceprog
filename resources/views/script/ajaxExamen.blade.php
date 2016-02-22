@@ -19,6 +19,7 @@
        $('div#vizuaUnidad').addClass('alert');
         $('div#VunidadE').addClass('alert');
         $('#listRub').addClass('alert');
+        $('#prflistTuto').addClass('alert');
 
       var route = $(this).attr('href');
       

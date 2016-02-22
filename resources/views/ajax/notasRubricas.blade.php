@@ -2,11 +2,11 @@
       
        <table class="table">
           <thead>
-            <td><strong>Rubricas/Notas</strong></td>
+            <td><strong>Rubricas/Nota</strong></td>
           </thead> 
           <tbody id="notasRubricas">
             
           </tbody>
        </table>
-
+		
      </div>

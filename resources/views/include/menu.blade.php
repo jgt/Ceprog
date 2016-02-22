@@ -22,6 +22,9 @@
   @include('ajax.modalCrearSubtema')
   @include('ajax.modalMapoyoAlm')
   @include('ajax.modalEditRubricas')
+  @include('ajax.modalTutorial')
+  @include('ajax.modalTutoprf')
+  @include('ajax.modalTutorialAlm')
 
  <div id="wrapper">
 
@@ -74,6 +77,7 @@
                                       <li><a href="{{ route('planeacion', $materia)}}" id="planeacion">Crear Unidad</a></li>
                                       <li><a href="{{ route('examen', $materia)}}" id="createExa">Crear Examen</a></li>
                                       <li><a href="{{ route('listplan', $materia)}}" id="listUni">Herramientas</a></li>
+                                       <li><a href="{{ route('allTutorial')}}" id="prfTutorial">Tutoriales</a></li>
                                       <li><a href="{{ route('listplan', $materia)}}" id="ListUniSub"><i class='fa fa-plus fa-fw'></i>Lista de unidades</a>
                                          <ul class="nav nav-fourth-level" id="nameUni"></ul> 
                                       </li> 
@@ -115,6 +119,7 @@
                                                 <a href="{{$materia->id}}" id="almId" class="alert"></a>
                                                 <li><a href="{{ route('act', $materia)}}" id="almUni">Herramientas</a></li>
                                                 <li><a href="{{route('listExamen', $materia )}}" id="Lexamen">Lista de examenes</a></li>
+                                                <li><a href="{{ route('allTutorial')}}" id="almTutorial">Tutoriales</a></li>
                                                 <li><a href="{{ route('listplan', $materia)}}" id="almUnidadList"><i class='fa fa-plus fa-fw'></i>Lista de unidades</a>
                                                    <ul class="nav nav-fourth-level" id="AlmuniList"></ul> 
                                                 </li> 
@@ -175,8 +180,8 @@
                               <li><a href="#"><i class='fa fa-plus fa-fw'></i> Tutoriales</a>
                                   
                                   <ul class="nav nav-sixth-level">
-                                     <li><a href="{{ route('tutorial')}}"><i class="fa fa-film"></i> Subir tutoriales</a></li>
-                                      <li><a href="{{ route('allTutorial')}}"><i class="fa fa-file-video-o"></i> Lista de tutoriales</a></li>
+                                     <li><a href="{{ route('tutorial')}}" id="admin"><i class="fa fa-film"></i> Subir tutoriales</a></li>
+                                      <li><a href="{{ route('allTutorial')}}" id="listTutorial"><i class="fa fa-file-video-o"></i> Lista de tutoriales</a></li>
                                   </ul>
 
                               </li>
@@ -224,6 +229,13 @@
 
      </nav>
 
+
+@include('ajax.listTutorialAlm')
+
+@include('ajax.listPrfTuto')
+
+@include('ajax.subirTutorial')
+
 @include('ajax.vizualizacionUnidad')
 
 @include('ajax.VunidadEstudiante')
@@ -243,6 +255,8 @@
 @include('ajax.listaUser')
 
 @include('ajax.ListaActividades')
+
+@include('ajax.listTutorial')
 
 @include('ajax.listSubtemas')
 
@@ -285,6 +299,13 @@
 @include('script.VideosFile')
 
 @include('script.ApoyoFile')
+
+@include('script.tutorialFile')
+
+@include('script.ajaxAdministrador')
+
+@include('script.ajaxTutorial')
+
 
 @stop
 

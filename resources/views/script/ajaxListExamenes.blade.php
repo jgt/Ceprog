@@ -22,6 +22,7 @@
          $('#createVideos').addClass('alert');
          $('div#vizuaUnidad').addClass('alert');
         $('div#VunidadE').addClass('alert');
+        $('#listTutAlm').addClass('alert');
 
         
         $.get(route, function(resp){
