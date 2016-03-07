@@ -23,6 +23,11 @@
 			$('div#notasRubricas').addClass('alert');
 			$('#listRub').addClass('alert');
 			$('#listTutAlm').addClass('alert');
+			$('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');
@@ -73,6 +78,11 @@
 			$('div#vizuaUnidad').addClass('alert');
 			$('div#calAct').addClass('alert');
 			$('div#notasRubricas').addClass('alert');
+			$('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
 			
 
 		$.get(route, function(resp){

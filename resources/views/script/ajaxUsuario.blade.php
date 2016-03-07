@@ -30,6 +30,9 @@
 		       $('#createVideos').addClass('alert');
 		       $('div#vizuaUnidad').addClass('alert');
 		       $('#listRub').addClass('alert');
+		       $('div#admRole').addClass('alert');
+		       $('#listTut').addClass('alert');
+			$('#adminPlan').addClass('alert');
 			      
 	      }); 
 

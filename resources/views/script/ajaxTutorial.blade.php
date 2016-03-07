@@ -23,6 +23,11 @@
 			    $('#listRub').addClass('alert');
 			    $('div#listUnidades').addClass('alert');
 			    $('#listTutAlm').addClass('alert');
+			    	$('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');

@@ -19,6 +19,11 @@
 	        $('div#vizuaUnidad').removeClass('alert');
 	        $('div#AlmUni').addClass('alert');
 	        $('#listRub').addClass('alert');
+	        $('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -52,6 +57,11 @@
 			        $('div#planeacionC').addClass('alert');
 			        $('div#AlmUni').addClass('alert');
 			        $('#listRub').addClass('alert');
+			        $('#adminPlan').addClass('alert');
+					$('#admRole').addClass('alert');
+					$('div#user').addClass('alert');
+					$('#admForo').addClass('alert');
+					$('#listTut').addClass('alert');
 					var id = $(this).attr('href');
 					var link = $('#idSubtemas').attr('href');
 					var route = link.split('%7Bid%7D').join(id);
@@ -111,16 +121,20 @@
 	        $('div#vizuaUnidad').addClass('alert');
 	        $('div#AlmUni').addClass('alert');
 	        $('#listRub').addClass('alert');
+	        $('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
-			var link = $('#idUnidad').attr('href');
+			var link = $('#idUnidadAlm').attr('href');
 			var route = link.split('%7Bid%7D').join(id);
 			var alm = $('ul#AlmuniList');
 
 			$.get(route, function(resp){
 
 				alm.html(" ");
-
 				$(resp).each(function(key, value){
 
 					alm.append("<li><a href="+value.id+" id='Alunilist'>"+value.unidad+"</a></li>");
@@ -142,9 +156,14 @@
 			        $('div#planeacionC').addClass('alert');
 			        $('div#AlmUni').addClass('alert');
 			        $('#listRub').addClass('alert');
+			        $('#adminPlan').addClass('alert');
+					$('#admRole').addClass('alert');
+					$('div#user').addClass('alert');
+					$('#admForo').addClass('alert');
+					$('#listTut').addClass('alert');
 
 					var id = $(this).attr('href');
-					var link = $('#idSubtemas').attr('href');
+					var link = $('#idSubtemasAlm').attr('href');
 					var route = link.split('%7Bid%7D').join(id);
 					var subtemaAlm = $('#ulalmV');
 					var videosAlm = $('#ulvideoAlm');

@@ -20,6 +20,11 @@
         $('div#VunidadE').addClass('alert');
         $('#listRub').addClass('alert');
         $('#prflistTuto').addClass('alert');
+          $('#adminPlan').addClass('alert');
+      $('#admRole').addClass('alert');
+      $('div#user').addClass('alert');
+      $('#admForo').addClass('alert');
+      $('#listTut').addClass('alert');
 
       var route = $(this).attr('href');
       

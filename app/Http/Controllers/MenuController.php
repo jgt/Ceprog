@@ -41,8 +41,9 @@ class MenuController extends Controller
         $materias = $this->userRepository->materiasProfesores($request);
         $roles = $this->roleRepository->searchList();
         $users = $this->userRepository->listaUser($request);
+        $materiasForo = $this->materiaRepository->showMaterias();
 
-        return view('include.menu', compact('materias', 'roles', 'users'));
+        return view('include.menu', compact('materias', 'roles', 'users', 'materiasForo'));
     }
 
 

@@ -44,10 +44,6 @@ class ForoController extends Controller {
 
 		$foro = Foro::create($request->all());
 
-		flash()->overlay('ha sido creado.', 'Nuevo ' . $foro->title);
-
-		return redirect()->back();
-
 	}
 
 	public function editForo($id)

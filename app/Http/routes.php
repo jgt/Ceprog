@@ -43,6 +43,8 @@ Route::controllers([
 
 Route::group(['middleware' => 'auth'], function(){
 
+	Route::get('idUnidad/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@idUnidad']);
+	Route::get('idSubtemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@idSubtemas']);
 
 	Route::get('menu', ['as' => 'menu', 'uses' => 'MenuController@index']);
 
@@ -125,10 +127,7 @@ Route::group(['middleware' => 'admin',], function(){
 
 Route::group(['middleware' => 'maestro'], function(){
 
-	Route::get('idUnidad/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@idUnidad']);
-	Route::get('idSubtemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@idSubtemas']);
-
-
+	
 	Route::get('showSubtema/{id}', ['as' => 'showSubtema', 'uses' => 'SubtemasController@showSubtema']);
 	Route::post('storeSubtemas', ['as' => 'storeSubtemas', 'uses' => 'SubtemasController@storeSubtemas']);
 	Route::get('deleteSubtemas/{id}', ['as' => 'deleteSubtemas', 'uses' => 'SubtemasController@deleteSubtemas']);
@@ -269,6 +268,8 @@ Route::group(['middleware' => 'cordinador'], function(){
 
 
 });
+
+
 
 
 

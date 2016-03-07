@@ -23,6 +23,11 @@
          $('div#vizuaUnidad').addClass('alert');
         $('div#VunidadE').addClass('alert');
         $('#listTutAlm').addClass('alert');
+          $('#adminPlan').addClass('alert');
+      $('#admRole').addClass('alert');
+      $('div#user').addClass('alert');
+      $('#admForo').addClass('alert');
+      $('#listTut').addClass('alert');
 
         
         $.get(route, function(resp){

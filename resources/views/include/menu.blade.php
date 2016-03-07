@@ -23,7 +23,7 @@
   @include('ajax.modalMapoyoAlm')
   @include('ajax.modalEditRubricas')
   @include('ajax.modalTutorial')
-  @include('ajax.modalTutoprf')
+  @include('ajax.modalTutoPrf')
   @include('ajax.modalTutorialAlm')
 
  <div id="wrapper">
@@ -117,6 +117,8 @@
                                             <li><a href="#"><i class='fa fa-plus fa-fw'></i> {{$materia->name}}</a>
                                               <ul  class="nav nav-fourth-level"  data-id="{{ $materia->id}}">
                                                 <a href="{{$materia->id}}" id="almId" class="alert"></a>
+                                                <a href="{{ route('idUnidad')}}" id="idUnidadAlm" class="alert"></a>
+                                                 <a href="{{ route('idSubtemas')}}" id="idSubtemasAlm" class="alert"></a>
                                                 <li><a href="{{ route('act', $materia)}}" id="almUni">Herramientas</a></li>
                                                 <li><a href="{{route('listExamen', $materia )}}" id="Lexamen">Lista de examenes</a></li>
                                                 <li><a href="{{ route('allTutorial')}}" id="almTutorial">Tutoriales</a></li>
@@ -190,8 +192,8 @@
                                       <ul class="nav nav-fifth-level">
                                         <li><a href="{{route('admin.create')}}" id="Cusuario">Crear usuario</a></li>
                                           <li><a href="{{route('role.create')}}" id="Croles">Crear role</a></li>
-                                          <li><a href="{{route('foro')}}">Crear foro</a></li>
-                                          <li><a href="{{route('carrera.create')}}">Crear Plan</a></li>
+                                          <li><a href="{{route('foro')}}" id="foroAdm">Crear foro</a></li>
+                                          <li><a href="{{route('carrera.create')}}" id="planAdm">Crear Plan</a></li>
                                       </ul>
                                 </li>
                                 <li><a href="#"><i class='fa fa-plus fa-fw'></i> Informacion academica</a>
@@ -210,15 +212,7 @@
                         <li>
                             <a href="#"><i class='fa fa-plus fa-fw'></i> Consultas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                               @if(Auth::user()->is('alm') || Auth::user()->is('prf'))
-                                <li><a href="{{ route('allTutorial')}}"><i class="fa fa-file-video-o"></i> Lista de tutoriales</a></li>
-                                @endif
-                              @if(Auth::user()->is('prf'))
-                                <li><a href="{{url('/listplan')}}"><i class="fa fa-circle-o"></i> Lista de Planeaciones</a></li>
-                                <li><a href="{{ url('/listrubrica')}}"><i class="fa fa-archive"></i> Lista de rubricas</a></li>
-                                @endif
                                 @if(Auth::user()->is('alm'))
-                                <li><a href="{{ route('archivos')}}"><i class="fa fa-archive"></i> Archivos adjuntos</a></li>
                                 <li><a href="/documentos/presentacion.jpg"><i class="fa fa-exclamation-circle"></i> Secuencia de curso</a></li>
                                 @endif
                             </ul>
@@ -229,6 +223,11 @@
 
      </nav>
 
+@include('ajax.admPlan')
+
+@include('ajax.admForo')
+
+@include('ajax.admRole')
 
 @include('ajax.listTutorialAlm')
 
@@ -277,8 +276,6 @@
 @include('script.select')
 
 @include('script.menu')
-
-@include('script.ajaxRoles')
 
 @include('script.ajaxUsuario')
 

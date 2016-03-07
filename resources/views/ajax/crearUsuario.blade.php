@@ -50,7 +50,7 @@
    {!! Form::label('role_list', 'Grupo : ', ['class' => 'col-lg-2 control-label']) !!}
 
        <div class="col-lg-10">
-   {!! Form::select('role_list[]', $roles, null, [ 'id' => 'tag_list', 'class' => 'form-control', 'multiple']) !!}
+   {!! Form::select('role_list[]', $roles, null, ['class' => 'form-control']) !!}
    <hr>
   	
   	<div id="canvasloader-container" class="wrapper"></div>

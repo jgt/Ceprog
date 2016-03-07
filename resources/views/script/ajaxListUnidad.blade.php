@@ -22,6 +22,11 @@
 		    $('#listRub').addClass('alert');
 		    $('#prflistTuto').addClass('alert');	
 		    $('#listTutAlm').addClass('alert');
+		    $('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
 			var link = $('#uniList').attr('href');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');

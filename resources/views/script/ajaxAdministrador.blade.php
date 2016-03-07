@@ -9,6 +9,7 @@
 
 			$('#listTut').addClass('alert');
 			$('#tutoriales').removeClass('alert');
+			$('#adminPlan').addClass('alert');
 
 		});
 
@@ -19,6 +20,7 @@
 
 			$('#tutoriales').addClass('alert');
 			$('#listTut').removeClass('alert');
+			$('#adminPlan').addClass('alert');
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -88,5 +90,163 @@
 		div.html(" ");
 
 	});
+
+
+		$('#Croles').on('click', function(e){
+
+			e.preventDefault();
+
+			$('#admRole').removeClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#adminPlan').addClass('alert');
+			$('#listTut').addClass('alert');
+
+
+		});
+
+		$('#creRole').on('click', function(e){
+
+			e.preventDefault();
+
+			var form = $('#form-createRole');
+			var route = form.attr('action');
+			var metodo = form.attr('method');
+
+		$.ajax({
+
+			url: route,
+			type: metodo,
+			data: form.serialize(),
+
+			success:function(resp){
+
+				alertify.alert(" El role ha sido creado correctamente");
+
+			},
+
+			error:function(request, error){
+
+				if(error == "timeout")
+				{
+
+					alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+				}
+
+			}
+
+
+		});
+
+		});
+
+
+		$('#foroAdm').on('click', function(e){
+
+			e.preventDefault();
+
+			$('#admForo').removeClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#adminPlan').addClass('alert');
+			$('#listTut').addClass('alert');
+
+		});
+
+		$('#admForoCrt').on('click', function(e){
+
+			e.preventDefault();
+
+			var form = $('#form-createForo');
+			var route = form.attr('action');
+			var metodo = form.attr('method');
+
+			$.ajax({
+
+				url: route,
+				type: metodo,
+				data: form.serialize(),
+
+				success:function(resp){
+
+					alertify.alert(" El foro se ha creado correctamente");
+				},
+
+				error:function(request, error){
+
+				if(error == "timeout")
+
+					{
+
+						alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+					}else{
+
+						alertify.alert('Tienes errores en el formulario.');
+
+					}
+				}
+
+			});
+
+		});
+
+
+		$('#planAdm').on('click', function(e){
+
+			e.preventDefault();
+
+			$('#adminPlan').removeClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
+
+
+		});
+
+		$('#crePlan').on('click', function(e){
+
+
+			e.preventDefault();
+
+			var form = $('#form-plan');
+			var metodo = form.attr('method');
+			var route = form.attr('action');
+
+			$.ajax({
+
+				url: route,
+				type: metodo,
+				data: form.serialize(),
+
+
+				success:function(resp){
+
+					alertify.alert(" El plan ha sido creado correctamente.");
+
+				},
+
+				error:function(error, request){
+
+					if(error == "timeout")
+
+					{
+
+						alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+					}else{
+
+
+						alertify.alert('Tienes errores en el formulario.');
+					}
+
+
+
+				}
+
+
+
+			});
+
+		});
 
 </script>
