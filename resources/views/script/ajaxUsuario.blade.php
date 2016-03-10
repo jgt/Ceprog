@@ -33,6 +33,7 @@
 		       $('div#admRole').addClass('alert');
 		       $('#listTut').addClass('alert');
 			$('#adminPlan').addClass('alert');
+			$('#tutoriales').addClass('alert');
 			      
 	      }); 
 

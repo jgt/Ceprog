@@ -10,6 +10,9 @@
 			$('#listTut').addClass('alert');
 			$('#tutoriales').removeClass('alert');
 			$('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
 
 		});
 
@@ -21,6 +24,9 @@
 			$('#tutoriales').addClass('alert');
 			$('#listTut').removeClass('alert');
 			$('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -101,6 +107,7 @@
 			$('#admForo').addClass('alert');
 			$('#adminPlan').addClass('alert');
 			$('#listTut').addClass('alert');
+			$('#tutoriales').addClass('alert');
 
 
 		});
@@ -150,6 +157,7 @@
 			$('div#user').addClass('alert');
 			$('#adminPlan').addClass('alert');
 			$('#listTut').addClass('alert');
+			$('#tutoriales').addClass('alert');
 
 		});
 
@@ -200,6 +208,7 @@
 			$('div#user').addClass('alert');
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
+			$('#tutoriales').addClass('alert');
 
 
 		});

@@ -148,15 +148,18 @@ class DisenoController extends Controller {
 		$unidad = $this->unidadRepository->search($id);
 		$subtemas = $unidad->subtemas()->get();
 		$videos = $unidad->videos()->get();
+		$img = $this->unidadRepository->subtemas($request, $id);
 
 		$detalles = [
 
 			'unidad' => $unidad,
 			'subtemas' => $subtemas,
-			'videos' => $videos
+			'videos' => $videos,
+			'imagenes' => $img
 
-		];
+			];
 
+		
 		if($request->ajax())
 		{
 

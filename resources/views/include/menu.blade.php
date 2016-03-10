@@ -25,9 +25,10 @@
   @include('ajax.modalTutorial')
   @include('ajax.modalTutoPrf')
   @include('ajax.modalTutorialAlm')
+  @include('ajax.modalImagen')
+  @include('ajax.modalListImagenes') 
 
  <div id="wrapper">
-
         
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -74,6 +75,8 @@
                                       <a href="{{$materia->id}}" id="matId" class="alert"></a>
                                        <a href="{{ route('idUnidad')}}" id="idUnidad" class="alert"></a>
                                         <a href="{{ route('idSubtemas')}}" id="idSubtemas" class="alert"></a>
+                                         
+
                                       <li><a href="{{ route('planeacion', $materia)}}" id="planeacion">Crear Unidad</a></li>
                                       <li><a href="{{ route('examen', $materia)}}" id="createExa">Crear Examen</a></li>
                                       <li><a href="{{ route('listplan', $materia)}}" id="listUni">Herramientas</a></li>
@@ -208,7 +211,7 @@
                                 </li>
                             </ul>
                         </li>
-                        @endif
+                        @endif 
                         <li>
                             <a href="#"><i class='fa fa-plus fa-fw'></i> Consultas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -294,6 +297,8 @@
 @include('script.uploadFile')
 
 @include('script.VideosFile')
+
+@include('script.ImagenFile')
 
 @include('script.ApoyoFile')
 

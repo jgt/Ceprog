@@ -34,4 +34,19 @@ class UnidadRepository extends BaseRepository {
 		return $unidad;
 	}
 
+	public function subtemas(Request $request, $id)
+	{
+
+		$unidad = $this->search($id);
+		$subtemas = $unidad->subtemas()->get();
+		$imagenes = [];
+		foreach ($subtemas as $subtema) {
+			
+			 $imagenes = $subtema->imagenes()->get();
+			 return $imagenes;
+		}
+
+		return $imagenes;
+	}
+
 }

@@ -182,7 +182,7 @@
 
 				$('#editsubId').val(id);
 				
-					tablaSubtemas.append("<tr><td>"+value.subtemas+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editSubtemas(this);' data-toggle='modal' data-target='#editST'</button><i class='fa fa-pencil'></i></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarSubtema(this);'><i class='fa fa-eraser'></i></button></td></tr>");
+					tablaSubtemas.append("<tr><td>"+value.subtemas+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editSubtemas(this);' data-toggle='modal' data-target='#editST'</button><i class='fa fa-pencil'></i></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='imagenSubtema(this);' data-toggle='modal' data-target='#imagenSubtema'><i class='fa fa-file-image-o'></i></button></td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#listImagenes'  OnClick='listImagenes(this);'><i class='fa fa-folder'></i></button></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarSubtema(this);'><i class='fa fa-eraser'></i></button></td></tr>");
 				
 
 			});
@@ -197,6 +197,70 @@
 
 		});
 
+	}
+
+
+	function listImagenes(btn){
+
+		var id = btn.value;
+		var link = $('#imgList').attr('href');
+		var route = link.split('%7Bid%7D').join(id);
+		var img = $('#tablaImagenes');
+
+		$.get(route, function(resp){
+
+			img.html(" ");
+
+			var array = resp.length;
+
+			if(array > 0)
+			{
+
+				$(resp).each(function(key, value){
+
+				img.append("<tr><td>"+value.original_filename+"</td><td><button class='btn btn-primary' value="+value.id+"  OnClick='borrarImg(this);' data-dismiss='modal'><i class='fa fa-eraser'></i></button></td></tr>");
+
+				});
+
+			}else{
+
+				alertify.alert("no hay imagenes en este subtema.");
+
+			}
+
+		});
+
+	}
+
+
+	function borrarImg(btn){
+
+		var id = btn.value;
+		var link = $('#imgBorrar').attr('href');
+		var route = link.split('%7Bid%7D').join(id);
+
+		$.get(route, function(resp){
+
+			alertify.alert("La imagen ha sido borrada.");
+
+		});
+
+	}
+
+
+	function imagenSubtema(btn){
+
+		var id = btn.value;
+		var link = $('#showSubtema').attr('href');
+		var route = link.split('%7Bid%7D').join(id);
+		
+		$.get(route, function(resp){
+
+			$('#namSubtema').val(resp.subtemas);
+			$('#subimgId').val(resp.id);
+			$('#namSubtema').prop('disabled', true);
+
+		});
 	}
 
 	function borrarSubtema(btn){

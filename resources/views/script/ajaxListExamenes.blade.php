@@ -9,25 +9,25 @@
 
         var tablaExamenes = $('#tablaExamenes');
         var route = $(this).attr('href');
-        $('#listExamen').removeClass('alert');
-        $('div#act').addClass('alert');
-        $('div#examen').addClass('alert');
-        $('div#pregunta').addClass('alert');
-        $('div#user').addClass('alert');
-        $('div#listAct').addClass('alert');
-        $('div#calAct').addClass('alert');
-        $('div#planeacionC').addClass('alert');
-        $('div#listUnidades').addClass('alert');
-        $('div#listSubtemas').addClass('alert');
-         $('#createVideos').addClass('alert');
-         $('div#vizuaUnidad').addClass('alert');
-        $('div#VunidadE').addClass('alert');
-        $('#listTutAlm').addClass('alert');
+          $('#listExamen').removeClass('alert');
+          $('div#act').addClass('alert');
+          $('div#examen').addClass('alert');
+          $('div#pregunta').addClass('alert');
+          $('div#user').addClass('alert');
+          $('div#listAct').addClass('alert');
+          $('div#calAct').addClass('alert');
+          $('div#planeacionC').addClass('alert');
+          $('div#listUnidades').addClass('alert');
+          $('div#listSubtemas').addClass('alert');
+          $('#createVideos').addClass('alert');
+          $('div#vizuaUnidad').addClass('alert');
+          $('div#VunidadE').addClass('alert');
+          $('#listTutAlm').addClass('alert');
           $('#adminPlan').addClass('alert');
-      $('#admRole').addClass('alert');
-      $('div#user').addClass('alert');
-      $('#admForo').addClass('alert');
-      $('#listTut').addClass('alert');
+          $('#admRole').addClass('alert');
+          $('div#user').addClass('alert');
+          $('#admForo').addClass('alert');
+          $('#listTut').addClass('alert');
 
         
         $.get(route, function(resp){

@@ -1,7 +1,6 @@
 
-<div class="col-md-10 col-md-offset-1 alert" id="vizuaUnidad">
-    
-
+<div class="col-md-10 col-md-offset-1 alert" id="vizuaUnidad"> 
+  
             @include('errors.error')
 
           <h4 id="semestreU" style="text-transform: uppercase;"></h4>
@@ -20,7 +19,7 @@
           <hr>
 
            <ul id="ulvizu"></ul> 
-        
+          <ul id="imsub"></ul>
           <hr>
           
           <ul id="videolistUni"></ul>

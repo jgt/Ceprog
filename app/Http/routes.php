@@ -128,6 +128,9 @@ Route::group(['middleware' => 'admin',], function(){
 Route::group(['middleware' => 'maestro'], function(){
 
 	
+	Route::get('borrarImg/{id}', ['as' => 'borrarImg', 'uses' => 'SubtemasController@borrarImg']);
+	Route::get('listImagenes/{id}', ['as' => 'listImagenes', 'uses' => 'SubtemasController@listImagenes']);
+	Route::post('imagenSubtema/{id}', ['as' => 'imagenSubtema', 'uses' => 'SubtemasController@imagenSubtema']);
 	Route::get('showSubtema/{id}', ['as' => 'showSubtema', 'uses' => 'SubtemasController@showSubtema']);
 	Route::post('storeSubtemas', ['as' => 'storeSubtemas', 'uses' => 'SubtemasController@storeSubtemas']);
 	Route::get('deleteSubtemas/{id}', ['as' => 'deleteSubtemas', 'uses' => 'SubtemasController@deleteSubtemas']);

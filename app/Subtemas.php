@@ -16,5 +16,11 @@ class Subtemas extends Model
     	return $this->belongsTo('App\Unidad');
     }
 
+    public function imagenes()
+    {
+
+    	return $this->hasMany('App\Imagenes', 'subtema_id', 'id');
+    }
+
 
 }
