@@ -150,7 +150,7 @@ class VideosController extends Controller {
 
 	public function allTutorial(Request $request)
 	{
-		$tutoriales = Tutorial::all();
+		$tutoriales = Tutorial::with('roles')->get();
 
 		if($request->ajax())
 		{

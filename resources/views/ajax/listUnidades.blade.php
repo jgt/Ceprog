@@ -11,7 +11,7 @@
           <thead>
             <td><strong>Unidad</strong></td>
             <td><strong>Ver/Editar</strong></td>
-            <td><strong>Editar SubTemas</strong></td>
+            <td><strong>Lista de SubTemas</strong></td>
             <td><strong>Crear subtemas</strong></td>
             <td><strong>Crear Actividad</strong></td>
             <td><strong>Ver Actividades</strong></td>

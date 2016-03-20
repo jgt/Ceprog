@@ -18,7 +18,7 @@
 		var link = form.attr('action');
 		var metodo = form.attr('method');
 		var route = link.split("%7Bid%7D").join(id);
-
+	
 		var formdata = new FormData($form[0]);
 
 		var request = new XMLHttpRequest();

@@ -71,6 +71,10 @@
 					
 					$.get(route, function(resp){
 
+							ulSubtemas.html(" ");
+							video.html(" ");
+							imgSub.html(" ");
+			
 						$(resp.unidad).each(function(key, value){
 
 							$('#vizuaUnidad').removeClass('alert');
@@ -81,34 +85,40 @@
 							$('#semestreU').html(value.semestre);
 							$('#materiaU').html(value.materia);
 
+							$(value.subtemas).each(function(key, sub){
+
+									if(sub.imagenes == 0)
+									{
+										ulSubtemas.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
+									}else{
+
+										$(sub.imagenes).each(function(key, img){
+
+										ulSubtemas.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li><img src='/uploads/"+img.original_filename+"'>");
+									
+										});
+									}
+
+								
+							});
+
+
 						});
 
-							ulSubtemas.html(" ");
-							video.html(" ");
-							imgSub.html(" ");
+						$(resp.videos).each(function(key, videos){
 
-							$(resp.imagenes).each(function(key, value){
 
-								imgSub.append("<li><img src='/uploads/"+value.original_filename+"' alt=''></li>");
-							});
-
-							$(resp.subtemas).each(function(key, value){
-
-								ulSubtemas.append("<li><h4><strong>"+value.subtemas+"</strong></h4><p style='text-align: justify;'>"+value.descripcion+"</p></li><hr>");
-							});
-
-							$(resp.videos).each(function(key, value){
-
-								if(value.mime == 'video/mp4')
+								if(videos.mime == 'video/mp4')
 								{
-									video.append("<li><video width='600'  height='300' controls='controls'><source src='/uploads/"+value.original_filename+"' type='video/webm'/><source src='/uploads/"+value.original_filename+"' type='video/ogg'/><source src='/uploads/"+value.original_filename+"' type='video/mp4'/></video></li><hr>");
+									video.append("<li><video width='600'  height='300' controls='controls'><source src='/uploads/"+videos.original_filename+"' type='video/webm'/><source src='/uploads/"+videos.original_filename+"' type='video/ogg'/><source src='/uploads/"+videos.original_filename+"' type='video/mp4'/></video></li><hr>");
 								}else{
 
-									video.append("<li><img src='/uploads/"+value.original_filename+"' alt=''></li><hr>");
+									video.append("<li><img src='/uploads/"+videos.original_filename+"' alt=''></li><hr>");
 								}
 
 								
 							});
+
 
 					});
 
@@ -185,6 +195,10 @@
 
 					$.get(route, function(resp){
 
+						subtemaAlm.html(" ");
+						videosAlm.html(" ");
+						imgAlm.html(" ");
+
 						$(resp.unidad).each(function(key, value){
 
 							$('#VunidadE').removeClass('alert');
@@ -195,22 +209,23 @@
 							$('#semestreUalm').html(value.semestre);
 							$('#materiaUalm').html(value.materia);
 
+							$(value.subtemas).each(function(key, sub){
+
+								if(sub.imagenes == 0)
+									{
+										subtemaAlm.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
+									}else{
+
+										$(sub.imagenes).each(function(key, img){
+
+										subtemaAlm.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li><img src='/uploads/"+img.original_filename+"'>");
+									
+										});
+									}
+								
+							});
+
 						});
-
-						subtemaAlm.html(" ");
-						videosAlm.html(" ");
-						imgAlm.html(" ");
-
-						$(resp.imagenes).each(function(key, value){
-
-								imgAlm.append("<li><img src='/uploads/"+value.original_filename+"' alt=''></li>");
-							});
-
-						$(resp.subtemas).each(function(key, value){
-
-								subtemaAlm.append("<li><h4><strong>"+value.subtemas+"</strong></h4><p style='text-align: justify;'>"+value.descripcion+"</p></li>");
-							});
-
 
 						$(resp.videos).each(function(key, value){
 
@@ -226,6 +241,7 @@
 
 								
 							});
+
 
 					});
 

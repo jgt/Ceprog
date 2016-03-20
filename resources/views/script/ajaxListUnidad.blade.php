@@ -811,7 +811,7 @@
 
               var filename = value.filename;
               var cadena = filename.split(' ').join('%20');
-              console.log(resp);
+          
               if(resp.nota == 0)
               {
                 tablaArchivos.append("<tr><td>"+value.filename+"</td><td><button class='btn btn-primary' value="+cadena+"  OnClick='archivo(this);'><i class='fa fa-download'></i></button></td><td><button class='btn btn-primary' value="+value.id+" data-dismiss='modal' OnClick='calificacion(this);'><i class='fa fa-book'></i></button></td></tr>");
@@ -839,9 +839,12 @@
 
       var calificacion = $('#calificacionRoute').attr('href');
       var route = calificacion.split('%7Bid%7D').join(btn.value);
+       var tblPorcentaje = $('#tablaPorcentaje');
        $('div#listAct').addClass('alert');
       $('div#calAct').removeClass('alert');
       $.get(route, function(resp){
+
+      	tblPorcentaje.html(" ");
 
           $(resp.archivo).each(function(key, value){
 
@@ -857,6 +860,7 @@
 
             var rubricas = $('#form-calificacion');
             var porcentaje = $('#tablaPorcentaje');
+
 
             rubricas.append("<div class='form-group'><label class='control-label col-xs-2'>"+value.name+"</label><div class='col-lg-10'><input type='text' name='rubrica_"+value.id+"' id='rubInp' class='rubrica form-control'></input></div></div><br><br>");
 

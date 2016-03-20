@@ -35,14 +35,21 @@
 			    $.get(route, function(resp){
 
 			    	tutorial.html(" ");
-
+			    	console.log(resp);
 			    	$(resp).each(function(key, value){
 
+			    		$(value.roles).each(function(key, op){
 
-					var filename = value.original_filename;
-	                var cadena = filename.split(' ').join('%20');
-					tutorial.append("<tr><td>"+value.original_filename+"</td><td><button class='btn btn-primary' OnClick='descargarTutoPrf(this);' value="+cadena+"><i class='fa fa-download'></i></button></td><td><button class='btn btn-primary' OnClick='tutorialOnlinePrf(this);' data-toggle='modal' data-target='#tutoPrf' value="+value.id+"><i class='fa fa-eye'></i></button></td><tr>");
+			    			if(op.slug == 'prf')
+			    			{
 
+			    				var filename = value.original_filename;
+				                var cadena = filename.split(' ').join('%20');
+								tutorial.append("<tr><td>"+value.original_filename+"</td><td><button class='btn btn-primary' OnClick='descargarTutoPrf(this);' value="+cadena+"><i class='fa fa-download'></i></button></td><td><button class='btn btn-primary' OnClick='tutorialOnlinePrf(this);' data-toggle='modal' data-target='#tutoPrf' value="+value.id+"><i class='fa fa-eye'></i></button></td><tr>");
+			    			}
+
+			    		});
+					
 				});
 
 
@@ -87,12 +94,21 @@
 
 			    	$(resp).each(function(key, value){
 
+			    		$(value.roles).each(function(key, op){
+			    			
+			    			if(op.slug == 'alm')
+			    			{
 
-					var filename = value.original_filename;
-	                var cadena = filename.split(' ').join('%20');
-					tutorialAlm.append("<tr><td>"+value.original_filename+"</td><td><button class='btn btn-primary' OnClick='descargarTutoAlm(this);' value="+cadena+"><i class='fa fa-download'></i></button></td><td><button class='btn btn-primary' OnClick='tutorialOnlineAlm(this);' data-toggle='modal' data-target='#tutoAlm' value="+value.id+"><i class='fa fa-eye'></i></button></td><tr>");
+			    				var filename = value.original_filename;
+				                var cadena = filename.split(' ').join('%20');
+								tutorialAlm.append("<tr><td>"+value.original_filename+"</td><td><button class='btn btn-primary' OnClick='descargarTutoAlm(this);' value="+cadena+"><i class='fa fa-download'></i></button></td><td><button class='btn btn-primary' OnClick='tutorialOnlineAlm(this);' data-toggle='modal' data-target='#tutoAlm' value="+value.id+"><i class='fa fa-eye'></i></button></td><tr>");
 
-				});
+			    			}
+
+			    		});
+
+					
+					});
 
 
 			    });

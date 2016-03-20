@@ -3,6 +3,7 @@
 
 use App\Http\Requests;
 use App\Unidad;
+use App\Imagenes;
 
 use Illuminate\Http\Request;
 
@@ -37,16 +38,11 @@ class UnidadRepository extends BaseRepository {
 	public function subtemas(Request $request, $id)
 	{
 
-		$unidad = $this->search($id);
-		$subtemas = $unidad->subtemas()->get();
-		$imagenes = [];
-		foreach ($subtemas as $subtema) {
-			
-			 $imagenes = $subtema->imagenes()->get();
-			 return $imagenes;
-		}
+		$unidad = $this->search($id); // encuentro la unidad
+		$imagenes= $unidad->where('id', $id)->with('subtemas', 'subtemas.imagenes')->get(); // devuelve todas las imagenes que tiene los subtemas de la unidad
 
 		return $imagenes;
+		
 	}
 
 }
