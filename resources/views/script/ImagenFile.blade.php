@@ -1,12 +1,16 @@
 <script>
 	
-	$(document).on('submit', 'form', function(e){
+	
 
+	$('#fimg').on('click', function(e){
+
+	
 		e.preventDefault();
 
-		$form = $(this);
+		$form = $('#imgSub');
 
 		imagenFile($form);
+
 	});
 
 	function imagenFile($form){

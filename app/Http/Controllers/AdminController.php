@@ -9,6 +9,7 @@ use App\Materia;
 use App\User;
 use App\Carrera;
 use App\Semestre;
+use Bican\Roles\Models;
 use Auth;
 use Input;
 use Hash;
@@ -54,10 +55,10 @@ class AdminController extends Controller {
 
 		if($request->ajax())
 		{
-			return response()->json(User::all());
+			return response()->json($users);
 		}
 
-		return view('lista', compact('users'));
+
 	}
 	
 	public function create()
@@ -82,50 +83,56 @@ class AdminController extends Controller {
 	}
 
 	
-	public function show($id)
+	public function show($id, Request $request)
 	{
-		$users = $this->userRepository->search($id);
-		return view('show', compact('users'));
+		$users = $this->userRepository->search($id)->where('id', $id)->with('roles')->get();
+
+
+		if($request->ajax())
+		{
+			return response()->json($users);
+		}
+
 	}
 
 	
 	public function edit($id, Request $request)
 	{	
 		
-		$user = $this->userRepository->search($id);
-        $carreras = $this->carreraRepository->searchList();
-        $semestres = $this->semestreRepository->searchList();
-        $materias = $this->materiaRepository->showMaterias();
-		$role = $this->roleRepository->searchList();
-		/*
-		$detalle = [
+		$user = $this->userRepository->search($id)->where('id', $id)->with('roles', 'carreras.semestres.materias')->get();
+		$carreras = Carrera::all();
+		$semestres = Semestre::all();
+		$materias = Materia::all();
+		$roles = Role::all();
+		$userMaterias = $this->userRepository->search($id);
 
-				'id' => $this->userRepository->search($id)->id,
-				'name' => $this->userRepository->search($id)->name,
-				'cuenta' => $this->userRepository->search($id)->cuenta,
-				'password' => $this->userRepository->search($id)->password,
-				'roles' => $this->userRepository->search($id)->roles()->get(),
-				'semestres' => $this->userRepository->search($id)->semestres()->get(),
-				'materias' => $this->userRepository->search($id)->materias()->get(),
-				'carreras' => $this->userRepository->search($id)->carreras()->get()
+		$detalles = [
 
+			'user' => $user,
+			'carreras' => $carreras,
+			'semestres' => $semestres,
+			'materias' => $materias,
+			'roles' => $roles
 
 		];
-
+		
 		if($request->ajax())
 		{
-			return response()->json($detalle);
-		}
-		*/
 
-		return view('edit.user', compact('user', 'role', 'carreras', 'semestres', 'materias'));
+			return response()->json($detalles);
+		}
+
 	}
 
 	public function update($id, EditAdmin $request)
 	{
 		
-		$this->userRepository->updateUser($request, $id);
-		return redirect('admin');
+		$user = $this->userRepository->updateUser($request, $id);
+		
+		if($request->ajax())
+		{
+			return response()->json($user);
+		}
 	}
 
 	

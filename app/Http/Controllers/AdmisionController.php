@@ -164,8 +164,6 @@ class AdmisionController extends Controller {
         return response()->json($alumnos);
     }
 
-    return view('tutores.cloTutores', compact('actividad'));
-
   }
 
   public function sinNota($id)

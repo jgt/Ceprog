@@ -48,7 +48,7 @@
 
     {!! Form::label('valoractividad', 'Valor Total de la actividad ', ['class' => 'form-group']) !!}
 
-   {!! Form::selectRange('valoractividad', 10, 30, null, ['class' => 'form-control', 'id' => 'valoractividad']) !!}
+   {!! Form::selectRange('valoractividad', 10, 40, null, ['class' => 'form-control', 'id' => 'valoractividad']) !!}
    <strong class="validation" id="valact"></strong>
     </div>
  

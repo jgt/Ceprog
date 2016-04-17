@@ -1,11 +1,22 @@
+<!--
+
+	Esta vista extiende del template app, se inserta una imagen dentro del div(header).
+
+	se encuentra un formulario que es el formulario de inscripcion Online, dentro de ese formulario se hacen 2 include
+
+		*errors(muestra los errores de validacion del formulario)
+
+		*admision(son los campos html del formulario)
+
+ -->
+
+
 @extends('app')
 
 
 @section('content')
 
 <div class="header"></div>
-
-@include('include.menudefault')
 
 
 <h3 class="tamaños" id="color-letra" align="center">Centro de Estudios Profesionales del Grijalva</h3>

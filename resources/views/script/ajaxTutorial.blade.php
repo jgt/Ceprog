@@ -5,7 +5,8 @@
 			$('a#prfTutorial').on('click', function(e){
 
 				e.preventDefault();
-
+				
+				$('#alumnosListUser').addClass('alert');
 				$('#prflistTuto').removeClass('alert');
 				$('div#act').addClass('alert');
 				$('div#listAct').addClass('alert');

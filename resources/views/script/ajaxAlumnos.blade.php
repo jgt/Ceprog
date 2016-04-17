@@ -28,6 +28,7 @@
 			$('div#user').addClass('alert');
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
+			$('#alumnosListUser').addClass('alert');
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');
@@ -263,6 +264,7 @@
 
 			$(resp.calificaciones).each(function(key, value){
 
+				console.log(value);
 				tablaCalificacion.append("<tr><td>"+value.promedio+"</td></tr>");
 
 			});

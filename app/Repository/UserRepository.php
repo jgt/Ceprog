@@ -17,7 +17,16 @@ class UserRepository extends BaseRepository {
 
 		public function getModel()
 		{
-			return new User();
+			return new User();	
+
+		}
+
+
+		public function alumnosMenu(Request $request)
+		{
+
+			$alumnos = User::with('roles', 'carreras.semestres.materias.unidades.actividades')->paginate(5);
+			return $alumnos;
 
 		}
 
@@ -25,7 +34,7 @@ class UserRepository extends BaseRepository {
 	public function listaUser(Request $request)
 	{
 
-		 $users = User::name($request->get('name'))->paginate(5);
+		 $users = User::name($request->get('name'))->paginate(3);
 		return $users; 
 
 	}
@@ -54,41 +63,31 @@ class UserRepository extends BaseRepository {
 		$user = $this->search($id);
 		$user->update($request->all());
 
-		if ($user->is('adm')) {
-			
+		if($user->is('adm'))
+		{
+
+		$user->carreras()->sync($request->get('carrera_list'));
+		$user->semestres()->sync($request->get('semestre_list'));
+		$user->roles()->sync($request->get('role_list'));
+		$user->materias()->sync($request->get('materia_list'));
+		
+		}else if($user->is('alm'))
+
+		{
 			$user->carreras()->sync($request->get('carrera_list'));
 			$user->semestres()->sync($request->get('semestre_list'));
+			$user->roles()->sync($request->get('role_list'));
+			
+		}else if($user->is('prf'))
+		{
+
 			$user->materias()->sync($request->get('materia_list'));
 			$user->roles()->sync($request->get('role_list'));
-
-		}elseif ($user->is('cdo')) {
-			
-			$user->roles()->sync($request->get('role_list'));
-
-		}elseif ($user->is('alm|ctr|cdo')) {
-			
-			$user->carreras()->sync($request->get('carrera_list'));
-			$user->semestres()->sync($request->get('semestre_list'));
-			$user->roles()->sync($request->get('role_list'));
-
-		}elseif ($user->is('alm') && $user->is('prf')) {
-			
-
-			$user->carreras()->sync($request->get('carrera_list'));
-			$user->semestres()->sync($request->get('semestre_list'));
-			$user->materias()->sync($request->get('materia_list'));
-			$user->roles()->sync($request->get('role_list'));
-
-
-		}elseif ($user->is('prf')) {
-			
-			$user->materias()->sync($request->get('materia_list'));
-			$user->roles()->sync($request->get('role_list'));
-
 		}
+		
 
 
-		flash()->overlay('Ha sido editado', 'El usuario ' . $user->name);
+		return $user;
 	}
 
 

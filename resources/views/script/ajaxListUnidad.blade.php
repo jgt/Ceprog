@@ -2,6 +2,74 @@
 	
 	$(document).on('ready', function(){
 
+		$('a#menuListUser').on('click', function(e){
+
+			e.preventDefault();
+			$('div#act').addClass('alert');
+			$('div#listAct').addClass('alert');
+		    $('div#examen').addClass('alert');
+		    $('div#listExamen').addClass('alert');
+		    $('div#calAct').addClass('alert');
+		    $('div#planeacionC').addClass('alert');
+		    $('div#listSubtemas').addClass('alert');
+		    $('#createVideos').addClass('alert');
+			$('div#listAct').addClass('alert');
+			$('#Almact').addClass('alert');
+			$('div#vizuaUnidad').addClass('alert');
+			$('div#AlmUni').addClass('alert');
+			$('div#VunidadE').addClass('alert');
+			$('div#calAct').addClass('alert');
+			$('div#notasRubricas').addClass('alert');
+			$('#listRub').addClass('alert');
+			$('#listTutAlm').addClass('alert');
+			$('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
+			$('div#listUnidades').addClass('alert');
+			$('#prflistTuto').addClass('alert');
+			$('#alumnosListUser').removeClass('alert');
+			var route = $(this).attr('href');
+			var tablaAlumnos = $('#tablaAlumnosList');
+			
+			$.get(route, function(resp){
+
+				tablaAlumnos.html(" ");
+
+				$(resp).each(function(key, value){
+
+					$(value.semestre).each(function(key, sem){
+
+						$(sem.users).each(function(key, user){
+
+							if(sem.users.length > 0){
+
+							$(user.roles).each(function(key, role){
+
+								if(role.name == "alumno")
+										{
+										
+											tablaAlumnos.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='listUserAct(this);' data-toggle='modal' data-target='#prbUser' </button><i class='fa fa-pencil-square-o'></i></td></tr>");
+										}
+
+							});
+
+						}else{
+
+							alertify.alert("Esta materia no tiene alumnos inscritos.");
+						}
+
+						});
+					});
+
+				});
+
+			});
+
+		});
+
+
 		$('a#listUni').on('click', function(e){
 
 			e.preventDefault()
@@ -27,6 +95,7 @@
 			$('div#user').addClass('alert');
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
+			$('#alumnosListUser').addClass('alert');
 			var link = $('#uniList').attr('href');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -49,6 +118,40 @@
 		});
 
 	});
+
+	function listUserAct(btn){
+
+			var id = btn.value;
+			var link = $('#prb').attr('href');
+			var route = link.split('%7Bid%7D').join(id);
+			var tablaAct = $('#tablaPrbUser');
+
+			$.get(route, function(resp){
+
+				tablaAct.html(" ");	
+
+				$(resp).each(function(key, value){
+
+					$(value.unidades).each(function(key, uni){
+
+						$(uni.actividades).each(function(key, act){
+
+							$(act.fileentries).each(function(key, file){
+
+
+								tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td></tr>")
+
+							});
+
+						});
+
+					});
+					
+				});
+
+			});
+
+		}
 
 	function createSubt(btn){
 
@@ -1002,7 +1105,6 @@
               notasRubricas.append("<tr><td><strong>Promedio: </strong>"+value.promedio+"</td></tr>");
 
             });
-     rubrica
 
 
           });

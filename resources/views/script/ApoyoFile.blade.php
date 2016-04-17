@@ -1,13 +1,14 @@
 <script>
 	
-		$(document).on('submit', 'form', function(e){
+		$('#apoy').on('click', function(e){
 
-		e.preventDefault();
+			e.preventDefault();
 
-		$form = $(this);
+			$form = $('#apoyoM_id');
 
-		apoyoFile($form);
-	});
+			apoyoFile($form);
+
+		});
 
 	function apoyoFile($form){
 
@@ -27,7 +28,8 @@
 
 			var percent = Math.round(e.loaded/e.total * 100);
 
-			$form.find('.progress-bar').width(percent +'%').html(percent +'%');
+			
+			$('.progress-bar').css('width', percent);
 
 			console.log(percent);
 
@@ -35,18 +37,18 @@
 
 		request.addEventListener('load', function(e){
 
-			$form.find('.progress-bar').addClass('progress-bar-success').html('el archivo subio correctamente...');
+			$('.progress-bar').addClass('progress-bar-success').html('el archivo subio correctamente...');
 
 		});
 
 		request.open(metodo, route);
 		request.send(formdata);
 
-		$form.on('click', 'cancel', function(){
+		$('#cancelMaterial').on('click', function(){
 
 			request.abort();
 
-			$form.find('.progress-bar').addClass('progress-bar-danger').removeClass('progress-bar-success').html('el archivo se cancelo.');
+			$('.progress-bar').addClass('progress-bar-danger').removeClass('progress-bar-success').html('el archivo se cancelo.');
 			
 		});
 	}

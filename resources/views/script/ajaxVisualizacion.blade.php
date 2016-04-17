@@ -87,19 +87,14 @@
 
 							$(value.subtemas).each(function(key, sub){
 
-									if(sub.imagenes == 0)
-									{
-										ulSubtemas.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
-									}else{
+
+									ulSubtemas.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
 
 										$(sub.imagenes).each(function(key, img){
 
-										ulSubtemas.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li><img src='/uploads/"+img.original_filename+"'>");
-									
+											ulSubtemas.append("<img src='/uploads/"+img.original_filename+"'><hr>");
 										});
-									}
-
-								
+		
 							});
 
 
@@ -211,19 +206,16 @@
 
 							$(value.subtemas).each(function(key, sub){
 
-								if(sub.imagenes == 0)
-									{
-										subtemaAlm.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
-									}else{
+
+									subtemaAlm.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
 
 										$(sub.imagenes).each(function(key, img){
 
-										subtemaAlm.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li><img src='/uploads/"+img.original_filename+"'>");
-									
+											subtemaAlm.append("<img src='/uploads/"+img.original_filename+"'><hr>");
 										});
-									}
-								
+		
 							});
+							
 
 						});
 

@@ -27,6 +27,9 @@
   @include('ajax.modalTutorialAlm')
   @include('ajax.modalImagen')
   @include('ajax.modalListImagenes') 
+  @include('ajax.modalShowUser')
+  @include('ajax.modalUpdateUser')
+  @include('ajax.modalActUser')
 
  <div id="wrapper">
         
@@ -80,6 +83,7 @@
                                       <li><a href="{{ route('planeacion', $materia)}}" id="planeacion">Crear Unidad</a></li>
                                       <li><a href="{{ route('examen', $materia)}}" id="createExa">Crear Examen</a></li>
                                       <li><a href="{{ route('listplan', $materia)}}" id="listUni">Herramientas</a></li>
+                                      <li><a href="{{ route('almSem', $materia->id)}}" id="menuListUser">Lista de usuarios</a></li>
                                        <li><a href="{{ route('allTutorial')}}" id="prfTutorial">Tutoriales</a></li>
                                       <li><a href="{{ route('listplan', $materia)}}" id="ListUniSub"><i class='fa fa-plus fa-fw'></i>Lista de unidades</a>
                                          <ul class="nav nav-fourth-level" id="nameUni"></ul> 
@@ -225,6 +229,10 @@
             </div>
 
      </nav>
+
+@include('ajax.listaAlumnosUser')
+
+@include('ajax.admListaPersonal')
 
 @include('ajax.admPlan')
 

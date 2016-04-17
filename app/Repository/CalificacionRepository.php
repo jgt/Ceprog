@@ -14,7 +14,8 @@ class CalificacionRepository extends BaseRepository {
 	}
 	public function notasActividades($actividadesId)
 	{
-		return  $this->newQuery()->where('user_id',Auth::user()->id)->whereIn('actividad_id',$actividadesId)->get();
+		 $notas = $this->newQuery()->where('user_id',Auth::user()->id)->whereIn('actividad_id',$actividadesId)->get();
+		 return $notas;
 	
 	} 
 

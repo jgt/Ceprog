@@ -40,18 +40,6 @@
             <td class="desc">{{ $actividad->cognoscitivo }}</td>
           </tr>
            <tr>
-            <td class="service">Rubricas</td>
-            <td class="desc">
-            	
-            	@foreach($actividad->rubricas as $rubrica)
-	
-					<ul><li>{{$rubrica->name}}</li></ul>	
-
-				@endforeach
-
-            </td>
-          </tr>
-           <tr>
             <td class="service">Valor total de la actividad</td>
             <td class="desc">{{ $actividad->valoractividad }}</td>
           </tr>
@@ -83,6 +71,13 @@
          
         </tbody>
       </table>
+      <label for="rubricas">Rubricas</label>
+      @foreach($actividad->rubricas as $rubrica)
+  
+          <ul><li>{{$rubrica->name}}</li></ul>  
+
+        @endforeach
+
       <div id="notices">
         <div>NOTA:</div>
         <div class="notice">Este formato es un reporte de la actividad creada.</div>

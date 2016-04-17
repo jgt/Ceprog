@@ -1,3 +1,14 @@
+<!-- 
+	
+	Esta vista extiende del template.login 
+
+		las imagenes que se insertan se hacen atraez de css en el archivo styles.css
+
+		
+
+-->
+
+
 @extends('template.Login')
 
 @section('content')

@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+
+<!-- El template.login es el cuerpo html en donde se incluyen todas las vistas del home.
+
+	todas las vistas del home extienden de este template, las vistas son las sigueintes.
+
+	*welcome
+	*inscripcionOnline
+	*resolicitud
+
+	En este template se inserta el link del framework bootstrap y el script del framework jquery
+
+
+ -->
+
 <html lang="en">
 <head>
 	<meta charset="utf-8">

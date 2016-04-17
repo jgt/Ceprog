@@ -36,6 +36,26 @@
 
 }
 
+#carrera_list{
+	
+	width: 400px;
+}
+
+#semestre_list{
+	
+	width: 400px;
+}
+
+#materia_list{
+	
+	width: 400px;
+}
+
+#role_list{
+	
+	width: 400px;
+}
+
 div#listaP {
 	
 	top: 50px;
@@ -52,6 +72,12 @@ div#adminPlan {
 	
 	top: 50px;
 	left: 10%;
+}
+
+div#listPersonal{
+	
+	top: 50px;
+	left: 15%;
 }
 
 div#admRole {
@@ -108,6 +134,12 @@ div#VunidadE{
 }
 
 div#listUnidades{
+	
+	top: 50px;
+	left: 15%;
+}
+
+div#alumnosListUser{
 	
 	top: 50px;
 	left: 15%;

@@ -28,8 +28,8 @@
      <div class="progress-bar" style="width:0%" id="prog"></div>
    </div>
    <hr>
-  {!! Form::submit('Responder', ['class' => 'btn btn-sm btn btn-info upload'])!!}
-   <button type="button" class="btn btn-sm btn btn-danger cancel">Cancelar</button>
+  {!! Form::submit('Responder', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'apoy'])!!}
+   <button type="button" class="btn btn-sm btn btn-danger cancel" id="cancelMaterial">Cancelar</button>
    </div>
 
         </div>

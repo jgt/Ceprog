@@ -27,7 +27,7 @@ class Maestro extends Request {
 		'actividad' => 'required',
 		'descripcion' => 'required',
 		'estrategia' => 'required',
-		'valoractividad' => 'required|integer|min:0|max:30',
+		'valoractividad' => 'required|integer|min:0|max:40',
 		'evidencia' => 'required',
 		'caracteristicas' => 'required',
 		'realizacion' => 'required',

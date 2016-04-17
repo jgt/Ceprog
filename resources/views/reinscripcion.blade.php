@@ -1,3 +1,16 @@
+<!-- 
+	
+	Esta vista extiende del template app, y se inserta una imagen en el div(header).
+
+	los include que maneja son los siguientes
+
+	*errors(son los errores de validacion del formulario)
+	*reinscripcion(los campos del formulario html)
+
+
+-->
+
+
 @extends('app')
 
 

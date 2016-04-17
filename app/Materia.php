@@ -21,10 +21,6 @@ class Materia extends Model {
 		return $this->hasMany('App\Unidad');
 	}
 
-	public function fileentries()
-	{
-		return $this->hasMany('App\Fileentry');
-	}
 
 	public function semestre()
 	{

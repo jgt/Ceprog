@@ -1,5 +1,5 @@
 
-<div id="modalCalificacion" class="modal fade" role="dialog">
+<div id="showUser" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <div class="modal-content">
@@ -8,18 +8,15 @@
         <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
-      
-      <a href="{{ route('cloTutores')}}" class="alert" id="clotutores"></a>
-      <a href="{{ route('nto')}}" class="alert" id="ntoAct"></a>
-
        <table class="table">
          <thead>
 
-           <td><strong>Actividades</strong></td>
-           <td><strong>Nota</strong></td>
-         
+           <td><strong>Usuario</strong></td>
+           <td><strong>Correo</strong></td>
+           <td><strong>Roles</strong></td>
+          
          </thead>
-         <tbody id="tablaCalificacion"></tbody>
+         <tbody id="ShowUser"></tbody>
        </table>
       </div>
       <div class="modal-footer">

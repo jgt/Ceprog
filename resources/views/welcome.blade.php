@@ -1,3 +1,15 @@
+
+<!-- Vista welcome es el login del portal
+
+	esta vista lleva un include en la linea 13 
+
+	@include('include.menuLogin')
+
+	ese include es el menu de la parte superior de la vista
+
+
+ -->
+
 @extends('template.Login')
 @section('title'){{'Portal UC'}}@endsection
 @section('content')

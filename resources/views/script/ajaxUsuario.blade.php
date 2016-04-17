@@ -18,6 +18,7 @@
 
 		        e.preventDefault();
 
+		        $('#listPersonal').addClass('alert');
 		      $('div#user').removeClass('alert');
 		      $('div#listaP').addClass('alert');
 		      $('div#act').addClass('alert');

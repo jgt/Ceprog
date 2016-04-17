@@ -1,3 +1,17 @@
+<!-- 
+
+Las imagenes de esta vista se ingresan a travez de css, en el archivos styles.css
+
+se utiliza el id del primer div
+
+	*intro
+	*second
+	*third
+
+-->
+
+
+
 @extends('template.Login')
 
 @section('content')

@@ -1,10 +1,10 @@
 <script>
 	
-	$(document).on('submit', 'form', function(e){
+	$('#Vimg').on('click', function(e){
 
 		e.preventDefault();
 
-		$form = $(this);
+		$form = $('#my-dropzone');
 
 		videosFile($form);
 	});

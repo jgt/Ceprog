@@ -28,7 +28,7 @@
      <div class="progress-bar" style="width:0%" id="barProgress"></div>
    </div>
    <hr>
-   {!! Form::submit('Responder', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'submitId'])!!}
+   {!! Form::submit('Responder', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'fimg'])!!}
    <button type="button" class="btn btn-sm btn btn-danger cancel" id="cancelImg">Cancelar</button>
    </div>
 

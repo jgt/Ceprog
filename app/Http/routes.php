@@ -125,9 +125,18 @@ Route::group(['middleware' => 'admin',], function(){
 
 });
 
+Route::group(['middleware' => 'alumnosMaestros'], function(){
+
+
+	Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'DisenoController@planPdf']);
+
+
+});
+
 Route::group(['middleware' => 'maestro'], function(){
 
-	
+	Route::get('listActUser/{id}', ['as' => 'listActUser', 'uses' => 'MenuController@listActUser']);
+	Route::get('almSem/{id}', ['as' => 'almSem', 'uses' => 'MenuController@listAlumnos']);
 	Route::get('borrarImg/{id}', ['as' => 'borrarImg', 'uses' => 'SubtemasController@borrarImg']);
 	Route::get('listImagenes/{id}', ['as' => 'listImagenes', 'uses' => 'SubtemasController@listImagenes']);
 	Route::post('imagenSubtema/{id}', ['as' => 'imagenSubtema', 'uses' => 'SubtemasController@imagenSubtema']);
@@ -170,7 +179,7 @@ Route::group(['middleware' => 'maestro'], function(){
 	Route::get('rubrica/{id}', ['as' => 'rubrica', 'uses' => 'RubricaController@create']);
 	Route::post('storeRubrica', ['as' => 'storeRubrica', 'uses' => 'RubricaController@storeRubrica']);
 
-	Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'DisenoController@planPdf']);
+	
 	Route::get('listplan/{id}', ['as' => 'listplan', 'uses' => 'DisenoController@listPlan']);
 
 	Route::get('editplan/{id}', ['as' => 'editplan', 'uses' => 'DisenoController@editplan']);
