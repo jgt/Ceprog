@@ -36,14 +36,32 @@
 
 				e.preventDefault();
 
-				$('#listPersonal').removeClass('alert');
-				$('#tutoriales').addClass('alert');
-				$('#listTut').addClass('alert');
-				$('#adminPlan').addClass('alert');
-				$('#admRole').addClass('alert');
-				$('div#user').addClass('alert');
-				$('#admForo').addClass('alert');
-				$('#alumnosListUser').addClass('alert');
+			$('div#act').addClass('alert');
+			$('div#listAct').addClass('alert');
+		    $('div#examen').addClass('alert');
+		    $('div#listExamen').addClass('alert');
+		    $('div#calAct').addClass('alert');
+		    $('div#planeacionC').addClass('alert');
+		    $('div#listSubtemas').addClass('alert');
+		    $('#createVideos').addClass('alert');
+			$('div#listAct').addClass('alert');
+			$('#Almact').addClass('alert');
+			$('div#vizuaUnidad').addClass('alert');
+			$('div#AlmUni').addClass('alert');
+			$('div#VunidadE').addClass('alert');
+			$('div#calAct').addClass('alert');
+			$('div#notasRubricas').addClass('alert');
+			$('#listRub').addClass('alert');
+			$('#listTutAlm').addClass('alert');
+			$('#adminPlan').addClass('alert');
+			$('#admRole').addClass('alert');
+			$('div#user').addClass('alert');
+			$('#admForo').addClass('alert');
+			$('#listTut').addClass('alert');
+			$('div#listUnidades').addClass('alert');
+			$('#listPersonal').removeClass('alert');
+			$('#prflistTuto').addClass('alert');
+			$('#alumnosListUser').addClass('alert');
 
 				var route = $('#admIndex').attr('href');
 				var personal = $('#tablaPersonal');
@@ -250,15 +268,7 @@
 					divRoles.find("option[value="+role.id+"]").remove();
 					divRoles.append("<option selected value="+role.id+">"+role.name+"</option");
 
-					if(role.name == "alumno" || role.name == "profesor")
-					{
-
-						$('#mat_list').removeClass('alert');
-						$('#car_list').removeClass('alert');
-						$('#sem_list').removeClass('alert');
-
-					}
-
+					
 					if(role.name == "alumno")
 					{
 						$('#mat_list').addClass('alert');

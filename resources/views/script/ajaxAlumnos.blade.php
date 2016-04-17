@@ -6,6 +6,7 @@
 
 			e.preventDefault();
 
+			$('#listPersonal').addClass('alert');
 			$('div#act').addClass('alert');
 			$('div#listAct').addClass('alert');
 		    $('div#examen').addClass('alert');
@@ -84,6 +85,7 @@
 			$('div#user').addClass('alert');
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
+			$('#listPersonal').addClass('alert');
 			
 
 		$.get(route, function(resp){

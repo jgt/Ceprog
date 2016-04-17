@@ -25,6 +25,7 @@
       $('div#user').addClass('alert');
       $('#admForo').addClass('alert');
       $('#listTut').addClass('alert');
+      $('#listPersonal').addClass('alert');
 
       var route = $(this).attr('href');
       

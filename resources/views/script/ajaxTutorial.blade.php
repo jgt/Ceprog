@@ -6,6 +6,7 @@
 
 				e.preventDefault();
 				
+				$('#listPersonal').addClass('alert');
 				$('#alumnosListUser').addClass('alert');
 				$('#prflistTuto').removeClass('alert');
 				$('div#act').addClass('alert');
@@ -66,7 +67,7 @@
 				e.preventDefault();
 
 
-
+				$('#listPersonal').addClass('alert');
 				$('#prflistTuto').addClass('alert');
 				$('div#act').addClass('alert');
 				$('div#listAct').addClass('alert');

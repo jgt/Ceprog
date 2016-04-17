@@ -29,6 +29,7 @@
           $('#admForo').addClass('alert');
           $('#listTut').addClass('alert');
           $('#alumnosListUser').addClass('alert');
+          $('#listPersonal').addClass('alert');
 
         
         $.get(route, function(resp){

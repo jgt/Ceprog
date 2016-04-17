@@ -28,6 +28,7 @@
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
 			$('div#listUnidades').addClass('alert');
+			$('#listPersonal').addClass('alert');
 			$('#prflistTuto').addClass('alert');
 			$('#alumnosListUser').removeClass('alert');
 			var route = $(this).attr('href');
@@ -96,6 +97,7 @@
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
 			$('#alumnosListUser').addClass('alert');
+			$('#listPersonal').addClass('alert');
 			var link = $('#uniList').attr('href');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
