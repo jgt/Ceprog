@@ -1,4 +1,4 @@
-{!! Form::model(Request::all(), ['route' => 'admin.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search', 'id' => 'formFindUser']) !!}
+{!! Form::model(Request::all(), ['route' => 'buscarUser', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search', 'id' => 'formFindUser']) !!}
 							
 							<div class="form-group">
 								

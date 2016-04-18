@@ -39,6 +39,14 @@ class UserRepository extends BaseRepository {
 
 	}
 
+	public function buscarUser(Request $request)
+	{
+
+		$users = User::name($request->get('name'))->get();
+		return $users;
+
+	}
+
 	
 
 	public function materialApoyo(Request $request)

@@ -16,10 +16,8 @@
 
 				personal.html(" ");
 
-				$(resp.data).each(function(key, value){
+				$(resp).each(function(key, value){
 
-					var fullName = [value];
-	
 					if(name == value.name)
 					{
 

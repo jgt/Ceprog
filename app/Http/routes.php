@@ -84,6 +84,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['middleware' => 'admin',], function(){
 
+	Route::get('buscarUser', ['as' => 'buscarUser', 'uses' => 'AdminController@buscarUser']);
+
 	Route::get('deleteU/{id}', ['as' => 'deleteU', 'uses' => 'AdminController@delete']);
 
 	Route::get('createTutor', ['as' => 'createTutor', 'uses' => 'AdmisionController@createTutor']);

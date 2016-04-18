@@ -60,6 +60,17 @@ class AdminController extends Controller {
 
 
 	}
+
+	public function buscarUser(Request $request)
+	{
+		$users = $this->userRepository->buscarUser($request);
+
+		if($request->ajax())
+		{
+			return response()->json($users);
+		}
+
+	}
 	
 	public function create()
 	{	
