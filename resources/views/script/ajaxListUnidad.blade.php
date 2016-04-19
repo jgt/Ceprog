@@ -2,6 +2,7 @@
 	
 	$(document).on('ready', function(){
 
+		
 		$('a#menuListUser').on('click', function(e){
 
 			e.preventDefault();
@@ -50,8 +51,22 @@
 
 								if(role.name == "alumno")
 										{
-										
-											tablaAlumnos.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='listUserAct(this);' data-toggle='modal' data-target='#prbUser' </button><i class='fa fa-pencil-square-o'></i></td></tr>");
+
+											$('#almSearch').on('click', function(e){
+
+												e.preventDefault();
+												var alumno = $('#mierda').val();
+
+												if(user.name == alumno)
+												{	
+													tablaAlumnos.html(" ");
+
+													tablaAlumnos.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='listUserAct(this);' data-toggle='modal' data-target='#prbUser' </button><i class='fa fa-pencil-square-o'></i></td></tr>");
+												}
+												
+										});
+
+											tablaAlumnos.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='listUserAct(this);' data-toggle='modal' data-target='#prbUser' </button><i class='fa fa-pencil-square-o'></i></td></tr>");
 										}
 
 							});
@@ -124,6 +139,7 @@
 	function listUserAct(btn){
 
 			var id = btn.value;
+			var userId = btn.id;
 			var link = $('#prb').attr('href');
 			var route = link.split('%7Bid%7D').join(id);
 			var tablaAct = $('#tablaPrbUser');
@@ -140,17 +156,16 @@
 
 							$(act.fileentries).each(function(key, file){
 
-
-								tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td></tr>")
-
+								if(userId == file.user_id)
+								{
+									tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td></tr>");
+								}
 							});
-
 						});
 
 					});
-					
-				});
 
+				});			
 			});
 
 		}

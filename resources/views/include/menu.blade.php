@@ -222,6 +222,9 @@
                                 @if(Auth::user()->is('alm'))
                                 <li><a href="/documentos/presentacion.jpg"><i class="fa fa-exclamation-circle"></i> Secuencia de curso</a></li>
                                 @endif
+                                @if(Auth::user()->is('adm'))
+                                  <li><a href="{{route('reporteCarrera')}}" id="reportesCarrera"><i class="fa fa-laptop" aria-hidden="true"> Informes por carreras</i></a></li>
+                                @endif
                             </ul>
                         </li>
                     </ul>
@@ -229,6 +232,8 @@
             </div>
 
      </nav>
+
+@include('ajax.reportes.ajaxReportes')
 
 @include('ajax.listaAlumnosUser')
 
@@ -315,6 +320,8 @@
 @include('script.ajaxAdministrador')
 
 @include('script.ajaxTutorial')
+
+@include('script.reportes.ajaxReportes')
 
 
 @stop

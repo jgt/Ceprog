@@ -13,6 +13,8 @@ use App\Repository\CarreraRepository;
 use App\Repository\SemestreRepository;
 use App\Tutorial;
 use Auth;
+use App\Carrera;
+use App;
 
 class MenuController extends Controller
 {
@@ -88,5 +90,31 @@ class MenuController extends Controller
             return response()->json($user);
         }
 
+    }
+
+    public function reporteCarrera(Request $request)
+    {
+
+        $carreras = Carrera::all();
+
+        if($request->ajax())
+        {
+            return response()->json($carreras);
+        }
+    }
+
+
+    public function pdfCarrera($id, Request $request)
+
+    {
+        
+        $pdf = App::make('dompdf.wrapper');
+        $carreras = $this->carreraRepository->search($id)->semestres()->get();
+        $alumnos = $this->carreraRepository->search($id);
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('reporte', compact('carreras', 'alumnos'));
+        return $pdf->stream('Reporte.pdf');
     }
 }

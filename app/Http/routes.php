@@ -84,6 +84,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['middleware' => 'admin',], function(){
 
+	Route::get('pdfCarrera/{id}', ['as' => 'pdfCarrera', 'uses' => 'MenuController@pdfCarrera']);
+	Route::get('reporteCarrera', ['as' => 'reporteCarrera', 'uses' => 'MenuController@reporteCarrera']);
+
 	Route::get('buscarUser', ['as' => 'buscarUser', 'uses' => 'AdminController@buscarUser']);
 
 	Route::get('deleteU/{id}', ['as' => 'deleteU', 'uses' => 'AdminController@delete']);
