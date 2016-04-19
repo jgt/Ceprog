@@ -30,6 +30,7 @@
           $('#listTut').addClass('alert');
           $('#alumnosListUser').addClass('alert');
           $('#listPersonal').addClass('alert');
+          $('#reportes').addClass('alert');
 
         
         $.get(route, function(resp){

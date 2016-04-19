@@ -22,6 +22,7 @@
       $('div#vizuaUnidad').addClass('alert');
       $('#listRub').addClass('alert');
       $('#listPersonal').addClass('alert');
+      $('#reportes').addClass('alert');
       var listUser = $(this).attr('href');
 
       $.get(listUser, function(resp){

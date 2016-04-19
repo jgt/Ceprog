@@ -30,6 +30,7 @@
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
 			$('#alumnosListUser').addClass('alert');
+			$('#reportes').addClass('alert');
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');

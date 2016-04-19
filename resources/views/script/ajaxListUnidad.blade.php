@@ -111,6 +111,7 @@
 			$('div#user').addClass('alert');
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
+			$('#reportes').addClass('alert');
 			$('#alumnosListUser').addClass('alert');
 			$('#listPersonal').addClass('alert');
 			var link = $('#uniList').attr('href');

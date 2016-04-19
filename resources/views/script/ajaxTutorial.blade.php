@@ -30,6 +30,7 @@
 			$('div#user').addClass('alert');
 			$('#admForo').addClass('alert');
 			$('#listTut').addClass('alert');
+			$('#reportes').addClass('alert');
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -85,6 +86,7 @@
 			    $('#listRub').addClass('alert');
 			    $('div#listUnidades').addClass('alert');
 			    $('#listTutAlm').removeClass('alert');
+			    $('#reportes').addClass('alert');
 
 			    var route = $('#allTutorialAlm').attr('href');
 			    var tutorialAlm = $('#tablaTutorialAlm');

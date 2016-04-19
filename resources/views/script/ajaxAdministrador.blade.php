@@ -60,6 +60,7 @@
 			$('#listPersonal').removeClass('alert');
 			$('#prflistTuto').addClass('alert');
 			$('#alumnosListUser').addClass('alert');
+			$('#reportes').addClass('alert');
 
 				var route = $('#admIndex').attr('href');
 				var personal = $('#tablaPersonal');
@@ -122,6 +123,7 @@
 			$('#admForo').addClass('alert');
 			$('#listPersonal').addClass('alert');
 			$('#alumnosListUser').addClass('alert');
+			$('#reportes').addClass('alert');
 
 		});
 
@@ -138,6 +140,7 @@
 			$('div#user').addClass('alert');
 			$('#admForo').addClass('alert');
 			$('#alumnosListUser').addClass('alert');
+			$('#reportes').addClass('alert');
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -424,6 +427,7 @@
 			$('#listTut').addClass('alert');
 			$('#tutoriales').addClass('alert');
 			$('#listPersonal').addClass('alert');
+			$('#reportes').addClass('alert');
 
 
 		});
@@ -475,6 +479,7 @@
 			$('#listTut').addClass('alert');
 			$('#tutoriales').addClass('alert');
 			$('#listPersonal').addClass('alert');
+			$('#reportes').addClass('alert');
 
 		});
 
@@ -527,6 +532,7 @@
 			$('#listTut').addClass('alert');
 			$('#tutoriales').addClass('alert');
 			$('#listPersonal').addClass('alert');
+			$('#reportes').addClass('alert');
 
 
 		});
