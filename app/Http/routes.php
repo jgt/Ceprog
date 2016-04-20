@@ -60,10 +60,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('archivos/{id}', ['as' => 'archivos', 'uses' => 'FileEntryController@edit']);
 
-		Route::get('descarga/get/{filename}', ['as' => 'getentry', 'uses' => 'DescargaController@get']);
-		Route::get('fileentry/get/{filename}', ['as' => 'apoyo', 'uses' => 'FileEntryController@get']);
-		Route::post('update/{id}', ['as' => 'archivoupdate', 'uses' => 'FileEntryController@update']);
-
 
 		Route::get('portafolio/{id}', ['as' => 'portafolio', 'uses' => 'PortafolioController@portafolio']);
 		Route::get('cloTutores/{id}', ['as' => 'cloTutores', 'uses' => 'AdmisionController@cloTutores']);
@@ -134,6 +130,10 @@ Route::group(['middleware' => 'alumnosMaestros'], function(){
 
 
 	Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'DisenoController@planPdf']);
+
+	Route::get('descarga/get/{filename}', ['as' => 'getentry', 'uses' => 'DescargaController@get']);
+	Route::get('fileentry/get/{filename}', ['as' => 'apoyo', 'uses' => 'FileEntryController@get']);
+	Route::post('update/{id}', ['as' => 'archivoupdate', 'uses' => 'FileEntryController@update']);
 
 
 });

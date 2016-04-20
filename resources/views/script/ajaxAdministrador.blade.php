@@ -269,6 +269,16 @@
 					divRoles.find("option[value="+role.id+"]").remove();
 					divRoles.append("<option selected value="+role.id+">"+role.name+"</option");
 
+
+					if(role.name == "admin")
+					{
+
+						$('#mat_list').removeClass('alert');
+						$('#car_list').removeClass('alert');
+						$('#sem_list').removeClass('alert');
+
+					}
+
 					
 					if(role.name == "alumno")
 					{
@@ -313,7 +323,7 @@
 					$(carr.semestres).each(function(key, sem){
 
 						userSemestres.append("<li>"+sem.name+"</li>");
-
+						
 						divSemestres.find("option[value="+sem.id+"]").remove();
 						divSemestres.append("<option selected value="+sem.id+">"+sem.name+"</option>");
 

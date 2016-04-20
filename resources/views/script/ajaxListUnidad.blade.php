@@ -159,7 +159,11 @@
 
 								if(userId == file.user_id)
 								{
-									tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td></tr>");
+
+									 var filename = file.filename;
+              						 var cadena = filename.split(' ').join('%20');
+
+									tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td></tr>");
 								}
 							});
 						});
@@ -168,6 +172,15 @@
 
 				});			
 			});
+
+		}
+
+		function descActUser(btn){
+
+			var name = btn.value;
+			var link = $('#download').attr('href');
+			var route = link.split('%7Bfilename%7D').join(name);
+			window.open(route);
 
 		}
 
