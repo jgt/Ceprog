@@ -12,13 +12,16 @@
 |
 */
 
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
+
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::get('/', 'WelcomeController@index');
 
 
 //creo la solicitud de admision online
-Route::get('reset', ['as' => 'reset', 'uses' => 'ResetController@reset']);
-Route::post('resetC/{id}', ['as' => 'resetC', 'uses' => 'ResetController@resetC']);
 Route::get('inscripcion', 'InscripcionController@index');
 Route::get('solicitud', 'InscripcionController@create');
 Route::get('reinscripcion', ['as' => 'reinscripcion', 'uses' => 'ReinscripcionController@index']);
@@ -35,13 +38,12 @@ Route::get('info', ['as' => 'info', 'uses' => 'MailController@show'] );
 
 
 //Aqui estan las routas del login de la aplicacion//
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+
 
 
 Route::group(['middleware' => 'auth'], function(){
+
+	Route::get('addImg/{id}', ['as' => 'addImg', 'uses' => 'ResetController@addImg']);
 
 	Route::get('idUnidad/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@idUnidad']);
 	Route::get('idSubtemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@idSubtemas']);
@@ -119,6 +121,7 @@ Route::group(['middleware' => 'admin',], function(){
 	Route::get('list', ['as' => 'list', 'uses' => 'AdminController@listSemestre']);
 
 	Route::resource('carrera', 'CarreraController');
+	Route::get('deleteCarrera/{id}', ['as' => 'deleteCarrera', 'uses' => 'CarreraController@deleteCarrera']);
 	Route::resource('semestre', 'SemestreController');
 	Route::resource('materia', 'MateriaController');
 	Route::get('crearSemestre/{id}', ['as' => 'crearSemestre', 'uses' => 'SemestreController@crearSemestre']);
@@ -128,6 +131,7 @@ Route::group(['middleware' => 'admin',], function(){
 
 Route::group(['middleware' => 'alumnosMaestros'], function(){
 
+	Route::get('forosMateria/{id}', ['as' => 'forosMateria', 'uses' => 'ForoController@forosMaterias']);
 
 	Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'DisenoController@planPdf']);
 
@@ -138,8 +142,17 @@ Route::group(['middleware' => 'alumnosMaestros'], function(){
 
 });
 
+Route::group(['middleware' => 'alumnosAdmision'], function(){
+
+	Route::get('reset', ['as' => 'reset', 'uses' => 'ResetController@reset']);
+	Route::post('resetC/{id}', ['as' => 'resetC', 'uses' => 'ResetController@resetC']);
+
+	
+});
+
 Route::group(['middleware' => 'maestro'], function(){
 
+	
 	Route::get('listActUser/{id}', ['as' => 'listActUser', 'uses' => 'MenuController@listActUser']);
 	Route::get('almSem/{id}', ['as' => 'almSem', 'uses' => 'MenuController@listAlumnos']);
 	Route::get('borrarImg/{id}', ['as' => 'borrarImg', 'uses' => 'SubtemasController@borrarImg']);
@@ -254,12 +267,10 @@ Route::group(['middleware' => 'admision'], function(){
 	Route::get('admcreate', ['as' => 'admcreate', 'uses' => 'AdmisionController@createUser']);
 	Route::post('storeUser', ['as' => 'storeUser', 'uses' => 'AdmisionController@storeUser']);
 
-	Route::get('ver', ['as' => 'ver', 'uses' => 'AdmisionController@ver']);
 	Route::get('editaralumno/{id}', ['as' => 'edt', 'uses' => 'AdmisionController@editar']);
 	Route::post('updateAlumno/{id}', ['as' => 'updateAlumno', 'uses' => 'AdmisionController@update']);
 
-	
-
+	Route::get('ver', ['as' => 'ver', 'uses' => 'AdmisionController@ver']);
 
 });
 

@@ -12,11 +12,11 @@
            <div class="form-group">
 
      {!! Form::open(['route' => 'storeSubir', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'my-dropzone', 'files' => true]) !!}
-
+       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
     {!! Form::label('unidad', 'Unidad: ', ['class' => 'form-group']) !!}
 
   {!! Form::text('unidad', null, ['class' => 'form-control', 'id' => 'namUnidad']) !!}
-   {!! Form::text('unidad_id', null, ['class' => 'form-control alert', 'id' => 'viduni']) !!}
+   {!! Form::text('unidad_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'viduni']) !!}
     </div>
   
    <div class="form-group">

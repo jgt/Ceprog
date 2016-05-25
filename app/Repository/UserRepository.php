@@ -59,7 +59,11 @@ class UserRepository extends BaseRepository {
 	{
 		
 		$user = User::create($request->all());
+		$user->carreras()->attach($request->get('carrera_list'));
+		$user->semestres()->attach($request->get('semestre_list'));
+		$user->materias()->attach($request->get('materia_list'));
 		$user->attachRole($request->get('role_list'));
+
 		return $user;
 
 	}

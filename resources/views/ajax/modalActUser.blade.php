@@ -13,6 +13,8 @@
            <td><strong>Actividad</strong></td>
            <td><strong>Unidad</strong></td>
            <td><strong>Materia</strong></td>
+           <td><strong>Alumno</strong></td>
+           <td><strong>Descargar</strong></td>
          </thead>
          <tbody id="tablaPrbUser"></tbody>
        </table>

@@ -27,7 +27,7 @@ class CarreraRepository extends BaseRepository {
 
 		$plan = Carrera::create($request->all());
        
-        flash()->overlay('Fue creado sastifactoriamente', 'El plan '. $plan->plan);
+       return $plan;
 	}
 
 
@@ -38,7 +38,7 @@ class CarreraRepository extends BaseRepository {
 
         $carrera->update($request->all());
 
-        flash()->overlay('Fue editada correctamente', 'La carrera '. $carrera->name);
+       	return $carrera;
 	}
 
 	public function deleteCarrera($id)

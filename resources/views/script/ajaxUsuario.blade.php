@@ -1,40 +1,126 @@
 <script>
 
 
-		var cl = new CanvasLoader('canvasloader-container');
-		cl.show(); // Hidden by default
-						
-		// This bit is only for positioning - not necessary
-		var loaderObj = document.getElementById("canvasLoader");
-		loaderObj.style.position = "absolute";
-		loaderObj.style["top"] = cl.getDiameter() * -2.2 + "px";
-		loaderObj.style["left"] = cl.getDiameter() * 4 + "px";  
-
-		$('div#canvasloader-container').attr('class', 'alert'); 
-
 		$(document).on('ready', function(){
+
+			function crearUsuario(){
+
+			var route = $('#adminCrt').attr('href');
+			var roles = $('#roleSelect');
+			var carreras = $('#crrs');
+			var semestres = $('#smes');
+			var materias = $('#mtausr');
+
+			$('#crrs').change(function(){
+
+				semestres.html(" ");
+			});
+
+			$.get(route, function(resp){
+
+				roles.html(" ");
+				carreras.html(" ");
+				materias.html(" ");
+				roles.append("<option value="+0+" disabled selected hidden>Selecciona tu opcion...</option>");
+				carreras.append("<option value="+0+" disabled selected hidden>Selecciona tu opcion...</option>");
+				materias.append("<option value="+0+" disabled selected hidden>Selecciona tu opcion...</option>");
+				semestres.append("<option value="+0+" disabled selected hidden>Selecciona tu opcion...</option>");
+					
+				$(resp).each(function(key, value){
+
+					$(value.roles).each(function(key, role){
+
+						roles.append("<option value="+role.id+">"+role.name+"</option>");
+
+					});
+
+					$(value.materias).each(function(key, mat){
+
+						materias.append("<option value="+mat.id+">"+mat.name+"</option>");
+					});
+
+					$(value.carreras).each(function(key, carrera){
+
+					carreras.append("<option value="+carrera.id+">"+carrera.name+"</option>");
+
+					$('#crrs').change(function(){
+
+								var carreraId = this.value;
+
+							$(carrera.semestres).each(function(key, sem){
+
+								if(carreraId == sem.carrera_id)
+								{	
+									
+									semestres.append("<option value="+sem.id+">"+sem.name+"</option>");
+									
+								}
+
+							});
+
+						});
+			
+					});
+
+				});
+
+				
+				$('#roleSelect').change(function(){
+
+				var role =  $('#roleSelect').val();	
+				
+				if(role == 22)
+				{
+					
+					$('#userCarr').show();
+					$('#userSem').show();
+					$('#userMat').hide();
+				}else if(role == 23){
+
+					$('#userCarr').hide();
+					$('#userSem').hide();
+					$('#userMat').show();
+
+				}else{
+
+					$('#userCarr').hide();
+					$('#userSem').hide();
+					$('#userMat').hide();
+
+				}
+
+			});
+
+			});
+		}
 
 			$('a#Cusuario').on('click', function(e){
 
 		        e.preventDefault();
+		        crearUsuario();
 
-		        $('#listPersonal').addClass('alert');
-		      $('div#user').removeClass('alert');
-		      $('div#listaP').addClass('alert');
-		      $('div#act').addClass('alert');
-		      $('div#examen').addClass('alert')
-		      $('div#listExamen').addClass('alert');
-		      $('div#calAct').addClass('alert');
-		      $('div#planeacionC').addClass('alert');
-		      $('div#editUnidad').addClass('alert');
-		      $('div#listSubtemas').addClass('alert');
-		       $('#createVideos').addClass('alert');
-		       $('div#vizuaUnidad').addClass('alert');
-		       $('#listRub').addClass('alert');
-		       $('div#admRole').addClass('alert');
-		       $('#listTut').addClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#tutoriales').addClass('alert');
+		        $('#listPersonal').hide();
+		       $('div#user').show();
+		      $('div#listaP').hide();
+		      $('div#act').hide();
+		      $('div#examen').hide();
+		      $('div#listExamen').hide();
+		      $('div#calAct').hide();
+		      $('div#planeacionC').hide();
+		      $('div#editUnidad').hide();
+		      $('div#listSubtemas').hide();
+		       $('#createVideos').hide();
+		       $('div#vizuaUnidad').hide();
+		       $('#listRub').hide();
+		       $('div#admRole').hide();
+		       $('#listTut').hide();
+			   $('#adminPlan').hide();
+			   $('#tutoriales').hide();
+			   $('#chatForo').hide();
+			   $('#crr').hide();
+			   $('#froadm').hide();
+
+				
 			      
 	      }); 
 
@@ -49,22 +135,17 @@
 				
 				$.ajax({
 
-					beforeSend: function(){
-
-						
-				  		$('div#canvasloader-container').removeClass('alert');
-						
-					},
-					
 					url: action,
+					headers: { 'X-CSFR-TOKEN': token},
 					type: metodo,
 					data: form.serialize(),
 
 					success: function(resp){
 
 						alertify.alert('Usuario creado correctamente');
-						$('input#form').val("");
-						$('div#canvasloader-container').attr('class', 'alert');
+						$('input#form').val("");	
+						crearUsuario();
+
 
 					},
 
@@ -73,11 +154,11 @@
 						if(error == "timeout"){
 
 							alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
-							$('div#canvasloader-container').attr('class', 'alert');
+							
 						}else{
 
 							alertify.alert('Tienes errores en el formulario de usurio puede ser que te falte un campo o el usuario ya existe.');
-							$('div#canvasloader-container').attr('class', 'alert');
+							
 						}
 					}
 

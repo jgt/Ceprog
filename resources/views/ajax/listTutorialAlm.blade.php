@@ -1,9 +1,10 @@
-<div id="listTutAlm" class="col-md-6 col-md-offset-1 alert ">
+<div id="listTutAlm" class="col-md-10 col-md-offset-1" Style="display:none">
       
-      <a href="{{ route('allTutorial')}}" id="allTutorialAlm" class="alert"></a>
-      <a href="{{ route('dwTutorial')}}" id="dwTutorialAlm" class="alert"></a>
-      <a href="{{ route('allVideos')}}" id="allVideosAlm" class="alert"></a>
-
+      <a href="{{ route('allTutorial')}}" id="allTutorialAlm" Style="display:none"></a>
+      <a href="{{ route('dwTutorial')}}" id="dwTutorialAlm" Style="display:none"></a>
+      <a href="{{ route('allVideos')}}" id="allVideosAlm" Style="display:none"></a>
+      
+      <div class="table-responsive">
        <table class="table">
           <thead>
             <td><strong>Tutoial</strong></td>
@@ -14,5 +15,5 @@
             
           </tbody>
        </table>
-
+      </div>
      </div>

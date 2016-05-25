@@ -8,12 +8,12 @@
       </div>
       <div class="modal-body">
           
-          <a href="{{route('profesor.edit')}}" id="editarRoute" class="alert"></a>
-          {!! Form::text('actividad_id', null, ['class' => 'alert', 'id' => 'actID'])!!}
-          
+          <a href="{{route('profesor.edit')}}" id="editarRoute" Style="display:none"></a>
+          {!! Form::text('actividad_id', null, ['Style' => 'display:none', 'id' => 'actID'])!!}
+            
   {!! Form::open(['route' => 'profesor.update', 'method' => 'PUT',  'id' => 'form-edit', 'class' => 'form-group']) !!}
-    
-    {!! Form::text('unidad_id', null, ['class' => 'form-control alert', 'id' => 'unID']) !!}
+       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+    {!! Form::text('unidad_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'unID']) !!}
 
     <div class="form-group">
     {!! Form::label('cognoscitivo', 'Nivel Cognitivo ', ['class' => 'form-group']) !!}

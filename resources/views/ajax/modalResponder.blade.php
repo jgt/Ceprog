@@ -12,11 +12,11 @@
            <div class="form-group">
 
      {!! Form::open(['route' => 'descarga', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'respAlm', 'files' => true]) !!}
-
+       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
     {!! Form::label('usuario', 'Nombre: ', ['class' => 'form-group']) !!}
 
   {!! Form::text('usuario', null, ['class' => 'form-control', 'id' => 'userA']) !!}
-   {!! Form::text('actividad_id', null, ['class' => 'form-control alert', 'id' => 'act_id']) !!}
+   {!! Form::text('actividad_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'act_id']) !!}
     </div>
   
   <div class="form-group">

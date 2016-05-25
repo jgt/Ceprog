@@ -24,7 +24,6 @@ class FileentryRepository extends BaseRepository {
 	{
 
 		$user = Auth::user()->id;
-		$actividad = $this->search($id);
 		$file = Request::file('archivo');
 		$nombre = $file->getClientOriginalName();
 		$extension = $file->getClientOriginalExtension();
@@ -47,12 +46,30 @@ class FileentryRepository extends BaseRepository {
 
 		$entry->save();
 
- 		flash()->overlay('el archivo se a enviado correctamente', 'Archivo');
+		return $entry;
 
-		}else{
+		}else if($exists){
 
 
-			flash()->overlay('Ya existe por favor intente de nuevo con un nombre diferente o con el nombre que el maestro le indico', 'El archivo '.$nombre);
+			$contador = $user + rand(1, 10);
+			$modificacion = $nombre . $contador;
+			Storage::disk('local')->put($modificacion,  File::get($file));
+			$change = Fileentry::create([
+
+			'mime' => $file->getClientMimeType(),
+			'original_filename' => 	$modificacion,
+			'filename' => $modificacion,
+			'mensaje' => Input::get('mensaje'),
+			'usuario' => Input::get('usuario'),
+			'actividad_id'   => $id,
+			'user_id'        => $user
+
+			]);
+
+		$change->save();
+
+		return $change;
+				
 		}
 
 	}

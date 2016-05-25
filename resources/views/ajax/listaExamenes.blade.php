@@ -1,6 +1,7 @@
-<div id="listExamen" class="col-md-6 col-md-offset-1 alert ">
+<div id="listExamen" class="col-md-10 col-md-offset-1" Style="display:none">
       
-        <a href="{{ route('realizarExamen')}}" class="alert" id="pruebaR"></a>
+        <a href="{{ route('realizarExamen')}}" Style="display:none" id="pruebaR"></a>
+        <div class="table-responsive">
        <table class="table">
           <thead>
             <td><strong>Acciones</strong></td>
@@ -9,5 +10,5 @@
           </thead> 
           <tbody id="tablaExamenes"></tbody>
        </table>
-
+    </div>
      </div>

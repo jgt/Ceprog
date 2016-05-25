@@ -41,8 +41,13 @@ class SemestreController extends Controller {
 	public function store(CrearSemestre $request)
 	{
 		
-      $this->semestreRepository->crearSemestre($request);
-      return redirect()->route('carrera.index');
+     $semestre = $this->semestreRepository->crearSemestre($request);
+      
+      if($request->ajax())
+      {
+
+      	return response()->json($semestre);
+      }
 
 	}
 

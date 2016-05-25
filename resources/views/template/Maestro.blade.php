@@ -17,8 +17,6 @@
 
 	@include('script.comentarios')
 
-	
-
 	@include('script.suma')
 
 	@yield('content')

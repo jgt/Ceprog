@@ -9,8 +9,8 @@
       </div>
       <div class="modal-body">
       
-      <a href="{{ route('cloTutores')}}" class="alert" id="clotutores"></a>
-      <a href="{{ route('nto')}}" class="alert" id="ntoAct"></a>
+      <a href="{{ route('cloTutores')}}" Style="display:none" id="clotutores"></a>
+      <a href="{{ route('nto')}}" Style="display:none" id="ntoAct"></a>
 
        <table class="table">
          <thead>

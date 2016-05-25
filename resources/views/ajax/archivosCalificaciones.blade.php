@@ -1,4 +1,4 @@
-  <div id="calAct" class="col-md-10 col-md-offset-1 alert">
+  <div id="calAct" class="col-md-10 col-md-offset-1" Style="display:none">
  
         <div class="container">
   <div class="row">
@@ -14,10 +14,10 @@
 
 
    {!! Form::open(['route' => ['nota', ':id'], 'method' => 'POST',  'id' => 'form-calificacion']) !!}
-  
+     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
    <div class="form-group">
  {!! Form::label('user_id', 'Alumno: ', ['class' => 'control-label col-xs-2'])!!}
- {!! Form::text('user_id', null, [ 'class' => 'alert', 'id' => 'uid'])!!}
+ {!! Form::text('user_id', null, ['id' => 'uid', 'Style' => 'display:none'])!!}
 </div>
     <div class="col-lg-10">
   {!! Form::text('usuario', null, ['class' => 'form-control', 'id' => 'nameAuth'])!!}
@@ -31,7 +31,7 @@
   <div class="form-group">
   
   {!! Form::label('actividad_id', 'Actividad: ', ['class' => 'control-label col-xs-2'])!!}
-  {!! Form::text('actividad_id', null, ['class' => 'alert', 'id' => 'aid'])!!}
+  {!! Form::text('actividad_id', null, ['id' => 'aid', 'Style' => 'display:none'])!!}
   <div class="col-lg-10">
   {!! Form::text('actividad', null, ['class' => 'form-control', 'id' => 'nameAct'])!!}
   </div>

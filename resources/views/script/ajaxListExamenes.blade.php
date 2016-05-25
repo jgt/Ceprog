@@ -9,28 +9,30 @@
 
         var tablaExamenes = $('#tablaExamenes');
         var route = $(this).attr('href');
-          $('#listExamen').removeClass('alert');
-          $('div#act').addClass('alert');
-          $('div#examen').addClass('alert');
-          $('div#pregunta').addClass('alert');
-          $('div#user').addClass('alert');
-          $('div#listAct').addClass('alert');
-          $('div#calAct').addClass('alert');
-          $('div#planeacionC').addClass('alert');
-          $('div#listUnidades').addClass('alert');
-          $('div#listSubtemas').addClass('alert');
-          $('#createVideos').addClass('alert');
-          $('div#vizuaUnidad').addClass('alert');
-          $('div#VunidadE').addClass('alert');
-          $('#listTutAlm').addClass('alert');
-          $('#adminPlan').addClass('alert');
-          $('#admRole').addClass('alert');
-          $('div#user').addClass('alert');
-          $('#admForo').addClass('alert');
-          $('#listTut').addClass('alert');
-          $('#alumnosListUser').addClass('alert');
-          $('#listPersonal').addClass('alert');
-          $('#reportes').addClass('alert');
+          $('#listExamen').show();
+          $('div#act').hide();
+          $('div#examen').hide();
+          $('div#pregunta').hide();
+          $('div#user').hide();
+          $('div#listAct').hide();
+          $('div#calAct').hide();
+          $('div#planeacionC').hide();
+          $('div#listUnidades').hide();
+          $('div#listSubtemas').hide();
+          $('#createVideos').hide();
+          $('div#vizuaUnidad').hide();
+          $('div#VunidadE').hide();
+          $('#listTutAlm').hide();
+          $('#adminPlan').hide();
+          $('#admRole').hide();
+          $('div#user').hide();
+          $('#admForo').hide();
+          $('#listTut').hide();
+          $('#alumnosListUser').hide();
+          $('#listPersonal').hide();
+          $('#reportes').hide();
+          $('#chatForo').hide();
+          $('#crr').hide();
 
         
         $.get(route, function(resp){

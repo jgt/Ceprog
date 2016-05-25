@@ -6,26 +6,29 @@
 
 			e.preventDefault();
 
-			$('div#act').addClass('alert');
-	        $('div#examen').addClass('alert');
-	        $('div#pregunta').addClass('alert');
-	        $('div#listExamen').addClass('alert');
-	        $('div#calAct').addClass('alert');
-	        $('div#listAct').addClass('alert');
-	        $('div#listUnidades').addClass('alert');
-	        $('div#listSubtemas').addClass('alert');
-	        $('#createVideos').addClass('alert');
-	        $('div#planeacionC').addClass('alert');
-	        $('div#vizuaUnidad').removeClass('alert');
-	        $('div#AlmUni').addClass('alert');
-	        $('#listRub').addClass('alert');
-	        $('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#listPersonal').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('div#act').hide();
+	        $('div#examen').hide();
+	        $('div#pregunta').hide();
+	        $('div#listExamen').hide();
+	        $('div#calAct').hide();
+	        $('div#listAct').hide();
+	        $('div#listUnidades').hide();
+	        $('div#listSubtemas').hide();
+	        $('#createVideos').hide();
+	        $('div#planeacionC').hide();
+	        $('div#vizuaUnidad').show();
+	        $('div#AlmUni').hide();
+	        $('#listRub').hide();
+	        $('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('#listPersonal').hide();
+			$('#reportes').hide();
+			$('#chatForo').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -47,25 +50,28 @@
 
 					e.preventDefault();
 
-					$('div#act').addClass('alert');
-			        $('div#examen').addClass('alert');
-			        $('div#pregunta').addClass('alert');
-			        $('div#listExamen').addClass('alert');
-			        $('div#calAct').addClass('alert');
-			        $('div#listAct').addClass('alert');
-			        $('div#listUnidades').addClass('alert');
-			        $('div#listSubtemas').addClass('alert');
-			        $('#createVideos').addClass('alert');
-			        $('div#planeacionC').addClass('alert');
-			        $('div#AlmUni').addClass('alert');
-			        $('#listRub').addClass('alert');
-			        $('#adminPlan').addClass('alert');
-					$('#admRole').addClass('alert');
-					$('div#user').addClass('alert');
-					$('#admForo').addClass('alert');
-					$('#listTut').addClass('alert');
-					$('#listPersonal').addClass('alert');
-					$('#reportes').addClass('alert');
+					$('div#act').hide();
+			        $('div#examen').hide();
+			        $('div#pregunta').hide();
+			        $('div#listExamen').hide();
+			        $('div#calAct').hide();
+			        $('div#listAct').hide();
+			        $('div#listUnidades').hide();
+			        $('div#listSubtemas').hide();
+			        $('#createVideos').hide();
+			        $('div#planeacionC').hide();
+			        $('div#AlmUni').hide();
+			        $('#listRub').hide();
+			        $('#adminPlan').hide();
+					$('#admRole').hide();
+					$('div#user').hide();
+					$('#admForo').hide();
+					$('#listTut').hide();
+					$('#listPersonal').hide();
+					$('#chatForo').hide();
+					$('#reportes').hide();
+					$('#crr').hide();
+					$('#froadm').hide();
 					var id = $(this).attr('href');
 					var link = $('#idSubtemas').attr('href');
 					var route = link.split('%7Bid%7D').join(id);
@@ -81,7 +87,7 @@
 			
 						$(resp.unidad).each(function(key, value){
 
-							$('#vizuaUnidad').removeClass('alert');
+							$('#vizuaUnidad').show();
 							$('#NaUnidad').html(value.unidad);
 							$('#objUnidad').html(value.objetivo);
 							$('#actpUnidad').html(value.actividadP);
@@ -131,26 +137,30 @@
 		$('a#almUnidadList').on('click', function(e){
 
 			e.preventDefault();
-			$('div#act').addClass('alert');
-	        $('div#examen').addClass('alert');
-	        $('div#pregunta').addClass('alert');
-	        $('div#listExamen').addClass('alert');
-	        $('div#calAct').addClass('alert');
-	        $('div#listAct').addClass('alert');
-	        $('div#listUnidades').addClass('alert');
-	        $('div#listSubtemas').addClass('alert');
-	        $('#createVideos').addClass('alert');
-	        $('div#planeacionC').addClass('alert');
-	        $('div#vizuaUnidad').addClass('alert');
-	        $('div#AlmUni').addClass('alert');
-	        $('#listRub').addClass('alert');
-	        $('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#listPersonal').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('div#act').hide();
+	        $('div#examen').hide();
+	        $('div#pregunta').hide();
+	        $('div#listExamen').hide();
+	        $('div#calAct').hide();
+	        $('div#listAct').hide();
+	        $('div#listUnidades').hide();
+	        $('div#listSubtemas').hide();
+	        $('#createVideos').hide();
+	        $('div#planeacionC').hide();
+	        $('div#vizuaUnidad').hide();
+	        $('div#AlmUni').hide();
+	        $('#listRub').hide();
+	        $('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('#listPersonal').hide();
+			$('#reportes').hide();
+			$('#chatForo').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
+			
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
 			var link = $('#idUnidadAlm').attr('href');
@@ -169,25 +179,28 @@
 				$('a#Alunilist').on('click', function(e){
 
 					e.preventDefault();
-					$('div#act').addClass('alert');
-			        $('div#examen').addClass('alert');
-			        $('div#pregunta').addClass('alert');
-			        $('div#listExamen').addClass('alert');
-			        $('div#calAct').addClass('alert');
-			        $('div#listAct').addClass('alert');
-			        $('div#listUnidades').addClass('alert');
-			        $('div#listSubtemas').addClass('alert');
-			        $('#createVideos').addClass('alert');
-			        $('div#planeacionC').addClass('alert');
-			        $('div#AlmUni').addClass('alert');
-			        $('#listRub').addClass('alert');
-			        $('#adminPlan').addClass('alert');
-					$('#admRole').addClass('alert');
-					$('div#user').addClass('alert');
-					$('#admForo').addClass('alert');
-					$('#listTut').addClass('alert');
-					$('#listPersonal').addClass('alert');
-					$('#reportes').addClass('alert');
+					$('div#act').hide();
+			        $('div#examen').hide();
+			        $('div#pregunta').hide();
+			        $('div#listExamen').hide();
+			        $('div#calAct').hide();
+			        $('div#listAct').hide();
+			        $('div#listUnidades').hide();
+			        $('div#listSubtemas').hide();
+			        $('#createVideos').hide();
+			        $('div#planeacionC').hide();
+			        $('div#AlmUni').hide();
+			        $('#listRub').hide();
+			        $('#adminPlan').hide();
+					$('#admRole').hide();
+					$('div#user').hide();
+					$('#admForo').hide();
+					$('#listTut').hide();
+					$('#listPersonal').hide();
+					$('#reportes').hide();
+					$('#chatForo').hide();
+					$('#crr').hide();
+					$('#froadm').hide();
 
 					var id = $(this).attr('href');
 					var link = $('#idSubtemasAlm').attr('href');
@@ -204,7 +217,7 @@
 
 						$(resp.unidad).each(function(key, value){
 
-							$('#VunidadE').removeClass('alert');
+							$('#VunidadE').show();
 							$('#NaUnidadalm').html(value.unidad);
 							$('#objUnidadalm').html(value.objetivo);
 							$('#actpUnidadalm').html(value.actividadP);

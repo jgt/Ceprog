@@ -6,27 +6,33 @@
 
       e.preventDefault();
 
-      $('#examen').removeClass('alert');
-      $('#act').addClass('alert');
-      $('div#listAct').addClass('alert');
-      $('div#user').addClass('alert');
-      $('div#listExamen').addClass('alert');
-      $('div#calAct').addClass('alert');
-      $('div#planeacionC').addClass('alert');
-      $('div#listUnidades').addClass('alert');
-      $('div#listSubtemas').addClass('alert');
-       $('#createVideos').addClass('alert');
-       $('div#vizuaUnidad').addClass('alert');
-        $('div#VunidadE').addClass('alert');
-        $('#listRub').addClass('alert');
-        $('#prflistTuto').addClass('alert');
-          $('#adminPlan').addClass('alert');
-      $('#admRole').addClass('alert');
-      $('div#user').addClass('alert');
-      $('#admForo').addClass('alert');
-      $('#listTut').addClass('alert');
-      $('#listPersonal').addClass('alert');
-      $('#reportes').addClass('alert');
+      $('#examen').show();
+      $('div#planeacionC').hide();
+      $('#pregunta').hide();
+      $('#chatForo').hide();
+      $('#froadm').hide();
+
+
+      $('#act').hide();
+      $('div#listAct').hide();
+      $('div#user').hide();
+      $('div#listExamen').hide();
+      $('div#calAct').hide();
+      $('div#listUnidades').hide();
+      $('div#listSubtemas').hide();
+       $('#createVideos').hide();
+       $('div#vizuaUnidad').hide();
+        $('div#VunidadE').hide();
+        $('#listRub').hide();
+        $('#prflistTuto').hide();
+          $('#adminPlan').hide();
+      $('#admRole').hide();
+      $('div#user').hide();
+      $('#admForo').hide();
+      $('#listTut').hide();
+      $('#listPersonal').hide();
+      $('#reportes').hide();
+      $('#crr').hide();
 
       var route = $(this).attr('href');
       
@@ -64,19 +70,22 @@
 
 
           url: route,
+          headers: { 'X-CSFR-TOKEN': token},
           type: metodo,
           data: form.serialize(),
 
           success:function(resp){
 
-            alertify.alert('El examen ha sido creado correctamente');
-            $('#examen').addClass('alert');
-            $('#mod').addClass('alert');
-            $('#modl').addClass('alert');
-            $('#fec').addClass('alert');
-            $('#fecF').addClass('alert');
-            $('#ho').addClass('alert');
-            $('div#pregunta').removeClass('alert');
+            alert('El examen ha sido creado correctamente');
+            $('#examen').hide();
+            $('#mod').hide();
+            $('#modl').hide();
+            $('#fec').hide();
+            $('#fecF').hide();
+            $('#ho').hide();
+            $('#crr').hide();
+            $('#froadm').hide();
+            $('#pregunta').show();
             $('#np').val(" ");
             $('#enunciado').val(" "); 
             $('#examenId').val(resp.id);
@@ -88,14 +97,15 @@
              if(resp == 'timeout')
              {
 
-                alertify.alert('Lo siento hubo problemas con el internet por favor intentalo de nuevo');
+                alert('Lo siento hubo problemas con el internet por favor intentalo de nuevo');
              }
 
-             $('#mod').removeClass('alert');
-            $('#modl').removeClass('alert');
-            $('#fec').removeClass('alert');
-            $('#fecF').removeClass('alert');
-            $('#ho').removeClass('alert');
+             $('#mod').show();
+            $('#modl').show();
+            $('#fec').show();
+            $('#fecF').show();
+            $('#ho').show();
+            $('#froadm').hide();
              $('#mod').html(resp.responseJSON.modalidad);
              $('#modl').html(resp.responseJSON.modulo);
              $('#fec').html(resp.responseJSON.fecha);
@@ -123,12 +133,13 @@
         $.ajax({
 
           url: route,
+          headers: { 'X-CSFR-TOKEN': token},
           type: metodo,
           data: form.serialize(),
 
           success:function(resp){
 
-            alertify.alert('La pregunta fue creada');
+            alert('La pregunta fue creada');
 
             var preguntas = [resp];
             var contador = preguntas.length;
@@ -148,14 +159,14 @@
 
             if(nuevoNp == 39)
             {
-              $('#createPreg').addClass('alert');
-              alertify.alert('El limite de preguntas para este examen es de 40, apartir de aqui ya no puedes crear mas preguntas.');
+              $('#createPreg').hide();
+              alert('El limite de preguntas para este examen es de 40, apartir de aqui ya no puedes crear mas preguntas.');
             }
 
             if(contador == true)
             {
-              $('#createResp').removeClass('alert');
-              $('#canResp').addClass('alert');
+              $('#createResp').show();
+              $('#canResp').hide();
             }
 
           },
@@ -164,10 +175,10 @@
 
             if(resp == 'timeout')
             {
-              alertify.alert('Lo sentimos la pregunta no fue creada por problemas de conexion');
+              alert('Lo sentimos la pregunta no fue creada por problemas de conexion');
             }else{
 
-              alertify.alert('Por favor rellena todos los campos solicitados en el formulario');
+              alert('Por favor rellena todos los campos solicitados en el formulario');
             }
 
           }
@@ -190,12 +201,13 @@
       $.ajax({
 
           url: route,
+          headers: { 'X-CSFR-TOKEN': token},
           type: metodo,
           data: form.serialize(),
 
           success:function(resp){
 
-              alertify.alert('La respuesta fue creada correctamente');
+              alert('La respuesta fue creada correctamente');
 
               $('div#pregunta').removeClass('alert');
               $('#enunciado').val(" ");
@@ -215,8 +227,8 @@
 
               if(nuevoResp == 3)
               {
-                $('#createResp').addClass('alert');
-                $('#canResp').removeClass('alert');
+                $('#createResp').hide();
+                $('#canResp').show();
               }
 
 
@@ -226,7 +238,7 @@
 
             if(resp == 'timeout')
             {
-              alertify.alert('Lo sentimos la opcion no se ha podido crear por problemas de conexion');
+              alert('Lo sentimos la opcion no se ha podido crear por problemas de conexion');
             }
 
             $('#respName').html(resp.responseJSON.name);

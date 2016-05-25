@@ -8,11 +8,11 @@
       </div>
       <div class="modal-body">
         
-        <a href="{{ route('updateplan')}}" class="alert" id="updatePlan"></a>
-        <a href="{{ route('editplan')}}" class="alert" id='editplan'></a>
+        <a href="{{ route('updateplan')}}" Style="display:none" id="updatePlan"></a>
+        <a href="{{ route('editplan')}}" Style="display:none" id='editplan'></a>
 
         {!! Form::open(['route' => 'updateplan', 'method' => 'POST', 'class' => 'form-group', 'id' => 'edit-formplan']) !!}
-  
+           <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
             @include('errors.error')
 
 
@@ -94,25 +94,25 @@
 
      <div class="form-group">
       
-      {!! Form::label('materia_id', 'Materia id', ['class' => 'form-group alert'])!!}
-      {!! Form::text('materia_id', null, ['class' => 'form-control alert', 'id' => 'editmateria'])!!}
+      {!! Form::label('materia_id', 'Materia id', ['class' => 'form-group', 'Style' => 'display:none'])!!}
+      {!! Form::text('materia_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'editmateria'])!!}
       <strong class="validation" id="mat"></strong>
 
     </div>
 
     <div class="form-group">
       
-      {!! Form::label('unidad_id', 'Unidad id', ['class' => 'form-group alert'])!!}
-      {!! Form::text('unidad_id', null, ['class' => 'form-control alert', 'id' => 'unidadId'])!!}
+      {!! Form::label('unidad_id', 'Unidad id', ['class' => 'form-group alert', 'Style' => 'display:none'])!!}
+      {!! Form::text('unidad_id', null, ['class' => 'form-control alert', 'Style' => 'display:none', 'id' => 'unidadId'])!!}
       <strong class="validation" id="mat"></strong>
 
     </div>
 
   <div class="form-group">
 
-   {!! Form::label('user_id', 'User id ', ['class' => 'form-group alert']) !!}
+   {!! Form::label('user_id', 'User id ', ['class' => 'form-group', 'Style' => 'display:none']) !!}
 
-   {!! Form::text('user_id', null, ['class' => 'form-control alert', 'id' => 'editUs']) !!}
+   {!! Form::text('user_id', null, ['class' => 'form-control alert', 'Style' => 'display:none', 'id' => 'editUs']) !!}
    <strong class="validation" id="user"></strong>
   </div>
     

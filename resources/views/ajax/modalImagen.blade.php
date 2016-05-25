@@ -12,11 +12,11 @@
            <div class="form-group">
 
      {!! Form::open(['route' => 'imagenSubtema', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'imgSub', 'files' => true]) !!}
-
+       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
     {!! Form::label('subtema', 'Subtema: ', ['class' => 'form-group']) !!}
 
   {!! Form::text('subtema', null, ['class' => 'form-control', 'id' => 'namSubtema']) !!}
-   {!! Form::text('subtema_id', null, ['class' => 'form-control alert', 'id' => 'subimgId']) !!}
+   {!! Form::text('subtema_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'subimgId']) !!}
     </div>
   
    <div class="form-group">

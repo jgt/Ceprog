@@ -7,7 +7,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
       </div>
-      {!!Form::text('promedio', null, ['class' => 'alert', 'id' => 'prmId'])!!}
+      {!!Form::text('promedio', null, ['style' => 'display:none', 'id' => 'prmId'])!!}
       <div class="modal-body">
        <table class="table">
          <thead>

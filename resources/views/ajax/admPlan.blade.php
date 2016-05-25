@@ -1,8 +1,8 @@
-<div id="adminPlan" class="col-md-10 col-md-offset-1 alert">
+<div id="adminPlan" class="col-md-10 col-md-offset-1" Style="display:none">
  
         
         {!! Form::open(['route' => 'carrera.store', 'method' => 'POST', 'form' => 'form-control', 'id' => 'form-plan' ]) !!}
-  
+             <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
            <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-1">
@@ -31,9 +31,10 @@
 <div class="form-group">
         {!! Form::label('revoe', 'Clave') !!}
         {!! Form::text('revoe', null, ['class' => 'form-control', 'rows' => '3' ]) !!}
+
 </div> 
  <hr>
-    {!! Form::submit('Crear Plan', ['class' => 'btn btn-default', 'id' => 'crePlan']) !!}
+    {!! Form::submit('Crear Plan', ['class' => 'btn btn-default', 'id' => 'crePlan', 'data-toggle' => 'modal', 'data-target' => '#mdlPlan']) !!}
 
     </div>
                 </div>

@@ -1,4 +1,4 @@
-<div id="admForo" class="col-md-10 col-md-offset-1 alert">
+<div id="admForo" class="col-md-10 col-md-offset-1" Style="display:none">
  	
         
         {!! Form::open(['route' => 'foro.store', 'method' => 'POST', 'class' => 'form-horizontal', 'id' =>'form-createForo']) !!}
@@ -28,6 +28,7 @@
 	{!! Form::label('materia_id', 'Materia :', ['class' => 'control-label col-xs-2']) !!}
 	<div class="col-lg-10">
 	{!! Form::select('materia_id', $materiasForo, null, ['class' => 'form-control']) !!}
+	 <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 		<hr>
 		{!! Form::submit('Crear foro', ['class' => 'btn btn-default', 'id' => 'admForoCrt']) !!}
 	</div>

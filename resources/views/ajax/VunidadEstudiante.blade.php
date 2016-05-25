@@ -1,5 +1,5 @@
 
-<div class="col-md-10 col-md-offset-1 alert" id="VunidadE">
+<div class="col-md-10 col-md-offset-1" Style="display:none" id="VunidadE">
     
 
             @include('errors.error')

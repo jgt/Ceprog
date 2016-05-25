@@ -1,12 +1,12 @@
-<div id="Almact" class="col-md-6 col-md-offset-1 alert">
+<div id="Almact" class="col-md-10 col-md-offset-1" Style="display:none">
         
-        <a href="{{ Auth::user()}}" id="AuthUser" class="alert"></a>
-        <a href="{{ route('pdf')}}" id="pdfAct" class="alert"></a>
-        <a href="{{ route('fileentry')}}" id="fileentry" class="alert"></a>
-        <a href="{{ route('borrar')}}" id="borrarA" class="alert"></a>
-        <a href="{{ route('material')}}" id="materialAlm" class="alert"></a>
-        <a href="" id="a" class="alert"></a>
-
+        <a href="{{ Auth::user()}}" id="AuthUser" Style="display:none"></a>
+        <a href="{{ route('pdf')}}" id="pdfAct" Style="display:none"></a>
+        <a href="{{ route('fileentry')}}" id="fileentry" Style="display:none"></a>
+        <a href="{{ route('borrar')}}" id="borrarA" Style="display:none"></a>
+        <a href="{{ route('material')}}" id="materialAlm" Style="display:none"></a>
+        <a href="" id="a" Style="display:none"></a>
+      <div class="table-responsive">
        <table class="table">
           <thead>
             <td><strong>Actividad</strong></td>
@@ -21,5 +21,5 @@
             
           </tbody>
        </table>
-
+      </div>
      </div>

@@ -20,7 +20,12 @@ class ForoController extends Controller {
 	{
 
 		$foros = Foro::name($request->get('name'))->paginate(5);
-		return view('listForo', compact('foros'));
+		
+		if($request->ajax())
+		{
+
+			return response()->json($foros);
+		}
 	}
 	
 	public function create()
@@ -71,18 +76,19 @@ class ForoController extends Controller {
 		$foro = Foro::find($id);
 		$foro->delete();
 
-		flash()->overlay('Ha sido borrado', 'El foro '.$foro->title);
-		return redirect()->route('listForo');
-
 	}
 
 
 
 	public function comentario($id, Request $request)
 	{	 
- 		$foro = Foro::find($id);
- 		$comentarios = $foro->comentarios()->orderBy('id', 'DESC')->name($request->get('name'))->paginate(3);
-		return view('create.preguntas', compact('comentarios','foro'));
+ 		$comentarios = Foro::find($id)->with('comentarios.users')->get();
+		
+		if($request->ajax())
+		{
+
+			return response()->json($comentarios);
+		}
 	}
 
 
@@ -94,33 +100,38 @@ class ForoController extends Controller {
 		$this->validate($request, [
 
 			'comment' => 'required|max:250',
-			'link' => 'url'
-
-
+			
 			]);
 
 
 		$comentario = new Comentario($request->all());
 		$comentario->user_id = Auth::user()->id;
+		$comentario->users;
 
 		$foro = Foro::findOrFail($id);
 		$foro->comentarios()->save($comentario); 
 
-		if(!$request->ajax())
+		if($request->ajax())
 		{
 
-			return response()->json([
-
-				'foro' => $foro,
-				'comentario' => $comentario
-
-				]);
+			return response()->json($comentario);
 		}
 
-		return redirect()->back();
 	}
 
 
+	public function forosMaterias($id, Request $request)
+	{
+
+		$foros = Materia::find($id)->foros()->get();
+
+		if($request->ajax())
+		{
+
+			return response()->json($foros);
+		}
+
+	}
 
 	
 

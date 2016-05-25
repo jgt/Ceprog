@@ -34,33 +34,35 @@
 
 				e.preventDefault();
 
-			$('div#act').addClass('alert');
-			$('div#listAct').addClass('alert');
-		    $('div#examen').addClass('alert');
-		    $('div#listExamen').addClass('alert');
-		    $('div#calAct').addClass('alert');
-		    $('div#planeacionC').addClass('alert');
-		    $('div#listSubtemas').addClass('alert');
-		    $('#createVideos').addClass('alert');
-			$('div#listAct').addClass('alert');
-			$('#Almact').addClass('alert');
-			$('div#vizuaUnidad').addClass('alert');
-			$('div#AlmUni').addClass('alert');
-			$('div#VunidadE').addClass('alert');
-			$('div#calAct').addClass('alert');
-			$('div#notasRubricas').addClass('alert');
-			$('#listRub').addClass('alert');
-			$('#listTutAlm').addClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('div#listUnidades').addClass('alert');
-			$('#listPersonal').removeClass('alert');
-			$('#prflistTuto').addClass('alert');
-			$('#alumnosListUser').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('div#act').hide();
+			$('div#listAct').hide();
+		    $('div#examen').hide();
+		    $('div#listExamen').hide();
+		    $('div#calAct').hide();
+		    $('div#planeacionC').hide();
+		    $('div#listSubtemas').hide();
+		    $('#createVideos').hide();
+			$('div#listAct').hide();
+			$('#Almact').hide();
+			$('div#vizuaUnidad').hide();
+			$('div#AlmUni').hide();
+			$('div#VunidadE').hide();
+			$('div#calAct').hide();
+			$('div#notasRubricas').hide();
+			$('#listRub').hide();
+			$('#listTutAlm').hide();
+			$('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('div#listUnidades').hide();
+			$('#listPersonal').show();
+			$('#prflistTuto').hide();
+			$('#alumnosListUser').hide();
+			$('#reportes').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
 
 				var route = $('#admIndex').attr('href');
 				var personal = $('#tablaPersonal');
@@ -94,6 +96,7 @@
 							$.ajax({
 
 								url: route,
+								headers: { 'X-CSFR-TOKEN': token},
 								data: {page: id},
 								type: 'GET',
 								dataType: 'json',
@@ -115,15 +118,18 @@
 
 			e.preventDefault();
 
-			$('#listTut').addClass('alert');
-			$('#tutoriales').removeClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listPersonal').addClass('alert');
-			$('#alumnosListUser').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('#listTut').hide();
+			$('#tutoriales').show();
+			$('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listPersonal').hide();
+			$('#alumnosListUser').hide();
+			$('#reportes').hide();
+			$('#chatForo').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
 
 		});
 
@@ -132,15 +138,18 @@
 
 			e.preventDefault();
 
-			$('#listPersonal').addClass('alert');
-			$('#tutoriales').addClass('alert');
-			$('#listTut').removeClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#alumnosListUser').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('#listPersonal').hide();
+			$('#tutoriales').hide();
+			$('#listTut').show();
+			$('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#alumnosListUser').hide();
+			$('#reportes').hide();
+			$('#chatForo').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -198,7 +207,7 @@
 		
 		$.get(route, function(resp){
 
-			$('#listPersonal').addClass('alert');
+			$('#listPersonal').hide();
 			alertify.alert("El usuario ha sido borrado correctamente.");
 
 		});
@@ -359,6 +368,7 @@
 		$.ajax({
 
 			url: route,
+			headers: { 'X-CSFR-TOKEN': token},
 			type: metodo,
 			data: form.serialize(),
 
@@ -430,14 +440,17 @@
 
 			e.preventDefault();
 
-			$('#admRole').removeClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#tutoriales').addClass('alert');
-			$('#listPersonal').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('#admRole').show();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#adminPlan').hide();
+			$('#listTut').hide();
+			$('#tutoriales').hide();
+			$('#listPersonal').hide();
+			$('#reportes').hide();
+			$('#chatForo').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
 
 
 		});
@@ -453,6 +466,7 @@
 		$.ajax({
 
 			url: route,
+			headers: { 'X-CSFR-TOKEN': token},
 			type: metodo,
 			data: form.serialize(),
 
@@ -482,14 +496,17 @@
 
 			e.preventDefault();
 
-			$('#admForo').removeClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#tutoriales').addClass('alert');
-			$('#listPersonal').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('#admForo').show();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#adminPlan').hide();
+			$('#listTut').hide();
+			$('#tutoriales').hide();
+			$('#listPersonal').hide();
+			$('#reportes').hide();
+			$('#chatForo').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
 
 		});
 
@@ -504,6 +521,7 @@
 			$.ajax({
 
 				url: route,
+				headers: { 'X-CSFR-TOKEN': token},
 				type: metodo,
 				data: form.serialize(),
 
@@ -535,14 +553,17 @@
 
 			e.preventDefault();
 
-			$('#adminPlan').removeClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#tutoriales').addClass('alert');
-			$('#listPersonal').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('#adminPlan').show();
+			$('#chatForo').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('#tutoriales').hide();
+			$('#listPersonal').hide();
+			$('#reportes').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
 
 
 		});
@@ -559,6 +580,7 @@
 			$.ajax({
 
 				url: route,
+				headers: { 'X-CSFR-TOKEN': token},
 				type: metodo,
 				data: form.serialize(),
 
@@ -566,6 +588,9 @@
 				success:function(resp){
 
 					alertify.alert(" El plan ha sido creado correctamente.");
+
+					$('#carrModal').val(resp.name);
+					$('#idCarrmodal').val(resp.id);
 
 				},
 
@@ -589,6 +614,97 @@
 
 
 			});
+
+
+
+					$('#mdlSem').on('click', function(e){
+
+						e.preventDefault();
+
+						var form = $('#form-mdl');
+						var route = form.attr('action');
+						var metodo = form.attr('method');
+
+						$.ajax({
+
+							url: route,
+							headers: { 'X-CSFR-TOKEN': token},
+							type: metodo,
+							data: form.serialize(),
+
+							success:function(resp){
+
+								alertify.alert('El semestre ha sido creado correctamente.');
+								$('#nameSemmodal').val(resp.name);
+								$('#idSemmodal').val(resp.id);
+
+							},
+
+							error:function(error, request){
+
+								if(error == "timeout")
+
+									{
+
+										alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+									}else{
+
+
+										alertify.alert('Tienes errores en el formulario.');
+									}
+
+
+							}
+
+
+						});
+
+
+
+					});
+
+					$('#mdlMat').on('click', function(e){
+
+						e.preventDefault();
+
+						var form = $('#form-mdlMat');
+						var route = form.attr('action');
+						var metodo = form.attr('method');
+
+						$.ajax({
+
+							url: route,
+							headers: { 'X-CSFR-TOKEN': token},
+							type: metodo,
+							data: form.serialize(),
+
+							success:function(resp){
+
+								alertify.alert('La materia ha sido creada correctamente.');
+								$('#mdlMta').val(" ");
+								$('#mdlCreditos').val(" ");
+
+							},
+
+							error:function(error, request){
+
+
+								if(error == "timeout")
+
+									{
+
+										alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+									}else{
+
+
+										alertify.alert('Tienes errores en el formulario.');
+									}
+
+							}
+
+						});
+
+					});
 
 
 		});

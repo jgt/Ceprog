@@ -1,11 +1,11 @@
-<div class="col-md-10 col-md-offset-1 alert" id="pregunta">
+<div class="col-md-10 col-md-offset-1" Style="display:none" id="pregunta">
 
   <h2 class="tamaños" id="color-letra" align="center"></h2>
 <h3 class="tamaños" id="color-letra" align="center"></h3>
 
   
   {!! Form::open(['route' => 'storePregunta', 'method' => 'POST', 'id' => 'storePregunta'])!!}
-
+     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-1">
@@ -34,9 +34,9 @@
    
      <div class="form-group alert ">
 
-    {!! Form::label('examen_id', 'Examen id', ['class' => 'form-group ']) !!}
+    {!! Form::label('examen_id', 'Examen id', ['class' => 'form-group', 'Style' => 'display:none']) !!}
 
-   {!! Form::text('examen_id', null, ['class' => 'form-control', 'id' => 'examenId']) !!}
+   {!! Form::text('examen_id', null, ['class' => 'form-control','Style' => 'display:none', 'id' => 'examenId']) !!}
    
     </div>
 
@@ -55,16 +55,6 @@
         </div>
 
       </div>
-      <div class="col-md-4 col-md-offset-1">
-
-          <h2 class="tamaños" id="color-letra" align="center">Recomendaciones!!</h2>
-          <hr>
-          <ul>
-            <li><p id="color-letra">Una vez creada la actividad rellenaras los datos de la rubricas que aparece en pantalla.</p></li>
-            <li><p id="color-letra">Las actividades solo puden tener un maximo de 5 rubricas y un minimo de 3 rubricas.</p></li>
-            <li><p id="color-letra">Si la actividad no tiene rubricas solo podras ver un boton con nombre <span>Crear Rubricas</span>, cuando creas un minimo de 3 rubricas apecera el boton Finalizar ese boton te retorna al menu principal.</p></li>
-          </ul>
-        </div>
     </div>
   </div>
 </div>

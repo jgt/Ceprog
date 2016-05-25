@@ -1,12 +1,12 @@
-<div id="listPersonal" class="col-md-6 col-md-offset-1 alert">
+<div id="listPersonal" class="col-md-10 col-md-offset-1" Style="display:none">
         
-        <a href="{{route('admin.index')}}" id="admIndex" class="alert"></a>  
-        <a href="{{route('admin.show')}}" id="adminShow" class="alert"></a>
-        <a href="{{route('deleteU')}}" id="adminDelete" class="alert"></a>
-        <a href="{{route('admin.edit')}}" id="adminEdit" class="alert"></a>
+        <a href="{{route('admin.index')}}" id="admIndex" Style="display:none"></a>  
+        <a href="{{route('admin.show')}}" id="adminShow" Style="display:none"></a>
+        <a href="{{route('deleteU')}}" id="adminDelete" Style="display:none"></a>
+        <a href="{{route('admin.edit')}}" id="adminEdit" Style="display:none"></a>
 
         @include('include.buscar', ['submitButtonText' => 'Buscar'])  
-
+        <div class="table-responsive">
        <table class="table">
           <thead>
             <td><strong>Usuarios</strong></td>
@@ -20,5 +20,5 @@
 
        {!! $users->render() !!}
        
-
+  </div>
      </div>

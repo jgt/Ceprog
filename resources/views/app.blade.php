@@ -1,42 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Portal UC</title>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
 
+@include('partials.htmlheader')
 
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="{{ asset('/css/all.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-	
-</head>
-<body>
-	
-	
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
 
-	@include('flash::message')
+    @include('partials.mainheader')
 
-	@yield('content')
-	
+    @include('partials.sidebar')
 
-	
-	
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
 
-	<!-- Scripts -->
-	<script src="{{ asset('/js/all.js') }}"></script>
+        @include('partials.contentheader')
 
-	@include('script.flash')
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your Page Content Here -->
+            @yield('main-content')
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
 
-	@include('script.conin')	
+    @include('partials.controlsidebar')
 
-	@include('script.fadeout')
-	
-	@yield('footer')
+    @include('partials.footer')
 
+</div><!-- ./wrapper -->
 
-
+@include('partials.scripts')
 
 </body>
 </html>

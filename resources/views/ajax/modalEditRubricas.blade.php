@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
        {!! Form::open(['route' => 'updaterubrica', 'method' => 'POST', 'class' => 'form-group', 'id' => 'formRE']) !!}
-
+         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   @include('errors.error')
   <div class="form-group">
   {!! Form::label('name', 'Nombre de la rubrica ', ['class' => 'form-group']) !!}
@@ -30,8 +30,8 @@
   </div>
 
   <div class="form-group">
-  {!! Form::label('rubrica_id', 'rubrica id  ', ['class' => 'form-group alert']) !!}
-   {!! Form::text('rubrica_id', null, ['class' => 'form-control alert', 'id' => 'rubrica_id']) !!}
+  {!! Form::label('rubrica_id', 'rubrica id  ', ['class' => 'form-group', 'Style' => 'display:none']) !!}
+   {!! Form::text('rubrica_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'rubrica_id']) !!}
    <input name="actividad_id" type="hidden" id="actividadIdE">
   </div>
   

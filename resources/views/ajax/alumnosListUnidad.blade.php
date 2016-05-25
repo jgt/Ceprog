@@ -1,12 +1,12 @@
-<div id="AlmUni" class="col-md-6 col-md-offset-1 alert">
+<div id="AlmUni" class="col-md-10 col-md-offset-1" Style="display:none">
     
-       <a href="{{ route('verPlaneacion')}}" id="verAct" class="alert"></a>
-       <a href="{{ route('showVideos')}}" id="showVideos" class="alert"></a>
-       <a href="{{ route('download')}}" id="downloadV" class="alert"></a>
-       <a href="{{ route('promedio')}}" id="promedio" class="alert"></a>
-        <a href="{{ route('verPlaneacionPdf')}}" id="planpdf" class="alert"></a>
+       <a href="{{ route('verPlaneacion')}}" id="verAct" Style="display:none"></a>
+       <a href="{{ route('showVideos')}}" id="showVideos" Style="display:none"></a>
+       <a href="{{ route('download')}}" id="downloadV" Style="display:none"></a>
+       <a href="{{ route('promedio')}}" id="promedio" Style="display:none"></a>
+        <a href="{{ route('verPlaneacionPdf')}}" id="planpdf" Style="display:none"></a>
 
-
+  <div class="table-responsive">
        <table class="table">
           <thead>
             <td><strong>Unidad</strong></td>
@@ -19,5 +19,6 @@
             
           </tbody>
        </table>
-
+    
+    </div>
      </div>

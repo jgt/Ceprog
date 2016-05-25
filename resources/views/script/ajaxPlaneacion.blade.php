@@ -6,34 +6,37 @@ $(document).on('ready', function(){
 
 		e.preventDefault();
 
-		$('#planeacionC').removeClass('alert');
 		var link = $('#plna').attr('href');
 		var materia = $(this).parents('ul');
 		var id = materia.data('id');
 		var route = link.split('%7Bid%7D').join(id);
-		$('div#planeacionC').removeClass('alert');
-		$('div#act').addClass('alert');
-        $('div#examen').addClass('alert');
-        $('div#pregunta').addClass('alert');
-        $('div#listExamen').addClass('alert');
-        $('div#calAct').addClass('alert');
-        $('div#listAct').addClass('alert');
-        $('div#listUnidades').addClass('alert');
-        $('div#listSubtemas').addClass('alert');
-         $('#createVideos').addClass('alert');
-         $('div#vizuaUnidad').addClass('alert');
-         $('div#notasRubricas').addClass('alert');
-         $('#listRub').addClass('alert');
-         $('#prflistTuto').addClass('alert');
-         $('#listTutAlm').addClass('alert');
-         	$('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#alumnosListUser').addClass('alert');
-			$('#listPersonal').addClass('alert');
-			$('#reportes').addClass('alert');
+		$('#planeacionC').show();
+		$('div#examen').hide();
+		$('div#act').hide();
+        $('div#pregunta').hide();
+        $('div#listExamen').hide();
+        $('div#calAct').hide();
+        $('div#listAct').hide();
+        $('div#listUnidades').hide();
+        $('div#listSubtemas').hide();
+         $('#createVideos').hide();
+         $('div#vizuaUnidad').hide();
+         $('div#notasRubricas').hide();
+         $('#listRub').hide();
+         $('#prflistTuto').hide();
+         $('#listTutAlm').hide();
+         	$('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('#alumnosListUser').hide();
+			$('#listPersonal').hide();
+			$('#reportes').hide();
+			$('#chatForo').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
+
 
 		$.get(route, function(resp){
 
@@ -77,6 +80,7 @@ $('#crunidad').on('click', function(e){
 			$.ajax({
 
 				url: route,
+				headers: { 'X-CSFR-TOKEN': token},
 				type: metodo,
 				data: form.serialize(),
 
@@ -126,6 +130,7 @@ $('#crearU').on('click', function(e){
 			$.ajax({
 
 				url: route,
+				headers: { 'X-CSFR-TOKEN': token},
 				type: metodo,
 				data: form.serialize(),
 

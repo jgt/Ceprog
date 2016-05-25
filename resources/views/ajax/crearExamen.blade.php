@@ -1,6 +1,6 @@
-<div class="col-md-10 col-md-offset-1 alert" id="examen">
+<div class="col-md-10 col-md-offset-1" Style="display:none" id="examen">
   {!! Form::open(['route' => 'storeExamen', 'method' => 'POST', 'class' => 'form-group', 'id' => 'formExa']) !!}
-
+     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   <div class="container">
     <div class="row">
 
@@ -17,7 +17,7 @@
 
     <div class="form-group">
 
-   {!! Form::text('materia_id', null, ['class' => 'form-control alert', 'id' => 'idMat']) !!}
+   {!! Form::text('materia_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'idMat']) !!}
    </div>
 
   <div class="form-group">

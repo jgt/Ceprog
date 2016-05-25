@@ -22,7 +22,8 @@
         "barryvdh/laravel-snappy": "0.2.x",
         "hieu-le/active": "~2.0",
 		"styde/seeder": "^1.0",
-		"fzaninotto/faker": "1.5.*@dev"
+		"fzaninotto/faker": "1.5.*@dev",
+		"acacha/admin-lte-template-laravel": "1.*"
 
 
 

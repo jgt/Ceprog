@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
        {!! Form::open(['route' => 'storeRubrica', 'method' => 'POST', 'class' => 'form-group', 'id' => 'formR']) !!}
-
+         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   @include('errors.error')
   <div class="form-group">
   {!! Form::label('name', 'Nombre de la rubrica ', ['class' => 'form-group']) !!}
@@ -53,7 +53,7 @@
   {!! Form::close() !!}
       </div>
       <div class="modal-footer">
-        <button type="button" id="cancelar" class="btn btn-default alert" data-dismiss="modal">Salir</button>
+        <button type="button" id="cancelar" class="btn btn-default" Style="display:none" data-dismiss="modal">Salir</button>
         <a href="#" class="btn btn-primary" id="crearR">Crear</a>
       </div>
     </div>

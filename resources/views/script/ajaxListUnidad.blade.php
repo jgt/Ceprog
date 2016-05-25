@@ -6,32 +6,36 @@
 		$('a#menuListUser').on('click', function(e){
 
 			e.preventDefault();
-			$('div#act').addClass('alert');
-			$('div#listAct').addClass('alert');
-		    $('div#examen').addClass('alert');
-		    $('div#listExamen').addClass('alert');
-		    $('div#calAct').addClass('alert');
-		    $('div#planeacionC').addClass('alert');
-		    $('div#listSubtemas').addClass('alert');
-		    $('#createVideos').addClass('alert');
-			$('div#listAct').addClass('alert');
-			$('#Almact').addClass('alert');
-			$('div#vizuaUnidad').addClass('alert');
-			$('div#AlmUni').addClass('alert');
-			$('div#VunidadE').addClass('alert');
-			$('div#calAct').addClass('alert');
-			$('div#notasRubricas').addClass('alert');
-			$('#listRub').addClass('alert');
-			$('#listTutAlm').addClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('div#listUnidades').addClass('alert');
-			$('#listPersonal').addClass('alert');
-			$('#prflistTuto').addClass('alert');
-			$('#alumnosListUser').removeClass('alert');
+
+			$('#froadm').hide();
+			$('#chatForo').hide();
+			$('div#act').hide();
+			$('div#listAct').hide();
+		    $('div#examen').hide();
+		    $('div#listExamen').hide();
+		    $('div#calAct').hide();
+		    $('div#planeacionC').hide();
+		    $('div#listSubtemas').hide();
+		    $('#createVideos').hide();
+			$('div#listAct').hide();
+			$('#Almact').hide();
+			$('div#vizuaUnidad').hide();
+			$('div#AlmUni').hide();
+			$('div#VunidadE').hide();
+			$('div#calAct').hide();
+			$('div#notasRubricas').hide();
+			$('#listRub').hide();
+			$('#listTutAlm').hide();
+			$('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('div#listUnidades').hide();
+			$('#listPersonal').hide();
+			$('#prflistTuto').hide();
+			$('#crr').hide();
+			$('#alumnosListUser').show();
 			var route = $(this).attr('href');
 			var tablaAlumnos = $('#tablaAlumnosList');
 			
@@ -90,36 +94,39 @@
 
 			e.preventDefault()
 
-			$('div#act').addClass('alert');
-			$('div#listAct').addClass('alert');
-		    $('div#examen').addClass('alert');
-		    $('div#listExamen').addClass('alert');
-		    $('div#calAct').addClass('alert');
-		    $('div#notasRubricas').addClass('alert');
-		    $('div#planeacionC').addClass('alert');
-		    $('div#listSubtemas').addClass('alert');
-		    $('#createVideos').addClass('alert');
-		    $('#Almact').addClass('alert');
-		    $('#AlmUni').addClass('alert');
-		    $('div#vizuaUnidad').addClass('alert');
-		    $('div#VunidadE').addClass('alert');
-		    $('#listRub').addClass('alert');
-		    $('#prflistTuto').addClass('alert');	
-		    $('#listTutAlm').addClass('alert');
-		    $('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#reportes').addClass('alert');
-			$('#alumnosListUser').addClass('alert');
-			$('#listPersonal').addClass('alert');
+			$('#froadm').hide();
+			$('#chatForo').hide();
+			$('div#act').hide();
+			$('div#listAct').hide();
+		    $('div#examen').hide();
+		    $('div#listExamen').hide();
+		    $('div#calAct').hide();
+		    $('div#notasRubricas').hide();
+		    $('div#planeacionC').hide();
+		    $('div#listSubtemas').hide();
+		    $('#createVideos').hide();
+		    $('#Almact').hide();
+		    $('#AlmUni').hide();
+		    $('div#vizuaUnidad').hide();
+		    $('div#VunidadE').hide();
+		    $('#listRub').hide();
+		    $('#prflistTuto').hide();	
+		    $('#listTutAlm').hide();
+		    $('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('#reportes').hide();
+			$('#alumnosListUser').hide();
+			$('#listPersonal').hide();
+			$('#crr').hide();
 			var link = $('#uniList').attr('href');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
 			var route = link.split('%7Bid%7D').join(id);
 			var tablaUnidad = $('#tablaUnidad');
-			$('div#listUnidades').removeClass('alert');
+			$('div#listUnidades').show();
 
 			$.get(route, function(resp){
 
@@ -157,14 +164,18 @@
 
 							$(act.fileentries).each(function(key, file){
 
-								if(userId == file.user_id)
+								$(file.user).each(function(key, user){
+
+									if(userId == file.user_id)
 								{
 
 									 var filename = file.filename;
               						 var cadena = filename.split(' ').join('%20');
 
-									tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td></tr>");
+									tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td></tr>");
 								}
+
+								});
 							});
 						});
 
@@ -200,12 +211,13 @@
 		$.ajax({
 
 			url: route,
+			headers: { 'X-CSFR-TOKEN': token},
 			type: metodo,
 			data: form.serialize(),
 
 			success:function(resp){
 
-				alertify.alert("El subtema ha sido creado.");
+				alert("El subtema ha sido creado.");
 				$('#subtemaCreate').val(" ");
 				$('#createDesc').val(" ");
 
@@ -302,8 +314,8 @@
 		
 		$.get(route, function(resp){
 
-			$('div#listUnidades').addClass('alert');
-			$('div#listSubtemas').removeClass('alert');
+			$('div#listUnidades').hide();
+			$('div#listSubtemas').show();
 
 			tablaSubtemas.html(" ");
 
@@ -323,8 +335,8 @@
 
 			}else{
 
-				$('div#listSubtemas').addClass('alert');
-					$('div#listUnidades').removeClass('alert');
+				$('div#listSubtemas').hide();
+					$('div#listUnidades').show();
 					alertify.alert("no hay subtemas en esta unidad.");
 				
 			}
@@ -405,8 +417,8 @@
 
 		$.get(route, function(resp){
 
-			$('div#listSubtemas').addClass('alert');
-			$('div#listUnidades').removeClass('alert');
+			$('div#listSubtemas').hide();
+			$('div#listUnidades').show('alert');
 			alertify.alert(" El subtema ha sido borrado.");
 
 
@@ -444,6 +456,7 @@
 		$.ajax({
 
 			url: route,
+			headers: { 'X-CSFR-TOKEN': token},
 			type: metodo,
 			data: form.serialize(),
 
@@ -506,6 +519,7 @@
 					$.ajax({
 
 						url: route,
+						headers: { 'X-CSFR-TOKEN': token},
 						type: metodo,
 						data: form.serialize(),
 
@@ -534,8 +548,8 @@
 
 		function crearAct(btn){
 
-			$('div#act').removeClass('alert');
-			$('div#listUnidades').addClass('alert');
+			$('div#act').show();
+			$('div#listUnidades').hide();
 			var id = btn.value;
 			var unidad = $('#unId').val(id);
 
@@ -551,14 +565,15 @@
 		    $.ajax({
 
 		      url: route,
+		      headers: { 'X-CSFR-TOKEN': token},
 		      type: metodo,
 		      data: form.serialize(),
 
 		      success:function(resp){
 
 		      	$('input#numeroR').val(" ");
-		      	$('#cancelar').addClass('alert');
-		      	$('#crearR').removeClass('alert');
+		      	$('#cancelar').hide();
+		      	$('#crearR').show();
 		      	$('input#porcentajeD').val(" ");
 		        $('#cognoscitivo').val(" ");
 		        $('#actividad').val(" ");
@@ -632,6 +647,7 @@
 		    $.ajax({
 
 		      url: route,
+		      headers: { 'X-CSFR-TOKEN': token},
 		      type: metodo,
 		      data: form.serialize(),
 
@@ -667,14 +683,14 @@
 		          {
 
 		              $('#crearR').removeClass('btn btn-primary');
-		              $('#crearR').addClass('alert');
-		              $('#cancelar').removeClass('alert');
+		              $('#crearR').hide();
+		              $('#cancelar').show();
 
 		          }else if(rubricas2 >=2 ){
 
-		            $('#crearR').removeClass('alert');
+		            $('#crearR').show();
 		            $('#crearR').addClass('btn btn-primary');
-		            $('#cancelar').removeClass('alert');
+		            $('#cancelar').show();
 
 		          }
 
@@ -692,8 +708,8 @@
 
 		         if (resta == 0) {
 
-		         	 $('#crearR').addClass('alert');
-		         	 $('#cancelar').removeClass('alert');
+		         	 $('#crearR').hide();
+		         	 $('#cancelar').show();
    					 alertify.alert(" Si el porcentaje disponible de la actividad es 0 la creacion de rubricas se desabilitara."); 
 				}
  
@@ -740,8 +756,8 @@
 
 			$.get(route, function(resp){
 
-				$('#listAct').removeClass('alert');
-				$('#listUnidades').addClass('alert');
+				$('#listAct').show();
+				$('#listUnidades').hide();
 
 
 				if(resp.total >= 1)
@@ -756,8 +772,8 @@
          }else{
 
             tablaActividad.html(" ");
-            $('div#listAct').addClass('alert');
-            $('div#listUnidades').removeClass('alert');
+            $('div#listAct').hide();
+            $('div#listUnidades').show();
             alertify.alert("Esta unidad no tiene actividades");
           
          }
@@ -777,8 +793,8 @@
 
 			$.get(route, function(resp){
 
-				$('#listAct').addClass('alert');
-				$('#listRub').removeClass('alert');
+				$('#listAct').hide();
+				$('#listRub').show();
 				
 				tablaRubricas.html(" ");
 
@@ -823,12 +839,16 @@
 			$.ajax({
 
 				url: route,
+				headers: { 'X-CSFR-TOKEN': token},
 				type: metodo,
 				data: form.serialize(),
 
 				success:function(resp){
 
 					alertify.alert(" La rubrica ha sido editada.");
+					$('#listAct').show();
+					$('#listRub').hide();
+
 
 				}
 
@@ -845,8 +865,8 @@
 
 			$.get(route, function(resp){
 
-				$('#listRub').addClass('alert');
-				$('#listAct').removeClass('alert');
+				$('#listRub').hide();
+				$('#listAct').show();
 
 				alertify.alert(" La rubrica ha sido borrada");
 
@@ -863,8 +883,8 @@
 			
 			$.get(route, function(resp){
 
-				$('div#listAct').addClass('alert');
-				$('div#listUnidades').removeClass('alert');
+				$('div#listAct').hide();
+				$('div#listUnidades').show();
 				alertify.alert(' La actividad ha sido borrada correctamente.');
 
 
@@ -974,8 +994,8 @@
       var calificacion = $('#calificacionRoute').attr('href');
       var route = calificacion.split('%7Bid%7D').join(btn.value);
        var tblPorcentaje = $('#tablaPorcentaje');
-       $('div#listAct').addClass('alert');
-      $('div#calAct').removeClass('alert');
+       $('div#listAct').hide();
+      $('div#calAct').show();
       $.get(route, function(resp){
 
       	tblPorcentaje.html(" ");
@@ -1031,6 +1051,7 @@
     $.ajax({
 
       url: ruta,
+      headers: { 'X-CSFR-TOKEN': token},
       type: metodo,
       data: form.serialize(),
 
@@ -1044,7 +1065,7 @@
             $('#nameAct').prop('disabled', true);
             $('input#rubInp').prop('disabled', true);
             $('#ntoFinal').prop('disabled', true);
-            $('#subCal').addClass('alert');
+            $('#subCal').hide();
 
           }
           
@@ -1059,7 +1080,7 @@
 
         }else{
 
-            alertify.alert('Recuerda que la nota de cada rubrica no puede ser mayor a el valor que se le asigno a la rubrica.');
+            aletify.alert('Recuerda que la nota de cada rubrica no puede ser mayor a el valor que se le asigno a la rubrica.');
         }
 
 
@@ -1120,8 +1141,8 @@
           $.get(route, function(resp){
 
             var notasRubricas = $('#notasRubricas');
-            $('div#listAct').addClass('alert');
-            $('div#notasRubricas').removeClass('alert');
+            $('div#listAct').hide();
+            $('div#notasRubricas').show();
 
             $(resp.calAlum).each(function(key, value){
 
@@ -1207,6 +1228,7 @@
              $.ajax({
 
                   url: route,
+                  headers: { 'X-CSFR-TOKEN': token},
                   type: metodo,
                   data: form.serialize(),
 

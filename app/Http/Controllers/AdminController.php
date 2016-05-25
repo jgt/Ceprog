@@ -72,11 +72,26 @@ class AdminController extends Controller {
 
 	}
 	
-	public function create()
+	public function create(Request $request)
 	{	
 
-    $roles = $this->roleRepository->searchList();
-	return view('create.user', compact('roles'));
+    $roles = Role::all();
+    $carreras = Carrera::with('semestres')->get();
+    $materias = Materia::all();
+
+    $arreglo = [
+
+    	'roles' => $roles,
+    	'carreras' => $carreras,
+    	'materias' => $materias
+
+    ];
+	
+	if($request->ajax())
+	{
+		return response()->json($arreglo);
+	}	
+
 	}
 
 	
@@ -84,13 +99,12 @@ class AdminController extends Controller {
 	{
 
 		$user = $this->userRepository->createUser($request);
-
+	
 		if($request->ajax())
 		{
 			return response()->json(['success' => $user]);
 		}
 
-		return redirect()->back();
 	}
 
 	

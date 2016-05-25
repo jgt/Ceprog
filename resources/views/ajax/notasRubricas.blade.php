@@ -1,4 +1,4 @@
-<div id="notasRubricas" class="col-md-6 col-md-offset-1 alert ">
+<div id="notasRubricas" class="col-md-10 col-md-offset-1" Style="display:none">
       
        <table class="table">
           <thead>

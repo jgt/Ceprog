@@ -10,13 +10,13 @@
       <div class="modal-body">
        
        {!! Form::open(['route' => 'admin.update', 'method' => 'PUT', 'class' => 'form-group', 'id' => 'formUpdate-user']) !!}
-
+         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   @include('errors.error')
 
    <div class="form-group">
   {!! Form::label('name', 'Nombre:', ['class' => 'form-group']) !!}
   {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'nameUpdate']) !!}
-  <input type="text" id="udpUser" class="alert">
+  <input type="text" id="udpUser" Style="display:none">
    </div>
 
     <div class="form-group">

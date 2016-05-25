@@ -1,120 +1,68 @@
+@extends('auth.auth')
 
-<!-- Vista welcome es el login del portal
+@section('htmlheader_title')
+    Log in
+@endsection
 
-	esta vista lleva un include en la linea 13 
-
-	@include('include.menuLogin')
-
-	ese include es el menu de la parte superior de la vista
-
-
- -->
-
-@extends('template.Login')
-@section('title'){{'Portal UC'}}@endsection
 @section('content')
+<body class="login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ url('/home') }}"><b>Universidad</b>Ceprog</a>
+        </div><!-- /.login-logo -->
 
-@include('include.menuLogin')
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> Hay algunos errores en el formulario<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
+    <div class="login-box-body">
+    <p class="login-box-msg">Inicia tu sesión</p>
+    <form action="{{ url('/auth/login') }}" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="form-group has-feedback">
+            <input type="cuenta" class="form-control" placeholder="Cuenta" name="cuenta" value="{{ old('cuenta') }}">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Contraseña" name="password"/>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="checkbox icheck">
+                    <label>
+                        <input type="checkbox" name="remember"> Recordar
+                    </label>
+                </div>
+            </div><!-- /.col -->
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+            </div><!-- /.col -->
+        </div>
+    </form>
+       
+</div><!-- /.login-box-body -->
 
-<div class="container-fluid">
-	<div class="row" id="menulogin">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading"><i class="fa fa-sign-in"></i> Virtual UC</a></div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Lo siento tienes erroes!</strong> Hay algunos errores en los campos.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+</div><!-- /.login-box -->
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/login">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+    @include('auth.scripts')
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Numero de cuenta</label>
-							<div class="col-md-6">
-								<input type="cuenta" class="form-control" name="cuenta" value="{{ old('cuenta') }}">
-							</div>
-						</div>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+</body>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Contraseña</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Recordar
-									</label>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-									Login
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-@stop
-
-@section('footer')
-		
-<div class="row-fluid">
-
-	<div class="container">
-		
-		<div class="col-md-6">
-			<h1 class="text-center white-welcome">Universidad Ceprog <br>	
-			
-			</h1>
-
-			<p class="text-center white">&copy; 2015 | Todos los derechos reservados.</p>
-
-			<br><br>
-
-			<p class="white text-center"><a class="link" target="_blank" href="https://www.pagalaescuela.santander.com.mx/pagalaescuela/jsp/inicio.jsp"><i class="fa fa-credit-card fa-1x"></i> Pagos en Línea</a></p>
-
-		</div>
-		<div class="col-md-6" id="contacto"></div>
-			<div class="col-md-6">
-				
-				<legend class="text-center white">Contacto</legend>
-				<p class="white text-center"><a class="tomato" target="_blank" href="http://uceprog.edu.mx/" ><i class="fa fa-external-link"></i> www.uceprog.edu.mx</a></p>
-				<p class="white text-center"><i class="fa fa-envelope"></i> contacto@uceprog.edu.mx</p>
-				<p class="white text-center"><i class="fa fa-facebook-official"></i> uceprog.com</p>
-				<p class="white text-center"><i class="fa fa-twitter"></i> ceproguc</p>
-
-			</div>
-
-		</div>
-
-	</div>
-
-</div>
-
-
-@stop
-
-
-
-
+@endsection

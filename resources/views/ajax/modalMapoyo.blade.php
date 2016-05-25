@@ -12,11 +12,11 @@
            <div class="form-group">
 
      {!! Form::open(['route' => 'material', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'apoyoM_id', 'files' => true]) !!}
-      
+         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
       {!! Form::label('Docente', 'Docente: ',['class' => 'form-group']) !!}
      {!! Form::text('Authuser', null, ['class' => 'form-control', 'id' => 'AuthUserApoyo']) !!}
-   {!! Form::text('actividad_id', null, ['class' => 'form-control alert', 'id' => 'apoyo_id']) !!}
-   {!! Form::text('user_id', null, ['class' => 'form-control alert ', 'id' => 'userApoyo_id']) !!}
+   {!! Form::text('actividad_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'apoyo_id']) !!}
+   {!! Form::text('user_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'userApoyo_id']) !!}
     </div>
   
    <div class="form-group">

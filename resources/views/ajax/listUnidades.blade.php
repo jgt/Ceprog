@@ -1,12 +1,13 @@
-<div id="listUnidades" class="col-md-6 col-md-offset-1 alert">
+<div id="listUnidades" class="col-md-10 col-md-offset-1" Style="display:none">
       
-       <a href="{{ route('listplan')}}" id="uniList" class="alert"></a> 
-       <a href="{{ route('portafolio')}}" id="port" class="alert"></a>
-       <a href="{{ route('editSubtemas')}}" id="editSubtemas" class="alert"></a>
-       <a href="{{ route('showVideos')}}" id="showVideosDocente" class="alert"></a>
-       <a href="{{ route('delete')}}" id="deleteVideos" class="alert"></a>
-       <a href="{{ route('pdf')}}" id="pdfunidad" class="alert"></a>
-
+       <a href="{{ route('listplan')}}" id="uniList" Style="display:none"></a> 
+       <a href="{{ route('portafolio')}}" id="port" Style="display:none"></a>
+       <a href="{{ route('editSubtemas')}}" id="editSubtemas" Style="display:none"></a>
+       <a href="{{ route('showVideos')}}" id="showVideosDocente" Style="display:none"></a>
+       <a href="{{ route('delete')}}" id="deleteVideos" Style="display:none"></a>
+       <a href="{{ route('pdf')}}" id="pdfunidad" Style="display:none"></a>
+      
+      <div class="table-responsive">
        <table class="table">
           <thead>
             <td><strong>Unidad</strong></td>
@@ -23,5 +24,5 @@
             
           </tbody>
        </table>
-
+      </div>
      </div>

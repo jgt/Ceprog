@@ -83,7 +83,7 @@ class MenuController extends Controller
     public function listActUser($id, Request $request)
     {
 
-        $user = $this->materiaRepository->search($id)->where('id', $id)->with('unidades.actividades.fileentries')->get();
+        $user = $this->materiaRepository->search($id)->where('id', $id)->with('unidades.actividades.fileentries.user')->get();
 
         if($request->ajax())
         {
@@ -117,4 +117,6 @@ class MenuController extends Controller
         $pdf->loadview('reporte', compact('carreras', 'alumnos'));
         return $pdf->stream('Reporte.pdf');
     }
+
+   
 }

@@ -1,9 +1,10 @@
-<div id="listaP" class="col-md-6 col-md-offset-1 alert ">
+<div id="listaP" class="col-md-10 col-md-offset-1" Style="display:none">
        
        <div id="msj-success" class="alert alert-success alert-dismissible" role="alert" style="display:none">
          
          <strong>Usuario actualizado correctamente</strong>
        </div>
+       <div class="table-responsive">
        <table class="table">
           
           <thead>
@@ -14,5 +15,5 @@
             
           </tbody>
        </table>
-
+      </div>
      </div>

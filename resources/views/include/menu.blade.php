@@ -62,7 +62,7 @@
                 </li>
             </ul>
 
-            <div class="navbar-default sidebar" role="navigation">
+            <div class="navbar-default sidebar" role="navigation" id="dom">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                     @if(Auth::user()->is('prf'))
@@ -231,7 +231,9 @@
                 </div>
             </div>
 
-     </nav>
+     </nav> 
+
+@include('ajax.Carreras.ajaxListCarreras')
 
 @include('ajax.reportes.ajaxReportes')
 
@@ -322,6 +324,8 @@
 @include('script.ajaxTutorial')
 
 @include('script.reportes.ajaxReportes')
+
+@include('script.listCarreras.ajaxListCarreras')
 
 
 @stop

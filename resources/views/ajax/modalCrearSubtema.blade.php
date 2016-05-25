@@ -8,12 +8,12 @@
       </div>
       <div class="modal-body">
        {!! Form::open(['route' => 'storeSubtemas', 'method' => 'POST', 'class' => 'form-group', 'id' => 'create-formSubt']) !!}
-
+         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   @include('errors.error')
 
    <div class="form-group">
-  {!! Form::label('unidad_id', 'Unidad ', ['class' => 'form-group alert']) !!}
-   {!! Form::text('unidad_id', null, ['class' => 'form-control alert', 'id' => 'createSubt']) !!}
+  {!! Form::label('unidad_id', 'Unidad ', ['class' => 'form-group', 'Style' => 'display:none']) !!}
+   {!! Form::text('unidad_id', null, ['class' => 'form-control alert', 'Style' => 'display:none', 'id' => 'createSubt']) !!}
    </div>
   
   <div class="form-group">

@@ -1,16 +1,16 @@
-<div id="listAct" class="col-md-6 col-md-offset-1 alert ">
+<div id="listAct" class="col-md-10 col-md-offset-1" Style="display:none">
       
-       <a href="{{ route('verArchivos')}}" id="archivosRoute" class="alert"></a> 
-       <a href="{{ route('calificacion')}}" id="calificacionRoute" class="alert"></a> 
-       <a href="{{ route('getentry')}}" id="descargarRoute" class="alert"></a> 
-       <a href="{{ route('apoyo')}}" id="apoyoRoute" class="alert"></a> 
-       <a href="{{ route('material')}}" id="materialRoute" class="alert"></a>
-        <a href="{{ route('apollo')}}" id="apolloRoute" class="alert"></a> 
-        <a href="{{ route('planpdf')}}" id="actPdf" class="alert"></a>
-        <a href="{{ route('deleteActividad')}}" id="deleteActividad" class="alert"></a>
-        <a href="{{ route('borrarM')}}" id="borrarM" class="alert"></a>
-        <a href="{{ route('listrubrica')}}" id="listRubrica" class="alert"></a>
-
+       <a href="{{ route('verArchivos')}}" Style="display:none" id="archivosRoute"></a> 
+       <a href="{{ route('calificacion')}}" Style="display:none" id="calificacionRoute"></a>  
+        <a href="{{ route('getentry')}}" id="descargarRoute" class="alert"></a> 
+       <a href="{{ route('apoyo')}}" Style="display:none" id="apoyoRoute"></a> 
+       <a href="{{ route('material')}}" Style="display:none" id="materialRoute"></a>
+        <a href="{{ route('apollo')}}" Style="display:none" id="apolloRoute"></a> 
+        <a href="{{ route('planpdf')}}" Style="display:none" id="actPdf"></a>
+        <a href="{{ route('deleteActividad')}}" Style="display:none" id="deleteActividad"></a>
+        <a href="{{ route('borrarM')}}" Style="display:none" id="borrarM"></a>
+        <a href="{{ route('listrubrica')}}" Style="display:none" id="listRubrica"></a>
+      <div class="table-responsive">
        <table class="table">
           <thead>
             <td><strong>Actividades</strong></td>
@@ -27,5 +27,5 @@
             
           </tbody>
        </table>
-
+      </div>
      </div>

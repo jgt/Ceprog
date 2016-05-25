@@ -9,7 +9,7 @@
       <div class="modal-body">
    {!! Form::open(['route' => 'storeRespuesta', 'method' => 'POST', 'id' => 'storeRespuesta'])!!}
 
-
+   <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   @include('errors.error')
   <div class="form-group">
 

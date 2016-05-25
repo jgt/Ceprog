@@ -2,35 +2,40 @@
 	
 	$(document).on('ready', function(){
 
+
 		$('a#almUni').on('click', function(e){
 
 			e.preventDefault();
 
-			$('#listPersonal').addClass('alert');
-			$('div#act').addClass('alert');
-			$('div#listAct').addClass('alert');
-		    $('div#examen').addClass('alert');
-		    $('div#listExamen').addClass('alert');
-		    $('div#calAct').addClass('alert');
-		    $('div#planeacionC').addClass('alert');
-		    $('div#listSubtemas').addClass('alert');
-		    $('#createVideos').addClass('alert');
-			$('div#listAct').addClass('alert');
-			$('#Almact').addClass('alert');
-			$('div#vizuaUnidad').addClass('alert');
-			$('div#AlmUni').removeClass('alert');
-			$('div#VunidadE').addClass('alert');
-			$('div#calAct').addClass('alert');
-			$('div#notasRubricas').addClass('alert');
-			$('#listRub').addClass('alert');
-			$('#listTutAlm').addClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#alumnosListUser').addClass('alert');
-			$('#reportes').addClass('alert');
+			$('#froadm').hide();
+			$('#chatForo').hide();
+			$('#listPersonal').hide();
+			$('div#act').hide();
+			$('div#listAct').hide();
+		    $('div#examen').hide();
+		    $('div#listExamen').hide();
+		    $('div#calAct').hide();
+		    $('div#planeacionC').hide();
+		    $('div#listSubtemas').hide();
+		    $('#createVideos').hide();
+			$('div#listAct').hide();
+			$('#Almact').hide();
+			$('div#vizuaUnidad').hide();
+			$('div#AlmUni').show();
+			$('div#VunidadE').hide();
+			$('div#calAct').hide();
+			$('div#notasRubricas').hide();
+			$('#listRub').hide();
+			$('#listTutAlm').hide();
+			$('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('#alumnosListUser').hide();
+			$('#reportes').hide();
+			$('#listUnidades').hide();
+			$('#crr').hide();
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');
@@ -46,6 +51,22 @@
 				});
 
 			});
+
+		});
+		
+		$('#clickEdit').on('click', function(e){
+
+			e.preventDefault();
+			var route = $('#edtAlm').attr('href');
+		
+			$.get(route, function(resp){
+
+				$('#nameUpdateAlm').val(resp.name);
+				$('#cuentaUpdateAlm').val(resp.cuenta);
+				$('#clickAuth').val(resp.id);
+
+			});
+
 
 		});
 
@@ -67,26 +88,30 @@
 			var link = $('#verAct').attr('href');
 			var tablaAct = $('#tablaAlmact');
 			var route = link.split('%7Bid%7D').join(id);
-			$('#AlmUni').addClass('alert');
-			$('div#act').addClass('alert');
-			$('div#listAct').addClass('alert');
-		    $('div#examen').addClass('alert');
-		    $('div#listExamen').addClass('alert');
-		    $('div#calAct').addClass('alert');
-		    $('div#planeacionC').addClass('alert');
-		    $('div#listSubtemas').addClass('alert');
-		    $('#createVideos').addClass('alert');
-			$('#Almact').removeClass('alert');
-			$('div#VunidadE').addClass('alert');
-			$('div#vizuaUnidad').addClass('alert');
-			$('div#calAct').addClass('alert');
-			$('div#notasRubricas').addClass('alert');
-			$('#adminPlan').addClass('alert');
-			$('#admRole').addClass('alert');
-			$('div#user').addClass('alert');
-			$('#admForo').addClass('alert');
-			$('#listTut').addClass('alert');
-			$('#listPersonal').addClass('alert');
+			$('#AlmUni').hide();
+			$('div#act').hide();
+			$('div#listAct').hide();
+		    $('div#examen').hide();
+		    $('div#listExamen').hide();
+		    $('div#calAct').hide();
+		    $('div#planeacionC').hide();
+		    $('div#listSubtemas').hide();
+		    $('#createVideos').hide();
+			$('#Almact').show();
+			$('div#VunidadE').hide();
+			$('div#vizuaUnidad').hide();
+			$('div#calAct').hide();
+			$('div#notasRubricas').hide();
+			$('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('#listPersonal').hide();
+			$('#reportes').hide();
+			$('#chatForo').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
 			
 
 		$.get(route, function(resp){

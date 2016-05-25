@@ -23,9 +23,6 @@ class Peticion extends Request {
 	{
 		return [
 			
-
-			'mensaje' => 'required',
-
 			'archivo' => 'required',
 
 		];

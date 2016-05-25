@@ -21,7 +21,7 @@ class SemestreRepository extends BaseRepository {
 
 		$semestre = Semestre::create($request->all());
 
-     	flash()->overlay('Fue creada sastifactoriamente', 'el plan '. $semestre->name);
+     	return $semestre;
 	}
 
 	public function updateSemestre(Request $request, $id)

@@ -10,7 +10,7 @@
       <div class="modal-body">
        <table class="table">
         {!! Form::open(['route' => 'storeRubrica', 'method' => 'POST', 'class' => 'form-group', 'id' => 'cal']) !!}
-
+         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   @include('errors.error')
   <div class="form-group">
   {!! Form::label('name', 'Nombre de la rubrica ', ['class' => 'form-group']) !!}

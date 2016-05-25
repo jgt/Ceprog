@@ -24,7 +24,11 @@ class CarreraController extends Controller {
 	{
 
 		$carreras = $this->carreraRepository->listaCarreras($request);
-		return view('carreras.listaCarreras', compact('carreras'));
+		
+		if($request->ajax())
+		{
+			return response()->json($carreras);
+		}
 	}
 
 	
@@ -38,8 +42,12 @@ class CarreraController extends Controller {
 	public function store(EditCarrera $request)
 	{
 		
-		 $this->carreraRepository->crearCarrera($request);
-         return redirect()->route('carrera.index');
+		 $carrera = $this->carreraRepository->crearCarrera($request);
+         
+         if($request->ajax())
+         {
+         	return response()->json($carrera);
+         }
 	}
 
 	
@@ -50,29 +58,52 @@ class CarreraController extends Controller {
 	}
 
 	
-	public function edit($id)
+	public function edit($id, Request $request)
 	{
 
 		$carrera = $this->carreraRepository->search($id);
-		$semestres = $this->carreraRepository->listSemestres($id);
-    	return view('carreras.updateCarrera', compact('semestres', 'carrera'));
+    	
+    	if($request->ajax())
+    	{
+    		return response()->json($carrera);
+    	}
 	}
 
 	
 	public function update(EditCarrera $request, $id)
 	{
 
-		 $this->carreraRepository->updateCarrera($request, $id);
-         return redirect()->route('carrera.index');
+		$carrera = $this->carreraRepository->updateCarrera($request, $id);
+        
+        if($request->ajax())
+        {
+        	return response()->json($carrera);
+        }
 	}
 
 
 
-	public function destroy($id)
+	public function destroy($id, Request $request)
 	{
 		
-		$this->carreraRepository->deleteCarrera($id);
-		return redirect()->route('carrera.index');
+		$borrar = $this->carreraRepository->deleteCarrera($id);
+		
+		if($request->ajax())
+		{
+			return response()->json($borrar);
+		}
+	}
+
+	public function deleteCarrera($id, Request $request)
+	{
+		
+		$borrar = $this->carreraRepository->deleteCarrera($id);
+		
+		if($request->ajax())
+		{
+			return response()->json($borrar);
+		}
+
 	}
 
 }

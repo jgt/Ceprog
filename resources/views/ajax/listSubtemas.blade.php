@@ -1,12 +1,13 @@
-<div id="listSubtemas" class="col-md-6 col-md-offset-1 alert">
+<div id="listSubtemas" class="col-md-10 col-md-offset-1" Style="display:none">
 
 
-		<a href="{{ route('updateSubtemas')}}" id="updateSubtemas" class="alert"></a>
-    <a href="{{ route('deleteSubtemas')}}" id="deleteSub" class="alert"></a>
-    <a href="{{ route('showSubtema')}}" id="showSubtema" class="alert"></a>
-    <a href="{{ route('listImagenes')}}" id="imgList" class="alert"></a>
-    <a href="{{ route('borrarImg')}}" id="imgBorrar" class="alert"></a>
+		<a href="{{ route('updateSubtemas')}}" id="updateSubtemas" Style="display:none"></a>
+    <a href="{{ route('deleteSubtemas')}}" id="deleteSub" Style="display:none"></a>
+    <a href="{{ route('showSubtema')}}" id="showSubtema" Style="display:none"></a>
+    <a href="{{ route('listImagenes')}}" id="imgList" Style="display:none"></a>
+    <a href="{{ route('borrarImg')}}" id="imgBorrar" Style="display:none"></a>
       
+      <div class="table-responsive">
        <table class="table">
           <thead>
             <td><strong>Subtemas</strong></td>
@@ -19,5 +20,5 @@
             
           </tbody>
        </table>
-
+      </div>
      </div>

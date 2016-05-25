@@ -144,8 +144,10 @@ return [
         'Styde\Html\HtmlServiceProvider',
         'Barryvdh\Snappy\ServiceProvider',
         'HieuLe\Active\ActiveServiceProvider',
+        Acacha\AdminLTETemplateLaravel\app\Providers\AdminLTETemplateServiceProvider::class,
         App\Providers\HtmlGeneratorServiceProvider::class,
          Styde\Seeder\SeederServiceProvider::class,
+
 
 
 

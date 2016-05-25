@@ -8,17 +8,17 @@
       </div>
       <div class="modal-body">
        {!! Form::open(['route' => 'updateSubtemas', 'method' => 'POST', 'class' => 'form-group', 'id' => 'edit-formSubt']) !!}
-
+         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   @include('errors.error')
 
    <div class="form-group">
-  {!! Form::label('unidad_id', 'Unidad ', ['class' => 'form-group alert']) !!}
-   {!! Form::text('unidad_id', null, ['class' => 'form-control alert', 'id' => 'editsubId']) !!}
+  {!! Form::label('unidad_id', 'Unidad ', ['class' => 'form-group', 'Style' => 'display:none']) !!}
+   {!! Form::text('unidad_id', null, ['class' => 'form-control alert', 'Style' => 'display:none', 'id' => 'editsubId']) !!}
    </div>
 
     <div class="form-group">
-  {!! Form::label('subtemas_id', 'SubTemas id', ['class' => 'form-group alert']) !!}
-   {!! Form::text('subtemas_id', null, ['class' => 'form-control alert', 'id' => 'Idsubtemas']) !!}
+  {!! Form::label('subtemas_id', 'SubTemas id', ['class' => 'form-group', 'Style' => 'display:none']) !!}
+   {!! Form::text('subtemas_id', null, ['class' => 'form-control alert', 'Style' => 'display:none', 'id' => 'Idsubtemas']) !!}
    <input name="actividad_id" type="hidden" id="subT">
   </div>
   
