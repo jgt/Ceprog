@@ -1,5 +1,6 @@
 <div id="chatForo" class="col-md-6 col-md-offset-1" Style="display:none">
-	
+	   
+       <a href="{{ route('showForo')}}" id="showForo" Style="display:none"></a>
 	<div class="container">
     <div class="row">
         <div class="col-md-5">

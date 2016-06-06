@@ -95,14 +95,6 @@ Route::group(['middleware' => 'admin',], function(){
 	Route::get('editarTutor/{id}', ['as' => 'editarTutor', 'uses' => 'AdmisionController@editarTutor']);
 	Route::post('updateTutor/{id}', ['as' => 'updateTutor', 'uses' => 'AdmisionController@updateTutor']);
 
-
-	Route::get('foro', ['as' => 'foro', 'uses' => 'ForoController@create']);
-	Route::post('foro', ['as' => 'foro.store', 'uses' => 'ForoController@foro']);
-	Route::get('listForo', ['as' => 'listForo', 'uses' => 'ForoController@listForo']);
-	Route::get('editForo/{id}', ['as' => 'editForo', 'uses' => 'ForoController@editForo']);
-	Route::post('updateForo/{id}', ['as' => 'updateForo', 'uses' => 'ForoController@updateForo']);
-	Route::get('deleteForo/{id}', ['as' => 'deleteForo', 'uses' => 'ForoController@deleteForo']);
-
 	Route::resource('admin', 'AdminController');
 
 	Route::resource('role', 'RoleController');
@@ -150,9 +142,21 @@ Route::group(['middleware' => 'alumnosAdmision'], function(){
 	
 });
 
+Route::group(['middleware' => 'adminMaestro'], function(){
+
+	Route::get('showForo/{id}', ['as' => 'showForo', 'uses' => 'ForoController@showForo']);
+	Route::get('foro', ['as' => 'foro', 'uses' => 'ForoController@create']);
+	Route::post('foro', ['as' => 'foro.store', 'uses' => 'ForoController@foro']);
+	Route::get('listForo', ['as' => 'listForo', 'uses' => 'ForoController@listForo']);
+	Route::get('editForo/{id}', ['as' => 'editForo', 'uses' => 'ForoController@editForo']);
+	Route::post('updateForo/{id}', ['as' => 'updateForo', 'uses' => 'ForoController@updateForo']);
+	Route::get('deleteForo/{id}', ['as' => 'deleteForo', 'uses' => 'ForoController@deleteForo']);
+
+});
+
 Route::group(['middleware' => 'maestro'], function(){
 
-	
+
 	Route::get('listActUser/{id}', ['as' => 'listActUser', 'uses' => 'MenuController@listActUser']);
 	Route::get('almSem/{id}', ['as' => 'almSem', 'uses' => 'MenuController@listAlumnos']);
 	Route::get('borrarImg/{id}', ['as' => 'borrarImg', 'uses' => 'SubtemasController@borrarImg']);

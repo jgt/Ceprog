@@ -1,12 +1,13 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comentario extends Model {
-
-	
-
-	protected $fillable = ['comment', 'link'];
+class Comentario extends Model
+{
+    
+    protected $fillable = ['comment'];
 
 	public function users()
 	{
@@ -29,5 +30,4 @@ class Comentario extends Model {
         }
       
     }
-
 }

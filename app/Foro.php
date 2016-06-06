@@ -1,12 +1,13 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Foro extends Model {
-
-	
-
-	protected $fillable = ['title', 'materia_id'];
+class Foro extends Model
+{
+    
+    protected $fillable = ['name', 'pregunta', 'tipo', 'materia_id'];
 
 
 	
@@ -32,5 +33,4 @@ class Foro extends Model {
         }
       
     }
-
 }

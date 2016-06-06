@@ -99,6 +99,7 @@
 		        e.preventDefault();
 		        crearUsuario();
 
+		        $('#preForo').hide();
 		        $('#listPersonal').hide();
 		       $('div#user').show();
 		      $('div#listaP').hide();

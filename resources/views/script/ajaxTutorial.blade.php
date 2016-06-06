@@ -6,6 +6,7 @@
 
 				e.preventDefault();
 				
+				$('#preForo').hide();
 				$('#chatForo').hide();
 				$('#listPersonal').hide();
 				$('#alumnosListUser').hide();
@@ -34,6 +35,8 @@
 				$('#reportes').hide();
 				$('#crr').hide();
 				$('#froadm').hide();
+				$('#listRub').hide();
+				$('#vizuaUnidad').hide();
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -70,6 +73,7 @@
 
 				e.preventDefault();
 
+				$('#preForo').hide();
 				$('#chatForo').hide();
 				$('#listPersonal').hide();
 				$('#prflistTuto').hide();
@@ -92,6 +96,8 @@
 			    $('#reportes').hide();
 			    $('#crr').hide();
 			    $('#froadm').hide();
+			    $('#listRub').hide();
+				$('#vizuaUnidad').hide();
 
 			    var route = $('#allTutorialAlm').attr('href');
 			    var tutorialAlm = $('#tablaTutorialAlm');

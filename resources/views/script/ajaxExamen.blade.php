@@ -6,11 +6,13 @@
 
       e.preventDefault();
 
+      $('#preForo').hide();
       $('#examen').show();
       $('div#planeacionC').hide();
       $('#pregunta').hide();
       $('#chatForo').hide();
       $('#froadm').hide();
+      $('#alumnosListUser').hide();
 
 
       $('#act').hide();
@@ -77,6 +79,7 @@
           success:function(resp){
 
             alert('El examen ha sido creado correctamente');
+            $('#preForo').hide();
             $('#examen').hide();
             $('#mod').hide();
             $('#modl').hide();

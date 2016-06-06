@@ -34,6 +34,7 @@
 
 				e.preventDefault();
 
+			$('#preForo').hide();
 			$('div#act').hide();
 			$('div#listAct').hide();
 		    $('div#examen').hide();
@@ -118,6 +119,7 @@
 
 			e.preventDefault();
 
+			$('#preForo').hide();
 			$('#listTut').hide();
 			$('#tutoriales').show();
 			$('#adminPlan').hide();
@@ -138,6 +140,7 @@
 
 			e.preventDefault();
 
+			$('#preForo').hide();
 			$('#listPersonal').hide();
 			$('#tutoriales').hide();
 			$('#listTut').show();
@@ -440,6 +443,7 @@
 
 			e.preventDefault();
 
+			$('#preForo').hide();
 			$('#admRole').show();
 			$('div#user').hide();
 			$('#admForo').hide();
@@ -492,10 +496,11 @@
 		});
 
 
-		$('#foroAdm').on('click', function(e){
+		$('a#foroAdm').on('click', function(e){
 
 			e.preventDefault();
 
+			
 			$('#admForo').show();
 			$('#admRole').hide();
 			$('div#user').hide();
@@ -507,6 +512,37 @@
 			$('#chatForo').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#alumnosListUser').hide();
+			$('#examen').hide();
+			$('#planeacionC').hide();
+			$('#listUnidades').hide();
+			$('#prflistTuto').hide();
+			$('#listRub').hide();
+			$('#vizuaUnidad').hide();
+
+			var materia = $(this).parents('ul');
+			var id = materia.data('id');
+			$('#matForo').val(id);
+			var tipo = $('#tipForo').val();
+
+			 if(tipo === 'tematico')
+			 {
+			 	$('#preguntaForo').show();
+			 }
+
+			 $('#tipForo').change(function(){
+
+			 	var tipodos = $('#tipForo').val();
+			 	
+			 	if(tipodos == 'tematico')
+			 	{
+			 		$('#preguntaForo').show();
+			 	}else {
+			 		
+			 		$('#preguntaForo').hide();
+			 	}
+
+			 });
 
 		});
 
@@ -553,6 +589,7 @@
 
 			e.preventDefault();
 
+			$('#preForo').hide();
 			$('#adminPlan').show();
 			$('#chatForo').hide();
 			$('#admRole').hide();

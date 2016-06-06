@@ -36,6 +36,7 @@
 			$('#reportes').hide();
 			$('#listUnidades').hide();
 			$('#crr').hide();
+			$('#preForo').hide();
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');
@@ -112,6 +113,7 @@
 			$('#chatForo').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#preForo').hide();
 			
 
 		$.get(route, function(resp){

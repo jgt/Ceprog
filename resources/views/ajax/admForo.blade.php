@@ -15,19 +15,32 @@
 						@include('errors.error')
 
 	
-	{!! Form::label('title', 'Titulo:', ['class' => 'control-label col-xs-2']) !!}
+	{!! Form::label('name', 'Titulo:', ['class' => 'control-label col-xs-2']) !!}
 
 		<div class="col-lg-10">
-	{!! Form::text('title', null, ['class' => 'form-control', 'id' => 'form']) !!}
+	{!! Form::text('name', null, ['class' => 'form-control', 'id' => 'form']) !!}
 	</div>
 
+	</div>
+
+	<div class="form-group" id="preguntaForo" Style="display:none">
+		{!! Form::label('pregunta', 'Pregunta del foro:', ['class' => 'control-label col-xs-2']) !!}
+		<div class="col-lg-10">
+	{!! Form::text('pregunta', null, ['class' => 'form-control']) !!}
+	</div>
+	</div>
+
+	<div class="form-group">
+		{!! Form::label('tipo', 'Tipo de foro:', ['class' => 'control-label col-xs-2']) !!}
+		<div class="col-lg-10">
+	{!! Form::select('tipo', Config::get('foros.tipo'), null, ['class' => 'form-control', 'id' => 'tipForo']) !!}
+	</div>
 	</div>
 
 	<div class="form-group">
 	
-	{!! Form::label('materia_id', 'Materia :', ['class' => 'control-label col-xs-2']) !!}
 	<div class="col-lg-10">
-	{!! Form::select('materia_id', $materiasForo, null, ['class' => 'form-control']) !!}
+	{!! Form::text('materia_id', null, ['class' => 'form-control', 'id' => 'matForo', 'Style' => 'display:none']) !!}
 	 <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 		<hr>
 		{!! Form::submit('Crear foro', ['class' => 'btn btn-default', 'id' => 'admForoCrt']) !!}

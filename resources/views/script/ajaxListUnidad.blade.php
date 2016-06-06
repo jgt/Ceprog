@@ -7,6 +7,8 @@
 
 			e.preventDefault();
 
+			$('#listTutAlm').hide();
+			$('#preForo').hide();
 			$('#froadm').hide();
 			$('#chatForo').hide();
 			$('div#act').hide();
@@ -94,6 +96,7 @@
 
 			e.preventDefault()
 
+			$('#preForo').hide();
 			$('#froadm').hide();
 			$('#chatForo').hide();
 			$('div#act').hide();

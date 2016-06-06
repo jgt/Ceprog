@@ -42,12 +42,25 @@ class ForoController extends Controller {
 		$this->validate($request, [
 
 
-			'title' => 'required|max:120',
+			'name' => 'required|max:120',
+			'tipo' => 'required',
 			'materia_id' => 'required'
 
 			]);
 
 		$foro = Foro::create($request->all());
+
+	}
+
+	public function showForo($id, Request $request)
+	{
+		$foro = Foro::find($id);
+
+		if($request->ajax())
+		{
+			return response()->json($foro);
+		}
+
 
 	}
 
@@ -82,7 +95,7 @@ class ForoController extends Controller {
 
 	public function comentario($id, Request $request)
 	{	 
- 		$comentarios = Foro::find($id)->with('comentarios.users')->get();
+ 		$comentarios = Foro::find($id)->with('comentarios.users.imagenes')->get();
 		
 		if($request->ajax())
 		{

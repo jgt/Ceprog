@@ -2,14 +2,7 @@
 	
 	$(document).on('ready', function(){
 
-		$('#bchat').on('click', function(e){
-
-			e.preventDefault();
-			var div = $('#mchat');
-			div.html(" ");
-
-		});
-
+		
 		function mensaje()
 		{
 			var id = $('#foroId').val();
@@ -29,7 +22,11 @@
 
 										$(comt.users).each(function(key, user){
 
-											div.append("<ul class='chat'><li class='left clearfix'><span class='chat-img pull-left'><img class='img-circle' src='http://placehold.it/50/55C1E7/fff&amp;text=U' alt='User Avatar'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"+user.name+"</strong><small class='pull-right text-muted'><span class='glyphicon glyphicon-time'>"+comt.created_at+"</span></small></div><p>"+comt.comment+"</p></div></li></ul>");
+											$(user.imagenes).each(function(key, img){
+
+												div.append("<ul class='chat'><li class='left clearfix'><span class='chat-img pull-left'><img class='img-circle' width='50px' src='imagen/"+img.original_img+"' alt='User Avatar'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"+user.name+"</strong><small class='pull-right text-muted'><span class='glyphicon glyphicon-time'>"+comt.created_at+"</span></small></div><p>"+comt.comment+"</p></div></li></ul>");
+
+											});
 
 										});
 
@@ -54,7 +51,7 @@
 
 				$(resp).each(function(key, value){
 
-					foro.append("<li><a href="+value.id+" id='nameForo'>"+value.title+"</a></li>");
+					foro.append("<li><a href="+value.id+" id='nameForo'>"+value.name+"</a></li>");
 
 
 				});
@@ -91,16 +88,27 @@
 					$('#alumnosListUser').hide();
 					$('#crr').hide();
 					$('#froadm').hide();
+					$('#alumnosListUser').hide();
+					$('#preForo').show();
 					
 
 					var id = $(this).attr('href');
 					$('#foroId').val(id);
 					var div = $('#mchat');
-
-					
-
 					var link = $('#comentForo').attr('href');
 					var route = link.split('%7Bid%7D').join(id);
+
+							//Foro tipo Tematico
+					var foro = $('#showForo').attr('href');
+					var foroRoute = foro.split('%7Bid%7D').join(id);
+
+					$.get(foroRoute, function(resp){
+
+						$('#preForo').html(resp.pregunta);
+
+					});
+
+					//Comentario de foros
 
 					$.get(route, function(resp){
 
@@ -113,8 +121,14 @@
 									$(value.comentarios).each(function(key, comt){
 
 										$(comt.users).each(function(key, user){
+											
+											$(user.imagenes).each(function(key, img){
 
-											div.append("<ul class='chat'><li class='left clearfix'><span class='chat-img pull-left'><img class='img-circle' src='http://placehold.it/50/55C1E7/fff&amp;text=U' alt='User Avatar'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"+user.name+"</strong><small class='pull-right text-muted'><span class='glyphicon glyphicon-time'>"+comt.created_at+"</span></small></div><p>"+comt.comment+"</p></div></li></ul>");
+												
+												div.append("<ul class='chat'><li class='left clearfix'><span class='chat-img pull-left'><img id='imgTamaño' width='50px' class='img-circle' src='imagen/"+img.original_img+"' alt='User Avatar'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"+user.name+"</strong><small class='pull-right text-muted'><span class='glyphicon glyphicon-time'>"+comt.created_at+"</span></small></div><p>"+comt.comment+"</p></div></li></ul>");
+
+								
+											});
 
 										});
 
@@ -152,17 +166,6 @@
 							var div = $('#mchat');
 							$('#btn-input').val(" ");
 							
-							$(resp).each(function(key, value){
-
-								$(value.users).each(function(key, user){
-	
-									div.append("<ul class='chat'><li class='left clearfix'><span class='chat-img pull-left'><img class='img-circle' src='http://placehold.it/50/55C1E7/fff&amp;text=U' alt='User Avatar'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"+user.name+"</strong><small class='pull-right text-muted'><span class='glyphicon glyphicon-time'>"+value.created_at+"</span></small></div><p>"+value.comment+"</p></div></li></ul>");
-
-								});
-
-							});
-
-
 						}
 
 					});
@@ -253,5 +256,13 @@
 
 		});
 	}
+
+	$('#bchat').on('click', function(e){
+
+			e.preventDefault();
+			var div = $('#mchat');
+			div.html(" ");
+
+		});
 
 </script>

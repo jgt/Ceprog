@@ -36,6 +36,7 @@ $(document).on('ready', function(){
 			$('#chatForo').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#preForo').hide();
 
 
 		$.get(route, function(resp){

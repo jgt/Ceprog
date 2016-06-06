@@ -6,6 +6,9 @@
 
 			e.preventDefault();
 
+			$('#prflistTuto').hide();
+			$('#listTutAlm').hide();
+			$('#preForo').hide();
 			$('div#act').hide();
 	        $('div#examen').hide();
 	        $('div#pregunta').hide();
@@ -29,6 +32,7 @@
 			$('#chatForo').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#alumnosListUser').hide();
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -50,6 +54,9 @@
 
 					e.preventDefault();
 
+					$('#prflistTuto').hide();
+					$('#listTutAlm').hide();
+					$('#preForo').hide();
 					$('div#act').hide();
 			        $('div#examen').hide();
 			        $('div#pregunta').hide();
@@ -137,6 +144,9 @@
 		$('a#almUnidadList').on('click', function(e){
 
 			e.preventDefault();
+			$('#prflistTuto').hide();
+			$('#listTutAlm').hide();
+			$('#preForo').hide();
 			$('div#act').hide();
 	        $('div#examen').hide();
 	        $('div#pregunta').hide();
@@ -179,6 +189,9 @@
 				$('a#Alunilist').on('click', function(e){
 
 					e.preventDefault();
+					$('#prflistTuto').hide();
+					$('#listTutAlm').hide();
+					$('#preForo').hide();
 					$('div#act').hide();
 			        $('div#examen').hide();
 			        $('div#pregunta').hide();

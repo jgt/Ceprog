@@ -28,8 +28,22 @@
 		        	var img = $('.img-circle').attr('src', '/imagen/'+resp.original_img);    
 		        	var imgUser = $('.user-image').attr('src', '/imagen/'+resp.original_img);  	
 
-		        	
-		        }
+
+		        },
+
+		        error:function(request, error){
+
+				if(error == "timeout")
+				{
+
+					alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+				}else{
+
+					alertify.alert('Tu cuenta ha sido actulizada.');
+				}
+
+			}
+
 
 			});
 
