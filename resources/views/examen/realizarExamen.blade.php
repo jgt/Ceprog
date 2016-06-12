@@ -21,7 +21,7 @@
 									<p>{{$pregunta->contenido}}</p>
 
 									<hr>
-										<input type="hidden" name="pregunta_id" value="{{$pregunta->id}}"> 
+										<input name="pregunta_id" value="{{$pregunta->id}}" Style="display:none"> 
 									@foreach($pregunta->respuestas as $respuesta)
 										
 										

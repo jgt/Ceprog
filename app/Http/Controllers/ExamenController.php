@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\Quist;
 use App\Examen;
 use App\Materia;
 use App\Pregunta;
@@ -40,8 +41,6 @@ class ExamenController extends Controller
             return response()->json($detalles);
 
         }
-
-    	return view('examen.createExamen', compact('materia'));
     }
 
     public function storeExamen(Request $request)
@@ -56,7 +55,6 @@ class ExamenController extends Controller
 				'catedratico' => 'required',
 				'fecha' => 'required',
 				'fechaF' => 'required',
-				'hora' => 'required',
 				'materia_id' => 'required',
 
 
@@ -69,9 +67,6 @@ class ExamenController extends Controller
         {
             return response()->json($examen);
         }
-
-    	flash()->overlay('Crea las preguntas de tu examen', 'Examen de la materia'. $examen->materia->name);
-    	return redirect()->route('examenP', [$examen->id]);
 
     }
 
@@ -103,10 +98,6 @@ class ExamenController extends Controller
             return response()->json($pregunta);
         }
 
-        flash()->overlay('Ha sido creada correctamente', 'Preguntas de examen de la materia'. $pregunta->examen->materia->name);
-
-        return redirect()->route('createRespuesta', [$pregunta->id]);
-
     }
 
 
@@ -120,21 +111,29 @@ class ExamenController extends Controller
 
 
 
-    public function storeRespuesta(Request $request)
-    {
+    public function storeRespuesta(Quist $request)
+    {   
 
-        $validation = $this->validate($request, [
+         
+        $name= $request->input('name');
+        $estado= $request->input('estado');
+        $pregunta_id= $request->input('pregunta_id');
 
-            'name' => 'required',
-            'estado' => 'required',
-            'pregunta_id' => 'required'
+        foreach ($name as $key => $n) {
+ 
+            $ins = new Respuesta;
+            $ins->pregunta_id = $pregunta_id;
+            $ins->name= $name[$key];           
+            $ins->estado= ($key == $estado);
+            $ins->save();
 
+        }
 
-            ]);
-
-       $respuestas = Respuesta::create($request->all());
-
-       return redirect()->back();
+        if($request->ajax())
+        {
+            return response()->json($ins);
+        }
+        
     }
 
     public function realizarExamen($id, Request $request)
@@ -163,12 +162,16 @@ class ExamenController extends Controller
               //enviamos todas las preguntas que no han sido contestadas
                 if(! $repuestaUser):
 
-                    $preguntaNext = Pregunta::where('id', $pregunta->id)->orderByRaw('RAND()')->paginate(1);
+                    $preguntaNext = Pregunta::where('id', $pregunta->id)->with('respuestas')->orderByRaw('RAND()')->paginate(1);
 
                 endif;
             }
 
-        return view('examen.realizarExamen', compact('preguntaNext', 'examen', 'nota'));
+            if($request->ajax())
+            {
+                return response()->json($preguntaNext);
+            }
+        //return view('examen.realizarExamen', compact('preguntaNext', 'examen', 'nota'));
 
     }
 
@@ -186,7 +189,11 @@ class ExamenController extends Controller
 
         ]);
     
-      return redirect()->route('realizarExamen', [$examen]);
+      if($request->ajax())
+      {
+
+        return response()->json($respuesta);
+      }
     }
 
      /**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRespuestaUserTable extends Migration
+class CreateRespuestaUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,17 @@ class CreateRespuestaUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('respuesta_user', function (Blueprint $table) {
-
+        Schema::create('respuesta_users', function (Blueprint $table) {
             $table->increments('id');
+
             $table->integer('pregunta_id')->unsigned()->index();
             $table->foreign('pregunta_id')->references('id')->on('preguntas')->onDelete('no action');
             $table->integer('respuesta_id')->unsigned()->index();
             $table->foreign('respuesta_id')->references('id')->on('respuestas')->onDelete('no action');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('no action');
-            
+
+            $table->timestamps();
         });
     }
 
@@ -32,6 +33,6 @@ class CreateRespuestaUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('respuesta_user');
+        Schema::drop('respuesta_users');
     }
 }

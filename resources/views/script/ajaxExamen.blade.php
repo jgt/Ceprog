@@ -2,6 +2,7 @@
   
   $(document).on('ready', function(){
 
+  
     $('a#createExa').on('click', function(e){
 
       e.preventDefault();
@@ -13,6 +14,7 @@
       $('#chatForo').hide();
       $('#froadm').hide();
       $('#alumnosListUser').hide();
+      $('div#preguntaExmamen').hide();
 
 
       $('#act').hide();
@@ -78,7 +80,7 @@
 
           success:function(resp){
 
-            alert('El examen ha sido creado correctamente');
+            alertify.alert('El examen ha sido creado correctamente');
             $('#preForo').hide();
             $('#examen').hide();
             $('#mod').hide();
@@ -88,7 +90,7 @@
             $('#ho').hide();
             $('#crr').hide();
             $('#froadm').hide();
-            $('#pregunta').show();
+            $('#preguntaExmamen').show();
             $('#np').val(" ");
             $('#enunciado').val(" "); 
             $('#examenId').val(resp.id);
@@ -100,7 +102,7 @@
              if(resp == 'timeout')
              {
 
-                alert('Lo siento hubo problemas con el internet por favor intentalo de nuevo');
+                alertify.alert('Lo siento hubo problemas con el internet por favor intentalo de nuevo');
              }
 
              $('#mod').show();
@@ -142,13 +144,13 @@
 
           success:function(resp){
 
-            alert('La pregunta fue creada');
+            alertify.alert('La pregunta fue creada');
 
             var preguntas = [resp];
             var contador = preguntas.length;
             var respC = $('#respC').val(" ");
-            $('#nameResp').val(" ");
             $('#prtId').val(resp.id);
+            $('input#nameRespUno').val(' ');
 
             if(np == false)
             {
@@ -163,7 +165,7 @@
             if(nuevoNp == 39)
             {
               $('#createPreg').hide();
-              alert('El limite de preguntas para este examen es de 40, apartir de aqui ya no puedes crear mas preguntas.');
+              alertify.alert('El limite de preguntas para este examen es de 40, apartir de aqui ya no puedes crear mas preguntas.');
             }
 
             if(contador == true)
@@ -178,10 +180,11 @@
 
             if(resp == 'timeout')
             {
-              alert('Lo sentimos la pregunta no fue creada por problemas de conexion');
+              alertify.alert('Lo sentimos la pregunta no fue creada por problemas de conexion');
             }else{
 
-              alert('Por favor rellena todos los campos solicitados en el formulario');
+              alertify.alert('Por favor rellena todos los campos solicitados en el formulario');
+              $('#modalRespuestas').modal('hide');
             }
 
           }
@@ -196,10 +199,10 @@
 
       e.preventDefault();
 
-      var form = $('#storeRespuesta');
-      var route = form.attr('action');
-      var metodo = form.attr('method');
-      var respR = $('#respC').val();
+       var form = $('#storeRespuesta');
+       var route = form.attr('action');
+       var metodo = form.attr('method');
+       var respR = $('#respC').val();
 
       $.ajax({
 
@@ -210,48 +213,33 @@
 
           success:function(resp){
 
-              alert('La respuesta fue creada correctamente');
+              $('#enunciado').val(' ');
 
-              $('div#pregunta').removeClass('alert');
-              $('#enunciado').val(" ");
-              $('#respName').val(" ");
-              var respuestas = [resp];
-              var contador = respuestas.length;
-
-              if(respR == false)
+              if(resp)
               {
-                var total = $('#respC').val(contador);
-              }else{
-
-                var nuevoResp = $('#respC').val();
-                var suma = parseFloat(nuevoResp) + parseFloat(contador);
-                var finalR = $('#respC').val(suma);
+                alertify.alert('La respuesta fueron guardadas correctamente');
+                $('div#preguntaExmamen').show();
+                $('#modalRespuestas').modal('hide');
               }
-
-              if(nuevoResp == 3)
-              {
-                $('#createResp').hide();
-                $('#canResp').show();
-              }
-
-
           },
 
           error:function(resp){
 
             if(resp == 'timeout')
             {
-              alert('Lo sentimos la opcion no se ha podido crear por problemas de conexion');
+              alertify.alert('Lo sentimos la opcion no se ha podido crear por problemas de conexion');
             }
 
-            $('#respName').html(resp.responseJSON.name);
+            alertify.alert('Los campos del formulario estan vacios.');
 
           }
 
       });
-
+      
     });
 
+   
   });
+
 
 </script>

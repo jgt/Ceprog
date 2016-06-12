@@ -1,4 +1,4 @@
-<div class="col-md-10 col-md-offset-1" Style="display:none" id="pregunta">
+<div class="col-md-10 col-md-offset-1" Style="display:none" id="preguntaExmamen">
 
   <h2 class="tamaños" id="color-letra" align="center"></h2>
 <h3 class="tamaños" id="color-letra" align="center"></h3>

@@ -8,7 +8,7 @@ class RespuestaUser extends Model
 {
     
 
-    protected $table = 'respuesta_user';
+    protected $table = 'respuesta_users';
 
     protected $fillable = ['pregunta_id', 'respuesta_id', 'user_id'];
 
@@ -21,7 +21,7 @@ class RespuestaUser extends Model
     {
     	return $this->belongsTo('App\Respuesta');
     }
-
+    
     public function users()
     {
     	return $this->belongsTo('App\User');

@@ -44,7 +44,7 @@
             if(moment().format() >= value.fecha && moment().format() <= value.fechaF)
             {
 
-              tablaExamenes.append("<tr><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='realizarExamen(this);'><i class='fa fa-pencil-square-o'></i></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td></tr>");
+              tablaExamenes.append("<tr><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='realizarExamen(this);' data-toggle='modal' data-target='#quiz'><i class='fa fa-pencil-square-o'></i></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td></tr>");
 
             }else{
               
@@ -58,6 +58,77 @@
 
       });
 
+        $('#nextQuiz').on('click', function(e){
+
+        e.preventDefault();
+
+        var id = $('#exaId').val();
+        var form = $('#dpg');
+        var link = form.attr('action');
+        var metodo = form.attr('method');
+        var route = link.split('%7Bid%7D').join(id);
+
+        $.ajax({
+
+            url: route,
+            headers: { 'X-CSFR-TOKEN': token},
+            type: metodo,
+            data: form.serialize(),
+
+            success:function(resp){
+
+              var id = $('#exaId').val();
+              var prueba = $('#pruebaR').attr('href');
+              var route = prueba.split('%7Bid%7D').join(id);
+              var divPreg = $('#pregQuiz');
+              var ulQuiz = $('#quizResp');
+
+              $.get(route, function(resp){
+
+                divPreg.html(" ");
+                ulQuiz.html(" ");
+
+                $(resp.data).each(function(key, preg){
+
+                  var preguntaId = $('#pregId').val(preg.id);
+
+                  divPreg.append("<p>"+preg.contenido+"</p>");
+
+                  $(preg.respuestas).each(function(key, respu){
+
+                    ulQuiz.append("<li><input type='radio' name='respuesta' value="+respu.id+">"+respu.name+"</li>");
+
+                    
+                  });
+
+                });
+
+              });
+              
+            },
+
+            error:function(request, error)
+            {
+
+              if(error)
+              {
+                $('#nextQuiz').hide();
+                $('#endQuiz').show();
+              }
+
+            }
+
+          });
+
+      });
+
+      $('#endQuiz').on('click', function(e){
+
+        e.preventDefault();
+
+
+      });
+
     });
 
     function realizarExamen(btn)
@@ -65,9 +136,33 @@
 
         var prueba = $('#pruebaR').attr('href');
         var route = prueba.split('%7Bid%7D').join(btn.value);
-        window.open(route);
+        var divPreg = $('#pregQuiz');
+        var ulQuiz = $('#quizResp');
+        var examenId = $('#exaId').val(btn.value);
+        
+        $.get(route, function(resp){
+
+          divPreg.html(" ");
+          ulQuiz.html(" ");
+
+          $(resp.data).each(function(key, preg){
+
+            var preguntaId = $('#pregId').val(preg.id);
+
+            divPreg.append("<p>"+preg.contenido+"</p>");
+
+            $(preg.respuestas).each(function(key, respu){
+
+              ulQuiz.append("<li><input type='radio' name='respuesta' value="+respu.id+">"+respu.name+"</li>");
+
+            });
+
+          });
+
+        });
 
       }
+
 
 
   </script>

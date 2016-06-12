@@ -14,10 +14,12 @@ class CreateRespuestasTable extends Migration
     {
         Schema::create('respuestas', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('name');
-            $table->boolean('estado')->default(true);
+            $table->boolean('estado')->default(false);
             $table->integer('pregunta_id')->unsigned();
             $table->foreign('pregunta_id')->references('id')->on('preguntas')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

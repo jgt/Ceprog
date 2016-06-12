@@ -48,14 +48,7 @@
    {!! Form::date('fechaF', null, ['class' => 'form-control']) !!}
    <strong id="fecF" class="validation"></strong>
   </div>
-
-  <div class="form-group">
-  {!! Form::label('hora', 'Durcion del examen ', ['class' => 'form-group']) !!}
-   {!! Form::time('hora', null, ['class' => 'form-control']) !!}
-   <strong id="ho" class="validation"></strong>
-  </div>
  
-  
    <div class="form-group">
 
     {!! Form::submit('Siguiente', ['class' => 'btn btn-default', 'id' => 'crearExa']) !!}  
