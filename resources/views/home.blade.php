@@ -39,6 +39,7 @@
  @include('ajax.Carreras.modalEditPlan')
  @include('ajax.Usuarios.modalEditUser')
  @include('ajax.modalQuiz')
+ @include('ajax.modalNotaExamen')
 
 <div class="container">
 	<div class="row">

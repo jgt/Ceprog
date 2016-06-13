@@ -44,7 +44,7 @@
             if(moment().format() >= value.fecha && moment().format() <= value.fechaF)
             {
 
-              tablaExamenes.append("<tr><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='realizarExamen(this);' data-toggle='modal' data-target='#quiz'><i class='fa fa-pencil-square-o'></i></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td></tr>");
+              tablaExamenes.append("<tr><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='realizarExamen(this);' data-toggle='modal' data-target='#quiz'><i class='fa fa-pencil-square-o'></i></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='notaExamen(this);' data-toggle='modal' data-target='#notaExamen'><i class='fa fa-pencil-square-o'></i></td></tr>");
 
             }else{
               
@@ -88,7 +88,9 @@
                 divPreg.html(" ");
                 ulQuiz.html(" ");
 
-                $(resp.data).each(function(key, preg){
+                var nota = $('#ntEx').val(resp.nota);
+
+                $(resp.pregunta).each(function(key, preg){
 
                   var preguntaId = $('#pregId').val(preg.id);
 
@@ -126,6 +128,45 @@
 
         e.preventDefault();
 
+        var id = $('#exaId').val();
+        var form = $('#exForm');
+        var link = form.attr('action');
+        var metodo = form.attr('method');
+        var route = link.split('%7Bid%7D').join(id);
+        
+        $.ajax({
+
+            url: route,
+            headers: { 'X-CSFR-TOKEN': token},
+            type: metodo,
+            data: form.serialize(),
+
+            success:function(resp){
+
+              $('#ntEx').val(' ');
+              $('#qexaId').val(' ');
+              alertify.alert("El examen ha termiando correctamente.");
+              $('#quiz').modal('hide');
+              var id = resp.id;
+              var link = $('#pdfExamen').attr('href');
+              var route = link.split('%7Bid%7D').join(id);
+              window.open(route);
+
+            },
+
+            error:function(request, error){
+
+              if(error)
+              {
+
+                alertify.alert("Error al procesar la solicitud.");
+              }
+
+            }
+
+
+        });
+
 
       });
 
@@ -134,6 +175,9 @@
     function realizarExamen(btn)
       {
 
+         $('#nextQuiz').show();
+         $('#endQuiz').hide();
+        var idExamen = $('#qexaId').val(btn.value);
         var prueba = $('#pruebaR').attr('href');
         var route = prueba.split('%7Bid%7D').join(btn.value);
         var divPreg = $('#pregQuiz');
@@ -145,10 +189,11 @@
           divPreg.html(" ");
           ulQuiz.html(" ");
 
-          $(resp.data).each(function(key, preg){
+          
+
+          $(resp.pregunta).each(function(key, preg){
 
             var preguntaId = $('#pregId').val(preg.id);
-
             divPreg.append("<p>"+preg.contenido+"</p>");
 
             $(preg.respuestas).each(function(key, respu){
@@ -160,6 +205,41 @@
           });
 
         });
+
+      }
+
+      function notaExamen(btn)
+      {
+
+        var id = btn.value;
+        var link = $('#ntoExamen').attr('href');
+        var route = link.split('%7Bid%7D').join(id);
+        var examen = $('#tablaNexamen');
+
+        $.get(route, function(resp){
+
+          examen.html(" ");
+          
+          $(resp).each(function(key, value){
+
+            $(value.examen).each(function(key, exa){
+
+              $(value.user).each(function(key, user){
+
+                if(value.user_id == user.id)
+                {
+
+                  examen.append("<tr><td>"+exa.modulo+"</td><td>"+value.resultado+"</td></tr>");
+                }
+
+              });
+
+            });
+
+          });
+
+        });
+
 
       }
 

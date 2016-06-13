@@ -12,6 +12,7 @@ use App\Respuesta;
 use App\Resultado;
 use App\RespuestaUser;
 use Auth;
+use App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -162,14 +163,16 @@ class ExamenController extends Controller
               //enviamos todas las preguntas que no han sido contestadas
                 if(! $repuestaUser):
 
-                    $preguntaNext = Pregunta::where('id', $pregunta->id)->with('respuestas')->orderByRaw('RAND()')->paginate(1);
+                    $preguntaNext = Pregunta::where('id', $pregunta->id)->with('respuestas')->orderByRaw('RAND()')->get();
 
                 endif;
             }
 
+            $detalles = ['pregunta' => $preguntaNext, 'nota' => $nota];
+
             if($request->ajax())
             {
-                return response()->json($preguntaNext);
+                return response()->json($detalles);
             }
         //return view('examen.realizarExamen', compact('preguntaNext', 'examen', 'nota'));
 
@@ -203,13 +206,49 @@ class ExamenController extends Controller
    
     public function terminarExamen($id, Request $request)
     {
-         
+            
+        $this->validate($request, [
+
+            'user_id' => 'required',
+            'examen_id' => 'required',
+            'resultado' => 'required'
+
+
+            ]);
+
          $resultado = Resultado::create($request->all());
 
-         return redirect()->route('menu');
+         if($request->ajax())
+         {
+            return response()->json($resultado);
+         }
 
     }
 
 
+    public function pdfExamen($id)
+     {
+        
+        $pdf = App::make('dompdf.wrapper');
+        $resultado = Resultado::find($id);
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('showExamen', compact('resultado'));
+        return $pdf->stream();
+
+        
+    }
+
+    public function notaExamen($id, Request $request)
+    {
+
+        $examen = Examen::find($id)->resultados()->with('user', 'examen')->get();
+
+        if($request->ajax())
+        {
+            return response()->json($examen);
+        }
+    }
    
 }

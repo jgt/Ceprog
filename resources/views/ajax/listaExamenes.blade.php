@@ -7,6 +7,7 @@
             <td><strong>Acciones</strong></td>
             <td><strong>Fecha de inicio</strong></td>
             <td><strong>Fecha de vencimiento</strong></td>
+            <td><strong>Nota</strong></td>
           </thead> 
           <tbody id="tablaExamenes"></tbody>
        </table>
