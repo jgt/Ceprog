@@ -250,5 +250,102 @@ class ExamenController extends Controller
             return response()->json($examen);
         }
     }
+
+
+    public function listPreguntas($id, Request $request)
+    {
+
+        $examen = Examen::find($id)->preguntas()->with('respuestas')->paginate(10);
+
+        if($request->ajax())
+        {
+
+            return response()->json($examen);
+        }
+
+
+    }
+
+
+     public function verExamen($id)
+     {
+        
+        $pdf = App::make('dompdf.wrapper');
+        $examen = Examen::find($id);
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('showPdfExamen', compact('examen'));
+        return $pdf->stream();
+
+        
+    }
+
+    public function editarPregunta($id, Request $request)
+    {
+
+        $pregunta = Pregunta::find($id);
+
+        if($request->ajax())
+        {
+            return response()->json($pregunta);
+        }
+
+    }
+
+    public function updatePregunta($id, Request $request)
+    {   
+
+        $this->validate($request, [
+
+            'contenido' => 'required',
+            'examen_id' => 'required',
+            'valor' => 'required'
+
+
+            ]);
+
+        $pregunta = Pregunta::find($id);
+        $pregunta->update($request->all());
+
+    }
+
+    public function editarExamen($id, Request $request)
+    {
+
+        $examen = Examen::find($id);
+        
+        if($request->ajax())
+        {
+            return response()->json($examen);
+        }
+
+    }
+
+    public function updateExamen($id, Request $request)
+    {
+
+        $examen = Examen::find($id);
+        $examen->update($request->all());
+
+    }
+
+
+
+    public function deleteExamen($id, Request $request)
+    {
+
+        $examen = Examen::find($id);
+        $examen->delete();
+
+    }
+
+
+    public function deletePregunta($id, Request $request)
+    {
+
+        $pregunta = Pregunta::find($id);
+        $pregunta->delete();
+    }
    
 }

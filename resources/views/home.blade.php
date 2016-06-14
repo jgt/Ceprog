@@ -40,6 +40,8 @@
  @include('ajax.Usuarios.modalEditUser')
  @include('ajax.modalQuiz')
  @include('ajax.modalNotaExamen')
+ @include('ajax.modalEditarExamen')
+ @include('ajax.modalEditPregunta')
 
 <div class="container">
 	<div class="row">
@@ -51,11 +53,17 @@
 					@include('ajax.listRubricas')
 					@include('ajax.vizualizacionUnidad')
 					@include('ajax.admRole')
+					@include('ajax.ListaActividades')
+					@include('ajax.listUnidades')
+					@include('ajax.listSubtemas')
+					@include('ajax.crearActividad')
 					@include('ajax.Carreras.ajaxListCarreras')
 					@include('ajax.admForo')
 					@include('ajax.chatCeprog')
 					@include('ajax.listForoadm')
 					@include('ajax.admPlan')
+					@include('ajax.listaPreguntas')
+					@include('ajax.listaExamenesMaestros')
 					@include('ajax.VunidadEstudiante')
 					@include('ajax.admListaPersonal')
 					@include('ajax.subirTutorial')
@@ -70,10 +78,6 @@
 					@include('ajax.listaAlumnosUser')
 					@include('ajax.crearExamen')
 					@include('ajax.crearPregunta')
-					@include('ajax.listUnidades')
-					@include('ajax.listSubtemas')
-					@include('ajax.crearActividad')
-					@include('ajax.ListaActividades')
 					@include('ajax.archivosCalificaciones')
 					@include('ajax.notasRubricas')
 

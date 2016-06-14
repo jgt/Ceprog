@@ -48,6 +48,7 @@
                     <li><a href="{{route('foro')}}" id="foroAdm">Crear foro</a></li>
                     <li><a href="{{ route('listplan', $materia)}}" id="listUni">Herramientas</a></li>
                     <li><a href="{{ route('almSem', $materia->id)}}" id="menuListUser">Lista de Alumnos</a></li>
+                    <li><a href="{{route('listExamen', $materia )}}" id="LexamenMaestro">Lista de examenes</a></li>
                     <li><a href="{{ route('allTutorial')}}" id="prfTutorial">Tutoriales</a></li>
                 <li><a href="{{ route('listplan', $materia)}}" id="ListUniSub"><i class='fa fa-plus fa-fw'></i>Lista de unidades</a>
                     <ul class="treeview-menu" id="nameUni"></ul>  

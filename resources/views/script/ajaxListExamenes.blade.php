@@ -2,7 +2,134 @@
 
     $(document).on('ready', function(){
 
+      $('a#LexamenMaestro').on('click', function(e){
 
+          e.preventDefault();
+           $('#listExamen').hide();
+          $('div#act').hide();
+          $('div#examen').hide();
+          $('div#pregunta').hide();
+          $('div#user').hide();
+          $('div#listAct').hide();
+          $('div#calAct').hide();
+          $('div#planeacionC').hide();
+          $('div#listUnidades').hide();
+          $('div#listSubtemas').hide();
+          $('#createVideos').hide();
+          $('div#vizuaUnidad').hide();
+          $('div#VunidadE').hide();
+          $('#listTutAlm').hide();
+          $('#adminPlan').hide();
+          $('#admRole').hide();
+          $('div#user').hide();
+          $('#admForo').hide();
+          $('#listTut').hide();
+          $('#alumnosListUser').hide();
+          $('#listPersonal').hide();
+          $('#reportes').hide();
+          $('#chatForo').hide();
+          $('#crr').hide();
+          $('#listPreg').hide();
+          $('#listExamenDocente').show();
+
+          var tabla = $('#tablaExamenesDocente');
+          var route = $(this).attr('href');
+
+          $.get(route, function(resp){
+
+            tabla.html(' ');
+
+            if(resp.total == 0)
+            {
+              alertify.alert('La materia no tiene examenes.');
+              $('#listExamenDocente').hide();
+            }else{
+
+              $(resp.data).each(function(key, value){
+
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+            }); 
+
+            } 
+
+          });
+
+      });
+
+      
+      $('#updateExa').on('click', function(e){
+
+        e.preventDefault();
+
+        var id = $('#exa_id').val();
+        var form = $('#form-exa');
+        var link = form.attr('action');
+        var metodo = form.attr('method');
+        var route = link.split('%7Bid%7D').join(id);
+
+        $.ajax({
+
+          url: route,
+          headers: { 'X-CSFR-TOKEN': token},
+          type: metodo,
+          data: form.serialize(),
+
+          success:function(resp){
+
+            alertify.alert('El examen ha sido editado correctamente.');
+
+             var tabla = $('#tablaExamenesDocente');
+             var link = $('#LexamenMaestro').attr('href');
+             var ruta = link.split('%7Bid7D').join(id);
+
+          $.get(ruta, function(resp){
+
+            tabla.html(' ');
+
+            $(resp.data).each(function(key, value){
+
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
+
+            });  
+
+          });
+
+          }
+
+        });
+
+      });
+
+      
+      $('#updatePreg').on('click', function(e){
+
+          e.preventDefault();
+          var id = $('#edpreguntaId').val();
+          var form = $('#edPreg-form');
+          var link = form.attr('action');
+          var metodo = form.attr('method');
+          var route = link.split('%7Bid%7D').join(id);
+          
+          $.ajax({
+
+              url: route,
+              headers: { 'X-CSFR-TOKEN': token},
+              type: metodo,
+              data: form.serialize(),
+
+              success:function(resp){
+
+                alertify.alert('La pregunta fue editada correctamente.');
+
+              }
+
+          })
+
+      });
+
+
+      //lista de examenes para estudiantes
       $('a#Lexamen').on('click', function(e){
 
         e.preventDefault();
@@ -33,7 +160,6 @@
           $('#reportes').hide();
           $('#chatForo').hide();
           $('#crr').hide();
-
         
         $.get(route, function(resp){
 
@@ -172,6 +298,9 @@
 
     });
 
+
+
+    //funciones para lista de examenes perfil maestro
     function realizarExamen(btn)
       {
 
@@ -208,6 +337,17 @@
 
       }
 
+
+      function verExamen(btn)
+      {
+
+        var id = btn.value;
+        var link = $('#verExa').attr('href');
+        var route = link.split('%7Bid%7D').join(id);
+        window.open(route);
+
+      }
+
       function notaExamen(btn)
       {
 
@@ -237,6 +377,147 @@
             });
 
           });
+
+        });
+
+
+      }
+
+      function borrarExamen(btn)
+      {
+
+          var id = btn.value;
+          var link = $('#deleteEx').attr('href');
+          var route = link.split('%7Bid%7D').join(id);
+
+          $.get(route, function(resp){
+
+             var tabla = $('#tablaExamenesDocente');
+             var link = $('#LexamenMaestro').attr('href');
+             var ruta = link.split('%7Bid7D').join(id);
+
+             alertify.alert('El examen ha sido borrado.');
+
+             $.get(ruta, function(resp){
+
+                tabla.html(' ');
+
+                $(resp.data).each(function(key, value){
+
+              tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+
+                });  
+
+             });
+
+          });
+      }
+
+      function editarExamen(btn)
+      {
+
+          var id = btn.value;
+          var link = $('#editExamen').attr('href');
+          var route = link.split('%7Bid%7D').join(id);
+          $('#exa_id').val(id);
+
+          $.get(route, function(resp){
+
+            $('#editExmat').val(resp.materia_id);
+            $('#authExam').val(resp.catedratico);
+            $('#modExam').val(resp.modalidad);
+            $('#mdExamen').val(resp.modulo);
+            $('#ini').val(resp.fecha);
+            $('#fin').val(resp.fechaF);
+
+          });
+      }
+
+
+      //funciones para el la lista de examenes perfil maestro seccion preguntas
+      function preguntas(btn)
+      { 
+
+        $('#listPreg').show();
+        $('#listExamenDocente').hide();
+        var id = btn.value;
+        var dltPregunta = $('#idDlt').attr('href', id);
+        var link = $('#listPreguntas').attr('href')
+        var route = link.split('%7Bid%7D').join(id);
+        var tabla = $('#tablaPreguntas');
+
+        $.get(route, function(resp){
+
+            tabla.html(' ');
+              
+              if(resp.total == 0)
+              {
+                alertify.alert('Este examen no tiene preguntas.');
+                $('#listPreg').hide();
+                $('#listExamenDocente').show();
+              }else{
+
+                $(resp.data).each(function(key, value){
+
+                  tabla.append("<tr><td>"+value.contenido+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarPregunta(this);' data-toggle='modal' data-target='#editPregunta'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarPregunta(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+                });
+
+              }
+
+        });
+
+      }
+
+      function editarPregunta(btn)
+      {
+
+        var id = btn.value;
+        var link = $('#edPreg').attr('href');
+        var route = link.split('%7Bid%7D').join(id);
+
+        $.get(route, function(resp){
+
+            $('#edenunciado').val(resp.contenido);
+            $('#edvalor').val(resp.valor);
+            $('#edexamenId').val(resp.examen_id);
+            $('#edpreguntaId').val(resp.id);
+
+        });
+
+      }
+
+      function borrarPregunta(btn)
+      {
+
+        var id = btn.value;
+        var link = $('#dltPregunta').attr('href');
+        var route = link.split('%7Bid%7D').join(id);
+
+        //lista de preguntas
+        var idExa = $('#idDlt').attr('href');
+        var enlace = $('#listPreguntas').attr('href')
+        var ruta = enlace.split('%7Bid%7D').join(idExa);
+        var tabla = $('#tablaPreguntas');
+
+        
+        $.get(route, function(resp){
+
+          alertify.alert('La pregunta ha sido borrada.');
+
+        });
+
+          //lista de preguntas
+         $.get(ruta, function(resp){
+
+            tabla.html(' ');
+
+            $(resp).each(function(key, value){
+
+              tabla.append("<tr><td>"+value.contenido+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarPregunta(this);' data-toggle='modal' data-target='#editPregunta'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarPregunta(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+            });
 
         });
 

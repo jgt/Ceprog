@@ -219,7 +219,8 @@
 
 				$(resp.data).each(function(key, value){
 
-					tablaForo.append("<tr><td>"+value.title+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='borrarForo(this);'</button><i class='fa fa-eraser' aria-hidden='true'></td></tr>");
+					console.log(value);
+					tablaForo.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='borrarForo(this);'</button><i class='fa fa-eraser' aria-hidden='true'></td></tr>");
 
 				});
 				

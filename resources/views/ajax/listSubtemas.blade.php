@@ -1,4 +1,4 @@
-<div id="listSubtemas" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="listSubtemas"  Style="display:none">
 
 
 		<a href="{{ route('updateSubtemas')}}" id="updateSubtemas" Style="display:none"></a>
