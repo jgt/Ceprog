@@ -37,6 +37,7 @@
 				$('#froadm').hide();
 				$('#listRub').hide();
 				$('#vizuaUnidad').hide();
+				$('#LexamenMaestro').hide();
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -96,8 +97,7 @@
 			    $('#reportes').hide();
 			    $('#crr').hide();
 			    $('#froadm').hide();
-			    $('#listRub').hide();
-				$('#vizuaUnidad').hide();
+			    $('#listExamenDocente').hide();
 
 			    var route = $('#allTutorialAlm').attr('href');
 			    var tutorialAlm = $('#tablaTutorialAlm');

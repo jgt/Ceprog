@@ -1,4 +1,4 @@
-<div id="froadm" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="froadm"  Style="display:none">
       
       <a href="{{ route('deleteForo')}}" id="deleteForo" Style="display:none"></a>
       <a href="{{ route('listForo')}}" id="lstForo" Style="display:none"></a>

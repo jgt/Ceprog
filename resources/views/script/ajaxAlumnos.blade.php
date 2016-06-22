@@ -7,6 +7,7 @@
 
 			e.preventDefault();
 
+			$('#listExamenDocente').hide();
 			$('#froadm').hide();
 			$('#chatForo').hide();
 			$('#listPersonal').hide();
@@ -114,6 +115,7 @@
 			$('#crr').hide();
 			$('#froadm').hide();
 			$('#preForo').hide();
+			$('#listExamenDocente').hide();
 			
 
 		$.get(route, function(resp){

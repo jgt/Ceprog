@@ -310,6 +310,29 @@ class ExamenController extends Controller
 
     }
 
+    public function editRespuesta($id, Request $request)
+    {
+
+        $respuestas = Pregunta::find($id)->respuestas()->get();
+
+        if($request->ajax())
+        {
+            return response()->json($respuestas);
+        }
+
+    }
+
+    public function updateRespuesta($id, Request $request)
+    {
+
+        $respuestas = Pregunta::find($id)->respuestas()->get();
+
+        foreach ($respuestas as $respuesta) {
+            
+            $respuesta->update();
+        }
+    }
+
     public function editarExamen($id, Request $request)
     {
 

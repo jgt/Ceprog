@@ -1,4 +1,4 @@
-<div id="listTut" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="listTut"  Style="display:none">
       
       <a href="{{ route('allTutorial')}}" id="allTutorial" Style="display:none"></a>
       <a href="{{ route('dwTutorial')}}" id="dwTutorial" Style="display:none"></a>

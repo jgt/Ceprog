@@ -28,25 +28,21 @@
   <div class="form-group">
   {!! Form::label('modalidad', 'Modalidad ', ['class' => 'form-group']) !!}
    {!! Form::text('modalidad', null, ['class' => 'form-control']) !!}
-   <strong id="mod" class="validation"></strong>
    </div>
 
    <div class="form-group">
   {!! Form::label('modulo', 'Modulo ', ['class' => 'form-group']) !!}
    {!! Form::text('modulo', null, ['class' => 'form-control']) !!}
-   <strong id="modl" class="validation"></strong>
    </div>
   
   <div class="form-group">
   {!! Form::label('fecha', 'Fecha de activacion ', ['class' => 'form-group']) !!}
    {!! Form::date('fecha', null, ['class' => 'form-control']) !!}
-   <strong id="fec" class="validation"></strong>
   </div>
 
   <div class="form-group">
   {!! Form::label('fechaF', 'Fecha limite ', ['class' => 'form-group']) !!}
    {!! Form::date('fechaF', null, ['class' => 'form-control']) !!}
-   <strong id="fecF" class="validation"></strong>
   </div>
  
    <div class="form-group">

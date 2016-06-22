@@ -34,6 +34,7 @@
 
 				e.preventDefault();
 
+			$('#listExamenDocente').hide();
 			$('#preForo').hide();
 			$('div#act').hide();
 			$('div#listAct').hide();
@@ -64,6 +65,7 @@
 			$('#reportes').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#tutoriales').hide();
 
 				var route = $('#admIndex').attr('href');
 				var personal = $('#tablaPersonal');
@@ -119,6 +121,7 @@
 
 			e.preventDefault();
 
+			$('#listExamenDocente').hide();
 			$('#preForo').hide();
 			$('#listTut').hide();
 			$('#tutoriales').show();
@@ -140,6 +143,7 @@
 
 			e.preventDefault();
 
+			$('#listExamenDocente').hide();
 			$('#preForo').hide();
 			$('#listPersonal').hide();
 			$('#tutoriales').hide();
@@ -500,7 +504,7 @@
 
 			e.preventDefault();
 
-			
+			$('#listExamenDocente').hide();
 			$('#admForo').show();
 			$('#admRole').hide();
 			$('div#user').hide();
@@ -589,6 +593,7 @@
 
 			e.preventDefault();
 
+			$('#listExamenDocente').hide();
 			$('#preForo').hide();
 			$('#adminPlan').show();
 			$('#chatForo').hide();

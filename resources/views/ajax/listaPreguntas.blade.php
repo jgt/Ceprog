@@ -1,8 +1,10 @@
-<div id="listPreg" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="listPreg"  Style="display:none">
       
         <a href="{{ route('editarPregunta')}}" Style="display:none" id="edPreg"></a>
         <a href="{{ route('deletePregunta')}}" Style="display:none" id="dltPregunta"></a>
         <a href="{{ route('verExamen')}}" Style="display:none" id="verExa"></a>
+        <a href="{{ route('editRespuesta')}}" Style="display:none" id="answer"></a>
+
         <a href="" id="idDlt" Style="display:none"></a>
         <div class="table-responsive">
        <table class="table">

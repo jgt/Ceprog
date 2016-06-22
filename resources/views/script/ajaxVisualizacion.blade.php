@@ -6,6 +6,7 @@
 
 			e.preventDefault();
 
+			$('#listExamenDocente').hide();
 			$('#prflistTuto').hide();
 			$('#listTutAlm').hide();
 			$('#preForo').hide();
@@ -54,6 +55,7 @@
 
 					e.preventDefault();
 
+					$('#listExamenDocente').hide();
 					$('#prflistTuto').hide();
 					$('#listTutAlm').hide();
 					$('#preForo').hide();
@@ -144,6 +146,8 @@
 		$('a#almUnidadList').on('click', function(e){
 
 			e.preventDefault();
+
+			$('#listExamenDocente').hide();
 			$('#prflistTuto').hide();
 			$('#listTutAlm').hide();
 			$('#preForo').hide();
@@ -189,6 +193,8 @@
 				$('a#Alunilist').on('click', function(e){
 
 					e.preventDefault();
+
+					$('#listExamenDocente').hide();
 					$('#prflistTuto').hide();
 					$('#listTutAlm').hide();
 					$('#preForo').hide();

@@ -42,6 +42,7 @@
  @include('ajax.modalNotaExamen')
  @include('ajax.modalEditarExamen')
  @include('ajax.modalEditPregunta')
+ @include('ajax.modalEditRespuesta')
 
 <div class="container">
 	<div class="row">

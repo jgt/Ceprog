@@ -1,4 +1,4 @@
-<div class="col-md-10 col-md-offset-1" style="display:none;" id="planeacionC">
+<div style="display:none;" id="planeacionC">
       
       <a href="{{ route('planeacion')}}" style="display:none;" id="plna"></a>
 

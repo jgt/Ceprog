@@ -1,4 +1,4 @@
-<div id="listUnidades" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="listUnidades"  Style="display:none">
       
        <a href="{{ route('listplan')}}" id="uniList" Style="display:none"></a> 
        <a href="{{ route('portafolio')}}" id="port" Style="display:none"></a>

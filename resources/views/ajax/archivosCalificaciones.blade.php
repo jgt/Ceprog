@@ -1,4 +1,4 @@
-  <div id="calAct" class="col-md-10 col-md-offset-1" Style="display:none">
+  <div id="calAct" Style="display:none">
  
         <div class="container">
   <div class="row">

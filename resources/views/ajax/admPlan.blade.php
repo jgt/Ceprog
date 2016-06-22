@@ -1,4 +1,4 @@
-<div id="adminPlan" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="adminPlan"  Style="display:none">
  
         
         {!! Form::open(['route' => 'carrera.store', 'method' => 'POST', 'form' => 'form-control', 'id' => 'form-plan' ]) !!}

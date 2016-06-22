@@ -120,6 +120,7 @@
 			   $('#chatForo').hide();
 			   $('#crr').hide();
 			   $('#froadm').hide();
+			   $('#listExamenDocente').hide();
 
 				
 			      

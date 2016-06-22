@@ -1,4 +1,4 @@
- <div id="tutoriales" class="col-md-10 col-md-offset-1" Style="display:none">
+ <div id="tutoriales" Style="display:none">
  
            <div class="container">
   <div class="row">

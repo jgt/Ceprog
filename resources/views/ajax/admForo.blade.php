@@ -1,4 +1,4 @@
-<div id="admForo" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="admForo"  Style="display:none">
  	
         
         {!! Form::open(['route' => 'foro.store', 'method' => 'POST', 'class' => 'form-horizontal', 'id' =>'form-createForo']) !!}

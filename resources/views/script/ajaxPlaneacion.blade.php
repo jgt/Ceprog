@@ -37,6 +37,7 @@ $(document).on('ready', function(){
 			$('#crr').hide();
 			$('#froadm').hide();
 			$('#preForo').hide();
+			$('#listExamenDocente').hide();
 
 
 		$.get(route, function(resp){

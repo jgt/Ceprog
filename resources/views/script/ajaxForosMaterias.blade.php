@@ -1,8 +1,7 @@
-<script>
+	<script>
 	
 	$(document).on('ready', function(){
 
-		
 		function mensaje()
 		{
 			var id = $('#foroId').val();
@@ -25,6 +24,8 @@
 											$(user.imagenes).each(function(key, img){
 
 												div.append("<ul class='chat'><li class='left clearfix'><span class='chat-img pull-left'><img class='img-circle' width='50px' src='imagen/"+img.original_img+"' alt='User Avatar'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"+user.name+"</strong><small class='pull-right text-muted'><span class='glyphicon glyphicon-time'>"+comt.created_at+"</span></small></div><p>"+comt.comment+"</p></div></li></ul>");
+
+
 
 											});
 
@@ -90,6 +91,7 @@
 					$('#froadm').hide();
 					$('#alumnosListUser').hide();
 					$('#preForo').show();
+					$('#listExamenDocente').hide();
 					
 
 					var id = $(this).attr('href');
@@ -151,7 +153,7 @@
 					var link = foro.attr('action');
 					var metodo = foro.attr('method');
 					var route = link.split('%7Bid%7D').join(foroId);
-
+					console.log(route);
 					$.ajax({
 
 
@@ -162,7 +164,8 @@
 
 						success:function(resp){
 
-							setInterval(mensaje, 2000);
+							setInterval(mensaje, 500);
+							console.log(resp);
 							var div = $('#mchat');
 							$('#btn-input').val(" ");
 							
@@ -209,6 +212,7 @@
 			$('#prflistTuto').hide();
 			$('#crr').hide();
 			$('#alumnosListUser').hide();
+			$('#listExamenDocente').hide();
 
 			var route = $(this).attr('href');
 			var tablaForo = $('#tablaForoadm');
@@ -249,7 +253,7 @@
 
 				$(resp.data).each(function(key, value){
 
-					tablaForo.append("<tr><td>"+value.title+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='borrarForo(this);'</button><i class='fa fa-eraser' aria-hidden='true'></td></tr>");
+					tablaForo.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='borrarForo(this);'</button><i class='fa fa-eraser' aria-hidden='true'></td></tr>");
 
 				});
 				

@@ -1,7 +1,21 @@
 <script>
   
   $(document).on('ready', function(){
+    var sum=0;
+    var flaq=false; 
 
+    //Valor por defefecto de la caja de texto valor
+    $('#porcen').val($('#valor').val());
+
+
+
+    $('#valor').keyup(function(){
+      if(!isNaN(parseFloat($(this).val())))
+          $('#porcen').val(parseFloat(sum)+parseFloat($(this).val()));
+       else
+        $('#porcen').val(sum);
+      
+    });
   
     $('a#createExa').on('click', function(e){
 
@@ -15,8 +29,7 @@
       $('#froadm').hide();
       $('#alumnosListUser').hide();
       $('div#preguntaExmamen').hide();
-
-
+      $('#listExamenDocente').hide();
       $('#act').hide();
       $('div#listAct').hide();
       $('div#user').hide();
@@ -81,6 +94,7 @@
           success:function(resp){
 
             alertify.alert('El examen ha sido creado correctamente');
+            $('#porcen').val(parseInt(0));
             $('#preForo').hide();
             $('#examen').hide();
             $('#mod').hide();
@@ -97,12 +111,16 @@
 
           },
 
-          error:function(resp){
+          error:function(request, error){
 
-             if(resp == 'timeout')
+             if(request == 'timeout')
              {
 
                 alertify.alert('Lo siento hubo problemas con el internet por favor intentalo de nuevo');
+             }else if(error)
+             {
+
+                 alertify.alert('Porfavor rellena todos los campos del formulario.');
              }
 
              $('#mod').show();
@@ -111,13 +129,7 @@
             $('#fecF').show();
             $('#ho').show();
             $('#froadm').hide();
-             $('#mod').html(resp.responseJSON.modalidad);
-             $('#modl').html(resp.responseJSON.modulo);
-             $('#fec').html(resp.responseJSON.fecha);
-             $('#fecF').html(resp.responseJSON.fechaF);
-             $('#ho').html(resp.responseJSON.hora);
-            
-
+          
           }
 
 
@@ -129,11 +141,18 @@
       $('#createPreg').on('click', function(e){
 
         e.preventDefault();
+        sum = sum+parseFloat($('#valor').val());
+        $('#porcen').val(sum);
 
         var form = $('#storePregunta');
         var route = form.attr('action');
         var metodo = form.attr('method');
         var np = $('#np').val();
+        var valor = $('#valor').val();
+        var porcen = $('#porcen').val();
+
+      if(porcen <= 10)
+        {
 
         $.ajax({
 
@@ -145,7 +164,9 @@
           success:function(resp){
 
             alertify.alert('La pregunta fue creada');
+            var porcen = $('#porcen').val(resp.valor);
 
+          //conteo de preguntas
             var preguntas = [resp];
             var contador = preguntas.length;
             var respC = $('#respC').val(" ");
@@ -160,18 +181,6 @@
                 var nuevoNp = $('#np').val();
                 var suma = parseFloat(nuevoNp) + parseFloat(contador);
                 var resultado = $('#np').val(suma);
-            }
-
-            if(nuevoNp == 39)
-            {
-              $('#createPreg').hide();
-              alertify.alert('El limite de preguntas para este examen es de 40, apartir de aqui ya no puedes crear mas preguntas.');
-            }
-
-            if(contador == true)
-            {
-              $('#createResp').show();
-              $('#canResp').hide();
             }
 
           },
@@ -192,7 +201,11 @@
 
         });
 
+      }else{
 
+        alertify.alert('Error.');
+      }
+    
       });
 
     $('#createResp').on('click', function(e){

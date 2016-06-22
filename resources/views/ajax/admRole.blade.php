@@ -1,4 +1,4 @@
-<div id="admRole" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="admRole"  Style="display:none">
  
         
         {!! Form::open(['route' => 'role.store', 'method' => 'POST', 'class' => 'form-horizontal', 'id' =>'form-createRole']) !!}

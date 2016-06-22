@@ -1,4 +1,4 @@
-<div id="listRub" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="listRub"  Style="display:none">
       
       <a href="{{ route('editrubrica')}}" id="EDR" Style="display:none"></a>
       <a href="{{ route('deleteRubrica')}}" id="deleteRubrica" Style="display:none"></a>

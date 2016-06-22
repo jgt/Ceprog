@@ -1,4 +1,4 @@
-<div id="listAct" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="listAct" Style="display:none">
       
        <a href="{{ route('verArchivos')}}" Style="display:none" id="archivosRoute"></a> 
        <a href="{{ route('calificacion')}}" Style="display:none" id="calificacionRoute"></a>  

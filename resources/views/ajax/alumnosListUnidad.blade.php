@@ -1,4 +1,4 @@
-<div id="AlmUni" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="AlmUni"  Style="display:none">
     
        <a href="{{ route('verPlaneacion')}}" id="verAct" Style="display:none"></a>
        <a href="{{ route('showVideos')}}" id="showVideos" Style="display:none"></a>

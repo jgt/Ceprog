@@ -1,7 +1,7 @@
 
 
 
-<div class="col-md-10 col-md-offset-1" Style="display:none" id="act">
+<div Style="display:none" id="act">
       {!! Form::open(['route' => 'profesor.store', 'method' => 'POST', 'class' => 'form-group', 'id' => 'prf']) !!}
          <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         <div class="container">

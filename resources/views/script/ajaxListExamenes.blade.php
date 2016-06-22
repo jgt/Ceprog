@@ -2,35 +2,64 @@
 
     $(document).on('ready', function(){
 
+      //cuando se edita la pregunta
+      function listaPreguntas()
+      {
+                var id = $('#edexamenId').val();
+                var link = $('#listPreguntas').attr('href')
+                var route = link.split('%7Bid%7D').join(id);
+                var tabla = $('#tablaPreguntas');
+
+                 $.get(route, function(resp){
+
+                  tabla.html(' ');
+          
+                  $(resp.data).each(function(key, value){
+
+                    tabla.append("<tr><td>"+value.contenido+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarPregunta(this);' data-toggle='modal' data-target='#editPregunta'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarPregunta(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+                    });
+
+                });
+      }
+
       $('a#LexamenMaestro').on('click', function(e){
 
           e.preventDefault();
-           $('#listExamen').hide();
-          $('div#act').hide();
-          $('div#examen').hide();
-          $('div#pregunta').hide();
-          $('div#user').hide();
-          $('div#listAct').hide();
-          $('div#calAct').hide();
-          $('div#planeacionC').hide();
-          $('div#listUnidades').hide();
-          $('div#listSubtemas').hide();
-          $('#createVideos').hide();
-          $('div#vizuaUnidad').hide();
-          $('div#VunidadE').hide();
-          $('#listTutAlm').hide();
-          $('#adminPlan').hide();
-          $('#admRole').hide();
-          $('div#user').hide();
-          $('#admForo').hide();
-          $('#listTut').hide();
-          $('#alumnosListUser').hide();
-          $('#listPersonal').hide();
-          $('#reportes').hide();
-          $('#chatForo').hide();
-          $('#crr').hide();
-          $('#listPreg').hide();
-          $('#listExamenDocente').show();
+
+           
+        $('#listTutAlm').hide();
+        $('#preForo').hide();
+        $('#froadm').hide();
+        $('#chatForo').hide();
+        $('div#act').hide();
+        $('div#listAct').hide();
+        $('div#examen').hide();
+        $('div#listExamen').hide();
+        $('div#calAct').hide();
+        $('div#planeacionC').hide();
+        $('div#listSubtemas').hide();
+        $('#createVideos').hide();
+        $('div#listAct').hide();
+        $('#Almact').hide();
+        $('div#vizuaUnidad').hide();
+        $('div#AlmUni').hide();
+        $('div#VunidadE').hide();
+        $('div#calAct').hide();
+        $('div#notasRubricas').hide();
+        $('#listRub').hide();
+        $('#listTutAlm').hide();
+        $('#adminPlan').hide();
+        $('#admRole').hide();
+        $('div#user').hide();
+        $('#admForo').hide();
+        $('#listTut').hide();
+        $('div#listUnidades').hide();
+        $('#listPersonal').hide();
+        $('#prflistTuto').hide();
+        $('#crr').hide();
+        $('#alumnosListUser').hide();
+        $('#listExamenDocente').show();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
@@ -120,13 +149,75 @@
 
               success:function(resp){
 
-                alertify.alert('La pregunta fue editada correctamente.');
+                    listaPreguntas();
+                    alertify.alert('La pregunta fue editada correctamente.');
+                    $('#editPregunta').modal('hide');
+                    $('#modaleditRespuestas').modal('show');
 
+                    var enlace = $('#answer').attr('href');
+                    var ruta = enlace.split('%7Bid%7D').join(id);
+                    
+                    $.get(ruta, function(resp){
+
+                        $(resp).each(function(key, value){
+
+                          
+
+                        });
+
+                    });
+
+
+
+              },
+
+              error:function(request, error){
+
+                if(error)
+                {
+
+                  alertify.alert('Tienes algunos errores porfavor verifica el formulario.');
+                }
               }
 
           })
 
       });
+
+
+      $('#respEditEx').on('click', function(){
+
+                        var form = $('#updateRespuesta');
+                        var link = form.attr('action');
+                        var metodo = form.attr('method');
+                        var route = link.split('%7Bid%7D').join(id);
+
+                    $.ajax({
+
+                        url: route,
+                        headers: { 'X-CSFR-TOKEN': token},
+                        type: metodo,
+                        data: form.serialize(),
+
+                        success:function(resp){
+
+                          alertify.alert('La respuestas han sido editadas.');
+
+                        },
+
+                        error:function(request, error){
+
+                          if(error)
+                          {
+                            alertify.alert('Tienes algunos errores porfavor verifica el formulario.');
+                          }
+
+                        }
+
+
+                    });
+
+                   });
 
 
       //lista de examenes para estudiantes
@@ -160,8 +251,10 @@
           $('#reportes').hide();
           $('#chatForo').hide();
           $('#crr').hide();
+          $('#LexamenMaestro').hide();
         
         $.get(route, function(resp){
+
 
           tablaExamenes.html(" ");
 

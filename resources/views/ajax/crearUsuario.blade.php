@@ -1,4 +1,4 @@
- <div id="user" class="col-md-10 col-md-offset-1" Style="display:none">
+ <div id="user" Style="display:none">
  
         <a href="{{ route('admin.create')}}" id="adminCrt" Style="display:none"></a>
 

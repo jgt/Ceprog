@@ -32,18 +32,20 @@ header {
 }
 
 #logo img {
-  width: 90px;
+  
+  position:absolute; 
+  left:20px;
+  width: 400px;
 }
 
 h1 {
-  border-top: 1px solid  #5D6975;
-  border-bottom: 1px solid  #5D6975;
+ 
   color: #5D6975;
   font-size: 2.4em;
   line-height: 1.4em;
   font-weight: normal;
   text-align: center;
-  margin: 0 0 20px 0;
+  margin: 100px 0 20px 0;
   background: url(dimension.png);
 }
 
@@ -133,4 +135,14 @@ footer {
   border-top: 1px solid #C1CED9;
   padding: 8px 0;
   text-align: center;
+}
+
+#olLetras {
+
+  list-style-type: upper-latin;
+}
+
+#olNumeros {
+
+  list-style-type: decimal;
 }

@@ -54,10 +54,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('home', 'HomeController@index');
 
-	Route::get('comentario/{id}', ['as' => 'comentario', 'uses' => 'ForoController@comentario']);
-
-	Route::post('preguntas/{id}', ['as' => 'preguntas', 'uses' => 'ForoController@store']);	
-
 	Route::get('enviado', ['as' => 'enviado', 'uses' => 'FileEntryController@enviado']);
 
 	Route::get('archivos/{id}', ['as' => 'archivos', 'uses' => 'FileEntryController@edit']);
@@ -124,6 +120,8 @@ Route::group(['middleware' => 'admin',], function(){
 Route::group(['middleware' => 'alumnosMaestros'], function(){
 
 	Route::get('forosMateria/{id}', ['as' => 'forosMateria', 'uses' => 'ForoController@forosMaterias']);
+	Route::get('comentario/{id}', ['as' => 'comentario', 'uses' => 'ForoController@comentario']);
+	Route::post('preguntas/{id}', ['as' => 'preguntas', 'uses' => 'ForoController@store']);	
 
 	Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'DisenoController@planPdf']);
 
@@ -168,6 +166,8 @@ Route::group(['middleware' => 'maestro'], function(){
 	Route::get('editSubtemas/{id}', ['as' => 'editSubtemas', 'uses' => 'SubtemasController@editSubtemas']);
 	Route::post('updateSubtemas/{id}', ['as' => 'updateSubtemas', 'uses' => 'SubtemasController@updateSubtemas']);
 
+	Route::get('editRespuesta/{id}', ['as' => 'editRespuesta', 'uses' => 'ExamenController@editRespuesta']);
+	Route::post('updateRespuesta/{id}', ['as' => 'updateRespuesta', 'uses' => 'ExamenController@updateRespuesta']);
 	Route::get('verExamen/{id}', ['as' => 'verExamen', 'uses' => 'ExamenController@verExamen']);
 	Route::get('deletePregunta/{id}', ['as' => 'deletePregunta', 'uses' => 'ExamenController@deletePregunta']);
 	Route::post('updatePregunta/{id}', ['as' => 'updatePregunta', 'uses' => 'ExamenController@updatePregunta']);

@@ -1,4 +1,4 @@
-<div id="listaP" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="listaP"  Style="display:none">
        
        <div id="msj-success" class="alert alert-success alert-dismissible" role="alert" style="display:none">
          

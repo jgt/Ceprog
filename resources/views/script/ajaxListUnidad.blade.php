@@ -7,6 +7,7 @@
 
 			e.preventDefault();
 
+			$('#listExamenDocente').hide();
 			$('#listTutAlm').hide();
 			$('#preForo').hide();
 			$('#froadm').hide();
@@ -96,6 +97,8 @@
 
 			e.preventDefault()
 
+			$('#listExamenDocente').hide();
+			$('#listTutAlm').hide();
 			$('#preForo').hide();
 			$('#froadm').hide();
 			$('#chatForo').hide();

@@ -1,4 +1,4 @@
-<div id="Almact" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="Almact"  Style="display:none">
         
         <a href="{{ Auth::user()}}" id="AuthUser" Style="display:none"></a>
         <a href="{{ route('pdf')}}" id="pdfAct" Style="display:none"></a>

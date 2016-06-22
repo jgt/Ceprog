@@ -26,17 +26,25 @@
 
     <div class="form-group">
 
-  {!! Form::label('valor', 'Porcentaje de la pregunta ', ['class' => 'form-group']) !!}
+  {!! Form::label('valor', 'Valor de la pregunta ', ['class' => 'form-group']) !!}
 
    {!! Form::text('valor', null, ['class' => 'form-control', 'id' => 'valor']) !!}
     </div>
   
    
-     <div class="form-group alert ">
+     <div class="form-group">
 
     {!! Form::label('examen_id', 'Examen id', ['class' => 'form-group', 'Style' => 'display:none']) !!}
 
    {!! Form::text('examen_id', null, ['class' => 'form-control','Style' => 'display:none', 'id' => 'examenId']) !!}
+   
+    </div>
+
+    <div class="form-group">
+
+    {!! Form::label('porcentaje', 'Valor total del examen ', ['class' => 'form-group']) !!}
+
+   {!! Form::text('porcentaje', null, ['class' => 'form-control', 'id' => 'porcen', 'disabled']) !!}
    
     </div>
 

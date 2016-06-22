@@ -1,4 +1,4 @@
-<div id="listExamen" class="col-md-10 col-md-offset-1" Style="display:none">
+<div id="listExamen" Style="display:none">
       
         <a href="{{ route('realizarExamen')}}" Style="display:none" id="pruebaR"></a>
         <div class="table-responsive">
