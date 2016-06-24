@@ -54,7 +54,8 @@
 
    {!! Form::text('NumeroP', null, [ 'class' => 'form-control', 'id' => 'np', 'disabled']) !!}
    <hr>
-    {!! Form::submit('Crear Pregunta', ['class' => 'btn btn-default', 'id' => 'createPreg', 'data-toggle' => 'modal', 'data-target' => '#modalRespuestas']) !!}
+    {!! Form::submit('Crear Pregunta', ['class' => 'btn btn-default', 'id' => 'createPreg']) !!}
+    <a href="#" class="btn btn-danger" id="endQuestion" Style="display:none">Salir</a>
   
   </div>
 

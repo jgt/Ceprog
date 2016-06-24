@@ -22,4 +22,5 @@ class ExamenRepository extends BaseRepository
 
 		return $examen;
 	}
+
 }

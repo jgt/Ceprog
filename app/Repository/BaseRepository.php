@@ -103,6 +103,11 @@ abstract class BaseRepository {
 
 		return $this->search($id)->examenes()->orderBy('created_at', 'DESC')->paginate(5);
 	}
+
+	public function getPreguntas($id)
+	{
+		return $this->search($id)->preguntas()->get();
+	}
 	
 }
 

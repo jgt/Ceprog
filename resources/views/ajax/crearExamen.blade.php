@@ -35,15 +35,27 @@
    {!! Form::text('modulo', null, ['class' => 'form-control']) !!}
    </div>
   
-  <div class="form-group">
-  {!! Form::label('fecha', 'Fecha de activacion ', ['class' => 'form-group']) !!}
-   {!! Form::date('fecha', null, ['class' => 'form-control']) !!}
-  </div>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                  {!! Form::label('fecha', 'Fecha de activación', ['class' => 'form-control']) !!}
+                  {!! Form::text('fecha', null, ['class' => 'form-control']) !!}
+                    
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>   
+              </div>
 
   <div class="form-group">
-  {!! Form::label('fechaF', 'Fecha limite ', ['class' => 'form-group']) !!}
-   {!! Form::date('fechaF', null, ['class' => 'form-control']) !!}
-  </div>
+                <div class='input-group date' id='datetimepicker2'>
+                  {!! Form::label('fechaF', 'Fecha limite', ['class' => 'form-control']) !!}
+                  {!! Form::text('fechaF', null, ['class' => 'form-control']) !!}
+                    
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>   
+              </div>
  
    <div class="form-group">
 

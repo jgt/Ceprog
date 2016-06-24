@@ -15,16 +15,33 @@ use Auth;
 use App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Repository\ExamenRepository;
 
 class ExamenController extends Controller
 {
     
+    private $examenRepository;
 
-    public function __construct()
+    public function __construct(ExamenRepository $examenRepository)
     {
 
-        
+        $this->examenRepository = $examenRepository;
     }
+
+
+
+    public function examenPreguntas($id, Request $request)
+    {
+
+        $preguntas = $this->examenRepository->getPreguntas($id);
+
+        if($request->ajax())
+        {
+            return response()->json($preguntas);
+        }
+    }
+
+
 
     public function createExamen($id, Request $request)
     {

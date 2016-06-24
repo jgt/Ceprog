@@ -119,6 +119,7 @@ Route::group(['middleware' => 'admin',], function(){
 
 Route::group(['middleware' => 'alumnosMaestros'], function(){
 
+	Route::get('listExamen/{id}', ['as' => 'listExamen', 'uses' => 'ActividadController@verExamen']);
 	Route::get('forosMateria/{id}', ['as' => 'forosMateria', 'uses' => 'ForoController@forosMaterias']);
 	Route::get('comentario/{id}', ['as' => 'comentario', 'uses' => 'ForoController@comentario']);
 	Route::post('preguntas/{id}', ['as' => 'preguntas', 'uses' => 'ForoController@store']);	
@@ -166,6 +167,7 @@ Route::group(['middleware' => 'maestro'], function(){
 	Route::get('editSubtemas/{id}', ['as' => 'editSubtemas', 'uses' => 'SubtemasController@editSubtemas']);
 	Route::post('updateSubtemas/{id}', ['as' => 'updateSubtemas', 'uses' => 'SubtemasController@updateSubtemas']);
 
+	Route::get('examenPreguntas/{id}', ['as' => 'examenPreguntas', 'uses' => 'ExamenController@examenPreguntas']);
 	Route::get('editRespuesta/{id}', ['as' => 'editRespuesta', 'uses' => 'ExamenController@editRespuesta']);
 	Route::post('updateRespuesta/{id}', ['as' => 'updateRespuesta', 'uses' => 'ExamenController@updateRespuesta']);
 	Route::get('verExamen/{id}', ['as' => 'verExamen', 'uses' => 'ExamenController@verExamen']);
@@ -238,7 +240,7 @@ Route::group(['middleware' => 'alumnos'], function(){
 	Route::post('terminarExamen/{id}', ['as' => 'terminarExamen', 'uses' => 'ExamenController@terminarExamen']);
 	Route::post('resultadoExamen/{id}', ['as' => 'resultadoExamen', 'uses' => 'ExamenController@resultadoExamen']);
 	Route::get('realizarExamen/{id}', ['as' => 'realizarExamen', 'uses' => 'ExamenController@realizarExamen']);
-	Route::get('listExamen/{id}', ['as' => 'listExamen', 'uses' => 'ActividadController@verExamen']);
+	
 
 	Route::get('archivosUserList', ['as' => 'archivosUserList', 'uses' => 'FileEntryController@enviado']);
 	Route::get('calCarrera/{id}', ['as' => 'calCarrera', 'uses' => 'ActividadController@calCarrera']);

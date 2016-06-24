@@ -2,6 +2,7 @@
 
     $(document).on('ready', function(){
 
+
       //cuando se edita la pregunta
       function listaPreguntas()
       {
@@ -60,6 +61,7 @@
         $('#crr').hide();
         $('#alumnosListUser').hide();
         $('#listExamenDocente').show();
+        $('#listPreg').hide();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
@@ -76,11 +78,13 @@
 
               $(resp.data).each(function(key, value){
 
-               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
             }); 
 
             } 
+
+
 
           });
 
@@ -118,7 +122,7 @@
 
             $(resp.data).each(function(key, value){
 
-               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
             });  
 
@@ -260,7 +264,11 @@
 
           $(resp.data).each(function(key, value){
 
-            if(moment().format() >= value.fecha && moment().format() <= value.fechaF)
+            var now = new Date();
+            var startDate = new Date(value.fecha);
+            var endDate = new Date(value.fechaF);
+
+            if(now >= startDate &&  now <= endDate)
             {
 
               tablaExamenes.append("<tr><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='realizarExamen(this);' data-toggle='modal' data-target='#quiz'><i class='fa fa-pencil-square-o'></i></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td><td><button class='btn btn-primary' id='Ex' value="+value.id+" OnClick='notaExamen(this);' data-toggle='modal' data-target='#notaExamen'><i class='fa fa-pencil-square-o'></i></td></tr>");
@@ -388,12 +396,168 @@
 
 
       });
+  
+      //crear preguntas del examen que aun no se ha completado.
+      $('#createP').on('click', function(e){
+
+          e.preventDefault();
+
+          var sum = $('#porcenIcm').val();
+          var form = $('#storePreguntaIcm');
+          var route = form.attr('action');
+          var metodo = form.attr('method');
+
+          $.ajax({
+
+              url: route,
+              headers: { 'X-CSFR-TOKEN': token},
+              type: metodo,
+              data: form.serialize(),
+
+              success:function(resp)
+              {
+
+                alertify.alert('La pregunta ha sido creada.');
+                $('#modalRespuestasIcm').modal('show');
+                $('#crearPreguntas').modal('hide');
+                $('#enunciadoIcm').val(" ");
+                $('#valorIcm').val(" ");
+
+                var preguntas = [resp];
+                var contador = preguntas.length;
+                var respC = $('#respC').val(" ");
+                $('#prtIcm').val(resp.id);
+                $('input#nameRespUnoIcm').val(' ');
+
+                if(np == false)
+                {
+                  var total = $('#np').val(contador);
+                }else{
+
+                    var nuevoNp = $('#np').val();
+                    var suma = parseFloat(nuevoNp) + parseFloat(contador);
+                    var resultado = $('#np').val(suma);
+                }
+
+              },
+
+              error:function(request, error)
+              {
+                if(error)
+                {
+                  alertify.alert("Hay errores en el formulario.");
+                }
+
+              }
+
+          });
+
+
+
+
+      });
+
+        //crear respuestas de los examenes incompletos
+        $('#createRespIcm').on('click', function(e){
+
+            e.preventDefault();
+            
+            var form = $('#storeRespuestaIcm');
+            var route = form.attr('action');
+            var metodo = form.attr('method');
+
+            $.ajax({
+
+                url: route,
+                headers: { 'X-CSFR-TOKEN': token},
+                type: metodo,
+                data: form.serialize(),
+
+                success:function(resp)
+                {
+
+                    if(resp)
+                    {
+                      alertify.alert('La respuesta fueron guardadas correctamente');
+                      $('#modalRespuestasIcm').modal('hide');
+                    }
+                },
+
+                error:function(request, error)
+                {
+
+                     if(error)
+                     {
+                        alertify.alert('Tienes errores en el formulario.');
+                     }
+
+                }
+
+
+            });
+
+
+        });
 
     });
 
 
 
     //funciones para lista de examenes perfil maestro
+
+    function crearPreguntas(btn) // crear preguntas si el examen esta incompleto
+    {
+
+
+      var id = btn.value;
+      $('#quizId').val(id);
+      var link = $('#examenPreguntas').attr('href');
+      var route = link.split('%7Bid%7D').join(id);
+      var sum = 0;
+
+      $.get(route, function(resp){
+
+          $('#npIcm').val(resp.length);
+
+        $(resp).each(function(key, value){
+
+            sum += parseFloat(value.valor);
+            var porcen = $('#porcenIcm').val(sum);
+            
+            $('#valorIcm').keyup(function(){
+            if(!isNaN(parseFloat($(this).val())))
+            { 
+             
+              var suma = parseFloat(sum) + parseFloat($(this).val());
+              $('#porcenIcm').val(suma);
+
+            }else{
+
+              $('#porcenIcm').val(sum);
+            }
+                  
+          });
+
+            if(sum >= 20)
+            {
+              $('#createP').hide();
+              $('#endQuestion').show();
+            }else{
+
+               $('#createP').show();
+               $('#endQuestion').hide();
+
+            }
+
+
+              });
+
+
+      });
+
+    }
+
+
     function realizarExamen(btn)
       {
 
@@ -416,7 +580,7 @@
           $(resp.pregunta).each(function(key, preg){
 
             var preguntaId = $('#pregId').val(preg.id);
-            divPreg.append("<p>"+preg.contenido+"</p>");
+            divPreg.append("<li><p>"+preg.contenido+"</p></li>");
 
             $(preg.respuestas).each(function(key, respu){
 
@@ -497,10 +661,9 @@
 
                 $(resp.data).each(function(key, value){
 
-              tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
-
-                });  
+            }); 
 
              });
 
@@ -553,7 +716,7 @@
 
                 $(resp.data).each(function(key, value){
 
-                  tabla.append("<tr><td>"+value.contenido+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarPregunta(this);' data-toggle='modal' data-target='#editPregunta'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarPregunta(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+                  tabla.append("<tr><td>"+value.contenido+"</td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarPregunta(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
                 });
 
@@ -599,18 +762,19 @@
 
           alertify.alert('La pregunta ha sido borrada.');
 
-        });
-
           //lista de preguntas
-         $.get(ruta, function(resp){
+          $.get(ruta, function(resp){
 
             tabla.html(' ');
 
-            $(resp).each(function(key, value){
+            $(resp.data).each(function(key, value){
 
-              tabla.append("<tr><td>"+value.contenido+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarPregunta(this);' data-toggle='modal' data-target='#editPregunta'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarPregunta(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+                console.log(value);
+              tabla.append("<tr><td>"+value.contenido+"</td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarPregunta(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
             });
+
+        });
 
         });
 

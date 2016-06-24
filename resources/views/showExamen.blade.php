@@ -8,21 +8,16 @@
 </head>
 <body>
 
-   <div id="logo">
-        <img src="img/ceprog.png">
-      </div>
-      <h1>Univesidad Ceprog</h1>
+   <div><img src="img/logo.png"></div>
+      <h3 align="center"><strong>Evaluación ordinaria</strong></h3>
       <div id="project">
         <div><span>Alumno</span>{{Auth::user()->name}}</div>
         <div><span>Materia</span>{{ $resultado->examen->materia->name}}</div>
         <div><span>Resultado</span>{{$resultado->resultado}}</div>
       </div>
     </header>
-    <main>
-      <div id="notices">
-        <div class="notice"></div>
-      </div>
-    </main>
+    <hr>
+    <main></main>
     <footer>
       Universidad ceprog Construimos tu futuro.
     </footer>

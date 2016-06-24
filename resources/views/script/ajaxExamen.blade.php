@@ -2,19 +2,19 @@
   
   $(document).on('ready', function(){
     var sum=0;
-    var flaq=false; 
-
+    
     //Valor por defefecto de la caja de texto valor
     $('#porcen').val($('#valor').val());
 
-
-
     $('#valor').keyup(function(){
       if(!isNaN(parseFloat($(this).val())))
-          $('#porcen').val(parseFloat(sum)+parseFloat($(this).val()));
-       else
+      {
+        $('#porcen').val(parseFloat(sum)+parseFloat($(this).val()));
+      }else{
+
         $('#porcen').val(sum);
-      
+      }
+            
     });
   
     $('a#createExa').on('click', function(e){
@@ -141,9 +141,7 @@
       $('#createPreg').on('click', function(e){
 
         e.preventDefault();
-        sum = sum+parseFloat($('#valor').val());
-        $('#porcen').val(sum);
-
+        
         var form = $('#storePregunta');
         var route = form.attr('action');
         var metodo = form.attr('method');
@@ -151,7 +149,7 @@
         var valor = $('#valor').val();
         var porcen = $('#porcen').val();
 
-      if(porcen <= 10)
+      if(porcen <= 20)
         {
 
         $.ajax({
@@ -163,9 +161,14 @@
 
           success:function(resp){
 
+            sum = sum+parseFloat($('#valor').val());
+            $('#porcen').val(sum);
+            $('#valor').val(" ");
             alertify.alert('La pregunta fue creada');
-            var porcen = $('#porcen').val(resp.valor);
+            $('#modalRespuestas').modal('show');
+            $('#endQuestion').hide();
 
+            
           //conteo de preguntas
             var preguntas = [resp];
             var contador = preguntas.length;
@@ -203,7 +206,16 @@
 
       }else{
 
-        alertify.alert('Error.');
+        alertify.alert('El examen ha llegado a su limite de porcentaje.');
+        $('#endQuestion').show();
+        $('#modalRespuestas').modal('hide');
+
+        $('#endQuestion').on('click', function(e){
+
+          e.preventDefault();
+          $('#preguntaExmamen').hide();
+
+        });
       }
     
       });

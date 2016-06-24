@@ -9,9 +9,13 @@
 
 <script src="{{ asset('js/vendor/moments.js')}}"  type="text/javascript"></script>
 
+<script src="{{ asset('js/vendor/momentlocal.js')}}" type="text/javascript"></script>
+
 <script src="{{ asset('js/vendor/select2.js')}}" type="text/javascript"></script>
 
 <script src="{{ asset('js/vendor/alertify.js')}}" type="text/javascript"></script>
+
+<script src="{{ asset('js/vendor/datetime.js')}}" type="text/javascript"></script>
 
 
 @include('script.select')
@@ -53,6 +57,9 @@
 @include('script.reportes.ajaxReportes')
 
 @include('script.listCarreras.ajaxListCarreras')
+
+@include('script.datetime')
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
