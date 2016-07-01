@@ -65,7 +65,7 @@ class MenuController extends Controller
             return response()->json($alumnos);
         }
 
-        return view('include.menu', compact('materias', 'roles', 'users', 'materiasForo', 'carreras', 'mta', 'semestres', 'alumnos'));
+        return view('home', compact('materias', 'roles', 'users', 'materiasForo', 'carreras', 'mta', 'semestres', 'alumnos'));
     }
 
 

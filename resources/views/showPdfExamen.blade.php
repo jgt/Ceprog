@@ -9,10 +9,10 @@
 <body>
 
    <div id="logo">
-        <img src="img/logo.png">
-        <h2 align="right"><strong>{{$examen->materia->creditos}}</strong></h2>
+        <img src="img/logo.jpg">
+        <h2 align="right"><strong>Clave: </strong>07PSU0088B</h2>
       </div>
-      <h1 align="center"><strong>Campus Palenque</strong></h1>
+      <br><br><br><br><br><br><br><br>
       <h3 align="center"><strong>Evaluación ordinaria</strong></h3>
       <div id="project">
         <div><span>Materia: </span>{{$examen->materia->name}}</div>
@@ -22,6 +22,7 @@
         <div><span>Catedratico: </span>{{$examen->catedratico}}</div>
         <div><span>Modulo: </span>{{ $examen->modulo}}</div>
         <div><span>Nota: </span>0 es incorrecta y 1 es correcta</div>
+        <div><strong>Instrucción: </strong> Selecciona el inciso que contenga la respuesta correcta.</div>
       </div>
     </header>
     <hr>

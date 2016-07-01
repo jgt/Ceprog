@@ -33,19 +33,29 @@
    <strong id="modl" class="validation"></strong>
    </div>
   
- <div class="form-group">
-
-   {!! Form::label('fecha', 'Fecha de Activación :', ['class' => 'form-group']) !!}
-
-   {!! Form::date('fecha', null, ['class' => 'form-control', 'id' => 'ini']) !!}
-    </div>
-
   <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                  {!! Form::label('fecha', 'Fecha de activación', ['class' => 'form-control']) !!}
+                  {!! Form::text('fecha', null, ['class' => 'form-control', 'id' => 'ini']) !!}
+                    
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>   
+              </div>
 
-   {!! Form::label('fechaF', 'Fecha Limite:  ', ['class' => 'form-group']) !!}
+              <div class="form-group">
+                <div class='input-group date' id='datetimepicker4'>
+                  {!! Form::label('fechaF', 'Fecha de activación', ['class' => 'form-control']) !!}
+                  {!! Form::text('fechaF', null, ['class' => 'form-control', 'id' => 'fin']) !!}
+                    
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>   
+              </div>
 
-   {!! Form::date('fechaF', null, ['class' => 'form-control', 'id' =>'fin']) !!}
-    </div>
+  
   
  {!! Form::close()!!}
 

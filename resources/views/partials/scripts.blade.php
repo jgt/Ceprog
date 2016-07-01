@@ -17,6 +17,8 @@
 
 <script src="{{ asset('js/vendor/datetime.js')}}" type="text/javascript"></script>
 
+<script src="{{ asset('js/vendor/datatables.js')}}"></script>
+
 
 @include('script.select')
 

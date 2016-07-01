@@ -28,6 +28,8 @@
      <link rel="stylesheet" href="{{ asset('css/vendor/chat.css')}}" rel="stylesheet" type="text/css">
 
       <link rel="stylesheet" href="{{ asset('css/vendor/datetime.css')}}" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="{{ asset('css/vendor/datatables.css')}}">
    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

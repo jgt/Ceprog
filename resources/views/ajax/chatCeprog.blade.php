@@ -1,9 +1,9 @@
-<div id="chatForo" Style="display:none">
+<div  id="chatForo" Style="display:none">
 	   
        <a href="{{ route('showForo')}}" id="showForo" Style="display:none"></a>
 	<div class="container">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-10">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-comment"></span> Chat
@@ -17,7 +17,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="panel-body" id="mchat"></div>
+                <div class="panel-body"  id="mchat"></div>
 
                 <div class="panel-footer">
                     <div class="input-group">

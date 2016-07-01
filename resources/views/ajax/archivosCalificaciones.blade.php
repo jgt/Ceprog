@@ -1,68 +1,53 @@
-  <div id="calAct" Style="display:none">
- 
-        <div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-1">
-      <div class="panel panel-default" id="usuario">
-        <div class="panel-heading"></div>
+<div id="calAct" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Calificación</h4>
+      </div>
+      <div class="modal-body">
+       {!! Form::open(['route' => ['nota', ':id'], 'method' => 'POST', 'class' => 'form-group', 'id' => 'form-calificacion']) !!}
+         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+  @include('errors.error')
 
-        <div class="panel-body">
-          <div class="form-group">
-
-            @include('errors.error')
-
-
-
-   {!! Form::open(['route' => ['nota', ':id'], 'method' => 'POST',  'id' => 'form-calificacion']) !!}
-     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
    <div class="form-group">
- {!! Form::label('user_id', 'Alumno: ', ['class' => 'control-label col-xs-2'])!!}
- {!! Form::text('user_id', null, ['id' => 'uid', 'Style' => 'display:none'])!!}
-</div>
-    <div class="col-lg-10">
+
+  {!! Form::label('user_id', 'Alumno: ', ['class' => 'form-group'])!!}
   {!! Form::text('usuario', null, ['class' => 'form-control', 'id' => 'nameAuth'])!!}
-  </div>
+  {!! Form::text('user_id', null, ['id' => 'uid', 'Style' => 'display:none'])!!}
+    </div>
 
-  </div>
-  <br>
+    <div class="form-group">
 
-  <div  class="form-group" id="calRbr"></div>
-
-  <div class="form-group">
-  
-  {!! Form::label('actividad_id', 'Actividad: ', ['class' => 'control-label col-xs-2'])!!}
-  {!! Form::text('actividad_id', null, ['id' => 'aid', 'Style' => 'display:none'])!!}
-  <div class="col-lg-10">
+  {!! Form::label('actividad_id', 'Actividad: ', ['class' => 'form-group'])!!}
   {!! Form::text('actividad', null, ['class' => 'form-control', 'id' => 'nameAct'])!!}
-  </div>
-<br>
-<br>
-<br>
-<div class="form-group" id="porcentaje">
-
-    <a href="#" class="btn btn-primary" data-toggle='modal' data-target='#porcentaje'><i class='fa fa-book'></i> Valor de las rubricas</a>
-
-</div>
-  <div class="form-group" id="rubricasAct"></div>
+  {!! Form::text('actividad_id', null, ['id' => 'aid', 'Style' => 'display:none'])!!}
+    </div>
     
-  <div class="form-group">
-    <a href="#"class="btn btn-success" id="sumar">Calcular</a>
-    <br><br>
-    {!! Form::label('promedio', 'Nota ', ['class' => 'control-label col-xs-2'])!!}
-    <div class="col-lg-10">
+    <div class="form-group">
+
+      {!! Form::label('rubrica', 'Rubricas', ['class' => 'form-group'])!!}
+      <ol type="1" id="ulR"></ol>
+    </div>
+   
+     <div class="form-group">
+
+    {!! Form::label('promedio', 'Nota ', ['class' => 'form-group'])!!}
     {!! Form::text('promedio', null, ['class' => 'form-control', 'id' => 'ntoFinal'])!!}
     <hr>
-    {!! Form::submit('Guardar Nota', ['class' => 'btn btn-warning', 'id' => 'subCal'])!!}
-  </div>
-  </div>
+    <a href="#" class="btn btn-success" id="sumar">Calcular</a>
 
-{!! Form::close()!!}
+    </div>
 
-  </div>
-  
-  
+    <div class="modal-footer">
+       {!! Form::submit('Guardar Nota', ['class' => 'btn btn-warning', 'id' => 'subCal'])!!}
+       <a href="#" class="btn btn-danger" id="subEnd" Style="display:none">Salir</a>
+      </div>
 
-        </div>
+  {!! Form::close() !!}
       </div>
     </div>
-     </div>
+
+  </div>
+</div>

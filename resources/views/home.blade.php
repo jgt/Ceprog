@@ -45,16 +45,19 @@
  @include('ajax.modalEditRespuesta')
  @include('ajax.modalPreguntas')
  @include('ajax.modalRespuestasIncompletas')
+ @include('ajax.archivosCalificaciones')
 
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 
 			<div class="panel panel-default">
-				
+					
+					
 					@include('ajax.planeacion')
 					@include('ajax.listRubricas')
 					@include('ajax.vizualizacionUnidad')
+					@include('ajax.listForoadm')
 					@include('ajax.admRole')
 					@include('ajax.ListaActividades')
 					@include('ajax.listUnidades')
@@ -63,7 +66,6 @@
 					@include('ajax.Carreras.ajaxListCarreras')
 					@include('ajax.admForo')
 					@include('ajax.chatCeprog')
-					@include('ajax.listForoadm')
 					@include('ajax.admPlan')
 					@include('ajax.listaPreguntas')
 					@include('ajax.listaExamenesMaestros')
@@ -81,7 +83,6 @@
 					@include('ajax.listaAlumnosUser')
 					@include('ajax.crearExamen')
 					@include('ajax.crearPregunta')
-					@include('ajax.archivosCalificaciones')
 					@include('ajax.notasRubricas')
 
 

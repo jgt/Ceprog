@@ -146,6 +146,4 @@ class ForoController extends Controller {
 
 	}
 
-	
-
 }

@@ -45,7 +45,6 @@
                    
                     <li><a href="{{ route('planeacion', $materia)}}" id="planeacion">Crear Unidad</a></li>
                     <li><a href="{{ route('examen', $materia)}}" id="createExa">Crear Examen</a></li>
-                    <li><a href="{{route('foro')}}" id="foroAdm">Crear foro</a></li>
                     <li><a href="{{ route('listplan', $materia)}}" id="listUni">Herramientas</a></li>
                     <li><a href="{{ route('almSem', $materia->id)}}" id="menuListUser">Lista de Alumnos</a></li>
                     <li><a href="{{route('listExamen', $materia )}}" id="LexamenMaestro">Lista de examenes</a></li>
@@ -111,7 +110,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('admin.create')}}" id="Cusuario">Crear usuario</a></li>
                         <li><a href="{{route('role.create')}}" id="Croles">Crear role</a></li>
-                        <li><a href="{{route('foro')}}" id="foroAdm">Crear foro</a></li>
+                         <li><a href="{{route('foro')}}" id="foroAdm">Crear foro</a></li>
                         <li><a href="{{route('carrera.create')}}" id="planAdm">Crear Plan</a></li>
                     </ul>
                 </li>

@@ -92,7 +92,11 @@ Route::group(['middleware' => 'admin',], function(){
 	Route::post('updateTutor/{id}', ['as' => 'updateTutor', 'uses' => 'AdmisionController@updateTutor']);
 
 	Route::resource('admin', 'AdminController');
-
+	Route::get('foro', ['as' => 'foro', 'uses' => 'ForoController@create']);
+	Route::post('foro', ['as' => 'foro.store', 'uses' => 'ForoController@foro']);
+	Route::get('editForo/{id}', ['as' => 'editForo', 'uses' => 'ForoController@editForo']);
+	Route::post('updateForo/{id}', ['as' => 'updateForo', 'uses' => 'ForoController@updateForo']);
+	
 	Route::resource('role', 'RoleController');
 
 	Route::resource('permiso', 'PermisosController');
@@ -119,6 +123,9 @@ Route::group(['middleware' => 'admin',], function(){
 
 Route::group(['middleware' => 'alumnosMaestros'], function(){
 
+	Route::get('reset', ['as' => 'reset', 'uses' => 'ResetController@reset']);
+	Route::post('resetC/{id}', ['as' => 'resetC', 'uses' => 'ResetController@resetC']);
+
 	Route::get('listExamen/{id}', ['as' => 'listExamen', 'uses' => 'ActividadController@verExamen']);
 	Route::get('forosMateria/{id}', ['as' => 'forosMateria', 'uses' => 'ForoController@forosMaterias']);
 	Route::get('comentario/{id}', ['as' => 'comentario', 'uses' => 'ForoController@comentario']);
@@ -135,20 +142,14 @@ Route::group(['middleware' => 'alumnosMaestros'], function(){
 
 Route::group(['middleware' => 'alumnosAdmision'], function(){
 
-	Route::get('reset', ['as' => 'reset', 'uses' => 'ResetController@reset']);
-	Route::post('resetC/{id}', ['as' => 'resetC', 'uses' => 'ResetController@resetC']);
-
+	
 	
 });
 
 Route::group(['middleware' => 'adminMaestro'], function(){
 
 	Route::get('showForo/{id}', ['as' => 'showForo', 'uses' => 'ForoController@showForo']);
-	Route::get('foro', ['as' => 'foro', 'uses' => 'ForoController@create']);
-	Route::post('foro', ['as' => 'foro.store', 'uses' => 'ForoController@foro']);
 	Route::get('listForo', ['as' => 'listForo', 'uses' => 'ForoController@listForo']);
-	Route::get('editForo/{id}', ['as' => 'editForo', 'uses' => 'ForoController@editForo']);
-	Route::post('updateForo/{id}', ['as' => 'updateForo', 'uses' => 'ForoController@updateForo']);
 	Route::get('deleteForo/{id}', ['as' => 'deleteForo', 'uses' => 'ForoController@deleteForo']);
 
 });

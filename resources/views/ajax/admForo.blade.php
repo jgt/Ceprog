@@ -2,11 +2,11 @@
  	
         
         {!! Form::open(['route' => 'foro.store', 'method' => 'POST', 'class' => 'form-horizontal', 'id' =>'form-createForo']) !!}
-  
+  <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
            <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-1">
-			<div class="panel panel-default" id="usuario">
+			<div class="panel panel-default">
 				<div class="panel-heading"></div>
 
 				<div class="panel-body">
@@ -38,10 +38,10 @@
 	</div>
 
 	<div class="form-group">
-	
+	{!!Form::label('materia_id', 'Materias: ', ['class' => 'control-label col-xs-2'])!!}
 	<div class="col-lg-10">
-	{!! Form::text('materia_id', null, ['class' => 'form-control', 'id' => 'matForo', 'Style' => 'display:none']) !!}
-	 <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+	{!! Form::select('materia_id', $mta, null, ['class' => 'form-control']) !!}
+	 
 		<hr>
 		{!! Form::submit('Crear foro', ['class' => 'btn btn-default', 'id' => 'admForoCrt']) !!}
 	</div>

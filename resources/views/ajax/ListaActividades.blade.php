@@ -1,7 +1,7 @@
 <div id="listAct" Style="display:none">
       
        <a href="{{ route('verArchivos')}}" Style="display:none" id="archivosRoute"></a> 
-       <a href="{{ route('calificacion')}}" Style="display:none" id="calificacionRoute"></a>  
+       <a href="{{ route('calificacion')}}" Style="display:none" id="calificacionRoute"></a>
         <a href="{{ route('getentry')}}" id="descargarRoute" class="alert"></a> 
        <a href="{{ route('apoyo')}}" Style="display:none" id="apoyoRoute"></a> 
        <a href="{{ route('material')}}" Style="display:none" id="materialRoute"></a>

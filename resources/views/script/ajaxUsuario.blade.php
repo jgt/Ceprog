@@ -69,13 +69,13 @@
 
 				var role =  $('#roleSelect').val();	
 				
-				if(role == 22)
+				if(role == 2)
 				{
 					
 					$('#userCarr').show();
 					$('#userSem').show();
 					$('#userMat').hide();
-				}else if(role == 23){
+				}else if(role == 3){
 
 					$('#userCarr').hide();
 					$('#userSem').hide();

@@ -15,10 +15,6 @@ class CreatePreguntasTable extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
             $table->text('contenido');
-            $table->text('distraptorUno');
-            $table->text('distraptorDos');
-            $table->text('distraptorTres');
-            $table->text('correcta');
             $table->string('valor');
 
             $table->integer('examen_id')->unsigned();

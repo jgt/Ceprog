@@ -1,10 +1,16 @@
 <div id="quiz" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
 
+      <div align="center">
+        <h1>Universidad Ceprog</h1>
+      </div>
+      <br><br>
+       <h4 align=" left"><strong>Instrucción</strong></h4>
+        <p align=" left">Selecciona el inciso que contenga la respuesta correcta.</p>
+      <hr>
         <a href="{{ route('pdfExamen')}}" id="pdfExamen" Style="display:none"></a>
 
         {!! Form::open(['route' => 'resultadoExamen', 'method' => 'POST', 'id' => 'dpg'])!!}

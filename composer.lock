@@ -2160,12 +2160,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rap2hpoutre/laravel-log-viewer.git",
-                "reference": "bef8c316b382fa9f6445190ea0251ec5bc7d13dd"
+                "reference": "cc955ff9e16bef8ce69c12d2b5761dd6e8b32a17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/bef8c316b382fa9f6445190ea0251ec5bc7d13dd",
-                "reference": "bef8c316b382fa9f6445190ea0251ec5bc7d13dd",
+                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/cc955ff9e16bef8ce69c12d2b5761dd6e8b32a17",
+                "reference": "cc955ff9e16bef8ce69c12d2b5761dd6e8b32a17",
                 "shasum": ""
             },
             "require": {
@@ -2193,12 +2193,14 @@
             ],
             "description": "A Laravel log reader",
             "keywords": [
+                "laravel",
                 "log",
                 "log-reader",
                 "log-viewer",
-                "logging"
+                "logging",
+                "lumen"
             ],
-            "time": "2016-05-03 20:10:40"
+            "time": "2016-06-23 14:12:51"
         },
         {
             "name": "styde/html",

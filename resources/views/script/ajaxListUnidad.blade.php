@@ -133,7 +133,7 @@
 			var route = link.split('%7Bid%7D').join(id);
 			var tablaUnidad = $('#tablaUnidad');
 			$('div#listUnidades').show();
-
+	
 			$.get(route, function(resp){
 
 				tablaUnidad.html(" ");
@@ -997,15 +997,18 @@
 
      function calificacion(btn){
 
+      var id = btn.value;
       var calificacion = $('#calificacionRoute').attr('href');
-      var route = calificacion.split('%7Bid%7D').join(btn.value);
-       var tblPorcentaje = $('#tablaPorcentaje');
-       $('div#listAct').hide();
-      $('div#calAct').show();
+      var route = calificacion.split('%7Bid%7D').join(id);
+      var ul = $('#ulR');
+      $('#subEnd').hide();
+     
+      $('#calAct').modal('show');
+
       $.get(route, function(resp){
 
-      	tblPorcentaje.html(" ");
-
+      		ul.html(" ");
+		      	
           $(resp.archivo).each(function(key, value){
 
             var objeto = value;
@@ -1018,14 +1021,8 @@
 
           $(resp.rubricas).each(function(key, value){
 
-            var rubricas = $('#form-calificacion');
-            var porcentaje = $('#tablaPorcentaje');
 
-
-            rubricas.append("<div class='form-group'><label class='control-label col-xs-2'>"+value.name+"</label><div class='col-lg-10'><input type='text' name='rubrica_"+value.id+"' id='rubInp' class='rubrica form-control'></input></div></div><br><br>");
-
-            porcentaje.append("<tr><td>"+value.name+"</td><td>"+value.total+"%</td></tr>");
-
+            ul.append("<li><strong>"+value.name+"</strong>("+value.total+")<input type='text' name='rubrica_"+value.id+"' id='rubInp' class='rubrica form-control'></li>");
           });
 
           $('#sumar').on('click', function(e){
@@ -1049,8 +1046,8 @@
 
       e.preventDefault();
 
-    var form = $('#form-calificacion');
     var id = btn.value;
+    var form = $('#form-calificacion');
     var ruta = form.attr('action').replace(':id', id);
     var metodo = form.attr('method');
   
@@ -1072,13 +1069,14 @@
             $('input#rubInp').prop('disabled', true);
             $('#ntoFinal').prop('disabled', true);
             $('#subCal').hide();
+            $('#subEnd').show();
 
           }
           
 
       },
 
-      error:function(resp){
+      error:function(request, resp){
 
         if(resp == 'timeout'){
 
@@ -1086,7 +1084,7 @@
 
         }else{
 
-            aletify.alert('Recuerda que la nota de cada rubrica no puede ser mayor a el valor que se le asigno a la rubrica.');
+            alertify.alert('Recuerda que la nota de cada rubrica no puede ser mayor a el valor que se le asigno a la rubrica.');
         }
 
 
