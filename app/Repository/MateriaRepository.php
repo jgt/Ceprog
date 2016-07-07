@@ -36,7 +36,7 @@ class MateriaRepository extends BaseRepository {
 
          $materia->update($request->all());
 
-         flash()->overlay('ha sido editada', 'La materia '. $materia->name);
+         return $materia;
 	}
 
 	public function deleteMateria($id)

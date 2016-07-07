@@ -33,11 +33,13 @@
 				$('#admForo').hide();
 				$('#listTut').hide();
 				$('#reportes').hide();
-				$('#crr').hide();
 				$('#froadm').hide();
 				$('#listRub').hide();
 				$('#vizuaUnidad').hide();
 				$('#LexamenMaestro').hide();
+				$('#crr').hide();
+				$('#semm').hide();
+				$('#mtaList').hide();
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -95,7 +97,9 @@
 			    $('div#listUnidades').hide();
 			    $('#listTutAlm').show();
 			    $('#reportes').hide();
-			    $('#crr').hide();
+			    $('#crr').hide();	
+				$('#semm').hide();
+				$('#mtaList').hide();
 			    $('#froadm').hide();
 			    $('#listExamenDocente').hide();
 

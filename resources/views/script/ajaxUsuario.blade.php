@@ -119,6 +119,8 @@
 			   $('#tutoriales').hide();
 			   $('#chatForo').hide();
 			   $('#crr').hide();
+			   $('#semm').hide();
+			   $('#mtaList').hide();
 			   $('#froadm').hide();
 			   $('#listExamenDocente').hide();
 

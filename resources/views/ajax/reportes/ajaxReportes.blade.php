@@ -1,4 +1,4 @@
-<div id="reportes" class="col-md-6 col-md-offset-1 alert">
+<div id="reportes">
 
       <a href="{{route('pdfCarrera')}}" id="pdfCar" class="alert"></a>
       

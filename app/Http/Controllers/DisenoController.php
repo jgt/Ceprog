@@ -109,7 +109,6 @@ class DisenoController extends Controller {
 
 
 	public function planPdf($id, Request $request)
-
 	{
 		
 		$pdf = App::make('dompdf.wrapper');

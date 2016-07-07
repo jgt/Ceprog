@@ -6,6 +6,7 @@
 
 
 @section('main-content')
+ 
  @include('ajax.modalUnidad')
  @include('ajax.modalRespuestas')
  @include('ajax.modalEditUnidad')
@@ -45,51 +46,62 @@
  @include('ajax.modalEditRespuesta')
  @include('ajax.modalPreguntas')
  @include('ajax.modalRespuestasIncompletas')
- @include('ajax.archivosCalificaciones')
-
+ @include('ajax.Semestres.modalEditSemestre')
+ @include('ajax.Materias.modalEditMateria')
+ 
 <div class="container">
+
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-
 			<div class="panel panel-default">
 					
-					
+					@include('ajax.Materias.listMaterias')
+					@include('ajax.Semestres.listSemestres')
 					@include('ajax.planeacion')
+					@include('ajax.crearActividad')
+					@include('ajax.subirTutorial')
+					@include('ajax.admPlan')
+					@include('ajax.crearPregunta')
+					@include('ajax.crearExamen')
+					@include('ajax.listaAlumnosUser')
+					@include('ajax.listaUser')
+					@include('ajax.listPrfTuto')
+					@include('ajax.almActividad')
+					@include('ajax.alumnosListUnidad')
+					@include('ajax.crearUsuario')
+					@include('ajax.listTutorial')
+					@include('ajax.listTutorialAlm')
+					@include('ajax.listaExamenes')
+					@include('ajax.admListaPersonal')
+					@include('ajax.VunidadEstudiante')
+					@include('ajax.listaExamenesMaestros')
+					@include('ajax.listaPreguntas')
+					@include('ajax.chatCeprog')
+					@include('ajax.admForo')
+					@include('ajax.Carreras.ajaxListCarreras')
+					@include('ajax.listSubtemas')
+					@include('ajax.listUnidades')
+					@include('ajax.ListaActividades')
+					@include('ajax.admRole')
+					@include('ajax.listForoadm')
 					@include('ajax.listRubricas')
 					@include('ajax.vizualizacionUnidad')
-					@include('ajax.listForoadm')
-					@include('ajax.admRole')
-					@include('ajax.ListaActividades')
-					@include('ajax.listUnidades')
-					@include('ajax.listSubtemas')
-					@include('ajax.crearActividad')
-					@include('ajax.Carreras.ajaxListCarreras')
-					@include('ajax.admForo')
-					@include('ajax.chatCeprog')
-					@include('ajax.admPlan')
-					@include('ajax.listaPreguntas')
-					@include('ajax.listaExamenesMaestros')
-					@include('ajax.VunidadEstudiante')
-					@include('ajax.admListaPersonal')
-					@include('ajax.subirTutorial')
-					@include('ajax.listaExamenes')
-					@include('ajax.listTutorialAlm')
-					@include('ajax.listTutorial')
-					@include('ajax.crearUsuario')
-					@include('ajax.alumnosListUnidad')
-					@include('ajax.almActividad')
-					@include('ajax.listPrfTuto')
-					@include('ajax.listaUser')
-					@include('ajax.listaAlumnosUser')
-					@include('ajax.crearExamen')
-					@include('ajax.crearPregunta')
 					@include('ajax.notasRubricas')
+					@include('ajax.crearCalificacion')
 
 
+
+
+
+
+					
+					
+			</div>
 		</div>
 	</div>
 </div>
 
 @endsection
+
 
 

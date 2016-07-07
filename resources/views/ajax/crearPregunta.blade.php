@@ -1,23 +1,19 @@
-<div Style="display:none" id="preguntaExmamen">
+<div  Style="display:none" id="preguntaExmamen">
 
-  <h2 class="tamaños" id="color-letra" align="center"></h2>
+<h2 class="tamaños" id="color-letra" align="center"></h2>
 <h3 class="tamaños" id="color-letra" align="center"></h3>
 
-  
   {!! Form::open(['route' => 'storePregunta', 'method' => 'POST', 'id' => 'storePregunta'])!!}
      <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-<div class="container">
+ <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading"></div>
 
         <div class="panel-body">
-        
-            @include('errors.error')
 
-
-  <div class="form-group">
+<div class="form-group">
 
   {!! Form::label('contenido', 'Enunciado ', ['class' => 'form-group']) !!}
 
@@ -30,9 +26,8 @@
 
    {!! Form::text('valor', null, ['class' => 'form-control', 'id' => 'valor']) !!}
     </div>
-  
-   
-     <div class="form-group">
+
+  <div class="form-group">
 
     {!! Form::label('examen_id', 'Examen id', ['class' => 'form-group', 'Style' => 'display:none']) !!}
 
@@ -40,7 +35,7 @@
    
     </div>
 
-    <div class="form-group">
+  <div class="form-group">
 
     {!! Form::label('porcentaje', 'Valor total del examen ', ['class' => 'form-group']) !!}
 
@@ -48,7 +43,8 @@
    
     </div>
 
-    <div class="form-group">
+
+   <div class="form-group">
 
    {!! Form::label('numeroP', 'Preguntas creadas', ['class' => 'form-group']) !!}
 
@@ -58,16 +54,13 @@
     <a href="#" class="btn btn-danger" id="endQuestion" Style="display:none">Salir</a>
   
   </div>
-
-    </div>
-
+   
+            </div>
+           </div>
         </div>
-
       </div>
     </div>
-  </div>
-</div>
 
-{!! Form::close()!!}  
+  {!! Form::close() !!}
 
 </div>

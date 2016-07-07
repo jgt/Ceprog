@@ -28,7 +28,9 @@
 
           e.preventDefault();
 
-           
+        $('#mtaList').hide();
+        $('#crr').hide();
+        $('#semm').hide();
         $('#listTutAlm').hide();
         $('#preForo').hide();
         $('#froadm').hide();
@@ -256,6 +258,9 @@
           $('#chatForo').hide();
           $('#crr').hide();
           $('#LexamenMaestro').hide();
+          $('#crr').hide();
+          $('#semm').hide();
+          $('#mtaList').hide();
         
         $.get(route, function(resp){
 

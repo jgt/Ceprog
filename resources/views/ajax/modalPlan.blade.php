@@ -27,7 +27,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-        <a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#mdlMateria" id="mdlSem">Crear</a>
+        <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#mdlMateria" class="btn btn-primary" id="mdlSem">Crear</a>
       </div>
     </div>
 

@@ -34,10 +34,12 @@ $(document).on('ready', function(){
 			$('#listPersonal').hide();
 			$('#reportes').hide();
 			$('#chatForo').hide();
-			$('#crr').hide();
 			$('#froadm').hide();
 			$('#preForo').hide();
 			$('#listExamenDocente').hide();
+			$('#crr').hide();
+			$('#semm').hide();
+			$('#mtaList').hide();
 
 
 		$.get(route, function(resp){

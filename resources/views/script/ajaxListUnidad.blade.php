@@ -7,6 +7,8 @@
 
 			e.preventDefault();
 
+			$('#mtaList').hide();
+			$('#semm').hide();
 			$('#listExamenDocente').hide();
 			$('#listTutAlm').hide();
 			$('#preForo').hide();
@@ -41,6 +43,7 @@
 			$('#alumnosListUser').show();
 			var route = $(this).attr('href');
 			var tablaAlumnos = $('#tablaAlumnosList');
+
 			
 			$.get(route, function(resp){
 
@@ -49,6 +52,8 @@
 				$(resp).each(function(key, value){
 
 					$(value.semestre).each(function(key, sem){
+
+						$(sem.carrera).each(function(key, carrera){
 
 						$(sem.users).each(function(key, user){
 
@@ -68,12 +73,12 @@
 												{	
 													tablaAlumnos.html(" ");
 
-													tablaAlumnos.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='listUserAct(this);' data-toggle='modal' data-target='#prbUser' </button><i class='fa fa-pencil-square-o'></i></td></tr>");
+													tablaAlumnos.append("<tr><td>"+user.name+"</td><td>"+carrera.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='listUserAct(this);' data-toggle='modal' data-target='#prbUser'</button><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+user.id+" OnClick='resportePdf(this);' </button><i class='fa fa-pencil-square-o'></i></td></tr>");
 												}
 												
 										});
 
-											tablaAlumnos.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='listUserAct(this);' data-toggle='modal' data-target='#prbUser' </button><i class='fa fa-pencil-square-o'></i></td></tr>");
+											tablaAlumnos.append("<tr><td>"+user.name+"</td><td>"+carrera.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='listUserAct(this);' data-toggle='modal' data-target='#prbUser'</button><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+user.id+" OnClick='resportePdf(this);' </button><i class='fa fa-pencil-square-o'></i></td></tr>");
 										}
 
 							});
@@ -83,10 +88,12 @@
 							alertify.alert("Esta materia no tiene alumnos inscritos.");
 						}
 
+							});
+
 						});
 					});
 
-				});
+				});	
 
 			});
 
@@ -97,6 +104,7 @@
 
 			e.preventDefault()
 
+			$('#mtaList').hide();
 			$('#listExamenDocente').hide();
 			$('#listTutAlm').hide();
 			$('#preForo').hide();
@@ -127,6 +135,7 @@
 			$('#alumnosListUser').hide();
 			$('#listPersonal').hide();
 			$('#crr').hide();
+			$('#semm').hide();
 			var link = $('#uniList').attr('href');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -150,6 +159,16 @@
 
 	});
 
+	function resportePdf(btn){
+
+		var id = btn.value;
+		var link = $('#reportePdf').attr('href');
+		var route = link.split('%7Bid%7D').join(id);
+		window.open(route);
+	}
+
+
+
 	function listUserAct(btn){
 
 			var id = btn.value;
@@ -170,18 +189,30 @@
 
 							$(act.fileentries).each(function(key, file){
 
-								$(file.user).each(function(key, user){
+									var archivos = $('#archivosRoute').attr('href');
+							        var ruta = archivos.split('%7Bid%7D').join(file.actividad_id);
+							        var tablaArchivos = $('#tablaArchivos');
 
-									if(userId == file.user_id)
-								{
+							        $.get(ruta, function(resp){
 
-									 var filename = file.filename;
-              						 var cadena = filename.split(' ').join('%20');
+							        	$(file.user).each(function(key, user){
 
-									tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td></tr>");
-								}
+											if(userId == file.user_id && resp.nota == 0)
+										{
 
-								});
+											 var filename = file.filename;
+		              						 var cadena = filename.split(' ').join('%20');
+
+											tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' OnClick='calificacionUser(this);' value="+file.id+"><i class='fa fa-book' aria-hidden='true'></i></button></td></tr>");
+										}else{
+
+											tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td><td>Calificado</td></tr>");
+										}
+
+										});
+
+							        });
+								
 							});
 						});
 
@@ -190,6 +221,115 @@
 				});			
 			});
 
+		}
+
+		function calificacionUser(btn)
+		{
+			var id = btn.value;
+	        var calificacion = $('#calificacionRoute').attr('href');
+	        var route = calificacion.split('%7Bid%7D').join(id);
+	        var ul = $('#ulR');
+			$('#prbUser').modal('hide');
+			$('#calAct').show();
+			$('#subCal').show();
+		    $('#subEnd').hide();
+			$('#alumnosListUser').hide();
+
+			$.get(route, function(resp){
+
+				ul.html(" ");
+				$(resp.archivo).each(function(key, value){
+
+					$('#nameAuth').val(value.usuario);
+					$('#uid').val(value.user_id);
+					$('#nameAct').val(value.actividad.actividad);
+					$('#aid').val(value.actividad_id);
+
+				});
+
+				$(resp.rubricas).each(function(key, value){
+
+
+		            ul.append("<li><strong>"+value.name+"</strong>("+value.total+")<input type='text' name='rubrica_"+value.id+"' id='rubInp' class='rubrica form-control'></li>");
+		          });
+
+		          $('#sumar').on('click', function(e){
+
+		            e.preventDefault();
+		            var total = 0;
+
+		        $('.rubrica').each(function(index){
+
+		           total += parseFloat($(this).val());
+
+		         });
+
+		         $("#ntoFinal").val(total);
+
+		          });
+
+		      });
+
+			$('#subCal').on('click', function(e){
+
+		      e.preventDefault();
+
+		    var id = btn.value;
+		    var form = $('#form-calificacion');
+		    var ruta = form.attr('action').replace(':id', id);
+		    var metodo = form.attr('method');
+		  
+		    $.ajax({
+
+		      url: ruta,
+		      headers: { 'X-CSFR-TOKEN': token},
+		      type: metodo,
+		      data: form.serialize(),
+
+		      success:function(resp){
+
+		          if(resp)
+		          {
+
+		            alertify.alert('La nota se ha guardo correctamente');
+		            $('#nameAuth').prop('disabled', true);
+		            $('#nameAct').prop('disabled', true);
+		            $('input#rubInp').prop('disabled', true);
+		            $('#ntoFinal').prop('disabled', true);
+		            $('#subCal').hide();
+		            $('#subEnd').show();
+
+		          }
+		          
+
+		      },
+
+		      error:function(request, resp){
+
+		        if(resp == 'timeout'){
+
+		            alertify.alert('Tienes problemas de conexion por favor intentalo de nuevo!!.');
+
+		        }else{
+
+		            alertify.alert('Recuerda que la nota de cada rubrica no puede ser mayor a el valor que se le asigno a la rubrica.');
+		        }
+
+
+		      }
+
+
+		    });
+
+		    });
+
+		    $('#subEnd').on('click', function(e){
+
+		    	e.preventDefault();
+		    	$('#calAct').hide();
+
+		    });
+	
 		}
 
 		function descActUser(btn){
@@ -772,7 +912,7 @@
             tablaActividad.html(" ");
             $(resp.data).each(function(key, value){
 
-              tablaActividad.append("<tr><td>"+value.actividad+"</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#materialA' OnClick='verArchivos(this);'><i class='fa fa-file-archive-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#archivos' value="+value.id+"  OnClick='alumnosR(this);'><i class='fa fa-folder'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#editarA' value="+value.id+"  OnClick='editar(this);'><i class='fa fa-calendar'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#notaAct' OnClick='notaAct(this);' value="+value.id+"><i class='fa fa-file-excel-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#Mapoyo' value="+value.id+"  OnClick='fileApoyo(this);'><i class='fa fa-folder'></i></td><td><button class='btn btn-primary'value="+value.id+"  OnClick='actividadPdf(this);'><i class='fa fa-file-word-o'></i></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='listRubricas(this);'><i class='fa fa-search'></i></button></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarActividad(this);'><i class='fa fa-eraser'></i></button></td></tr>");
+              tablaActividad.append("<tr><td>"+value.actividad+"</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#materialA' OnClick='verArchivos(this);'><i class='fa fa-file-archive-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#editarA' value="+value.id+"  OnClick='editar(this);'><i class='fa fa-calendar'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#notaAct' OnClick='notaAct(this);' value="+value.id+"><i class='fa fa-file-excel-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#Mapoyo' value="+value.id+"  OnClick='fileApoyo(this);'><i class='fa fa-folder'></i></td><td><button class='btn btn-primary'value="+value.id+"  OnClick='actividadPdf(this);'><i class='fa fa-file-word-o'></i></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='listRubricas(this);'><i class='fa fa-search'></i></button></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarActividad(this);'><i class='fa fa-eraser'></i></button></td></tr>");
 
             });
          }else{
@@ -955,149 +1095,7 @@
       }
 
 
-       function alumnosR(btn){
-
-      var archivos = $('#archivosRoute').attr('href');
-      var route = archivos.split('%7Bid%7D').join(btn.value);
-      var tablaArchivos = $('#tablaArchivos');
-
-      $.get(route, function(resp){
-
-          if(resp.archivos.length >= 1)
-          {
-
-             tablaArchivos.html(" ");
-          $(resp.archivos).each(function(key, value){
-
-              var filename = value.filename;
-              var cadena = filename.split(' ').join('%20');
-          
-              if(resp.nota == 0)
-              {
-                tablaArchivos.append("<tr><td>"+value.filename+"</td><td><button class='btn btn-primary' value="+cadena+"  OnClick='archivo(this);'><i class='fa fa-download'></i></button></td><td><button class='btn btn-primary' value="+value.id+" data-dismiss='modal' OnClick='calificacion(this);'><i class='fa fa-book'></i></button></td></tr>");
-              }else{
-
-                  tablaArchivos.append("<tr><td>"+value.filename+"</td><td><button class='btn btn-primary' value="+cadena+"  OnClick='archivo(this);'><i class='fa fa-download'></i></button></td><td>Calificado</td></tr>");
-              }
-            
-
-          });
-
-          }else{
-
-              tablaArchivos.html(" ");
-              alertify.alert("Esta actividad no tiene archivos.");
-          }
-         
-
-      });
-
-    }
-
-
-     function calificacion(btn){
-
-      var id = btn.value;
-      var calificacion = $('#calificacionRoute').attr('href');
-      var route = calificacion.split('%7Bid%7D').join(id);
-      var ul = $('#ulR');
-      $('#subEnd').hide();
-     
-      $('#calAct').modal('show');
-
-      $.get(route, function(resp){
-
-      		ul.html(" ");
-		      	
-          $(resp.archivo).each(function(key, value){
-
-            var objeto = value;
-            $('#nameAuth').val(value.usuario);
-            $('#nameAct').val(value.actividad.actividad);  
-            $('#aid').val(value.actividad_id);       
-    		$('#uid').val(value.user_id);      
-    
-          });
-
-          $(resp.rubricas).each(function(key, value){
-
-
-            ul.append("<li><strong>"+value.name+"</strong>("+value.total+")<input type='text' name='rubrica_"+value.id+"' id='rubInp' class='rubrica form-control'></li>");
-          });
-
-          $('#sumar').on('click', function(e){
-
-            e.preventDefault();
-            var total = 0;
-
-        $('.rubrica').each(function(index){
-
-           total += parseFloat($(this).val());
-
-         });
-
-         $("#ntoFinal").val(total);
-
-          });
-
-      });
-    
-    $('#subCal').on('click', function(e){
-
-      e.preventDefault();
-
-    var id = btn.value;
-    var form = $('#form-calificacion');
-    var ruta = form.attr('action').replace(':id', id);
-    var metodo = form.attr('method');
-  
-    $.ajax({
-
-      url: ruta,
-      headers: { 'X-CSFR-TOKEN': token},
-      type: metodo,
-      data: form.serialize(),
-
-      success:function(resp){
-
-          if(resp)
-          {
-
-            alertify.alert('La nota se ha guardo correctamente');
-            $('#nameAuth').prop('disabled', true);
-            $('#nameAct').prop('disabled', true);
-            $('input#rubInp').prop('disabled', true);
-            $('#ntoFinal').prop('disabled', true);
-            $('#subCal').hide();
-            $('#subEnd').show();
-
-          }
-          
-
-      },
-
-      error:function(request, resp){
-
-        if(resp == 'timeout'){
-
-            alertify.alert('Tienes problemas de conexion por favor intentalo de nuevo!!.');
-
-        }else{
-
-            alertify.alert('Recuerda que la nota de cada rubrica no puede ser mayor a el valor que se le asigno a la rubrica.');
-        }
-
-
-      }
-
-
-    });
-
-    });
       
-
-    }
-
     function archivo(btn){
 
       var descargar = $('#descargarRoute').attr('href');

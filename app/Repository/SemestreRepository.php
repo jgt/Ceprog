@@ -31,7 +31,7 @@ class SemestreRepository extends BaseRepository {
 
   	    $semestre->update($request->all());
 
-  	    flash()->overlay('Ha sido actualizado correctamente', 'El '.$semestre->name);
+  	    return $semestre;
 
 	}
 

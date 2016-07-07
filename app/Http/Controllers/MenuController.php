@@ -72,7 +72,7 @@ class MenuController extends Controller
     public function listAlumnos($id, Request $request)
     {
 
-        $semestre = $this->materiaRepository->search($id)->where('id', $id)->with('semestre.users.roles')->get();
+        $semestre = $this->materiaRepository->search($id)->where('id', $id)->with('semestre.users.roles', 'semestre.carrera')->get();
 
         if($request->ajax())
         {
@@ -118,5 +118,17 @@ class MenuController extends Controller
         return $pdf->stream('Reporte.pdf');
     }
 
+    public function reporteUser($id, Request $request)
+    {
+
+        $pdf = App::make('dompdf.wrapper');
+        $user = $this->userRepository->search($id);
+        $semestres = $this->userRepository->search($id)->semestres()->get();
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('reportePdf', compact('user', 'semestres'));
+        return $pdf->stream('Reporte.pdf');
+    }
    
 }

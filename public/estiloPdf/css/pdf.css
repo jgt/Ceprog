@@ -138,13 +138,14 @@ footer {
 }
 
 #olLetras {
-
-  list-style-type: upper-latin;
+  counter-reset: list;
 }
-
-#olNumeros {
-
-  list-style-type: decimal;
+#olLetras > li {
+  list-style: none;
+}
+#olLetras > li:before {
+  content: counter(list, upper-alpha) ") ";
+  counter-increment: list;
 }
 
 #imgLogo {

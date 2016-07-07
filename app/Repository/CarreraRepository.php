@@ -17,7 +17,7 @@ class CarreraRepository extends BaseRepository {
 	public function listaCarreras(Request $request)
 	{
 
-		 return Carrera::name($request->get('name'))->orderBy('created_at', 'DESC')->paginate(5);
+		 return Carrera::name($request->get('name'))->orderBy('created_at', 'DESC')->paginate(100);
 
 	}
 

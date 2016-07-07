@@ -1,4 +1,4 @@
-<div id="mdlMateria" class="modal fade" role="dialog">
+<div id="crtMaterias" class="modal fade" role="dialog">
   <div class="modal-dialog">
       
     <!-- Modal content-->
@@ -32,7 +32,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-        <a href="#" id="mdlMat">Crear</a>
+        <a href="#" class="btn btn-primary" id="mdlMat">Crear</a>
       </div>
     </div>
 

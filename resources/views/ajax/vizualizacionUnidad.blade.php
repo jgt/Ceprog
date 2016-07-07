@@ -1,7 +1,7 @@
 
 <div class="col-md-10 col-md-offset-1" Style="display:none" id="vizuaUnidad"> 
   
-            @include('errors.error')
+            
 
           <h4 id="semestreU" style="text-transform: uppercase;"></h4>
           <hr>

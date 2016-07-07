@@ -32,6 +32,8 @@
 			$('#reportes').hide();
 			$('#chatForo').hide();
 			$('#crr').hide();
+			$('#semm').hide();
+			$('#mtaList').hide();
 			$('#froadm').hide();
 			$('#alumnosListUser').hide();
 			var ul = $('ul#nameUni');
@@ -80,6 +82,8 @@
 					$('#chatForo').hide();
 					$('#reportes').hide();
 					$('#crr').hide();
+					$('#semm').hide();
+					$('#mtaList').hide();
 					$('#froadm').hide();
 					var id = $(this).attr('href');
 					var link = $('#idSubtemas').attr('href');
@@ -173,6 +177,8 @@
 			$('#reportes').hide();
 			$('#chatForo').hide();
 			$('#crr').hide();
+			$('#semm').hide();
+			$('#mtaList').hide();
 			$('#froadm').hide();
 			
 			var materia = $(this).parents('ul');
@@ -219,6 +225,8 @@
 					$('#reportes').hide();
 					$('#chatForo').hide();
 					$('#crr').hide();
+					$('#semm').hide();
+					$('#mtaList').hide();
 					$('#froadm').hide();
 
 					var id = $(this).attr('href');

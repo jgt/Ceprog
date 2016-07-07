@@ -15,7 +15,6 @@
           <thead>
             <td><strong>Actividades</strong></td>
             <td><strong>Material de apoyo</strong></td>
-            <td><strong>Archivos</strong></td>
             <td><strong>Activar/Editar</strong></td>
             <td><strong>Nota de Alumnos</strong></td>
             <td><strong>Subir Material</strong></td>

@@ -45,7 +45,13 @@ abstract class BaseRepository {
 	public function getMaterias($id)
 	{
 
-		return $this->search($id)->materias()->paginate(5);
+		return $this->search($id)->materias()->paginate(100);
+	}
+
+	public function getSemestres($id)
+	{
+
+		return $this->search($id)->semestres()->orderBy('created_at','DESC')->get();
 	}
 
 	public function getActividades($id)

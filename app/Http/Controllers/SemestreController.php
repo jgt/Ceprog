@@ -26,7 +26,8 @@ class SemestreController extends Controller {
 	}
 	
 	public function index()
-	{
+	{	
+		
 		
 	}
 
@@ -52,21 +53,29 @@ class SemestreController extends Controller {
 	}
 
 	
-	public function show($id)
+	public function show($id, Request $request)
 	{
+
+		$semestres = $this->carreraRepository->getSemestres($id);
 		
+		if($request->ajax())
+		{
+			return response()->json($semestres);
+		}
 		
 	}
 
 	
-	public function edit($id)
+	public function edit($id, Request $request)
 	{
 		
 		$semestre = $this->semestreRepository->search($id);
 
-  	    $materias = $this->semestreRepository->listMaterias($id);
-
-  	    return view('semestre.editarSemestre', compact('semestre', 'materias'));
+		if($request->ajax())
+		{
+			return response()->json($semestre);
+		}
+  	    
 	}
 
 	
@@ -74,7 +83,11 @@ class SemestreController extends Controller {
 	{
 		
 			$semestre = $this->semestreRepository->updateSemestre($request, $id);
-  	        return redirect()->route('materia.index');
+  	        
+  	        if($request->ajax())
+  	        {
+  	        	return response()->json($semestre);
+  	        }
 	}
 
 	
@@ -89,6 +102,13 @@ class SemestreController extends Controller {
 		$carrera = $this->carreraRepository->search($id);	
         return view('semestre.crearSemestre', compact('carrera'));
 
+	}
+
+	public function borrarSemestre($id)
+	{
+
+		$semestre = $this->semestreRepository->search($id);
+		$semestre->delete();
 	}
 
 }

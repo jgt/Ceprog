@@ -8,11 +8,12 @@
 </head>
 <body>
       <div id="logo">
-        <img src="img/ceprog.png">
+        <img src="img/logo.jpg">
       </div>
+      <br><br><br><br><br><br><br><br>
       <h1>Univesidad Ceprog</h1>
       <div id="project">
-        <div><span>Materia</span>{{$actividad->unidad->materia}}</div>
+         <div><span>Materia</span>{{$actividad->unidad->materia}}</div>
         <div><span>Semestre</span>{{ $actividad->unidad->semestre}}</div>
         <div><span>Fecha de inicio</span>{{ $actividad->fecha}}</div>
         <div><span>Fecha de entrega</span>{{ $actividad->fechaF}}</div>

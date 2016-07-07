@@ -54,28 +54,41 @@ class MateriaController extends Controller {
 	}
 
 	
-	public function show($id)
+	public function show($id, Request $request)
 	{
-		//
+		$materias = $this->semestreRepository->getMaterias($id);
+
+		if($request->ajax())
+		{
+			return response()->json($materias);
+		}
 	}
 
 	
-	public function edit($id)
+	public function edit($id, Request $request)
 	{
 		
 
 		 $materia = $this->materiaRepository->search($id);
-	   	 $semestres = $this->semestreRepository->searchList();
+
+		 if($request->ajax())
+		 {
+		 	return response()->json($materia);
+		 }
       
-        return view('materias.editMateria', compact('materia', 'semestres'));
 	}
 
 	
 	public function update($id, Request $request)
 	{
 		
-		$this->materiaRepository->updateMateria($request, $id);
-         return redirect()->route('materia.index');
+		$materia = $this->materiaRepository->updateMateria($request, $id);
+
+		if($request->ajax())
+		{
+			return response()->json($materia);
+		}
+         
 	}
 
 
@@ -95,8 +108,9 @@ class MateriaController extends Controller {
 
       return view('materias.crearMateria', compact('semestres'));
    }
-
 }
+
+
 
 
  

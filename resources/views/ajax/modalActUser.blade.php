@@ -15,6 +15,7 @@
            <td><strong>Materia</strong></td>
            <td><strong>Alumno</strong></td>
            <td><strong>Descargar</strong></td>
+           <td><strong>Calificar</strong></td>
          </thead>
          <tbody id="tablaPrbUser"></tbody>
        </table>

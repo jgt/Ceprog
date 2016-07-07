@@ -21,6 +21,9 @@
 
       e.preventDefault();
 
+      $('#mtaList').hide();
+      $('#crr').hide();
+      $('#semm').hide();
       $('#preForo').hide();
       $('#examen').show();
       $('div#planeacionC').hide();
@@ -103,6 +106,7 @@
             $('#fecF').hide();
             $('#ho').hide();
             $('#crr').hide();
+            $('#mtaList').hide();
             $('#froadm').hide();
             $('#preguntaExmamen').show();
             $('#np').val(" ");

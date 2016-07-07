@@ -23,8 +23,6 @@
   </div>
 
   <div class="form-group">
-  {!! Form::label('semestre', 'Semestre', ['class' => 'form-group']) !!}
-   {!! Form::text('semestre', null, [ 'id' => 'nameSemmodaldos', 'class' => 'form-control', 'disabled']) !!}
    {!! Form::text('semestre_id', null, ['id' => 'idSemmodaldos', 'Style' => 'display:none']) !!}
   </div>
 

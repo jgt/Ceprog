@@ -60,6 +60,9 @@
 				$('a#nameForo').on('click', function(e){
 
 					e.preventDefault();
+					$('#mtaList').hide();
+					$('#crr').hide();
+					$('#semm').hide();
 					$('#chatForo').show();
 					$('div#act').hide();
 					$('div#listAct').hide();
@@ -183,6 +186,9 @@
 
 			e.preventDefault();
 
+			$('#mtaList').hide();
+			$('#crr').hide();
+			$('#semm').hide();
 			$('#froadm').show();
 			$('#chatForo').hide();
 			$('div#act').hide();
