@@ -1,6 +1,7 @@
 <?php namespace App\Repository;
 
 use App\Http\Requests;
+use App\User;
 use App\Materia;
 use Auth;
 
@@ -69,5 +70,45 @@ class MateriaRepository extends BaseRepository {
 		}
 
 		return $promedio;
+	}
+
+	public function actMat($materia)
+	{
+		$course = $this->search($materia);
+		 $actividadesMateria = $course->with('unidades.actividades.calificaciones')->where('id',$materia)
+        ->get();
+        foreach ($actividadesMateria as  $value) {
+            foreach ($value->unidades as  $unidad) {
+            	
+                 foreach ($unidad->actividades as  $actividad) {
+                  $actividades[] = $actividad;
+                 } 
+            }
+        }    
+        return $actividades;
+	}
+
+	public function sumaExamenes($id, $materia)
+	{	
+
+		$users = User::find($id);
+		$course = $this->search($materia);
+		$totalExamen = 0;
+		$examenesMateria = $course->with('examenes.resultados')->where('id',$materia)
+        ->get();
+ 
+        foreach ($examenesMateria as  $examen) {
+            foreach ($examen->examenes as  $examen) {
+                foreach ($examen->resultados as  $resultado) {
+                   
+                    if($resultado->user_id == $users->id):
+                      $totalExamen += $resultado->resultado;
+                    endif;
+                }
+               
+            }
+           
+        }
+        return $totalExamen;
 	}
 }

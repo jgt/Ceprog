@@ -32,7 +32,12 @@ class User extends Entity implements AuthenticatableContract, CanResetPasswordCo
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+	
 
+	public function resultados()
+	{
+		return $this->hasMany('App\Resultado');
+	}
 
 	public function respuestas()
 	{

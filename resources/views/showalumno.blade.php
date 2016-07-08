@@ -9,8 +9,9 @@
 <body>
 
 	 <div id="logo">
-        <img src="img/ceprog.png">
+        <img src="img/logo.jpg">
       </div>
+      <br><br><br><br><br><br><br><br>
       <h1>Univesidad Ceprog</h1>
       <div id="project">
         <div><span>Materia</span>{{$unidad->materia}}</div>

@@ -80,7 +80,7 @@
 
               $(resp.data).each(function(key, value){
 
-               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
             }); 
 
@@ -605,6 +605,16 @@
 
         var id = btn.value;
         var link = $('#verExa').attr('href');
+        var route = link.split('%7Bid%7D').join(id);
+        window.open(route);
+
+      }
+
+      function examenPdf(btn)
+      { 
+
+        var id = btn.value;
+        var link = $('#exmPdf').attr('href');
         var route = link.split('%7Bid%7D').join(id);
         window.open(route);
 

@@ -3,6 +3,7 @@
 		<a href="{{ route('listActUser')}}" id="prb" Style="display:none"></a>   
     <a href="{{ route('getentry')}}" id="download" Style="display:none"></a> 
     <a href="{{ route('reporteUser')}}" id="reportePdf" Style="display:none"></a>  
+    <input type="text" id="prbPrueba" Style="display:none">
     
        @include('include.bucaralumno', ['submitButtonText' => 'Buscar'])
        <div class="table-responsive">

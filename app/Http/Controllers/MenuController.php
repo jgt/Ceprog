@@ -118,17 +118,24 @@ class MenuController extends Controller
         return $pdf->stream('Reporte.pdf');
     }
 
-    public function reporteUser($id, Request $request)
+    public function reporteUser($id, $materia, Request $request)
     {
 
         $pdf = App::make('dompdf.wrapper');
-        $user = $this->userRepository->search($id);
-        $semestres = $this->userRepository->search($id)->semestres()->get();
+        $users = $this->userRepository->search($id);
+        $course = $this->materiaRepository->search($materia);
+        $actividades = $this->materiaRepository->actMat($materia);
+        $totalExamen = $this->materiaRepository->sumaExamenes($id, $materia);
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape';
         $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('reportePdf', compact('user', 'semestres'));
+        $pdf->loadview('reportePdf', compact('users', 'actividades','totalExamen'));
         return $pdf->stream('Reporte.pdf');
+
+        if($request->ajax())
+        {
+            return response()->json($actividades);
+        }
     }
    
 }

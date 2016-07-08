@@ -7,10 +7,13 @@
 	<link href="{{'estiloPdf/css/pdf.css'}}" rel="stylesheet">
 </head>
 <body>
-     
-      <div id="project">
-        <div><span>Alumno</span>{{$user->name}}</div>
+     <div id="logo">
+        <img src="img/logo.jpg">
       </div>
+      <hr>
+      <br><br><br><br><br><br><br><br><br><br><br>
+
+      <div id="project"></div>
     </header>
     <main>
     	<hr>
@@ -18,22 +21,37 @@
        
         <tbody>
           <tr>
-            <td class="service">Nombre de las Unidades</td>
-            @foreach($semestres as $semestre)
-              @foreach($semestre->materias as $materia)
-                @foreach($materia->unidades as $unidad)
-                  <td class="desc">{{ $unidad->unidad }}</td>
-                @endforeach
+            <td class="service">Nombre de las Actividades</td>
+            @foreach($actividades as $actividad)
+              <td class="desc">{{ $actividad->actividad }}</td>
+            @endforeach
+          </tr>
+          <tr>
+            <td class="service">Notas</td>
+              <?php $total =0;  ?>
+            @foreach($actividades as $actividad)
+          
+              @foreach($actividad->calificaciones as $calificacion)
+                @if($calificacion->user_id==$users->id)
+                <?php $total += $calificacion->promedio; ?>
+                  <td class="desc">{{ $calificacion->promedio }}</td>
+                @endif
               @endforeach
             @endforeach
           </tr>
-    
+        
         </tbody>
       </table>
+        
+        <h3>Total de Notas: {{number_format($total,1)}}</h3>
+        <h3>Total de Examenes: {{number_format($totalExamen,1)}}%</h3>
 
+        <h3>Nota de la Materia: {{number_format($totalExamen+$total,1)}}%</h3>
+        <h3>Alumno: {{$users->name}}</h3>
+        <hr>
       <div id="notices">
         <div>NOTA:</div>
-        <div class="notice">Este formato es un reporte de la actividad creada.</div>
+        <div class="notice">Este formato es un reporte de calificaciones.</div>
       </div>
     </main>
     <footer>

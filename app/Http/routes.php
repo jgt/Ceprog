@@ -157,7 +157,7 @@ Route::group(['middleware' => 'adminMaestro'], function(){
 Route::group(['middleware' => 'maestro'], function(){
 
 	Route::get('borrarSemestre/{id}', ['as' => 'borrarSemestre', 'uses' => 'SemestreController@borrarSemestre']);
-	Route::get('reporteUser/{id}', ['as' => 'reporteUser', 'uses' => 'MenuController@reporteUser']);
+	Route::get('reporteUser/{id}/{materia}', ['as' => 'reporteUser', 'uses' => 'MenuController@reporteUser']);
 
 	Route::get('listActUser/{id}', ['as' => 'listActUser', 'uses' => 'MenuController@listActUser']);
 	Route::get('almSem/{id}', ['as' => 'almSem', 'uses' => 'MenuController@listAlumnos']);
@@ -183,6 +183,7 @@ Route::group(['middleware' => 'maestro'], function(){
 	Route::get('deleteExamen/{id}', ['as' => 'deleteExamen', 'uses' => 'ExamenController@deleteExamen']);
 	Route::get('notaExamen{id}', ['as' => 'notaExamen', 'uses' => 'ExamenController@notaExamen']);
 	Route::get('pdfExamen/{id}', ['as' => 'pdfExamen', 'uses' => 'ExamenController@pdfExamen']);
+	Route::get('exmImprimirPdf/{id}', ['as' => 'exmImprimirPdf', 'uses' => 'ExamenController@exmImprimirPdf']);
 	Route::post('storeRespuesta', ['as' => 'storeRespuesta', 'uses' => 'ExamenController@storeRespuesta']);
 	Route::get('createRespuesta/{id}', ['as' => 'createRespuesta', 'uses' => 'ExamenController@createRespuesta']);
 	Route::post('storePregunta', ['as' => 'storePregunta', 'uses' => 'ExamenController@storePregunta']);

@@ -184,4 +184,5 @@ class UserRepository extends BaseRepository {
 		return $promedio;
 	}
 
+
 }

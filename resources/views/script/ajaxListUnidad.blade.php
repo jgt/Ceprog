@@ -50,7 +50,7 @@
 				tablaAlumnos.html(" ");
 
 				$(resp).each(function(key, value){
-
+					$('#prbPrueba').val(value.id);
 					$(value.semestre).each(function(key, sem){
 
 						$(sem.carrera).each(function(key, carrera){
@@ -162,9 +162,22 @@
 	function resportePdf(btn){
 
 		var id = btn.value;
+		var idMateria = $('#prbPrueba').val() 
 		var link = $('#reportePdf').attr('href');
-		var route = link.split('%7Bid%7D').join(id);
-		window.open(route);
+		var route = link.split('%7Bid%7D').join(id).split('%7Bmateria%7D').join(idMateria);
+		
+		$.get(route, function(resp){
+
+			window.open(route);
+
+		})
+
+		.fail(function(){
+
+			alertify.alert("Esta materia no tiene actividades en sus unidades.");
+
+		});
+
 	}
 
 
@@ -295,7 +308,7 @@
 		            $('#nameAuth').prop('disabled', true);
 		            $('#nameAct').prop('disabled', true);
 		            $('input#rubInp').prop('disabled', true);
-		            $('#ntoFinal').prop('disabled', true);
+		            $('#ntoFinal').val(" ");
 		            $('#subCal').hide();
 		            $('#subEnd').show();
 

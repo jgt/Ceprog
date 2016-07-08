@@ -298,6 +298,19 @@ class ExamenController extends Controller
         
     }
 
+    public function exmImprimirPdf($id)
+    {
+
+        $pdf = App::make('dompdf.wrapper');
+        $examen = Examen::find($id);
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('imprimirExam', compact('examen'));
+        return $pdf->stream();
+
+    }
+
     public function editarPregunta($id, Request $request)
     {
 
