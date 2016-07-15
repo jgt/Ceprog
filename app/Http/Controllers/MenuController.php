@@ -11,6 +11,8 @@ use App\Repository\UserRepository;
 use App\Repository\RoleRepository;
 use App\Repository\CarreraRepository;
 use App\Repository\SemestreRepository;
+use App\Repository\ExamenRepository;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Tutorial;
 use Auth;
 use App\Carrera;
@@ -26,6 +28,7 @@ class MenuController extends Controller
     private $roleRepository;
     private $carreraRepository;
     private $semestreRepository;
+    private $examenRepository;
 
     public function __construct(
 
@@ -34,7 +37,8 @@ class MenuController extends Controller
         UserRepository $userRepository,
         CarreraRepository $carreraRepository,
         SemestreRepository $semestreRepository,
-        RoleRepository $roleRepository)
+        RoleRepository $roleRepository,
+        ExamenRepository $examenRepository)
     {
 
         $this->materiaRepository = $materiaRepository;
@@ -43,6 +47,7 @@ class MenuController extends Controller
         $this->roleRepository = $roleRepository;
         $this->carreraRepository = $carreraRepository;
         $this->semestreRepository = $semestreRepository;
+        $this->examenRepository = $examenRepository;
 
     }
 
@@ -137,5 +142,58 @@ class MenuController extends Controller
             return response()->json($actividades);
         }
     }
-   
+
+    public function reporteGeneral($id, Request $request)
+    {
+
+        $pdf = App::make('dompdf.wrapper');
+        $examen = $this->examenRepository->search($id);
+        $responses = $this->examenRepository->respuestasCorrectas($id);
+
+        $contenido = [
+                ['Universidad Ceprog'],
+                ['Reporte de Calificaciones'],
+                [''],
+                ['']
+
+        ];
+
+        foreach($examen->preguntas as $contador => $pregunta):
+        $contenido[]=['Alumnos','Preguntas',$pregunta->contenido];
+        endforeach;
+     /*   foreach($examen->materia->semestre->users as $user){
+             $contenido[]=[$user->name];
+            foreach($examen->preguntas as  $pregunta){
+                foreach($user->respuestasUser as $preguntaUser){
+                    if($pregunta->id == $preguntaUser->pregunta_id){
+                        foreach($pregunta->respuestas as $respuesta){
+                            if($respuesta->id == $preguntaUser->respuesta_id){
+                                if($respuesta->estado==1){
+                                        $quest[] = 'correcto';
+                                    }else{
+                                        $quest[] = 'incorecto';    
+                                    }
+                                    
+                                }
+                            } 
+                        } 
+                    }
+                }
+                $contenido[$user->name]=$quest;
+            }*/
+         
+
+       echo json_encode($contenido); die;
+          /*  Excel::create('New file', function($excel) use ($contenido){
+
+            $excel->sheet('New sheet', function($sheet) use ($contenido){
+
+                 $sheet->fromArray($contenido, null, 'A1', true,false);
+
+            });
+
+        })->export('xlsx');*/
+        
+    }
+
 }

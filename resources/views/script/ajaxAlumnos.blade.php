@@ -75,6 +75,60 @@
 
 		});
 
+		//formulario para responder una actividad al maestro.
+
+		$('#Ralm').on('click', function(e){
+
+			e.preventDefault();
+			var id = $('#act_id').val();
+			var form = $('#respAlm');
+			var link = form.attr('action');
+			var metodo = form.attr('method');
+			var route = link.split("%7Bid%7D").join(id);
+			$('#respActalm').modal('hide');
+
+			var formData = new FormData($('#respAlm')[0]);
+
+			$.ajax({
+
+				url: route,
+				type: metodo,
+				headers: { 'X-CSFR-TOKEN': token},
+				data: formData,
+				contentType: false,
+		        processData: false,
+		        cache: false,
+
+		         beforeSend:function(){
+
+		        	 $.blockUI({ message: '<h1><img src="img/loading.gif" />Por favor espera...</h1>' });   
+
+		        },
+		       
+		        success:function(resp){
+
+		        	 alertify.alert("El archivo ha sido enviado correctamente.");
+		        	 $.unblockUI();
+
+
+		        },
+
+		        error:function(error, request){
+
+		        	if(error)
+		        	{
+		        		alertify.alert("Error al procesar la solicitud.");
+		        		$.unblockUI();
+		        	}
+
+
+
+		        }
+
+			});
+
+		});
+
 	});
 
 
@@ -191,9 +245,6 @@
 
 		var id = btn.value;
 		var form = $('#respAlm');
-		var link = form.attr('action');
-		var metodo = form.attr('method');
-		var route = link.split('%7Bid%7D').join(id);
 		var user = $('#AuthUser').attr('href');
 		var json = $.parseJSON(user);
 		$('#userA').val(json.name);

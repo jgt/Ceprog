@@ -272,7 +272,7 @@ class ExamenController extends Controller
     public function listPreguntas($id, Request $request)
     {
 
-        $examen = Examen::find($id)->preguntas()->with('respuestas')->paginate(10);
+        $examen = Examen::find($id)->preguntas()->with('respuestas')->paginate(100);
 
         if($request->ajax())
         {

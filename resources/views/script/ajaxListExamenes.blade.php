@@ -80,7 +80,7 @@
 
               $(resp.data).each(function(key, value){
 
-               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='reporteGeneral(this);'><i class='fa fa-eye' aria-hidden='true'></i></td</td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
             }); 
 
@@ -124,7 +124,7 @@
 
             $(resp.data).each(function(key, value){
 
-               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='reporteGeneral(this);'><i class='fa fa-eye' aria-hidden='true'></i></td</td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
             });  
 
@@ -238,6 +238,7 @@
           $('div#examen').hide();
           $('div#pregunta').hide();
           $('div#user').hide();
+          $('div#AlmUni').hide();
           $('div#listAct').hide();
           $('div#calAct').hide();
           $('div#planeacionC').hide();
@@ -391,7 +392,9 @@
               if(error)
               {
 
-                alertify.alert("Error al procesar la solicitud.");
+                alertify.alert("Tienes preguntas sin contestar.");
+                $('#nextQuiz').show();
+                $('#endQuiz').hide();
               }
 
             }
@@ -506,6 +509,26 @@
 
     });
 
+      function reporteGeneral(btn){
+
+        var id = btn.value;
+        var link = $('#rpeGen').attr('href');
+        var route = link.split('%7Bid%7D').join(id);
+        
+        $.get(route, function(resp){
+
+          window.open(route);
+
+        })
+
+        .fail(function(){
+
+          alertify.alert("Error al procesar la solicitud.");
+
+        });
+
+  }
+
 
 
     //funciones para lista de examenes perfil maestro
@@ -565,7 +588,6 @@
 
     function realizarExamen(btn)
       {
-
          $('#nextQuiz').show();
          $('#endQuiz').hide();
         var idExamen = $('#qexaId').val(btn.value);
@@ -576,27 +598,21 @@
         var examenId = $('#exaId').val(btn.value);
         
         $.get(route, function(resp){
-
           divPreg.html(" ");
           ulQuiz.html(" ");
-
-          
 
           $(resp.pregunta).each(function(key, preg){
 
             var preguntaId = $('#pregId').val(preg.id);
+
             divPreg.append("<li><p>"+preg.contenido+"</p></li>");
 
             $(preg.respuestas).each(function(key, respu){
 
               ulQuiz.append("<li><input type='radio' name='respuesta' value="+respu.id+">"+respu.name+"</li>");
-
             });
-
           });
-
         });
-
       }
 
 
@@ -676,8 +692,7 @@
 
                 $(resp.data).each(function(key, value){
 
-               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
-
+              tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='reporteGeneral(this);'><i class='fa fa-eye' aria-hidden='true'></i></td</td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
             }); 
 
              });
@@ -717,7 +732,7 @@
         var link = $('#listPreguntas').attr('href')
         var route = link.split('%7Bid%7D').join(id);
         var tabla = $('#tablaPreguntas');
-
+    
         $.get(route, function(resp){
 
             tabla.html(' ');

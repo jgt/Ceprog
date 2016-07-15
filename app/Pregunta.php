@@ -23,4 +23,9 @@ class Pregunta extends Model
 
    		return $this->hasMany('App\Respuesta');
    	}
+
+      public function respuestas_correctas()
+      {
+         return $this->respuestas()->where('estado', 1);
+      }
 }

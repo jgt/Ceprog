@@ -51,6 +51,7 @@ h1 {
 
 #project {
   float: left;
+  font-size: 100%;
 }
 
 #project span {
@@ -155,3 +156,6 @@ footer {
   width: 300px;
   
 }
+
+
+

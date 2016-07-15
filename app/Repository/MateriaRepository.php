@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\User;
 use App\Materia;
+use App\Respuesta;
+use App\RespuestaUser;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -111,4 +113,5 @@ class MateriaRepository extends BaseRepository {
         }
         return $totalExamen;
 	}
+
 }

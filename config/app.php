@@ -144,9 +144,11 @@ return [
         'Styde\Html\HtmlServiceProvider',
         'Barryvdh\Snappy\ServiceProvider',
         'HieuLe\Active\ActiveServiceProvider',
+        'Maatwebsite\Excel\ExcelServiceProvider',
         Acacha\AdminLTETemplateLaravel\app\Providers\AdminLTETemplateServiceProvider::class,
         App\Providers\HtmlGeneratorServiceProvider::class,
          Styde\Seeder\SeederServiceProvider::class,
+         Anouar\Fpdf\FpdfServiceProvider::class,
 
 
 
@@ -224,7 +226,9 @@ return [
      	'PDF' => 'Barryvdh\Snappy\Facades\SnappyPdf',
      	'Image' => 'Barryvdh\Snappy\Facades\SnappyImage',
      	'Active' => 'HieuLe\Active\Facades\Active',
-     	'Build' => App\Facades\HtmlGenerator::class
+     	'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+     	'Build' => App\Facades\HtmlGenerator::class,
+     	 'Fpdf'    => Anouar\Fpdf\Facades\Fpdf::class
 
 
 

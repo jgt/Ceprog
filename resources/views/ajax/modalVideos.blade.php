@@ -24,12 +24,7 @@
 
    {!! Form::file('archivo', null, ['class' => 'form-control', 'id' => 'fileVideoDocente'])!!}
    <hr>
-   <div class="progress progress-striped active">
-     <div class="progress-bar" style="width:0%" id="barProgress"></div>
-   </div>
-   <hr>
    {!! Form::submit('Responder', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'Vimg'])!!}
-   <button type="button" class="btn btn-sm btn btn-danger cancel" id="cancelVideo">Cancelar</button>
    </div>
 
         </div>

@@ -30,12 +30,7 @@
 
    {!! Form::file('archivo', null, ['class' => 'form-control'])!!}
    <hr>
-   <div class="progress progress-striped active">
-     <div class="progress-bar" style="width:0%"></div>
-   </div>
-   <hr>
    {!! Form::submit('Responder', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'Ralm'])!!}
-   <button type="button" class="btn btn-sm btn btn-danger cancel">Cancelar</button>
    </div>
 
         </div>

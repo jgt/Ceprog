@@ -16,6 +16,7 @@
             <td><strong>Preguntas</strong></td>
             <td><strong>Hoja de Respuestas</strong></td>
             <td><strong>Examen Pdf</strong></td>
+            <td><strong>Reporte General</strong></td>
             <td><strong>Borrar</strong></td>
           </thead> 
           <tbody id="tablaExamenesDocente"></tbody>

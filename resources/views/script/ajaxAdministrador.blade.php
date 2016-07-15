@@ -409,12 +409,29 @@
 		var id = btn.value;
 		var link = $('#deleteTuto').attr('href');
 		var route = link.split('%7Bid%7D').join(id);
+		var ruta = $('#allTutorial').attr('href');
+		var tutorial = $('#tablaTutorial');
 
 		$.get(route, function(resp){
 
-			$('#listTut').addClass('alert');
 			alertify.alert("El video ha sido borrado correctamente.");
+
+			$.get(ruta, function(rep){
+
+			tutorial.html(" ");
+
+				$(rep).each(function(key, value){
+
+				var filename = value.original_filename;
+                var cadena = filename.split(' ').join('%20');
+					tutorial.append("<tr><td>"+value.original_filename+"</td><td><button class='btn btn-primary' OnClick='descargarTuto(this);' value="+cadena+"><i class='fa fa-download'></i></button></td><td><button class='btn btn-primary' OnClick='tutorialOnline(this);' data-toggle='modal' data-target='#tutoV' value="+value.id+"><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' OnClick='borrarTuto(this);' value="+value.id+"><i class='fa fa-download'></i></button></td><tr>");
+
+				});
+
+			});
 		});
+
+		
 	}
 
 	function descargarTuto(btn){

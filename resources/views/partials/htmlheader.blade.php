@@ -27,6 +27,8 @@
 
      <link rel="stylesheet" href="{{ asset('css/vendor/chat.css')}}" rel="stylesheet" type="text/css">
 
+     <link href="{{'estiloPdf/css/custom.css'}}" rel="stylesheet">
+
       <link rel="stylesheet" href="{{ asset('css/vendor/datetime.css')}}" rel="stylesheet" type="text/css">
         
         <link rel="stylesheet" href="{{ asset('css/vendor/datatables.css')}}">

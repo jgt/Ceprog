@@ -1,0 +1,10 @@
+#quizResp {
+  counter-reset: list;
+}
+#quizResp > li {
+  list-style: none;
+}
+#quizResp > li:before {
+  content: counter(list, upper-alpha) ") ";
+  counter-increment: list;
+}

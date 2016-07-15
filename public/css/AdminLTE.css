@@ -32,6 +32,7 @@ body {
   position: relative;
   overflow: hidden!important;
 }
+
 .wrapper:before,
 .wrapper:after {
   content: " ";

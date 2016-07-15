@@ -17,6 +17,8 @@
 
 <script src="{{ asset('js/vendor/datetime.js')}}" type="text/javascript"></script>
 
+<script src="{{ asset('js/vendor/blockUi.js')}}" type="text/javascript"></script>
+
 <script src="{{ asset('js/vendor/datatables.js')}}"></script>
 
 
@@ -41,14 +43,6 @@
 @include('script.ajaxAlumnos')
 
 @include('script.ajaxVisualizacion')
-
-@include('script.uploadFile')
-
-@include('script.VideosFile')
-
-@include('script.ImagenFile')
-
-@include('script.ApoyoFile')
 
 @include('script.tutorialFile')
 

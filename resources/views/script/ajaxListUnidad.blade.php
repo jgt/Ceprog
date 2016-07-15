@@ -157,8 +157,172 @@
 
 		});
 
+		$('#apoy').on('click', function(e){
+
+			e.preventDefault();
+
+			var id = $('#apoyo_id').val();
+		    var form = $('#apoyoM_id');
+		    var link = form.attr('action');
+		    var metodo = form.attr('method');
+		    var route = link.split('%7Bid%7D').join(id);
+		    $('#Mapoyo').modal('hide');
+
+		    var formData = new FormData($('#apoyoM_id')[0]);
+
+		    $.ajax({
+
+		    	url: route,
+				type: metodo,
+				headers: { 'X-CSFR-TOKEN': token},
+				data: formData,
+				contentType: false,
+		        processData: false,
+		        cache: false,
+
+		        beforeSend:function(){
+
+		        	 $.blockUI({ message: '<h1><img src="img/loading.gif" />Por favor espera...</h1>' });   
+
+		        },
+		       
+		        success:function(resp){
+
+		        	 alertify.alert("El archivo  ha sido guardado correctamente.");
+		        	 $.unblockUI();
+
+
+		        },
+
+		        error:function(error, request){
+
+		        	if(error)
+		        	{
+		        		alertify.alert("Error al procesar la solicitud.");
+		        		$.unblockUI();
+		        	}
+
+
+
+		        }
+
+
+		    });
+
+		});
+
+		//subir una imagen a un subtema.
+
+		$('#fimg').on('click', function(e){
+
+			e.preventDefault();
+
+			var id = $('#subimgId').val();
+			var form = $('#imgSub');
+			var link = form.attr('action');
+			var metodo = form.attr('method');
+			var route = link.split("%7Bid%7D").join(id);
+			$('#imagenSubtema').modal('hide');
+
+			var formData = new FormData($('#imgSub')[0]);
+
+			$.ajax({
+
+				url: route,
+				type: metodo,
+				headers: { 'X-CSFR-TOKEN': token},
+				data: formData,
+				contentType: false,
+		        processData: false,
+		        cache: false,
+
+		        beforeSend:function(){
+
+		        	 $.blockUI({ message: '<h1><img src="img/loading.gif" />Por favor espera...</h1>' });   
+
+		        },
+		       
+		        success:function(resp){
+
+		        	 alertify.alert("La imagen  ha sido guardado correctamente.");
+		        	 $.unblockUI();
+
+
+		        },
+
+		        error:function(error, request){
+
+		        	if(error)
+		        	{
+		        		alertify.alert("Error al procesar la solicitud.");
+		        		$.unblockUI();
+		        	}
+
+
+
+		        }
+
+			});
+
+		});
+
+		//subir un video a una unidad
+
+		$('#Vimg').on('click', function(e){
+
+			e.preventDefault();
+			var id = $('#viduni').val();
+			var form = $('#my-dropzone');
+			var link = form.attr('action');
+			var metodo = form.attr('method');
+			var route = link.split("%7Bid%7D").join(id);
+			$('#videoUnidad').modal('hide');
+
+			var formData = new FormData($('#my-dropzone')[0]);
+
+			$.ajax({
+
+				url: route,
+				type: metodo,
+				headers: { 'X-CSFR-TOKEN': token},
+				data: formData,
+				contentType: false,
+		        processData: false,
+		        cache: false,
+
+		        beforeSend:function(){
+
+		        	 $.blockUI({ message: '<h1><img src="img/loading.gif" />Por favor espera...</h1>' });   
+
+		        },
+		       
+		        success:function(resp){
+
+		        	 alertify.alert("El video ha sido guardado correctamente.");
+		        	 $.unblockUI();
+
+
+		        },
+
+		        error:function(error, request){
+
+		        	if(error)
+		        	{
+		        		alertify.alert("Error al procesar la solicitud.");
+		        		$.unblockUI();
+		        	}
+
+
+
+		        }
+
+			});
+
+		});
+
 	});
 
+	
 	function resportePdf(btn){
 
 		var id = btn.value;

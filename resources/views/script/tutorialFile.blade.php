@@ -1,52 +1,53 @@
 <script>
 	
-	$(document).on('submit', 'form', function(e){
+	$('#tutUp').on('click', function(e){
 
 		e.preventDefault();
 
-		$form = $(this);
+		var form = $('#form-tuto');
+		var route = form.attr('action');
+		var metodo = form.attr('method');
+		
+		var formData = new FormData($('#form-tuto')[0]);
 
-		tutorialFile($form);
+		$.ajax({
+
+				url: route,
+				type: metodo,
+				headers: { 'X-CSFR-TOKEN': token},
+				data: formData,
+				contentType: false,
+		        processData: false,
+		        cache: false,
+
+		        beforeSend:function(){
+
+		        	 $.blockUI({ message: '<h1><img src="img/loading.gif" />Por favor espera...</h1>' });   
+
+		        },
+		       
+		        success:function(resp){
+
+		        	 alertify.alert("El tutorial ha sido guardado correctamente.");
+		        	 $.unblockUI();
+
+
+		        },
+
+		        error:function(error, request){
+
+		        	if(error)
+		        	{
+		        		alertify.alert("Error al procesar la solicitud.");
+		        		$.unblockUI();
+		        	}
+
+
+
+		        }
+
+		});
+
 	});
-
-	function tutorialFile($form){
-
-		$('.progress-bar').removeClass('progress-bar-success').removeClass('progress-bar-danger').html(" ");
-
-		
-		var route = $('#tro').attr('href');
-		
-		var formdata = new FormData($form[0]);
-
-		var request = new XMLHttpRequest();
-
-		request.upload.addEventListener('progress', function(e){
-
-			var percent = Math.round(e.loaded/e.total * 100);
-
-			
-			$('.progress-bar').css('width', percent);
-
-			console.log(percent);
-
-		});
-
-		request.addEventListener('load', function(e){
-
-			$('.progress-bar').addClass('progress-bar-success').html('el archivo subio correctamente...');
-
-		});
-
-		request.open('POST', route);
-		request.send(formdata);
-
-		$('#cancelTutorial').on('click', function(){
-
-			request.abort();
-
-			$('.progress-bar').addClass('progress-bar-danger').removeClass('progress-bar-success').html('el archivo se cancelo.');
-			
-		});
-	}
 
 </script>

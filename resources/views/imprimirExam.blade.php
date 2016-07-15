@@ -13,7 +13,8 @@
         <h2 align="right"><strong>Clave: </strong>07PSU0088B</h2>
       </div>
       <br><br><br><br><br><br><br><br>
-      <h3 align="center"><strong>Evaluación ordinaria</strong></h3>
+      <h1 align="center"><strong>Evaluación ordinaria</strong></h1>
+      <br><br>
       <div id="project">
         <div><span>Materia: </span>{{$examen->materia->name}}</div>
         <div><span>Modalidad: </span>{{$examen->modalidad}}</div>

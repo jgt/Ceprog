@@ -31,6 +31,8 @@
  @include('ajax.modalResponder')
  @include('ajax.modalFile')
  @include('ajax.modalTutoPrf')
+ @include('ajax.modalTutorialAlm')
+ @include('ajax.modalTutorial')
  @include('ajax.modalPlan')
  @include('ajax.modalPlanMateria')
  @include('ajax.modalShowUser')
