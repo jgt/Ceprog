@@ -143,193 +143,65 @@ class MenuController extends Controller
             return response()->json($actividades);
         }
     }
-    /**************************************************
-    * @Author: Anwar Sarmiento Ramos
-    * @Email: asarmiento@sistemasamigables.com
-    * @Create: 15/07/16 12:40 AM   @Update 0000-00-00
-    ***************************************************
-    * @Description: Creacion de reporte general de alumnos
-    *
-    *
-    *
-    * @Pasos:
-    *
-    *
-    * @return PDF
-    ***************************************************/
+    
     public function reporteGeneral($id, Request $request)
     {
 
-
-
+        
         $examen = $this->examenRepository->search($id);
-        $cantidadPre = $examen->preguntas->count()/4;
-        $contar =4;
+        $preguntas = $examen->preguntas()->get();
+
+        foreach ($preguntas as $pregunta) {
+                
+                $preg[] = $pregunta->contenido;
+     }
 
 
+     $content = [
+
+                    ['Universidad Ceprog'],
+                    [''],
+                    [''],
+                    array_merge(['Alumnos/No.Preguntas'],$preg),
 
 
-        /**Encabezado de la tabla del datos*/
+            ];
 
+        foreach ($examen->materia->semestre->users as $user) { 
 
+                $content[] = [$user->name];
+            foreach($preguntas as $pregunta){
+                foreach ($user->respuestasUser as $preguntaUser) {
+                    if ($pregunta->id == $preguntaUser->pregunta_id) {
+                        
+                        foreach ($pregunta->respuestas as $respuesta) {
 
-            $pdf  = Fpdf::AddPage('l','letter');
-            $pdf .= Fpdf::SetFont('Arial','B',16);
-            $pdf .= Fpdf::Cell(0,7,utf8_decode('Reporte General'),0,1,'C');
-            $pdf .= Fpdf::SetFont('Arial','B',16);
-            $pdf .= Fpdf::Cell(0,7,'',0,1,'C');
-            $pdf .= Fpdf::Image(public_path().'/img/logo.jpg',10,8,80,20);
-            $pdf .= Fpdf::Ln();
-            $pdf .= Fpdf::Ln();
-            $pdf .= Fpdf::Ln();
+                            $resp[] = $respuesta->estado;
+                            if ($respuesta->id == $preguntaUser->respuesta_id) {
+                                if ($respuesta->estado==1) {
 
-            $pdf .= Fpdf::SetFont('Arial','B',12);
-            $pdf .= Fpdf::Cell(60,7,'Alumnos/No.Preguntas',0,0,'C');
-            $pdf .= Fpdf::SetFont('Arial','B',9);
-            /**Encabezado de la tabla del datos*/
-         foreach($examen->preguntas as $contador => $pregunta):
-                $cont = ($contador+1);
-                if($cont <=4 ):
-                    $pdf .= Fpdf::Cell(50,7,$cont.'. '.utf8_decode($pregunta->contenido),0,0,'L');
-                endif;
-            endforeach;
-            $pdf .= Fpdf::Ln();
+                                    $content[] = array_merge([''], $resp);
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
 
-            foreach($examen->materia->semestre->users as $user):
-                $pdf .= Fpdf::SetFont('Arial','B',12);
-                $pdf .= Fpdf::Cell(50,7,$user->name,0,0,'C');
-                $i=0;
-                foreach($examen->preguntas as  $pregunta):
-                    $i++;
-                    if($i<=4):
-                        foreach($user->respuestasUser as $preguntaUser):
-                            if($pregunta->id == $preguntaUser->pregunta_id):
+            }
+            
+        }
+        
+        Excel::create('Reporte General', function($excel) use ($content){
 
-                                foreach($pregunta->respuestas as $respuesta):
-                                    if($respuesta->id == $preguntaUser->respuesta_id):
+            $excel->sheet('Reporte', function($sheet) use ($content){
 
-                                        if($respuesta->estado==1):
-                                            $pdf .= Fpdf::Cell(50,7,'Correcto',0,0,'C');
-                                        else:
-                                            $pdf .= Fpdf::Cell(50,7,'incorrecta',0,0,'C');
-                                        endif;
-                                    endif;
-                                endforeach;
-                            endif;
-                        endforeach;
-                    endif;
-                endforeach;
-                $pdf .= Fpdf::Ln();
-            endforeach;
-        /**Bloque 2*/
-        if($cont >= 5 && $cont <= 9):
-            $pdf  = Fpdf::AddPage('l','letter');
-            $pdf .= Fpdf::SetFont('Arial','B',16);
-            $pdf .= Fpdf::Cell(0,7,utf8_decode('Reporte General'),0,1,'C');
-            $pdf .= Fpdf::SetFont('Arial','B',16);
-            $pdf .= Fpdf::Cell(0,7,'',0,1,'C');
-            $pdf .= Fpdf::Image(public_path().'/img/logo.jpg',10,8,80,20);
-            $pdf .= Fpdf::Ln();
-            $pdf .= Fpdf::Ln();
-            $pdf .= Fpdf::Ln();
+               $sheet->fromArray($content, null, 'A1', true,false);
 
-            $pdf .= Fpdf::SetFont('Arial','B',12);
-            $pdf .= Fpdf::Cell(60,7,'Alumnos/No.Preguntas',0,0,'C');
-            $pdf .= Fpdf::SetFont('Arial','B',9);
-            /**Encabezado de la tabla del datos*/
-            foreach($examen->preguntas as $contador => $pregunta):
-                $cont = ($contador+1);
-                if($cont >=5 ):
-                    $pdf .= Fpdf::Cell(50,7,$cont.'. '.utf8_decode($pregunta->contenido),0,0,'L');
-                endif;
-            endforeach;
-            $pdf .= Fpdf::Ln();
+            });
 
-            foreach($examen->materia->semestre->users as $user):
-                $pdf .= Fpdf::SetFont('Arial','B',12);
-                $pdf .= Fpdf::Cell(50,7,$user->name,0,0,'C');
-                $i=0;
-                foreach($examen->preguntas as  $pregunta):
-                    $i++;
-                    if($i>=9 && $i<=12):
-                        foreach($user->respuestasUser as $preguntaUser):
-                            if($pregunta->id == $preguntaUser->pregunta_id):
-
-                                foreach($pregunta->respuestas as $respuesta):
-                                    if($respuesta->id == $preguntaUser->respuesta_id):
-
-                                        if($respuesta->estado==1):
-                                            $pdf .= Fpdf::Cell(50,7,'Correcto',0,0,'C');
-                                        else:
-                                            $pdf .= Fpdf::Cell(50,7,'incorrecta',0,0,'C');
-                                        endif;
-                                    endif;
-                                endforeach;
-                            endif;
-                        endforeach;
-                    endif;
-                endforeach;
-                $pdf .= Fpdf::Ln();
-            endforeach;
-        endif;
-        /**Bloque 3*/
-        if($cont >= 15 && $cont <= 19):
-            $pdf  = Fpdf::AddPage('l','letter');
-            $pdf .= Fpdf::SetFont('Arial','B',16);
-            $pdf .= Fpdf::Cell(0,7,utf8_decode('Reporte General'),0,1,'C');
-            $pdf .= Fpdf::SetFont('Arial','B',16);
-            $pdf .= Fpdf::Cell(0,7,'',0,1,'C');
-            $pdf .= Fpdf::Image(public_path().'/img/logo.jpg',10,8,80,20);
-            $pdf .= Fpdf::Ln();
-            $pdf .= Fpdf::Ln();
-            $pdf .= Fpdf::Ln();
-
-            $pdf .= Fpdf::SetFont('Arial','B',12);
-            $pdf .= Fpdf::Cell(60,7,'Alumnos/No.Preguntas',0,0,'C');
-            $pdf .= Fpdf::SetFont('Arial','B',9);
-            /**Encabezado de la tabla del datos*/
-            foreach($examen->preguntas as $contador => $pregunta):
-                $cont = ($contador+1);
-                if($cont >=5 ):
-                    $pdf .= Fpdf::Cell(50,7,$cont.'. '.utf8_decode($pregunta->contenido),0,0,'L');
-                endif;
-            endforeach;
-            $pdf .= Fpdf::Ln();
-
-            foreach($examen->materia->semestre->users as $user):
-                $pdf .= Fpdf::SetFont('Arial','B',12);
-                $pdf .= Fpdf::Cell(50,7,$user->name,0,0,'C');
-                $i=0;
-                foreach($examen->preguntas as  $pregunta):
-                    $i++;
-                    if($i>=9 && $i<=12):
-                        foreach($user->respuestasUser as $preguntaUser):
-                            if($pregunta->id == $preguntaUser->pregunta_id):
-
-                                foreach($pregunta->respuestas as $respuesta):
-                                    if($respuesta->id == $preguntaUser->respuesta_id):
-
-                                        if($respuesta->estado==1):
-                                            $pdf .= Fpdf::Cell(50,7,'Correcto',0,0,'C');
-                                        else:
-                                            $pdf .= Fpdf::Cell(50,7,'incorrecta',0,0,'C');
-                                        endif;
-                                    endif;
-                                endforeach;
-                            endif;
-                        endforeach;
-                    endif;
-                endforeach;
-                $pdf .= Fpdf::Ln();
-            endforeach;
-        endif;
-
-
-
-        /**Fin*/
-        Fpdf::Output();
-        exit;
+        })->export('xlsx');
+    
     }
-
 
 }

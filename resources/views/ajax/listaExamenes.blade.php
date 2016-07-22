@@ -4,7 +4,7 @@
         <div class="table-responsive">
        <table class="table">
           <thead>
-            <td><strong>Acciones</strong></td>
+            <td><strong>Responder</strong></td>
             <td><strong>Fecha de inicio</strong></td>
             <td><strong>Fecha de vencimiento</strong></td>
             <td><strong>Nota</strong></td>

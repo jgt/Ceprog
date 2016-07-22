@@ -27,13 +27,13 @@
     </header>
     <hr>
     <main>
-      <ol id="olNumeros">
+      <ol class="olNumeros">
       @foreach($examen->preguntas as $pregunta)
           
           <li><p>{{$pregunta->contenido}} - (Valor de la pregunta {{$pregunta->valor}})</p></li>
        
 
-         <ol id="olLetras">
+         <ol class="olLetras">
           @foreach($pregunta->respuestas as $respuesta)
               
              <li>{{$respuesta->name}} - {{$respuesta->estado}}</li>

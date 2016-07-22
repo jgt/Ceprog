@@ -321,10 +321,18 @@
                 divPreg.html(" ");
                 ulQuiz.html(" ");
 
+                console.log(resp);
                 var nota = $('#ntEx').val(resp.nota);
 
-                $(resp.pregunta).each(function(key, preg){
+                if(resp.pregunta.length == 0)
+                {
+                  alertify.alert("El examen ha finalizado, tu nota es: "+resp.nota);
+                  $('#nextQuiz').hide();
+                  $('#endQuiz').show();
+                }else{
 
+                  $(resp.pregunta).each(function(key, preg){
+                  
                   var preguntaId = $('#pregId').val(preg.id);
 
                   divPreg.append("<p>"+preg.contenido+"</p>");
@@ -337,6 +345,7 @@
                   });
 
                 });
+                }
 
               });
               
@@ -347,8 +356,7 @@
 
               if(error)
               {
-                $('#nextQuiz').hide();
-                $('#endQuiz').show();
+                alertify.alert("Recuerda que tienes que responder la pregunta.");
               }
 
             }
@@ -378,7 +386,6 @@
 
               $('#ntEx').val(' ');
               $('#qexaId').val(' ');
-              alertify.alert("El examen ha termiando correctamente.");
               $('#quiz').modal('hide');
               var id = resp.id;
               var link = $('#pdfExamen').attr('href');
@@ -392,9 +399,7 @@
               if(error)
               {
 
-                alertify.alert("Tienes preguntas sin contestar.");
-                $('#nextQuiz').show();
-                $('#endQuiz').hide();
+                alertify.alert("Error al procesar la solicitud.");
               }
 
             }
@@ -514,18 +519,7 @@
         var id = btn.value;
         var link = $('#rpeGen').attr('href');
         var route = link.split('%7Bid%7D').join(id);
-        
-        $.get(route, function(resp){
-
-          window.open(route);
-
-        })
-
-        .fail(function(){
-
-          alertify.alert("Error al procesar la solicitud.");
-
-        });
+        window.open(route);
 
   }
 
@@ -600,18 +594,25 @@
         $.get(route, function(resp){
           divPreg.html(" ");
           ulQuiz.html(" ");
+          if(resp.pregunta.length == 0)
+          {
+            alertify.alert("Ya tienes una nota en este examen.");
+            $('#quiz').modal('hide');
+          }else{
 
-          $(resp.pregunta).each(function(key, preg){
+              $(resp.pregunta).each(function(key, preg){
 
-            var preguntaId = $('#pregId').val(preg.id);
+              var preguntaId = $('#pregId').val(preg.id);
 
-            divPreg.append("<li><p>"+preg.contenido+"</p></li>");
+              divPreg.append("<li><p>"+preg.contenido+"</p></li>");
 
-            $(preg.respuestas).each(function(key, respu){
+              $(preg.respuestas).each(function(key, respu){
 
-              ulQuiz.append("<li><input type='radio' name='respuesta' value="+respu.id+">"+respu.name+"</li>");
+                ulQuiz.append("<li><input type='radio' name='respuesta' value="+respu.id+">"+respu.name+"</li>");
+              });
             });
-          });
+          }
+    
         });
       }
 

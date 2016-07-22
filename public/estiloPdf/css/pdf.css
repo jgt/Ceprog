@@ -149,6 +149,17 @@ footer {
   counter-increment: list;
 }
 
+.olLetras {
+  counter-reset: list;
+}
+.olLetras > li {
+  list-style: none;
+}
+.olLetras > li:before {
+  content: counter(list, upper-alpha) ") ";
+  counter-increment: list;
+}
+
 #imgLogo {
 
   position:absolute; 
