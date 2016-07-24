@@ -118,26 +118,19 @@ class ActividadController extends Controller {
 	public function promedio($id, Request $request)
 	{
 
+		$idUser = Auth::user()->id;
+		$materia = Unidad::find($id)->materia_id;
+		$user = Auth::user();
 		$actividades = Unidad::find($id)->actividades()->get();
 		$actividadesId = $this->actividadRepository->getModel()->where('unidad_id',$id)->lists('id');
-		$calificaciones = $this->calificacionRepository->notasActividades($actividadesId);
 		$promedio = $this->calificacionRepository->promedioActividad($actividadesId);
-
-		$detalles = [
-
-			'actividades' => $actividades,
-			'calificaciones' => $calificaciones,
-			'promedio' => $promedio
-
-		];
-
-		if($request->ajax())
-		{
-
-			return response()->json($detalles);
-		}
-		
-		return view('promedioGeneral', compact('calificaciones','promedio', 'actividadesId'));	
+		$totalExamen = $this->materiaRepository->sumaExamenes($idUser, $materia);
+		$pdf = App::make('dompdf.wrapper');
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+       $pdf->loadview('calificacionAlm', compact('actividades', 'promedio', 'user', 'totalExamen'));
+        return $pdf->stream('Calificacion.pdf');	
 	}
 
 

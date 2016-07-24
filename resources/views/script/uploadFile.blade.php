@@ -1,53 +1,53 @@
 <script>
 	
-	$(document).on('submit', 'form', function(e){
+	$(document).on('ready', function(e){
 
 		e.preventDefault();
 
-		$form = $(this);
+		var form = $('#respAlm');
+		var route = form.attr('action');
+		var metodo = form.attr('method');
 
-		uploadFile($form);
+		var formData = new FormData($('#respAlm')[0]);
+
+		$.ajax({
+
+				url: route,
+				type: metodo,
+				data: formData,
+				contentType: false,
+		        processData: false,
+		        cache: false,
+
+		        beforeSend:function(){
+
+		        	 $.blockUI({ message: '<h1><img src="img/loading.gif" />Por favor espera...</h1>' });   
+
+		        },
+
+		        success:function(resp){
+
+		        	 alertify.alert("El archivo ha sido enviado correctamente.");
+		        	 $.unblockUI();
+
+
+		        },
+
+		        error:function(request, error){
+
+				if(error == "timeout")
+				{
+
+					alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+				}else{
+
+					alertify.alert('Error al procesar la solicitud.');
+				}
+
+			}
+
+		});
+		
 	});
 
-	function uploadFile($form){
-
-		$form.find('.progress-bar').removeClass('progress-bar-success').removeClass('progress-bar-danger'); 
-
-		var id = $('#act_id').val();
-		var form = $('#respAlm');
-		var link = form.attr('action');
-		var metodo = form.attr('method');
-		var route = link.split("%7Bid%7D").join(id);
-
-		var formdata = new FormData($form[0]);
-
-		var request = new XMLHttpRequest();
-
-		request.upload.addEventListener('progress', function(e){
-
-			var percent = Math.round(e.loaded/e.total * 100);
-
-			$form.find('.progress-bar').width(percent +'%').html(percent +'%');
-
-			console.log(percent);
-
-		});
-
-		request.addEventListener('load', function(e){
-
-			$form.find('.progress-bar').addClass('progress-bar-success').html('el archivo subio correctamente...');
-
-		});
-
-		request.open(metodo, route);
-		request.send(formdata);
-
-		$form.on('click', 'cancel', function(){
-
-			request.abort();
-
-			$form.find('.progress-bar').addClass('progress-bar-danger').removeClass('progress-bar-success').html('el archivo se cancelo.');
-			
-		});
-	}
 </script>

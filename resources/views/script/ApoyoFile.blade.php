@@ -1,57 +1,59 @@
 <script>
-	
-		$('#apoy').on('click', function(e){
+		
+		$(document).on('ready', function(){
 
-			e.preventDefault();
+			$('#apoy').on('click', function(e){
 
-			$form = $('#apoyoM_id');
+				e.preventDefault();
 
-			apoyoFile($form);
+				var form = $('#apoyoM_id');
+				var route = form.attr('action');
+				var metodo = form.attr('method');
+
+				var formData = new FormData($('apoyoM_id')[0]);
+
+				$.ajax({
+
+					url: route,
+					type: metodo,
+					data: formData,
+					contentType: false,
+			        processData: false,
+			        cache: false,
+
+			        beforeSend:function(){
+
+		        	 $.blockUI({ message: '<h1><img src="img/loading.gif" />Por favor espera...</h1>' });   
+
+		        },
+
+		        success:function(resp){
+
+		        	 alertify.alert("El archivo ha sido guardado correctamente.");
+		        	 $.unblockUI();
+
+
+		        },
+
+		        error:function(request, error){
+
+				if(error == "timeout")
+				{
+
+					alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+				}else{
+
+					alertify.alert('Error al procesar la solicitud.');
+				}
+
+			}
+
+
+				});
+
+			});
 
 		});
 
-	function apoyoFile($form){
-
-		$form.find('.progress-bar').removeClass('progress-bar-success').removeClass('progress-bar-danger'); 
-
-		var id = $('#apoyo_id').val();
-	    var form = $('#apoyoM_id');
-	    var link = form.attr('action');
-	    var metodo = form.attr('method');
-	    var route = link.split('%7Bid%7D').join(id);
-
-		var formdata = new FormData($form[0]);
-
-		var request = new XMLHttpRequest();
-
-		request.upload.addEventListener('progress', function(e){
-
-			var percent = Math.round(e.loaded/e.total * 100);
-
-			
-			$('.progress-bar').css('width', percent);
-
-			console.log(percent);
-
-		});
-
-		request.addEventListener('load', function(e){
-
-			$('.progress-bar').addClass('progress-bar-success').html('el archivo subio correctamente...');
-
-		});
-
-		request.open(metodo, route);
-		request.send(formdata);
-
-		$('#cancelMaterial').on('click', function(){
-
-			request.abort();
-
-			$('.progress-bar').addClass('progress-bar-danger').removeClass('progress-bar-success').html('el archivo se cancelo.');
-			
-		});
-	}
-
-
+		
 </script>

@@ -51,7 +51,7 @@
 
 				$(resp.data).each(function(key, value){
 
-					tablaAlm.append("<tr><td>"+value.unidad+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='act(this);'</button><i class='fa fa-search'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='VideosAlm(this);' data-toggle='modal' data-target='#modalListVideos' </button><i class='fa fa-eye'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='calificacionAlm(this);' data-toggle='modal' data-target='#modalCalificacion' </button><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='pdfUnidad(this);' </button><i class='fa fa-eye'></i></td></tr>");
+					tablaAlm.append("<tr><td>"+value.unidad+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='act(this);'</button><i class='fa fa-search'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='VideosAlm(this);' data-toggle='modal' data-target='#modalListVideos' </button><i class='fa fa-eye'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='calificacionAlm(this);'</button><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='pdfUnidad(this);' </button><i class='fa fa-eye'></i></td></tr>");
 
 				});
 
@@ -338,34 +338,10 @@
 		var id = btn.value;
 		var link = $('#promedio').attr('href');
 		var route = link.split('%7Bid%7D').join(id);
-		var tablaCalificacion = $('#tablaCalificacion');
-		var tablaCalificacion = $('#tablaCalificacion');
 		
-		$.get(route,function(resp){
+		$.get(route, function(resp){
 
-			tablaCalificacion.html(" ");
-
-			$(resp.actividades).each(function(key, value){
-
-				tablaCalificacion.append("<tr><td>"+value.actividad+"</td></tr>");
-
-			});
-
-			$(resp.calificaciones).each(function(key, value){
-
-				console.log(value);
-				tablaCalificacion.append("<tr><td>"+value.promedio+"</td></tr>");
-
-			});
-
-
-			$(resp.promedio).each(function(key, value){
-
-				tablaCalificacion.append("<tr><td><strong>Promedio de la unidad:</strong> "+value+"</td></tr>");
-
-			});
-
-
+			window.open(route);
 		});
 
 	}

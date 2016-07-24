@@ -366,29 +366,19 @@
 
 							$(act.fileentries).each(function(key, file){
 
-									var archivos = $('#archivosRoute').attr('href');
-							        var ruta = archivos.split('%7Bid%7D').join(file.actividad_id);
-							        var tablaArchivos = $('#tablaArchivos');
+								$(file.user).each(function(key, user){
 
-							        $.get(ruta, function(resp){
-
-							        	$(file.user).each(function(key, user){
-
-											if(userId == file.user_id && resp.nota == 0)
-										{
-
+									if(userId == user.id && user.calificaciones.length == 0)
+									{
 											 var filename = file.filename;
 		              						 var cadena = filename.split(' ').join('%20');
-
+		              						
 											tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' OnClick='calificacionUser(this);' value="+file.id+"><i class='fa fa-book' aria-hidden='true'></i></button></td></tr>");
-										}else{
+									}else if(userId == user.id && user.calificaciones.length >=1){
 
-											tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td><td>Calificado</td></tr>");
-										}
-
-										});
-
-							        });
+										tablaAct.append("<tr><td>"+file.filename+"</td><td>"+act.actividad+"</td><td>"+uni.unidad+"</td><td>"+value.name+"</td><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='descActUser(this);' value="+cadena+"><i class='fa fa-download' aria-hidden='true'></i></button></td><td>Calificado</td></tr>");
+									}
+								});
 								
 							});
 						});

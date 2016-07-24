@@ -83,8 +83,6 @@ class PortafolioController extends Controller {
 			return response()->json($detalles);
 		}
 
-		return view('include.verArchivos', compact('archivos', 'users', 'actividad'));
-
 	}
 
 
