@@ -147,15 +147,60 @@ class MenuController extends Controller
     public function reporteGeneral($id, Request $request)
     {
 
-        $pdf = App::make('dompdf.wrapper');
         $examen = $this->examenRepository->search($id);
         $preguntas = $examen->preguntas()->get();
-        $customPaper = array(0,0,950,950);
-        $paper_orientation = 'landscape';
-        $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('reporteGeneral', compact('examen', 'preguntas'));
-        return $pdf->stream('ReporteGeneral.pdf');
+
+        foreach ($preguntas as $pregunta) {
+                
+                $preg[] = $pregunta->contenido;
+     }
+
+
+     $content = [
+
+                    ['Universidad Ceprog'],
+                    [''],
+                    [''],
+                    array_merge(['Alumnos/No.Preguntas'],$preg),
+
+
+            ];
+
+        foreach ($examen->materia->semestre->users as $user) { 
+
+                $usuario= [];
+                $usuario[] = $user->name;
+            foreach($preguntas as $pregunta){
+                foreach ($user->respuestasUser as $preguntaUser) {
+                    if ($pregunta->id == $preguntaUser->pregunta_id) {
+                        
+                        foreach ($pregunta->respuestas as $respuesta) {
+                            if ($respuesta->id == $preguntaUser->respuesta_id) {
+                                if ($respuesta->estado==1) {
+
+                                    $usuario[] = $respuesta->estado;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+           $content[] = $usuario;   
+        }
+        
+        Excel::create('Reporte General', function($excel) use ($content){
+
+            $excel->sheet('Reporte', function($sheet) use ($content){
+
+               $sheet->fromArray($content, null, 'A1', true,false);
+
+            });
+
+        })->export('xlsx');
+    
+    }
 
         
-    }
+    
 }
