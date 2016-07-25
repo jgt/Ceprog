@@ -166,9 +166,7 @@
 						data: foro.serialize(),
 
 						success:function(resp){
-
 							setInterval(mensaje, 500);
-							console.log(resp);
 							var div = $('#mchat');
 							$('#btn-input').val(" ");
 							
