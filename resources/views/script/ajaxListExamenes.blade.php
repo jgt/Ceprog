@@ -653,16 +653,8 @@
 
             $(value.examen).each(function(key, exa){
 
-              $(value.user).each(function(key, user){
-
-                if(value.user_id == user.id)
-                {
-
                   examen.append("<tr><td>"+exa.modulo+"</td><td>"+value.resultado+"</td></tr>");
-                }
-
-              });
-
+    
             });
 
           });

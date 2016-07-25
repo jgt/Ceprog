@@ -260,7 +260,8 @@ class ExamenController extends Controller
     public function notaExamen($id, Request $request)
     {
 
-        $examen = Examen::find($id)->resultados()->with('user', 'examen')->get();
+        $user = Auth::user();
+        $examen = Examen::find($id)->resultados()->with('examen')->where('user_id', $user->id)->get();
 
         if($request->ajax())
         {
