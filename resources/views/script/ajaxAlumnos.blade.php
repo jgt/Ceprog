@@ -193,7 +193,7 @@
 					tablaAct.append("<tr><td>"+value.actividad+"</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#respActalm' OnClick='Responder(this);'><i class='fa fa-file-pdf-o'></i></button></td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#MapoyoAlm'  OnClick='Mapoyo(this);'><i class='fa fa-folder'></i></button></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='verPdf(this);'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#modalFile' OnClick='archivosList(this);'><i class='fa fa-archive'></i></button></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td></tr>");
 				}else{
 
-					tablaAct.append("<tr><td>"+value.actividad+"</td><td>Fecha vencida</td><td><button class='btn btn-primary' value="+value.id+"  OnClick='MapoyoAlm(this);'><i class='fa fa-folder'></i></button></td><td>Fecha vencida</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#modalFile' OnClick='archivosList(this);'><i class='fa fa-archive'></i></button></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td></tr>");
+					tablaAct.append("<tr><td>"+value.actividad+"</td><td>Fecha vencida</td><td><button class='btn btn-primary' value="+value.id+"  OnClick='Mapoyo(this);'><i class='fa fa-folder'></i></button></td><td>Fecha vencida</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#modalFile' OnClick='archivosList(this);'><i class='fa fa-archive'></i></button></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td></tr>");
 				}
 
 				
