@@ -10,6 +10,7 @@
         <a href="{{ route('deleteActividad')}}" Style="display:none" id="deleteActividad"></a>
         <a href="{{ route('borrarM')}}" Style="display:none" id="borrarM"></a>
         <a href="{{ route('listrubrica')}}" Style="display:none" id="listRubrica"></a>
+        <a href="{{ route('profesor.show') }}" Style="display:none" id="rbCrt"></a>
       <div class="table-responsive">
        <table class="table">
           <thead>
@@ -20,6 +21,7 @@
             <td><strong>Subir Material</strong></td>
             <td><strong>Ver Pdf</strong></td>
             <td><strong>Rubricas</strong></td>
+            <td><strong>Crear Rubricas</strong></td>
             <td><strong>Borrar</strong></td>
           </thead> 
           <tbody id="tablaActividad">

@@ -50,6 +50,7 @@
  @include('ajax.modalRespuestasIncompletas')
  @include('ajax.Semestres.modalEditSemestre')
  @include('ajax.Materias.modalEditMateria')
+ @include('ajax.modalCrtRubricas')
  
 <div class="container">
 

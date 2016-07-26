@@ -67,12 +67,10 @@ class ProfesorController extends Controller {
 		
 		$datos = $this->actividadRepository->crearActividad($request);
 		
-		flash()->overlay('La primera parte para crear la actividad se ha completado sactifactoriamente por favor crea las rubricas para la actividad', '' . $datos->actividad);
 		if($request->ajax())
 		{
 			return response()->json($datos);
 		}
-		return redirect()->route('rubrica', $datos->id);
 
 	}
 
@@ -80,11 +78,12 @@ class ProfesorController extends Controller {
 	public function show($id, Request $request)
 	{
 
-		$materia = $this->materiaRepository->search($id);
-		$actividades = $this->materiaRepository->getActividades($id);
-
-		return view('include.listactividades', compact('actividades', 'materia'));
+		$actividad = $this->actividadRepository->search($id)->rubricas()->with('actividad')->get();
 		
+		if($request->ajax())
+		{
+			return response()->json($actividad);
+		}	
    
 	}
 

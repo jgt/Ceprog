@@ -1048,6 +1048,53 @@
 
 		  });
 
+		  	//creacion de rubricas incompletas.
+		  	$('#crtR').on('click', function(e){
+
+		  		e.preventDefault();
+
+		  		var form = $('#formRu');
+		  		var route = form.attr('action');
+		  		var metodo = form.attr('method');
+		  		var porcentajeD = $('#actD').val();
+		  		var porcentaje = $('#actTotal').val();
+
+		  		if(porcentajeD > porcentaje)
+		  		{
+
+		  		$.ajax({
+
+		  			url: route,
+			        headers: { 'X-CSFR-TOKEN': token},
+			        type: metodo,
+			        data: form.serialize(),
+
+			        success:function(resp){
+
+			        	alertify.alert("La rubrica ha sido creada correctamente.");
+			        	$('#actTotal').val(" ");
+			        	$('#actDesc').val(" ");
+			        	$('#actRub').val(" ");
+
+			        },
+
+			        error:function(request, error){
+
+			        	if(error)
+			        	{
+			        		alertify.alert("Error en la solicitud.");
+			        	}
+			        }
+
+		  		});
+
+		  		}else{
+
+		  			alertify.alert("Error porcentaje invalido.");
+		  		}
+		  	});
+
+
 		    $('#cancelar').on('click', function(e){
 
 		      e.preventDefault();
@@ -1079,7 +1126,7 @@
             tablaActividad.html(" ");
             $(resp.data).each(function(key, value){
 
-              tablaActividad.append("<tr><td>"+value.actividad+"</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#materialA' OnClick='verArchivos(this);'><i class='fa fa-file-archive-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#editarA' value="+value.id+"  OnClick='editar(this);'><i class='fa fa-calendar'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#notaAct' OnClick='notaAct(this);' value="+value.id+"><i class='fa fa-file-excel-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#Mapoyo' value="+value.id+"  OnClick='fileApoyo(this);'><i class='fa fa-folder'></i></td><td><button class='btn btn-primary'value="+value.id+"  OnClick='actividadPdf(this);'><i class='fa fa-file-word-o'></i></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='listRubricas(this);'><i class='fa fa-search'></i></button></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarActividad(this);'><i class='fa fa-eraser'></i></button></td></tr>");
+              tablaActividad.append("<tr><td>"+value.actividad+"</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#materialA' OnClick='verArchivos(this);'><i class='fa fa-file-archive-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#editarA' value="+value.id+"  OnClick='editar(this);'><i class='fa fa-calendar'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#notaAct' OnClick='notaAct(this);' value="+value.id+"><i class='fa fa-file-excel-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#Mapoyo' value="+value.id+"  OnClick='fileApoyo(this);'><i class='fa fa-folder'></i></td><td><button class='btn btn-primary'value="+value.id+"  OnClick='actividadPdf(this);'><i class='fa fa-file-word-o'></i></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='listRubricas(this);'><i class='fa fa-search'></i></button></td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#crtRubrica'  OnClick='createRubricas(this);'><i class='fa fa-plus-circle' aria-hidden='true'></i></button></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarActividad(this);'><i class='fa fa-eraser'></i></button></td></tr>");
 
             });
          }else{
@@ -1093,6 +1140,39 @@
 
 			});
 
+		}
+		//function para traer los datos de la rubricas incompletas.
+		function createRubricas(btn)
+		{
+			var id = btn.value;
+			var link = $('#rbCrt').attr('href');
+			var route = link.split('%7Bprofesor%7D').join(id);
+			var sum = 0;
+
+			$.get(route, function(resp){
+
+				$(resp).each(function(key, value){
+
+					sum += parseFloat(value.total);
+					var resta = parseFloat(value.actividad.valoractividad) - parseFloat(sum);
+					$('#acId').val(value.actividad.id);
+					$('#actD').val(resta).prop('disabled', true);
+					$('#actN').val(value.actividad.actividad);
+					$('#actPr').val(value.actividad.valoractividad).prop('disabled', true);
+
+					if(resta == 0)
+					{	
+						$('#crtR').hide();
+						$('#salirR').show();
+					}else{
+
+						$('#crtR').show();
+						$('#salirR').hide();
+					}
+
+				});
+
+			});
 		}
 
 
