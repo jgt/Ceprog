@@ -89,7 +89,7 @@ class MenuController extends Controller
     public function listActUser($id, Request $request)
     {
 
-        $user = $this->materiaRepository->search($id)->where('id', $id)->with('unidades.actividades.fileentries.user.calificaciones')->get();
+        $user = $this->materiaRepository->search($id)->where('id', $id)->with('unidades.actividades.fileentries.user', 'unidades.actividades.calificaciones')->get();
 
         if($request->ajax())
         {
