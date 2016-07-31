@@ -157,6 +157,8 @@ Route::group(['middleware' => 'adminMaestro'], function(){
 
 Route::group(['middleware' => 'maestro'], function(){
 
+	Route::get('matDelete/{id}/{semestre}', ['as' => 'matDelete', 'uses' => 'MateriaController@matDelete']);
+
 	Route::get('calUnidad/{id}', ['as' => 'calUnidad', 'uses' => 'MenuController@calUnidad']);
 
 	Route::get('borrarSemestre/{id}', ['as' => 'borrarSemestre', 'uses' => 'SemestreController@borrarSemestre']);

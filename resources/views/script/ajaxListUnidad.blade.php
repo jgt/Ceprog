@@ -1,7 +1,6 @@
 <script>
 	
 	$(document).on('ready', function(){
-
 		
 		$('a#menuListUser').on('click', function(e){
 

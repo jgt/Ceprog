@@ -92,14 +92,6 @@ class MateriaController extends Controller {
 	}
 
 
-	public function destroy($id)
-	{
-		
-		$this->materiaRepository->deleteMateria($id);
-		return redirect()->route('materia.index');
-	}
-
-
 	public function createMateria($id)
    {
       
@@ -107,6 +99,15 @@ class MateriaController extends Controller {
       $semestres = $this->carreraRepository->listSemestres($id);
 
       return view('materias.crearMateria', compact('semestres'));
+   }
+
+   public function matDelete($id, $semestre)
+   {
+   		$delete = $this->materiaRepository->deleteMateria($id);
+   		$semestre = $this->semestreRepository->search($semestre);
+   		$materias = $semestre->materias()->get();
+
+   		return response()->json($materias);
    }
 }
 

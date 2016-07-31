@@ -328,7 +328,7 @@
 
 			$(resp.data).each(function(key, mat){
 
-				Materias.append("<tr><td>"+mat.name+"</td><td><button class='btn btn-primary' value="+mat.id+" OnClick='editMateria(this);' data-toggle='modal' data-target='#editMta'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+mat.id+" OnClick='borrarMta(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+				Materias.append("<tr><td>"+mat.name+"</td><td><button class='btn btn-primary' value="+mat.id+" OnClick='editMateria(this);' data-toggle='modal' data-target='#editMta'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-danger' id="+mat.semestre_id+" value="+mat.id+" OnClick='borrarMta(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 			});
 
 		});
@@ -354,8 +354,21 @@
 	function borrarMta(btn){
 
 		var id = btn.value;
-		alert(id);
+		var idSem = btn.id;
+		var link = $('#matDelete').attr('href');
+		var route = link.split('%7Bid%7D').join(id).split('%7Bsemestre%7D').join(idSem);
+		var Materias = $('#tablaDataMateria');
+		
+		$.get(route, function(resp){
 
+			alertify.alert("La materia ha sido borrada correctamente.");
+			Materias.html(" ");
+
+			$(resp).each(function(key, mat){
+
+				Materias.append("<tr><td>"+mat.name+"</td><td><button class='btn btn-primary' value="+mat.id+" OnClick='editMateria(this);' data-toggle='modal' data-target='#editMta'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-danger' id="+mat.semestre_id+" value="+mat.id+" OnClick='borrarMta(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+			});
+		});
 	}
 
 	//se le coloca el id del semestre al input para luego crear la materia con la function crearMateria
