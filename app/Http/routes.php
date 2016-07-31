@@ -157,6 +157,8 @@ Route::group(['middleware' => 'adminMaestro'], function(){
 
 Route::group(['middleware' => 'maestro'], function(){
 
+	Route::get('calUnidad/{id}', ['as' => 'calUnidad', 'uses' => 'MenuController@calUnidad']);
+
 	Route::get('borrarSemestre/{id}', ['as' => 'borrarSemestre', 'uses' => 'SemestreController@borrarSemestre']);
 	Route::get('reporteUser/{id}/{materia}', ['as' => 'reporteUser', 'uses' => 'MenuController@reporteUser']);
 	Route::get('reporteGeneral/{id}', ['as' => 'reporteGeneral', 'uses' => 'MenuController@reporteGeneral']);
@@ -207,7 +209,7 @@ Route::group(['middleware' => 'maestro'], function(){
 
 	Route::get('verArchivos/{id}', ['as' => 'verArchivos', 'uses' => 'PortafolioController@verArchivos']);
 
-	Route::get('calificacion/{id}', ['as' => 'calificacion', 'uses' => 'PortafolioController@calificacion']);
+	Route::get('calificacion/{id}/{user}', ['as' => 'calificacion', 'uses' => 'PortafolioController@calificacion']);
 	Route::post('nota/{id}', ['as' => 'nota', 'uses' => 'PortafolioController@nota']);
 	Route::get('notaAlumno/{id}', ['as' => 'notaAlumno', 'uses' => 'PortafolioController@notaAlumno']);
 

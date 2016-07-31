@@ -15,6 +15,7 @@ use Auth;
 use App\Repository\CalificacionRepository;
 use App\Repository\ActividadRepository;
 use App\Repository\UnidadRepository;
+use App\Repository\UserRepository;
 use Illuminate\Http\Request;
 
 
@@ -23,17 +24,20 @@ class PortafolioController extends Controller {
 	private $actividadRepository;
 	private $calificacionRepository;
 	private $unidadRepository;
+	private $userRepository;
 
 	public function __construct(
 
 		ActividadRepository $actividadRepository, 
 		CalificacionRepository $calificacionRepository,
-		UnidadRepository $unidadRepository)
+		UnidadRepository $unidadRepository,
+		UserRepository $userRepository)
 	{
 
 		$this->actividadRepository = $actividadRepository;
 		$this->calificacionRepository = $calificacionRepository;
 		$this->unidadRepository = $unidadRepository;
+		$this->userRepository = $userRepository;
 
 	}
 	
@@ -96,26 +100,20 @@ class PortafolioController extends Controller {
 	}
 
 
-	public function calificacion($id, Request $request)
-	{
-		$archivo = Fileentry::find($id);
+	public function calificacion($id, $user, Request $request)
+	{	
+		$user = $this->userRepository->search($user);
+		$actividad = $this->actividadRepository->search($id);
 
 		$detalles = [
 
-			'archivo' => $archivo,
-			'usuario' => $archivo->user->get(),
-			'actividad' => $archivo->actividad->get(),
-			'rubricas' => $archivo->actividad->rubricas()->get()
+			'user' => $user,
+			'actividad' => $actividad,
+			'rubricas' => $actividad->rubricas()->get()
 
 		];
 
-		if($request->ajax())
-		{
-
-			return response()->json($detalles);
-		}
-
-		return view('calificacion', compact('archivo'));
+		return response()->json($detalles);
 		
 	}
 
@@ -123,7 +121,7 @@ class PortafolioController extends Controller {
 	public function nota($id, Request $request)
 	{
 
-		$archivo = Fileentry::find($id);
+		$actividad = Actividad::find($id);
 
 		 $rules = [
 
@@ -133,7 +131,7 @@ class PortafolioController extends Controller {
 
 			];
 
-		foreach ($archivo->actividad->rubricas as $rubrica) {	
+		foreach ($actividad->rubricas as $rubrica) {	
 
 			$rules['rubrica_'.$rubrica->id] = 'required|integer|min:0|max:'.$rubrica->total;
 		}
@@ -153,7 +151,7 @@ class PortafolioController extends Controller {
 		
 		flash()->overlay('Ha sido guardado correctamente', 'La calificacion');
 
-		return redirect()->route('verArchivos', [$archivo->actividad]);
+		return redirect()->route('verArchivos', [$actividad]);
 		
 	}
 

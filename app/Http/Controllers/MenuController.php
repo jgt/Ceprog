@@ -13,6 +13,7 @@ use App\Repository\RoleRepository;
 use App\Repository\CarreraRepository;
 use App\Repository\SemestreRepository;
 use App\Repository\ExamenRepository;
+use App\Repository\UnidadRepository;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Tutorial;
 use Auth;
@@ -30,6 +31,7 @@ class MenuController extends Controller
     private $carreraRepository;
     private $semestreRepository;
     private $examenRepository;
+    private $unidadRepository;
 
     public function __construct(
 
@@ -39,7 +41,8 @@ class MenuController extends Controller
         CarreraRepository $carreraRepository,
         SemestreRepository $semestreRepository,
         RoleRepository $roleRepository,
-        ExamenRepository $examenRepository)
+        ExamenRepository $examenRepository,
+        UnidadRepository $unidadRepository)
     {
 
         $this->materiaRepository = $materiaRepository;
@@ -49,6 +52,7 @@ class MenuController extends Controller
         $this->carreraRepository = $carreraRepository;
         $this->semestreRepository = $semestreRepository;
         $this->examenRepository = $examenRepository;
+        $this->unidadRepository = $unidadRepository;
 
     }
 
@@ -89,7 +93,7 @@ class MenuController extends Controller
     public function listActUser($id, Request $request)
     {
 
-        $user = $this->materiaRepository->search($id)->where('id', $id)->with('unidades.actividades.fileentries.user', 'unidades.actividades.calificaciones')->get();
+        $user = $this->materiaRepository->search($id)->where('id', $id)->with('unidades.actividades.fileentries.user')->get();
 
         if($request->ajax())
         {
@@ -161,6 +165,12 @@ class MenuController extends Controller
     
     }
 
-        
+        public function calUnidad($id, Request $request)
+        {   
+                
+            $datos = $this->actividadRepository->calAct($id);
+
+             return response()->json($datos); 
+        }
     
 }

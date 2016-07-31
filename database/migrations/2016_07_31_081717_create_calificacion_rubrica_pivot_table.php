@@ -13,13 +13,14 @@ class CreateCalificacionRubricaPivotTable extends Migration
     public function up()
     {
         Schema::create('calificacion_rubrica', function (Blueprint $table) {
-            
-           $table->string('nota');
+
+            $table->string('nota');
 
             $table->integer('calificacion_id')->unsigned()->index();
             $table->foreign('calificacion_id')->references('id')->on('calificacions')->onDelete('cascade');
             $table->integer('rubrica_id')->unsigned()->index();
             $table->foreign('rubrica_id')->references('id')->on('rubricas')->onDelete('cascade');
+            $table->primary(['calificacion_id', 'rubrica_id']);
         });
     }
 

@@ -23,7 +23,11 @@
           <tr>
             <td class="service">Nombre de las Actividades</td>
             @foreach($actividades as $actividad)
+              @foreach($actividad->calificaciones as $calificacion)
+              @if($calificacion->user_id==$users->id && $calificacion->actividad_id == $actividad->id)
               <td class="desc">{{ $actividad->actividad }}</td>
+              @endif
+              @endforeach
             @endforeach
           </tr>
           <tr>
@@ -32,8 +36,8 @@
             @foreach($actividades as $actividad)
           
               @foreach($actividad->calificaciones as $calificacion)
-                @if($calificacion->user_id==$users->id)
-                <?php $total += $calificacion->promedio; ?>
+                @if($calificacion->user_id==$users->id && $calificacion->actividad_id == $actividad->id)
+                <?php $total += $calificacion->promedio;?>
                   <td class="desc">{{ $calificacion->promedio }}</td>
                 @endif
               @endforeach

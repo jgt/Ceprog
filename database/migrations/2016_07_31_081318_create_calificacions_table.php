@@ -13,7 +13,6 @@ class CreateCalificacionsTable extends Migration
     public function up()
     {
         Schema::create('calificacions', function (Blueprint $table) {
-
             $table->increments('id');
 
             $table->string('promedio');
@@ -23,7 +22,7 @@ class CreateCalificacionsTable extends Migration
 
             $table->integer('actividad_id')->unsigned()->index();
             $table->foreign('actividad_id')->references('id')->on('actividads')->onDelete('cascade');
-            
+
             $table->timestamps();
         });
     }

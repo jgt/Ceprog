@@ -1,4 +1,4 @@
-<div id="prbUser" class="modal fade" role="dialog">
+<div id="notaUserAct" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <div class="modal-content">
@@ -9,13 +9,10 @@
       <div class="modal-body">
        <table class="table">
          <thead>
-           <td><strong>Archivo</strong></td>
-           <td><strong>Actividad</strong></td>
-           <td><strong>Unidad</strong></td>
-           <td><strong>Materia</strong></td>
-           <td><strong>Descargar</strong></td>
+           <td><strong>Alumno</strong></td>
+           <td><strong>Calificar</strong></td>
          </thead>
-         <tbody id="tablaPrbUser"></tbody>
+         <tbody id="tablaUserNota"></tbody>
        </table>
       </div>
       <div class="modal-footer">

@@ -51,6 +51,7 @@
  @include('ajax.Semestres.modalEditSemestre')
  @include('ajax.Materias.modalEditMateria')
  @include('ajax.modalCrtRubricas')
+ @include('ajax.modalUserNota')
  
 <div class="container">
 

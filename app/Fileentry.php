@@ -18,6 +18,12 @@ class Fileentry extends Model
 	{
 		return $this->belongsTo('App\User');
 	}
+
+	public function calificaciones()
+	{
+		return $this->hasMany('App\Calificacion');
+	}
+
 	public function scopeName($query, $name)
    	 {
         if (trim($name) != "") {

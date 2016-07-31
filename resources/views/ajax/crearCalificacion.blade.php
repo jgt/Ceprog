@@ -16,6 +16,7 @@
   {!! Form::label('user_id', 'Alumno: ', ['class' => 'form-group'])!!}
   {!! Form::text('usuario', null, ['class' => 'form-control', 'id' => 'nameAuth'])!!}
   {!! Form::text('user_id', null, ['id' => 'uid', 'Style' => 'display:none'])!!}
+
     </div>
 
     <div class="form-group">
@@ -23,6 +24,7 @@
   {!! Form::label('actividad_id', 'Actividad: ', ['class' => 'form-group'])!!}
   {!! Form::text('actividad', null, ['class' => 'form-control', 'id' => 'nameAct'])!!}
   {!! Form::text('actividad_id', null, ['id' => 'aid', 'Style' => 'display:none'])!!}
+
     </div>
     
     <div class="form-group">
