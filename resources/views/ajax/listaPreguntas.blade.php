@@ -15,4 +15,5 @@
           <tbody id="tablaPreguntas"></tbody>
        </table>
     </div>
+    <a href="#" class="btn btn-warning" id="backPreguntas">Atras</a>
      </div>

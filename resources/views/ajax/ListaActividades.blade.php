@@ -12,6 +12,7 @@
         <a href="{{ route('listrubrica')}}" Style="display:none" id="listRubrica"></a>
         <a href="{{ route('profesor.show') }}" Style="display:none" id="rbCrt"></a>
          <a href="{{ route('calUnidad') }}" id="calUni" Style="display:none"></a>
+         <a href="{{ route('listExamen') }}" id="ltexa" Style="display:none"></a>
 
       <div class="table-responsive">
        <table class="table">
@@ -32,4 +33,5 @@
           </tbody>
        </table>
       </div>
+      <a href="#" class="btn btn-warning" id="backActividad">Atras</a>
      </div>

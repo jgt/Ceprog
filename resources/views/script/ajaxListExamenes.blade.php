@@ -114,9 +114,10 @@
 
             alertify.alert('El examen ha sido editado correctamente.');
 
+             var matId = $('#editExmat').val();
              var tabla = $('#tablaExamenesDocente');
-             var link = $('#LexamenMaestro').attr('href');
-             var ruta = link.split('%7Bid7D').join(id);
+             var link = $('#ltexa').attr('href');
+             var ruta = link.split('%7Bid%7D').join(matId);
 
           $.get(ruta, function(resp){
 
@@ -725,6 +726,15 @@
         var link = $('#listPreguntas').attr('href')
         var route = link.split('%7Bid%7D').join(id);
         var tabla = $('#tablaPreguntas');
+
+        //retrocede a lista de examenes
+        $('#backPreguntas').on('click', function(e){
+
+                e.preventDefault();
+                $('#listPreg').hide();
+                $('#listExamenDocente').show();
+
+        });
     
         $.get(route, function(resp){
 

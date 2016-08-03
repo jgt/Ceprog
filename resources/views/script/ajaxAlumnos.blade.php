@@ -176,6 +176,13 @@
 			$('#crr').hide();
 			$('#semm').hide();
 			$('#mtaList').hide();
+
+			//retroceso a unidades de estudiantes.
+			$('#backActalm').on('click', function(){
+
+				$('#Almact').hide();
+				$('#AlmUni').show();
+			});
 			
 
 		$.get(route, function(resp){

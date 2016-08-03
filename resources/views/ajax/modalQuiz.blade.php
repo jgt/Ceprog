@@ -18,7 +18,7 @@
         {!! Form::text('pregunta_id', null, ['Style' => 'display:none', 'id' => 'pregId'])!!}
         {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none', 'id' => 'preguntaId'])!!}
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-
+        
         <ol type="1" id="pregQuiz"></ol> 
         <hr> 
         <ol type="A" id="quizResp"></ol>

@@ -46,7 +46,7 @@
 
               <div class="form-group">
                 <div class='input-group date' id='datetimepicker4'>
-                  {!! Form::label('fechaF', 'Fecha de activación', ['class' => 'form-control']) !!}
+                  {!! Form::label('fechaF', 'Fecha Limite', ['class' => 'form-control']) !!}
                   {!! Form::text('fechaF', null, ['class' => 'form-control', 'id' => 'fin']) !!}
                     
                     <span class="input-group-addon">

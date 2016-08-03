@@ -155,6 +155,5 @@ class ActividadController extends Controller {
 			return response()->json($examenes);
 		}
 
-		return view('examen.listExamen', compact('examenes', 'materia'));
 	}
 }

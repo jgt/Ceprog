@@ -467,7 +467,7 @@
 
 			success:function(resp){
 
-				alert("El subtema ha sido creado.");
+				alertify.alert("El subtema ha sido creado.");
 				$('#subtemaCreate').val(" ");
 				$('#createDesc').val(" ");
 
@@ -561,6 +561,13 @@
 		var link = $('#editSubtemas').attr('href');
 		var route = link.split('%7Bid%7D').join(id);
 		var tablaSubtemas = $('#tablaSubtemas');
+
+		//retroceder a unidades.
+		$('#backSuebtema').on('click', function(){
+
+			$('div#listUnidades').show();
+			$('div#listSubtemas').hide();
+		});
 		
 		$.get(route, function(resp){
 
@@ -1051,6 +1058,15 @@
 			var route = link.split('%7Bid%7D').join(id);
 			var tablaActividad = $('#tablaActividad');
 
+			//retrocede a unidades 
+			$('#backActividad').on('click', function(e){
+
+				e.preventDefault();
+				$('#listAct').hide();
+				$('#listUnidades').show();
+
+			});
+
 			$.get(route, function(resp){
 
 				$('#listAct').show();
@@ -1226,6 +1242,14 @@
 			var route = link.split('%7Bid%7D').join(id);
 			var tablaRubricas = $('#tablaRubrica');
 			$('#actividadIdE').val(id);
+
+			//retroceso a actividades
+			$('#backRubricas').on('click',function(){
+
+				$('#listAct').show();
+				$('#listRub').hide();
+
+			});
 
 			$.get(route, function(resp){
 

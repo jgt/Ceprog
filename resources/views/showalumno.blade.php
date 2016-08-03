@@ -51,7 +51,24 @@
         <div class="notice">
             
             @foreach($unidad->subtemas as $subtema)
-        <ul><li><strong>{{ $subtema->subtemas}}</strong> <p style="text-align: justify;">{{$subtema->descripcion}}</p></li></ul>
+                
+                @forelse ($subtema->imagenes as $imagen)
+
+                    <ul>
+                        <li><strong>{{ $subtema->subtemas}}</strong> <p style="text-align: justify;">{{$subtema->descripcion}}</p></li>
+                        <li><img src="{{$imagen->ruta}}"></li>
+              
+                  </ul>
+
+                  @empty
+
+                  <ul>
+                        <li><strong>{{ $subtema->subtemas}}</strong> <p style="text-align: justify;">{{$subtema->descripcion}}</p></li>
+              
+                  </ul>
+
+                @endforelse
+                        
         @endforeach
 
         </div>

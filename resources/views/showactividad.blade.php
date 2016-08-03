@@ -75,7 +75,7 @@
       <label for="rubricas">Rubricas</label>
       @foreach($actividad->rubricas as $rubrica)
   
-          <ul><li>{{$rubrica->name}}</li></ul>  
+          <ul><li>{{$rubrica->name}} - {{$rubrica->descripcion}}}</li></ul>  
 
         @endforeach
 

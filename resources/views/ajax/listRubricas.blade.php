@@ -14,4 +14,5 @@
           </tbody>
        </table>
       </div>
+       <a href="#" class="btn btn-warning" id="backRubricas">Atras</a>
      </div>
