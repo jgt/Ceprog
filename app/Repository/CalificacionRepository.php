@@ -53,20 +53,4 @@ class CalificacionRepository extends BaseRepository {
 		return $total;
 	}
 
-	public function calificacionAlumnos($id)
-	{
-
-		$calificacion = $this->search($id);
-
-		foreach ($calificacion->rubricas as $rubrica) {
-			
-			$detalles = [ 'rubrica' => $rubrica->name, 'nota' => $rubrica->pivot->nota];
-
-			return $detalles;
-		}
-
-		
-
-	}
-
 }

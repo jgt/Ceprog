@@ -61,30 +61,11 @@ class ActividadRepository extends BaseRepository {
 
 	}
 
-	public function notaAct($id)
-	{
-
-		$actividad = $this->search($id);
-		$cal = [];
-
-		foreach ($actividad->calificaciones as $calificacion) {
-      
-        if($calificacion->user->is('alm'))
-        {	
-
-        	$cal = $calificacion;
-        }
-
-
-    }
-
-    	return $cal;
-	}
 
 	public function calAct($id)
 	{
 		$actividad = $this->search($id);
-		$users = $actividad->where('id', $id)->with('unidad.materia.semestre.users.roles', 'unidad.materia.semestre.users.calificaciones')->get();
+		$users = $actividad->where('id', $id)->with('unidad.materia.semestre.users.calificaciones.rubricas')->get();
 
 		return $users;
 	}

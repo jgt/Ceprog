@@ -109,7 +109,7 @@ class ActividadController extends Controller {
                 $paper_orientation = 'landscape';
                 $pdf->setPaper($customPaper,$paper_orientation);
                 $pdf->loadview('showalumno', compact('unidad'));
-                        return $pdf->stream();
+                return $pdf->stream();
 
 		
 			}

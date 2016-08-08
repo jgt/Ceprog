@@ -20,6 +20,9 @@
 <script src="{{ asset('js/vendor/blockUi.js')}}" type="text/javascript"></script>
 
 <script src="{{ asset('js/vendor/datatables.js')}}"></script>
+<script src="{{ asset('js/vendor/datatables.responsive.js')}}"></script>
+<script src="{{ asset('js/vendor/datatables.tableTools.min.js')}}"></script>
+<script src="{{ asset('js/vendor/datatables.min.js')}}"></script>
 
 
 @include('script.select')

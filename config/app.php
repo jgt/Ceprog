@@ -149,6 +149,8 @@ return [
         App\Providers\HtmlGeneratorServiceProvider::class,
          Styde\Seeder\SeederServiceProvider::class,
          Anouar\Fpdf\FpdfServiceProvider::class,
+         Yajra\Datatables\DatatablesServiceProvider::class,
+
 
 
 
@@ -228,7 +230,9 @@ return [
      	'Active' => 'HieuLe\Active\Facades\Active',
      	'Excel' => 'Maatwebsite\Excel\Facades\Excel',
      	'Build' => App\Facades\HtmlGenerator::class,
-     	 'Fpdf'    => Anouar\Fpdf\Facades\Fpdf::class
+     	 'Fpdf'    => Anouar\Fpdf\Facades\Fpdf::class,
+     	 'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+
 
 
 

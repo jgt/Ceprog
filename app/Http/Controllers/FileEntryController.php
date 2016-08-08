@@ -40,14 +40,6 @@ class FileEntryController extends Controller {
 		$this->apoyoRepository = $apoyoRepository;
 
 	}
-	
-	public function enviado(Asignacion $request)
-	{
-
-		$archivos = $this->userRepository->archivosUser($request);
-		return view('file', compact('archivos'));
-
-	}
 
 	public function material($id, Asignacion $request)
 	{

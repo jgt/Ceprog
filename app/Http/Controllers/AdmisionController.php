@@ -153,45 +153,11 @@ class AdmisionController extends Controller {
 
   }
 
- public function cloTutores($id, Request $request)
-  {
-
-    $actividad = $this->actividadRepository->search($id);
-    $alumnos = $this->actividadRepository->notaAct($id);
-
-    if($request->ajax())
-    {
-        return response()->json($alumnos);
-    }
-
-  }
-
   public function sinNota($id)
   {
 
     $actividad = $this->actividadRepository->search($id);
     return view('tutores.sinNota', compact('actividad'));
   }
-
-  public function notaTutores($id, Request $request)
-  {   
-      
-       $calificacion = $this->calificacionRepository->search($id);
-       $calAlum = $this->calificacionRepository->calificacionAlumnos($id);
-       $detalles = [
-
-            'calAlum' => $calAlum,
-            'calificacion' => $calificacion 
-
-       ];
-
-       if($request->ajax())
-       {
-
-          return response()->json($detalles);
-       }
-
-       return view('tutores.notaTutores', compact('calificacion'));
-   }
 
 }

@@ -17,63 +17,13 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-Route::get('/', 'WelcomeController@index');
-
-
-//creo la solicitud de admision online
-Route::get('inscripcion', 'InscripcionController@index');
-Route::get('solicitud', 'InscripcionController@create');
-Route::get('reinscripcion', ['as' => 'reinscripcion', 'uses' => 'ReinscripcionController@index']);
-Route::post('reinscripcion', ['as' => 'reinscripcion', 'uses' => 'ReinscripcionController@store']);
-Route::get('admision', ['as' => 'admision', 'uses' => 'AdmisionController@index']);
-Route::post('enviar', ['as' => 'enviar', 'uses' => 'AdmisionController@store']);
-
-//para envio de correo
-Route::get('contact', ['as' => 'contact', 'uses' => 'MailController@index'] );
-Route::post('send', ['as' => 'send', 'uses' => 'MailController@send'] );
-Route::get('info', ['as' => 'info', 'uses' => 'MailController@show'] );
-
-
-
+require __DIR__ .'/routes/website.php';
 
 //Aqui estan las routas del login de la aplicacion//
 
-
-
 Route::group(['middleware' => 'auth'], function(){
 
-	Route::get('addImg/{id}', ['as' => 'addImg', 'uses' => 'ResetController@addImg']);
-
-	Route::get('idUnidad/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@idUnidad']);
-	Route::get('idSubtemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@idSubtemas']);
-
-	Route::get('menu', ['as' => 'menu', 'uses' => 'MenuController@index']);
-
-	Route::get('menutest', ['as' => 'menutest', 'uses' => 'MenuController@index']);
-
-	Route::get('home', 'HomeController@index');
-
-	Route::get('enviado', ['as' => 'enviado', 'uses' => 'FileEntryController@enviado']);
-
-	Route::get('archivos/{id}', ['as' => 'archivos', 'uses' => 'FileEntryController@edit']);
-
-
-		Route::get('portafolio/{id}', ['as' => 'portafolio', 'uses' => 'PortafolioController@portafolio']);
-		Route::get('cloTutores/{id}', ['as' => 'cloTutores', 'uses' => 'AdmisionController@cloTutores']);
-		Route::get('notaTutores/{id}', ['as' => 'nto', 'uses' => 'AdmisionController@notaTutores']);
-		Route::get('allVideos/{id}', ['as' => 'allVideos', 'uses' => 'VideosController@allVideos']);
-		Route::get('showVideos/{id}', ['as' => 'showVideos', 'uses' => 'VideosController@showVideos']);
-	
-		Route::get('pdf/{id}', ['as' => 'pdf', 'uses' => 'ActividadController@verPdf']);
-
-		Route::get('material/{id}', ['as' => 'material', 'uses' => 'FileEntryController@material']);
-
-		Route::get('tutorial', ['as' => 'tutorial', 'uses' => 'VideosController@tutorial']);
-		Route::post('storeTutorial', ['as' => 'storeTutorial', 'uses' => 'VideosController@storeTutorial']);
-		Route::get('allTutorial', ['as' => 'allTutorial', 'uses' => 'VideosController@allTutorial']);
-		Route::get('dwTutorial/{fileName}', ['as' => 'dwTutorial', 'uses' => 'VideosController@dwTutorial']);
-		Route::get('dlTutorial/{id}', ['as' => 'dlTutorial', 'uses' => 'VideosController@dlTutorial']);
+	require __DIR__ .'/routes/autenticate.php';
 });
 
 Route::group(['middleware' => 'admin',], function(){
@@ -119,6 +69,7 @@ Route::group(['middleware' => 'admin',], function(){
 	Route::get('crearSemestre/{id}', ['as' => 'crearSemestre', 'uses' => 'SemestreController@crearSemestre']);
 	Route::get('createMateria/{id}', ['as' => 'createMateria', 'uses' => 'MateriaController@createMateria']);
 
+	Route::post('storeTutorial', ['as' => 'storeTutorial', 'uses' => 'VideosController@storeTutorial']);
 });
 
 Route::group(['middleware' => 'alumnosMaestros'], function(){
@@ -137,6 +88,12 @@ Route::group(['middleware' => 'alumnosMaestros'], function(){
 	Route::get('descarga/get/{filename}', ['as' => 'getentry', 'uses' => 'DescargaController@get']);
 	Route::get('fileentry/get/{filename}', ['as' => 'apoyo', 'uses' => 'FileEntryController@get']);
 	Route::post('update/{id}', ['as' => 'archivoupdate', 'uses' => 'FileEntryController@update']);
+
+	Route::get('idUnidad/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@idUnidad']);
+	Route::get('idSubtemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@idSubtemas']);
+	Route::get('portafolio/{id}', ['as' => 'portafolio', 'uses' => 'PortafolioController@portafolio']);
+	Route::get('pdf/{id}', ['as' => 'pdf', 'uses' => 'ActividadController@verPdf']);
+	Route::get('material/{id}', ['as' => 'material', 'uses' => 'FileEntryController@material']);
 
 
 });

@@ -2,7 +2,9 @@
 							
 							<div class="form-group">
 								
-								{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'nombre de usuario', 'id' => 'nameUser']) !!}
+								{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'nombre completo', 'id' => 'nameUser']) !!}
+
+								{!! Form::text('cuenta', null, ['class' => 'form-control', 'id' => 'modelo', 'placeholder' => 'numero de cuenta']) !!}
 
 							</div>		
 

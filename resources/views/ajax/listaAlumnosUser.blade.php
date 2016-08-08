@@ -6,6 +6,7 @@
     <a href="{{ route('reporteGeneral') }}" id="rpeGen" Style="display:none"></a> 
     <input type="text" id="prbPrueba" Style="display:none">
     
+    
        @include('include.bucaralumno', ['submitButtonText' => 'Buscar'])
        <div class="table-responsive">
        <table class="table">

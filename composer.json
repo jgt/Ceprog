@@ -25,7 +25,8 @@
 		"fzaninotto/faker": "1.5.*@dev",
 		"acacha/admin-lte-template-laravel": "1.*",
 		"maatwebsite/excel": "~2.0",
-		"anouar/fpdf": "1.0.2"
+		"anouar/fpdf": "1.0.2",
+		"yajra/laravel-datatables-oracle": "^6.16"
 
 
 

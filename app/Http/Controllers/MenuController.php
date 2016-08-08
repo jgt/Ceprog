@@ -15,6 +15,7 @@ use App\Repository\SemestreRepository;
 use App\Repository\ExamenRepository;
 use App\Repository\UnidadRepository;
 use Maatwebsite\Excel\Facades\Excel;
+use Yajra\Datatables\Datatables;
 use App\Tutorial;
 use Auth;
 use App\Carrera;

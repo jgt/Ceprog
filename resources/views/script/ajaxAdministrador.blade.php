@@ -11,6 +11,7 @@
 			var route = form.attr('action');
 			var personal = $('#tablaPersonal');
 			var name = $('#nameUser').val();
+			var cuenta = $('#modelo').val();
 
 			$.get(route, function(resp){
 
@@ -18,7 +19,7 @@
 
 				$(resp).each(function(key, value){
 
-					if(name == value.name)
+					if(name == value.name || cuenta == value.cuenta)
 					{
 
 						personal.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='verUser(this);' value="+value.id+" data-toggle='modal' data-target='#showUser'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#updateUser' OnClick='editarUser(this);' value="+value.id+"><i class='fa fa-user'></i></button></td><td><button class='btn btn-primary' OnClick='borrarUser(this);' value="+value.id+"><i class='fa fa-eraser'></i></button></td></tr>");

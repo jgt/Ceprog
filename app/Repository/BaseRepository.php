@@ -5,6 +5,7 @@ abstract class BaseRepository {
 
 	abstract public function getModel();
 
+
 	public function newQuery()
 	{
 

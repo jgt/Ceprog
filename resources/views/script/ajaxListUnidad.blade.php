@@ -42,7 +42,7 @@
 			$('#alumnosListUser').show();
 			var route = $(this).attr('href');
 			var tablaAlumnos = $('#tablaAlumnosList');
-			
+	
 			$.get(route, function(resp){
 
 				tablaAlumnos.html(" ");
@@ -55,6 +55,7 @@
 
 						$(sem.users).each(function(key, user){
 
+							$('#mierda').val(user.cuenta);
 							if(sem.users.length > 0){
 
 							$(user.roles).each(function(key, role){
@@ -66,7 +67,7 @@
 
 												e.preventDefault();
 
-												var alumno = $('#mierda').val();
+												var alumno = $('#nombreUser').val();
 
 												if(user.name == alumno)
 												{	
@@ -1079,7 +1080,7 @@
             tablaActividad.html(" ");
             $(resp.data).each(function(key, value){
 
-              tablaActividad.append("<tr><td>"+value.actividad+"</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#materialA' OnClick='verArchivos(this);'><i class='fa fa-file-archive-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#editarA' value="+value.id+"  OnClick='editar(this);'><i class='fa fa-calendar'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#notaAct' OnClick='notaAct(this);' value="+value.id+"><i class='fa fa-file-excel-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#Mapoyo' value="+value.id+"  OnClick='fileApoyo(this);'><i class='fa fa-folder'></i></td><td><button class='btn btn-primary'value="+value.id+"  OnClick='actividadPdf(this);'><i class='fa fa-file-word-o'></i></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='listRubricas(this);'><i class='fa fa-search'></i></button></td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#crtRubrica'  OnClick='createRubricas(this);'><i class='fa fa-plus-circle' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#notaUserAct' OnClick='actUser(this);' value="+value.id+"><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarActividad(this);'><i class='fa fa-eraser'></i></button></td></tr>");
+              tablaActividad.append("<tr><td>"+value.actividad+"</td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#materialA' OnClick='verArchivos(this);'><i class='fa fa-file-archive-o'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#editarA' value="+value.id+"  OnClick='editar(this);'><i class='fa fa-calendar'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#Mapoyo' value="+value.id+"  OnClick='fileApoyo(this);'><i class='fa fa-folder'></i></td><td><button class='btn btn-primary'value="+value.id+"  OnClick='actividadPdf(this);'><i class='fa fa-file-word-o'></i></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='listRubricas(this);'><i class='fa fa-search'></i></button></td><td><button class='btn btn-primary' value="+value.id+" data-toggle='modal' data-target='#crtRubrica'  OnClick='createRubricas(this);'><i class='fa fa-plus-circle' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#notaUserAct' OnClick='actUser(this);' value="+value.id+"><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarActividad(this);'><i class='fa fa-eraser'></i></button></td></tr>");
 
             });
          }else{
@@ -1109,26 +1110,18 @@
 				$(resp).each(function(key, value){
 
 					$(value.unidad.materia.semestre.users).each(function(key, user){
-						
-						
-						if(user.calificaciones == 0)
-						{
-							tablaUser.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='calificacionUser(this);' id="+user.id+" value="+value.id+"><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td></tr>");
-						}else{
+					
+						 var newRow = "<tr><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='calificacionUser(this);' id="+user.id+" value="+value.id+"><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td></tr>"
 
-							$(user.calificaciones).each(function(key, cal){
+						    $(user.calificaciones).each(function(key, nota){
 
-								if(user.id == cal.user_id && cal.actividad_id == value.id)
-								{
-									tablaUser.append("<tr><td>"+user.name+"</td><td>Calificado</td></tr>");
-								}else{
+						        if(user.id == nota.user_id && value.id == nota.actividad_id) {
+						            newRow = "<tr><td>"+user.name+"</td><td>Calificado</td></tr>";
+						        }
 
-									tablaUser.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' OnClick='calificacionUser(this);' id="+user.id+" value="+value.id+"><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td></tr>");
+						    });
 
-								}
-
-							});
-						}
+    						tablaUser.append(newRow);
 						
 					});
 
@@ -1424,29 +1417,6 @@
           var route = apoyo.split('%7Bfilename%7D').join(btn.value);
           window.open(route);
           
-      }
-
-
-      function notaAct(btn){
-
-          var notaAct = $('#tablaNota');
-          var clotutores = $('#clotutores').attr('href');
-          var route = clotutores.split('%7Bid%7D').join(btn.value);
-
-          $.get(route, function(resp){
-
-              var calId = resp.id;
-              notaAct.html(" ");
-
-              $(resp.user).each(function(key, value){
-
-                 notaAct.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' data-dismiss='modal' value="+calId+" OnClick='cal(this);'><i class='fa fa-folder'></i></button></td></tr>");  
-
-              });
-
-               
-
-          });
       }
 
        function cal(btn){
