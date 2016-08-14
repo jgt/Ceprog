@@ -28,6 +28,7 @@
 
           e.preventDefault();
 
+        $('#crtExamenDocente').hide();
         $('#mtaList').hide();
         $('#crr').hide();
         $('#semm').hide();
@@ -263,6 +264,7 @@
           $('#crr').hide();
           $('#semm').hide();
           $('#mtaList').hide();
+          $('#crtExamenDocente').hide();
         
         $.get(route, function(resp){
 
@@ -322,7 +324,6 @@
                 divPreg.html(" ");
                 ulQuiz.html(" ");
 
-                console.log(resp);
                 var nota = $('#ntEx').val(resp.nota);
 
                 if(resp.pregunta.length == 0)
@@ -591,10 +592,11 @@
         var divPreg = $('#pregQuiz');
         var ulQuiz = $('#quizResp');
         var examenId = $('#exaId').val(btn.value);
-        
+      
         $.get(route, function(resp){
           divPreg.html(" ");
           ulQuiz.html(" ");
+  
           if(resp.pregunta.length == 0)
           {
             alertify.alert("Ya tienes una nota en este examen.");

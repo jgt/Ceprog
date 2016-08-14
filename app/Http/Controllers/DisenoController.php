@@ -48,9 +48,6 @@ class DisenoController extends Controller {
 			return response()->json($detalles);
 
 		}
-
-
-		return view('create.planeacion', compact('materias', 'users'));
 	}
 
 	public function storePlan(plt $request)

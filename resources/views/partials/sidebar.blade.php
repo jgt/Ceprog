@@ -78,8 +78,9 @@
                          <a href="{{ route('idSubtemas')}}" id="idSubtemasAlm" Style="display:none"></a>
                         <li><a href="{{ route('act', $materia)}}" id="almUni">Herramientas</a></li>
                         <li><a href="{{route('listExamen', $materia )}}" id="Lexamen">Lista de examenes</a></li>
+                        <li><a href="{{route('quizDocente.show', $materia )}}" id="Rexamen">Evalua tu Docente</a></li>
                         <li><a href="{{ route('allTutorial')}}" id="almTutorial">Tutoriales</a></li>
-                        <li><a href="{{ route('listplan', $materia)}}" id="almUnidadList"><i class='fa fa-plus fa-fw'></i>Lista de unidades</a>
+                        <li><a href="{{ route('listplan', $materia)}}" id="almUnidadList"><i class='fa fa-plus fa-fw'></i>Base Teórica</a>
                         <ul class="treeview-menu" id="AlmuniList"></ul> 
                         <li><a href="{{ route('forosMateria', $materia)}}" id="foroMateria"><i class='fa fa-plus fa-fw'></i>Foros</a>
                          <ul class="treeview-menu" id="foroList"></ul>  
@@ -104,6 +105,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ route('tutorial')}}" id="admin"><i class="fa fa-film"></i> Subir tutoriales</a></li>
                     <li><a href="{{ route('allTutorial')}}" id="listTutorial"><i class="fa fa-file-video-o"></i> Lista de tutoriales</a></li>
+                    <li><a href="{{ route('examenDocente.create') }}" id="evaDocente"><i class="fa fa-laptop" aria-hidden="true"></i> Evaluacion Docente</a></li>
                 
                 <li><a href="#"><i class='fa fa-plus fa-fw'></i> Administracion</a>
                                       

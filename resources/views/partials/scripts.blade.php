@@ -25,6 +25,10 @@
 <script src="{{ asset('js/vendor/datatables.min.js')}}"></script>
 
 
+@include('script.ExamenDocente.ajaxListaExamen')
+
+@include('script.ExamenDocente.ajaxExamenDocente')
+
 @include('script.select')
 
 @include('script.menu')

@@ -7,6 +7,7 @@
 
 			e.preventDefault();
 
+			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#crr').hide();
 			$('#semm').hide();
@@ -176,6 +177,7 @@
 			$('#crr').hide();
 			$('#semm').hide();
 			$('#mtaList').hide();
+			$('#crtExamenDocente').hide();
 
 			//retroceso a unidades de estudiantes.
 			$('#backActalm').on('click', function(){

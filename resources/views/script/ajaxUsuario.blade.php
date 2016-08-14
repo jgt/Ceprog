@@ -48,7 +48,7 @@
 								var carreraId = this.value;
 
 							$(carrera.semestres).each(function(key, sem){
-
+	
 								if(carreraId == sem.carrera_id)
 								{	
 									
@@ -123,6 +123,7 @@
 			   $('#mtaList').hide();
 			   $('#froadm').hide();
 			   $('#listExamenDocente').hide();
+			   $('#crtExamenDocente').hide();
 
 				
 			      

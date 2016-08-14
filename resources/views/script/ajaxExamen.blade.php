@@ -53,6 +53,7 @@
       $('#listPersonal').hide();
       $('#reportes').hide();
       $('#crr').hide();
+      $('#crtExamenDocente').hide();
 
       var route = $(this).attr('href');
       

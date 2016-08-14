@@ -14,4 +14,12 @@
              $(function () {
                 $('#datetimepicker4').datetimepicker();
             });
+
+              $(function () {
+                $('#datetimepicker5').datetimepicker();
+            });
+
+               $(function () {
+                $('#datetimepicker6').datetimepicker();
+            });
         </script>

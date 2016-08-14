@@ -142,7 +142,7 @@ class ExamenController extends Controller
             $ins = new Respuesta;
             $ins->pregunta_id = $pregunta_id;
             $ins->name= $name[$key];           
-            $ins->estado= ($key == $estado);
+            $ins->estado = ($key == $estado);
             $ins->save();
 
         }

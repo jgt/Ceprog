@@ -8,6 +8,7 @@
 
 			e.preventDefault();
 
+			$('#crtExamenDocente').hide();
 			$('#crr').show();
 			$('#chatForo').hide();
 			$('div#act').hide();

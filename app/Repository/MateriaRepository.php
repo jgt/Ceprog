@@ -17,6 +17,13 @@ class MateriaRepository extends BaseRepository {
 		return new Materia();
 	}
 
+	public function listExamen($id)
+	{
+		$materia = $this->search($id);
+		$examenes = $materia->examenesDocente()->get();
+		return $examenes;
+	}
+
 
 	public function listaMaterias(Request $request)
 	{

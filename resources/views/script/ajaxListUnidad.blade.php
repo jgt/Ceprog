@@ -6,6 +6,7 @@
 
 			e.preventDefault();
 
+			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#semm').hide();
 			$('#listExamenDocente').hide();
@@ -104,6 +105,7 @@
 
 			e.preventDefault()
 
+			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#listExamenDocente').hide();
 			$('#listTutAlm').hide();

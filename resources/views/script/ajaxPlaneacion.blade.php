@@ -40,6 +40,7 @@ $(document).on('ready', function(){
 			$('#crr').hide();
 			$('#semm').hide();
 			$('#mtaList').hide();
+			$('#crtExamenDocente').hide();
 
 
 		$.get(route, function(resp){

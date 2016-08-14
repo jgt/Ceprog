@@ -19,7 +19,7 @@ class ForoController extends Controller {
 	public function listForo(Request $request)
 	{
 
-		$foros = Foro::name($request->get('name'))->paginate(5);
+		$foros = Foro::name($request->get('name'))->paginate(50);
 		
 		if($request->ajax())
 		{
@@ -28,14 +28,6 @@ class ForoController extends Controller {
 		}
 	}
 	
-	public function create()
-	{
-
-		$materias = Materia::lists('creditos', 'id');
-		return view('create.foro', compact('materias'));
-	}
-
-
 	public function foro(Request $request)
 	{
 
@@ -64,24 +56,6 @@ class ForoController extends Controller {
 
 	}
 
-	public function editForo($id)
-	{
-
-		$foro = Foro::find($id);
-		$materias = Materia::lists('creditos', 'id');
-		return view('edit.foro', compact('materias', 'foro'));
-	}
-
-
-	public function updateForo($id, Request $request)
-	{
-
-		$foro = Foro::find($id);
-		$foro->update($request->all());
-
-		flash()->overlay('ha sido editado.', 'El foro '.$foro->title);
-		return redirect()->route('listForo');
-	}
 
 	public function deleteForo($id)
 	{

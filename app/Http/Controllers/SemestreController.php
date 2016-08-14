@@ -96,14 +96,7 @@ class SemestreController extends Controller {
 		
 	}
 
-	public function crearSemestre($id)
-	{
-
-		$carrera = $this->carreraRepository->search($id);	
-        return view('semestre.crearSemestre', compact('carrera'));
-
-	}
-
+	
 	public function borrarSemestre($id)
 	{
 

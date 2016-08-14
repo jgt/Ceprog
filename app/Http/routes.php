@@ -28,79 +28,25 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['middleware' => 'admin',], function(){
 
-	Route::get('pdfCarrera/{id}', ['as' => 'pdfCarrera', 'uses' => 'MenuController@pdfCarrera']);
-	Route::get('reporteCarrera', ['as' => 'reporteCarrera', 'uses' => 'MenuController@reporteCarrera']);
-
-	Route::get('buscarUser', ['as' => 'buscarUser', 'uses' => 'AdminController@buscarUser']);
-
-	Route::get('deleteU/{id}', ['as' => 'deleteU', 'uses' => 'AdminController@delete']);
-
-	Route::get('createTutor', ['as' => 'createTutor', 'uses' => 'AdmisionController@createTutor']);
-	Route::post('storeTutor', ['as' => 'storeTutor', 'uses' => 'AdmisionController@storeTutor']);
-	Route::get('verTutores', ['as' => 'verTutores', 'uses' => 'AdmisionController@verTutores']);
-	Route::get('editarTutor/{id}', ['as' => 'editarTutor', 'uses' => 'AdmisionController@editarTutor']);
-	Route::post('updateTutor/{id}', ['as' => 'updateTutor', 'uses' => 'AdmisionController@updateTutor']);
-
-	Route::resource('admin', 'AdminController');
-	Route::get('foro', ['as' => 'foro', 'uses' => 'ForoController@create']);
-	Route::post('foro', ['as' => 'foro.store', 'uses' => 'ForoController@foro']);
-	Route::get('editForo/{id}', ['as' => 'editForo', 'uses' => 'ForoController@editForo']);
-	Route::post('updateForo/{id}', ['as' => 'updateForo', 'uses' => 'ForoController@updateForo']);
+	require __DIR__ .'/routes/admin.php';
 	
-	Route::resource('role', 'RoleController');
+	Route::group(['namespace' => 'administrador'], function(){
 
-	Route::resource('permiso', 'PermisosController');
+		Route::resource('quizDocente', 'QuizDocenteController');
+		Route::resource('examenDocente', 'ExamenDocenteController');
+		Route::get('listaPreguntasDocente/{id}', ['as' => 'listaPreguntasDocente', 'uses' => 'QuizDocenteController@examenPreguntas']);
+		Route::post('createPregDocente', ['as' => 'createPregDocente', 'uses' => 'ExamenDocenteController@createPregunta']);
+		Route::post('createRespuestaDocente', ['as' => 'createRespuestaDocente', 'uses' => 'ExamenDocenteController@createRespuesta']);
+	});
 
-	Route::get('plan/{id}', ['as' => 'plan', 'uses' => 'AdminController@createMateria']);
-	Route::post('materia', ['as' => 'materia', 'uses' => 'AdminController@materia']);
-
-
-	Route::get('editmat/{id}', ['as' => 'editmat', 'uses' => 'AdminController@editmat']);
-	Route::post('updatemat/{id}', ['as' => 'updatemat', 'uses' => 'AdminController@updatemat']);
-
-	Route::get('listmaterias', ['as' => 'listmaterias', 'uses' => 'AdminController@listmaterias']);
-
-	Route::get('list', ['as' => 'list', 'uses' => 'AdminController@listSemestre']);
-
-	Route::resource('carrera', 'CarreraController');
-	Route::get('deleteCarrera/{id}', ['as' => 'deleteCarrera', 'uses' => 'CarreraController@deleteCarrera']);
-	Route::resource('semestre', 'SemestreController');
-	Route::resource('materia', 'MateriaController');
-	Route::get('crearSemestre/{id}', ['as' => 'crearSemestre', 'uses' => 'SemestreController@crearSemestre']);
-	Route::get('createMateria/{id}', ['as' => 'createMateria', 'uses' => 'MateriaController@createMateria']);
-
-	Route::post('storeTutorial', ['as' => 'storeTutorial', 'uses' => 'VideosController@storeTutorial']);
 });
 
 Route::group(['middleware' => 'alumnosMaestros'], function(){
 
-	Route::get('notaExamen{id}', ['as' => 'notaExamen', 'uses' => 'ExamenController@notaExamen']);
-	Route::get('reset', ['as' => 'reset', 'uses' => 'ResetController@reset']);
-	Route::post('resetC/{id}', ['as' => 'resetC', 'uses' => 'ResetController@resetC']);
-
-	Route::get('listExamen/{id}', ['as' => 'listExamen', 'uses' => 'ActividadController@verExamen']);
-	Route::get('forosMateria/{id}', ['as' => 'forosMateria', 'uses' => 'ForoController@forosMaterias']);
-	Route::get('comentario/{id}', ['as' => 'comentario', 'uses' => 'ForoController@comentario']);
-	Route::post('preguntas/{id}', ['as' => 'preguntas', 'uses' => 'ForoController@store']);	
-
-	Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'DisenoController@planPdf']);
-
-	Route::get('descarga/get/{filename}', ['as' => 'getentry', 'uses' => 'DescargaController@get']);
-	Route::get('fileentry/get/{filename}', ['as' => 'apoyo', 'uses' => 'FileEntryController@get']);
-	Route::post('update/{id}', ['as' => 'archivoupdate', 'uses' => 'FileEntryController@update']);
-
-	Route::get('idUnidad/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@idUnidad']);
-	Route::get('idSubtemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@idSubtemas']);
-	Route::get('portafolio/{id}', ['as' => 'portafolio', 'uses' => 'PortafolioController@portafolio']);
-	Route::get('pdf/{id}', ['as' => 'pdf', 'uses' => 'ActividadController@verPdf']);
-	Route::get('material/{id}', ['as' => 'material', 'uses' => 'FileEntryController@material']);
-
-
+	require __DIR__ .'/routes/alumnos_maestros.php';
 });
 
 Route::group(['middleware' => 'alumnosAdmision'], function(){
-
-	
 	
 });
 
@@ -108,94 +54,12 @@ Route::group(['middleware' => 'adminMaestro'], function(){
 
 	Route::get('showForo/{id}', ['as' => 'showForo', 'uses' => 'ForoController@showForo']);
 	Route::get('listForo', ['as' => 'listForo', 'uses' => 'ForoController@listForo']);
-	Route::get('deleteForo/{id}', ['as' => 'deleteForo', 'uses' => 'ForoController@deleteForo']);
 
 });
 
 Route::group(['middleware' => 'maestro'], function(){
 
-	Route::get('matDelete/{id}/{semestre}', ['as' => 'matDelete', 'uses' => 'MateriaController@matDelete']);
-
-	Route::get('calUnidad/{id}', ['as' => 'calUnidad', 'uses' => 'MenuController@calUnidad']);
-
-	Route::get('borrarSemestre/{id}', ['as' => 'borrarSemestre', 'uses' => 'SemestreController@borrarSemestre']);
-	Route::get('reporteUser/{id}/{materia}', ['as' => 'reporteUser', 'uses' => 'MenuController@reporteUser']);
-	Route::get('reporteGeneral/{id}', ['as' => 'reporteGeneral', 'uses' => 'MenuController@reporteGeneral']);
-
-	Route::get('listActUser/{id}', ['as' => 'listActUser', 'uses' => 'MenuController@listActUser']);
-	Route::get('almSem/{id}', ['as' => 'almSem', 'uses' => 'MenuController@listAlumnos']);
-	Route::get('borrarImg/{id}', ['as' => 'borrarImg', 'uses' => 'SubtemasController@borrarImg']);
-	Route::get('listImagenes/{id}', ['as' => 'listImagenes', 'uses' => 'SubtemasController@listImagenes']);
-	Route::post('imagenSubtema/{id}', ['as' => 'imagenSubtema', 'uses' => 'SubtemasController@imagenSubtema']);
-	Route::get('showSubtema/{id}', ['as' => 'showSubtema', 'uses' => 'SubtemasController@showSubtema']);
-	Route::post('storeSubtemas', ['as' => 'storeSubtemas', 'uses' => 'SubtemasController@storeSubtemas']);
-	Route::get('deleteSubtemas/{id}', ['as' => 'deleteSubtemas', 'uses' => 'SubtemasController@deleteSubtemas']);
-	Route::get('editSubtemas/{id}', ['as' => 'editSubtemas', 'uses' => 'SubtemasController@editSubtemas']);
-	Route::post('updateSubtemas/{id}', ['as' => 'updateSubtemas', 'uses' => 'SubtemasController@updateSubtemas']);
-
-	Route::get('examenPreguntas/{id}', ['as' => 'examenPreguntas', 'uses' => 'ExamenController@examenPreguntas']);
-	Route::get('editRespuesta/{id}', ['as' => 'editRespuesta', 'uses' => 'ExamenController@editRespuesta']);
-	Route::post('updateRespuesta/{id}', ['as' => 'updateRespuesta', 'uses' => 'ExamenController@updateRespuesta']);
-	Route::get('verExamen/{id}', ['as' => 'verExamen', 'uses' => 'ExamenController@verExamen']);
-	Route::get('deletePregunta/{id}', ['as' => 'deletePregunta', 'uses' => 'ExamenController@deletePregunta']);
-	Route::post('updatePregunta/{id}', ['as' => 'updatePregunta', 'uses' => 'ExamenController@updatePregunta']);
-	Route::get('editarPregunta/{id}', ['as' => 'editarPregunta', 'uses' => 'ExamenController@editarPregunta']);
-	Route::get('listPreguntas/{id}', ['as' => 'listPreguntas', 'uses' => 'ExamenController@listPreguntas']);
-	Route::post('updateExamen/{id}', ['as' => 'updateExamen', 'uses' => 'ExamenController@updateExamen']);
-	Route::get('editarExamen/{id}', ['as' => 'editarExamen', 'uses' => 'ExamenController@editarExamen']);
-	Route::get('deleteExamen/{id}', ['as' => 'deleteExamen', 'uses' => 'ExamenController@deleteExamen']);
-
-	Route::get('pdfExamen/{id}', ['as' => 'pdfExamen', 'uses' => 'ExamenController@pdfExamen']);
-	Route::get('exmImprimirPdf/{id}', ['as' => 'exmImprimirPdf', 'uses' => 'ExamenController@exmImprimirPdf']);
-	Route::post('storeRespuesta', ['as' => 'storeRespuesta', 'uses' => 'ExamenController@storeRespuesta']);
-	Route::get('createRespuesta/{id}', ['as' => 'createRespuesta', 'uses' => 'ExamenController@createRespuesta']);
-	Route::post('storePregunta', ['as' => 'storePregunta', 'uses' => 'ExamenController@storePregunta']);
-	Route::get('examenP/{id}', ['as' => 'examenP', 'uses' => 'ExamenController@createPregunta']);
-	Route::get('examen/{id}', ['as' => 'examen', 'uses' => 'ExamenController@createExamen']);
-	Route::post('storeExamen', ['as' => 'storeExamen', 'uses' => 'ExamenController@storeExamen']);
-
-	Route::get('delete/{id}', ['as' => 'delete', 'uses' => 'VideosController@delete']);
-
-	Route::get('index/{id}', ['as' => 'index', 'uses' => 'VideosController@index']);
-	Route::post('storeSubir/{id}', ['as' => 'storeSubir', 'uses' => 'VideosController@storeSubir']);
-
-	Route::get('notaMateria/{id}', ['as' => 'notaMateria', 'uses' => 'PortafolioController@notaMateria']);
-	Route::get('totalCal/{id}', ['as' => 'totalCal', 'uses' => 'PortafolioController@totalCal']);
-
-	Route::get('apollo/{id}', ['as' => 'apollo', 'uses' => 'FileEntryController@create']);
-	Route::post('material/{id}', ['as' => 'material', 'uses' => 'FileEntryController@add']);
-	Route::get('borrarM/{filename}', ['as' => 'borrarM', 'uses' => 'FileEntryController@borrarM']);
-
-	Route::get('verArchivos/{id}', ['as' => 'verArchivos', 'uses' => 'PortafolioController@verArchivos']);
-
-	Route::get('calificacion/{id}/{user}', ['as' => 'calificacion', 'uses' => 'PortafolioController@calificacion']);
-	Route::post('nota/{id}', ['as' => 'nota', 'uses' => 'PortafolioController@nota']);
-	Route::get('notaAlumno/{id}', ['as' => 'notaAlumno', 'uses' => 'PortafolioController@notaAlumno']);
-
-	Route::get('deleteRubrica/{id}', ['as' => 'deleteRubrica', 'uses' => 'RubricaController@deleteRubrica']);
-	Route::get('editrubrica/{id}', ['as' => 'editrubrica', 'uses' => 'RubricaController@editRubrica']);
-	Route::post('updaterubrica/{id}', ['as' => 'updaterubrica', 'uses' => 'RubricaController@updateRubrica']);
-	Route::get('listrubrica/{id}', ['as' => 'listrubrica', 'uses' => 'RubricaController@listRubrica']);
-
-	Route::get('rubrica/{id}', ['as' => 'rubrica', 'uses' => 'RubricaController@create']);
-	Route::post('storeRubrica', ['as' => 'storeRubrica', 'uses' => 'RubricaController@storeRubrica']);
-
-	
-	Route::get('listplan/{id}', ['as' => 'listplan', 'uses' => 'DisenoController@listPlan']);
-
-	Route::get('editplan/{id}', ['as' => 'editplan', 'uses' => 'DisenoController@editplan']);
-	Route::post('updateplan/{id}', ['as' => 'updateplan', 'uses' => 'DisenoController@updateplan']);
-
-	Route::post('storePlan', ['as' => 'storePlan', 'uses' => 'DisenoController@storePlan']);
-	Route::get('planeacion/{id}', ['as' => 'planeacion', 'uses' => 'DisenoController@planeacion']);
-	Route::get('show/{id}', ['as' => 'showPdf', 'uses' => 'DisenoController@show']);
-
-	
-	Route::resource('profesor', 'ProfesorController');
-	Route::get('deleteActividad/{id}', ['as' => 'deleteActividad', 'uses' => 'ProfesorController@deleteActividad']);
-	Route::get('createActividad/{id}', ['as' => 'createAct', 'uses' => 'ProfesorController@createActividad']);
-
-
+	require __DIR__ .'/routes/maestro.php';
 });
 
 	

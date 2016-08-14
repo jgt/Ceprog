@@ -50,6 +50,11 @@ class Materia extends Model {
 		return $this->hasMany('App\Examen');
 	}
 
+	public function examenesDocente()
+	{
+		return $this->hasMany('App\Administrador\EvaluacionMaestro\ExamenDocente');
+	}
+
 
 	public function scopeName($query, $name)
    	 {

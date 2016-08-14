@@ -13,11 +13,13 @@ class CreateRangosTable extends Migration
     public function up()
     {
         Schema::create('rangos', function (Blueprint $table) {
+
             $table->increments('id');
 
-            $table->string('minimo',2);
-            $table->string('maximo',2);
-
+            $table->string('name');
+            $table->integer('menor')->unique();
+            $table->integer('mayor')->unique();
+            
             $table->timestamps();
         });
     }

@@ -40,6 +40,7 @@
 				$('#crr').hide();
 				$('#semm').hide();
 				$('#mtaList').hide();
+				$('#crtExamenDocente').hide();
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -102,6 +103,7 @@
 				$('#mtaList').hide();
 			    $('#froadm').hide();
 			    $('#listExamenDocente').hide();
+			    $('#crtExamenDocente').hide();
 
 			    var route = $('#allTutorialAlm').attr('href');
 			    var tutorialAlm = $('#tablaTutorialAlm');
