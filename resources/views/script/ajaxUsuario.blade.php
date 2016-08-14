@@ -124,6 +124,7 @@
 			   $('#froadm').hide();
 			   $('#listExamenDocente').hide();
 			   $('#crtExamenDocente').hide();
+			   $('#listExamenDoc').hide();
 
 				
 			      

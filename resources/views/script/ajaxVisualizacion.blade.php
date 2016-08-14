@@ -37,6 +37,7 @@
 			$('#froadm').hide();
 			$('#alumnosListUser').hide();
 			$('#crtExamenDocente').hide();
+			$('#listExamenDoc').hide();
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -87,6 +88,7 @@
 					$('#mtaList').hide();
 					$('#froadm').hide();
 					$('#crtExamenDocente').hide();
+					$('#listExamenDoc').hide();
 					var id = $(this).attr('href');
 					var link = $('#idSubtemas').attr('href');
 					var route = link.split('%7Bid%7D').join(id);
@@ -183,6 +185,7 @@
 			$('#mtaList').hide();
 			$('#froadm').hide();
 			$('#crtExamenDocente').hide();
+			$('#listExamenDoc').hide();
 			
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -232,6 +235,7 @@
 					$('#mtaList').hide();
 					$('#froadm').hide();
 					$('#crtExamenDocente').hide();
+					$('#listExamenDoc').hide();
 
 					var id = $(this).attr('href');
 					var link = $('#idSubtemasAlm').attr('href');

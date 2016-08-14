@@ -42,6 +42,7 @@
 			$('#listUnidades').hide();
 			$('#crr').hide();
 			$('#preForo').hide();
+			$('#listExamenDoc').hide();
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');
@@ -178,6 +179,7 @@
 			$('#semm').hide();
 			$('#mtaList').hide();
 			$('#crtExamenDocente').hide();
+			$('#listExamenDoc').hide();
 
 			//retroceso a unidades de estudiantes.
 			$('#backActalm').on('click', function(){

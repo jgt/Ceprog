@@ -71,6 +71,7 @@
 			$('#crr').hide();
 			$('#froadm').hide();
 			$('#tutoriales').hide();
+			$('#listExamenDoc').hide();
 
 				var route = $('#admIndex').attr('href');
 				var personal = $('#tablaPersonal');
@@ -144,6 +145,7 @@
 			$('#chatForo').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#listExamenDoc').hide();
 
 		});
 
@@ -170,6 +172,7 @@
 			$('#chatForo').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#listExamenDoc').hide();
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -493,6 +496,7 @@
 			$('#chatForo').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#listExamenDoc').hide();
 
 
 		});
@@ -561,6 +565,7 @@
 			$('#prflistTuto').hide();
 			$('#listRub').hide();
 			$('#vizuaUnidad').hide();
+			$('#listExamenDoc').hide();
 
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -648,6 +653,7 @@
 			$('#reportes').hide();
 			$('#crr').hide();
 			$('#froadm').hide();
+			$('#listExamenDoc').hide();
 
 
 		});

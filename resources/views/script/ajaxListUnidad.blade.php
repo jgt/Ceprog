@@ -41,6 +41,7 @@
 			$('#prflistTuto').hide();
 			$('#crr').hide();
 			$('#alumnosListUser').show();
+			$('#listExamenDoc').hide();
 			var route = $(this).attr('href');
 			var tablaAlumnos = $('#tablaAlumnosList');
 	
@@ -138,6 +139,7 @@
 			$('#listPersonal').hide();
 			$('#crr').hide();
 			$('#semm').hide();
+			$('#listExamenDoc').hide();
 			var link = $('#uniList').attr('href');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ResultadoDocente extends Model
 {
     
-    protected $fillable = ['resultado', 'examen_id', 'user_id'];
+    protected $fillable = ['resultado', 'examen_docente_id', 'user_id'];
     
 
     public function examenDocente()

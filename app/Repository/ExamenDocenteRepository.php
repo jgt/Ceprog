@@ -52,6 +52,8 @@ class ExamenDocenteRepository extends BaseRepository {
                 endif;
             }
 
-		return $preguntaNext;
+            $detalles = ['pregunta' => $preguntaNext, 'nota' => $nota];
+
+		return $detalles;
 	}
 }

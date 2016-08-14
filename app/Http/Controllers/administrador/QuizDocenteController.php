@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repository\ExamenDocenteRepository;
 use App\Repository\MateriaRepository;
+use App\Administrador\EvaluacionMaestro\RespuestaDocente;
+use App\Administrador\EvaluacionMaestro\ResultadoDocente;
+use Auth;
 
 class QuizDocenteController extends Controller
 {
@@ -99,5 +102,32 @@ class QuizDocenteController extends Controller
     {
         $preguntas = $this->examenDocente->listaPreguntas($id);
         return Response()->json($preguntas);
+    }
+
+    public function respDocente($id, Request $request)
+    {   
+        $examen = $this->examenDocente->search($id);
+        $respuesta = RespuestaDocente::create([
+
+                'pregunta_docente_id' => $request->get('pregunta_docente_id'),
+                'posible_respuesta_id' => $request->get('posible_respuesta_id'),
+                'user_id' => Auth::user()->id
+
+            ]);
+
+        return Response()->json($examen);
+    }
+
+    public function endQuiz(Request $request)
+    {
+        $this->validate($request, [
+
+            'user_id' => 'required',
+            'examen_docente_id' => 'required',
+            'resultado' => 'required'
+            ]);
+
+        $resultado = ResultadoDocente::create($request->all());
+        return Response()->json($resultado);
     }
 }

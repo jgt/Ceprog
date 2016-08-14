@@ -65,6 +65,8 @@
         $('#alumnosListUser').hide();
         $('#listExamenDocente').show();
         $('#listPreg').hide();
+        $('#listExamenDoc').hide();
+        $('#listExamenDoc').hide();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
@@ -265,6 +267,7 @@
           $('#semm').hide();
           $('#mtaList').hide();
           $('#crtExamenDocente').hide();
+          $('#listExamenDoc').hide();
         
         $.get(route, function(resp){
 

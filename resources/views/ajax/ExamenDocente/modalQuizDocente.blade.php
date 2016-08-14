@@ -12,7 +12,8 @@
         <p align=" left">Selecciona el inciso que contenga la respuesta correcta.</p>
       <hr>
         
-        {!! Form::open()!!}
+        {!! Form::open(['route' => 'respDocente', 'method' => 'POST', 'class' => 'form-group', 'id' => 'formQuizDocente'])!!}
+        {!! Form::text('examen_docente_id', null, ['Style' => 'display:none', 'id' => 'exaDocId'])!!}
         {!! Form::text('posible_respuesta_id', null, ['Style' => 'display:none'])!!}
         {!! Form::text('pregunta_docente_id', null, ['Style' => 'display:none', 'id' => 'pregIdDocente'])!!}
         {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none'])!!}
@@ -21,19 +22,21 @@
         <ol type="1" id="pregQuizDocente"></ol> 
         <hr> 
         <ol type="A" id="quizRespDocente"></ol>
+        <hr>
+        {!! Form::submit('Siguiente', ['class' => 'btn btn-primary', 'id' => 'nextQuizDocente'])!!}
 
       {!! Form::close()!!}
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-primary" id="">Siguiente</a>
-        <a href="#" class="btn btn-danger" Style="display:none" id="">Terminar examen</a>
-
-        {!! Form::open(['route' => 'terminarExamen', 'method' => 'POST', 'id' => 'exForm'])!!}
+       
+        {!! Form::open(['route' => 'endQuiz', 'method' => 'POST', 'id' => 'exFormDocente'])!!}
               <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 
-              {!! Form::text('resultado', null, ['Style' => 'display:none'])!!}
-              {!! Form::text('examen_id', null, ['Style' => 'display:none'])!!}
+              {!! Form::text('resultado', null, ['Style' => 'display:none', 'id' => 'resulDocente'])!!}
+              {!! Form::text('examen_docente_id', null, ['Style' => 'display:none', 'id' => 'quizDocId'])!!}
               {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none'])!!}
+              <hr>
+              {!! Form::submit('Terminar examen', ['class' => 'btn btn-danger', 'id' => 'endQuizDocente','Style' => 'display:none'])!!}
 
               {!! Form::close()!!}
       </div>

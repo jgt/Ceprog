@@ -41,6 +41,7 @@ $(document).on('ready', function(){
 			$('#semm').hide();
 			$('#mtaList').hide();
 			$('#crtExamenDocente').hide();
+			$('#listExamenDoc').hide();
 
 
 		$.get(route, function(resp){
