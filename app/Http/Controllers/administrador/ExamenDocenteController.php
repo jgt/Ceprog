@@ -47,7 +47,7 @@ class ExamenDocenteController extends Controller
     public function create()
     {   
 
-        $materias = $this->userRepository->getModel()->with('materias.semestre.carrera')->get();
+        $materias = $this->userRepository->getModel()->with('materias.semestre.carrera', 'roles')->get();
         return Response()->json($materias);
     }
 

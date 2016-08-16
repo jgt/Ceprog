@@ -112,8 +112,16 @@ $(document).on('ready', function(){
 		
 			$(resp).each(function(key, user){
 
-				catedratico.append("<option value="+user.id+">"+user.name+"</option>");
+				console.log(user);
+				$(user.roles).each(function(key, role){
 
+					if(role.name == "profesor")
+					{	
+
+						catedratico.append("<option value="+user.id+">"+user.name+"</option>");
+					}
+					
+				});
 					$(user.materias).each(function(key, mat){
 
 						$('#docente').change(function(){
