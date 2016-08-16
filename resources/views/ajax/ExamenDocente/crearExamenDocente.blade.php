@@ -20,15 +20,17 @@
    {!! Form::text('ciudad', null, ['class' => 'form-control']) !!}
    </div>
 
-  <div class="form-group">
-  {!! Form::label('materia_id', 'Materia ', ['class' => 'form-group']) !!}
-    <select name="materia_id" id="selectMtaDocente" class="form-control"></select>
-   </div>
-
+  
   <div class="form-group">
   {!! Form::label('catedratico', 'Catedratico ', ['class' => 'form-group']) !!}
-  {!! Form::text('catedratico', null, ['class' => 'form-control', 'id' => 'docente', 'readonly' => 'readonly']) !!}  
+  <select name="catedratico" id="docente" class="form-control"></select>
+  
 </div>
+
+<div class="form-group">
+  {!! Form::label('materia_id', 'Materia ', ['class' => 'form-group']) !!}
+    <select name="materia_id" id="selectMatdocente" class="form-control"></select>  
+   </div>
 
 <div class="form-group">
   {!! Form::label('carrera', 'Carrera ', ['class' => 'form-group']) !!}

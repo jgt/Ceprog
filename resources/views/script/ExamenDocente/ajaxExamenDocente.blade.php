@@ -98,41 +98,39 @@ $(document).on('ready', function(){
 	  $('#crtExamenDocente').show();
 
 		var route = $(this).attr('href');
-		var materias = $('#selectMtaDocente');
+		var materias = $('#selectMatdocente');
 		var catedratico = $('#docente');
+
+		$('#docente').change(function(){
+
+				materias.html(" ");
+			});
 
 		$.get(route, function(resp){
 
-			materias.html(" ");
+			catedratico.html(" ");
+		
+			$(resp).each(function(key, user){
 
-			$(resp).each(function(key, mat){
+				catedratico.append("<option value="+user.id+">"+user.name+"</option>");
 
-				$(mat.users).each(function(key, user){
+					$(user.materias).each(function(key, mat){
 
-					materias.append("<option id='matSelect' value="+mat.id+">"+mat.name+"</option>");
+						$('#docente').change(function(){
 
-					$(mat.semestre.carrera).each(function(key, carr){
+							var userId = this.value;
+							var materia = mat.pivot.user_id
 
-						var semId = mat.semestre.id;
-						var semestre = mat.semestre_id;
+							if(userId == materia)
+							{	
 
-						materias.change(function(){
-
-							var mat = this.value;
-				
-							if(mat == user.pivot.materia_id && semestre == semId)
-							{
-								
-								catedratico.val(user.name);
-								$('#carreraDocente').val(carr.name);
+								materias.append("<option value="+mat.id+">"+mat.name+"</option>");
+								$('#carreraDocente').val(mat.semestre.carrera.name);
 							}
 
 						});
 
 					});
-					
-				});
-
 			});
 
 		});

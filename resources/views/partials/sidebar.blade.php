@@ -122,6 +122,7 @@
                                        <li><a href="{{route('admin.index')}}" id="listaP">Lista de Personal</a></li>
                                        <li><a href="{{route('listForo')}}" id="listForoadm">Lista de Foros</a></li>
                                        <li><a href="{{route('carrera.index')}}" id ="lstCrra">Lista de carreras</a></li>
+                                       <li><a href="{{ route('listexaDocente') }}" id ="docenteListexa">Lista de examen</a></li>
                                       </ul>
                                 </li>
                 </ul>

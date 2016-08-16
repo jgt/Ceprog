@@ -39,6 +39,7 @@ Route::group(['middleware' => 'admin',], function(){
 		Route::post('createRespuestaDocente', ['as' => 'createRespuestaDocente', 'uses' => 'ExamenDocenteController@createRespuesta']);
 		Route::post('respDocente/{id}', ['as' => 'respDocente', 'uses' => 'QuizDocenteController@respDocente']);
 		Route::post('endQuiz', ['as' => 'endQuiz', 'uses' => 'QuizDocenteController@endQuiz']);
+		Route::get('listexaDocente', ['as' => 'listexaDocente', 'uses' => 'ExamenDocenteController@listexaDocente']);
 	});
 
 });

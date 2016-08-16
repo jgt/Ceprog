@@ -183,8 +183,122 @@
 
 		});
 
-	});
+		$('#docenteListexa').on('click', function(e){
 
+			e.preventDefault();
+
+			var route = $('#docenteListexa').attr('href');
+			var listaExamenes = $('#tablaExamenesAdm');
+			$('#listExamenAdmin').show();
+
+			$.get(route, function(resp){
+
+				listaExamenes.html(" ");
+
+				$(resp).each(function(key, value){
+
+					listaExamenes.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editExamenDocente(this);' data-toggle='modal' data-target='#edtExmDoc'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='createPreguntadDocente(this);' data-toggle='modal' data-target='#quizDocente'><i class='fa fa-database' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='listPreguntaDocente(this);'><i class='fa fa-book' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExaDocente(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+				});
+
+			});
+
+		});
+
+		$('#updateExaDocente').on('click', function(e){
+
+			e.preventDefault();
+
+			var id = $('#editExamDoc').val();
+			var form = $('#form-exaDocente');
+			var link = form.attr('action')
+			var metodo = form.attr('method');
+			var route = link.split('%7BexamenDocente%7D').join(id);
+			
+			$.ajax({
+
+				url: route,
+	            headers: { 'X-CSFR-TOKEN': token},
+	            type: metodo,
+	            data: form.serialize(),
+
+	            success:function(resp){
+
+	            	alertify.alert("El examen ha sido editado");
+	            	var route = $('#docenteListexa').attr('href');
+					var listaExamenes = $('#tablaExamenesAdm');
+
+					$.get(route, function(resp){
+
+						listaExamenes.html(" ");
+
+						$(resp).each(function(key, value){
+
+							listaExamenes.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editExamenDocente(this);' data-toggle='modal' data-target='#edtExmDoc'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='createPreguntadDocente(this);' data-toggle='modal' data-target='#quizDocente'><i class='fa fa-database' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='listPreguntaDocente(this);'><i class='fa fa-book' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExaDocente(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+						});
+
+			});
+	            },
+
+	            error:function(error, request){
+
+	            	if(error)
+	            	{
+	            		alertify.alert("Error al procesar la solicitud.");
+	            	}
+
+	            }
+
+			});
+
+		});
+
+	});
+	
+	//administracion de examenes para evaluar el maestro
+	function editExamenDocente(btn)
+	{
+		var id = btn.value;
+		var link = $('#editdocenteExa').attr('href');
+		var route = link.split('%7BexamenDocente%7D').join(id);
+		console.log(link);
+
+		$.get(route, function(resp){
+
+			$('#editExamDoc').val(resp.id);
+			$('#editExmatDoc').val(resp.materia_id);
+			$('#edtnamExamen').val(resp.name);
+			$('#ciueditExam').val(resp.ciudad);
+			$('#catedraticoeditExa').val(resp.catedratico);
+			$('#editcarreraExa').val(resp.carrera);
+			$('#editmodalidadExa').val(resp.modalidad);
+			$('#editmoduloExa').val(resp.modulo);
+			$('#editfechaExa').val(resp.fecha);
+			$('#editfechafExa').val(resp.fechaF);
+		});
+	}
+
+	function createPreguntadDocente(btn)
+	{
+		var id = btn.value;
+		alert(id);
+	}
+
+	function listPreguntaDocente(btn)
+	{
+		var id = btn.value;
+		alert(id);
+
+	}
+
+	function borrarExaDocente(btn)
+	{
+		var id = btn.value;
+		alert(id);
+	}
+
+	//realizar la evaluacion al docente.
 	function examenDocente(btn)
 	{
 		var id = btn.value;

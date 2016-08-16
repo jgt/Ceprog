@@ -56,4 +56,10 @@ class ExamenDocenteRepository extends BaseRepository {
 
 		return $detalles;
 	}
+
+	public function listaExamenes()
+	{
+		$examenes = $this->getModel()->all();
+		return $examenes;
+	}
 }

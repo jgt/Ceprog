@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repository\ExamenDocenteRepository;
 use App\Repository\MateriaRepository;
+use App\Repository\UserRepository;
 use App\Http\Requests\Docente;
 use App\Http\Requests\PreguntaMaestro;
 use App\Http\Requests\RespuestaMaestro;
@@ -20,13 +21,16 @@ class ExamenDocenteController extends Controller
     
     private $examenDocente;
     private $materiaRepository;
+    private $userRepository;
     
     public function __construct(
         ExamenDocenteRepository $examenDocente,
-        MateriaRepository $materiaRepository)
+        MateriaRepository $materiaRepository,
+        UserRepository $userRepository)
     {
         $this->examenDocente = $examenDocente;
         $this->materiaRepository = $materiaRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function index()
@@ -43,7 +47,7 @@ class ExamenDocenteController extends Controller
     public function create()
     {   
 
-        $materias = $this->materiaRepository->getModel()->with('users', 'semestre.carrera')->get();
+        $materias = $this->userRepository->getModel()->with('materias.semestre.carrera')->get();
         return Response()->json($materias);
     }
 
@@ -79,7 +83,8 @@ class ExamenDocenteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $examen = $this->examenDocente->search($id);
+        return Response()->json($examen);
     }
 
     /**
@@ -91,7 +96,9 @@ class ExamenDocenteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $examen = $this->examenDocente->search($id);
+        $examen->update($request->all());
+        return Response()->json($examen);
     }
 
     /**
@@ -129,5 +136,11 @@ class ExamenDocenteController extends Controller
         }
 
         return Response()->json($ins);
+    }
+
+    public function listexaDocente(Request $request)
+    {
+        $examenes = $this->examenDocente->listaExamenes();
+        return Response()->json($examenes);
     }
 }
