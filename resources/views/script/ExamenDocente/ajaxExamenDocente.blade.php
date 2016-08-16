@@ -127,9 +127,12 @@ $(document).on('ready', function(){
 						$('#docente').change(function(){
 
 							var userId = this.value;
-							var materia = mat.pivot.user_id
+							var materia = mat.pivot.user_id;
+							var carreraId = mat.semestre.carrera.id
+							var semestre = mat.semestre.carrera_id;
+							console.log(mat);
 
-							if(userId == materia)
+							if(userId == materia && semestre == carreraId)
 							{	
 
 								materias.append("<option value="+mat.id+">"+mat.name+"</option>");
