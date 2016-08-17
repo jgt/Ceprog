@@ -112,7 +112,6 @@ $(document).on('ready', function(){
 		
 			$(resp).each(function(key, user){
 
-				console.log(user);
 				$(user.roles).each(function(key, role){
 
 					if(role.name == "profesor")
@@ -130,7 +129,6 @@ $(document).on('ready', function(){
 							var materia = mat.pivot.user_id;
 							var carreraId = mat.semestre.carrera.id
 							var semestre = mat.semestre.carrera_id;
-							console.log(mat);
 
 							if(userId == materia && semestre == carreraId)
 							{	
