@@ -76,18 +76,26 @@
   </div>
 
   <div class="form-group">
+                <div class='input-group date' id='datetimepicker9'>
+                  {!! Form::label('fecha', 'Fecha de activación', ['class' => 'form-control']) !!}
+                  {!! Form::text('fecha', null, ['class' => 'form-control', 'id' => 'fechEdit']) !!}
+                    
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>   
+              </div>
 
-   {!! Form::label('fecha', 'Fecha Inicial :', ['class' => 'form-group']) !!}
-
-   {!! Form::date('fecha', null, ['class' => 'form-control', 'id' => 'fechEdit']) !!}
-    </div>
-
-  <div class="form-group">
-
-   {!! Form::label('fechaF', 'Fecha Limite:  ', ['class' => 'form-group']) !!}
-
-   {!! Form::date('fechaF', null, ['class' => 'form-control', 'id' =>'fechfEdit']) !!}
-    </div>
+    <div class="form-group">
+                <div class='input-group date' id='datetimepicker10'>
+                  {!! Form::label('fechaF', 'Fecha Limite', ['class' => 'form-control']) !!}
+                  {!! Form::text('fechaF', null, ['class' => 'form-control', 'id' => 'fechfEdit']) !!}
+                    
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>   
+              </div>
 
    <div class="form-group" >
     {!! Form::label('Rubricas', 'Rubricas de la Actividad: ', ['class' => 'form-group'])!!} 

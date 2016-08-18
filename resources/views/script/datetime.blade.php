@@ -28,4 +28,10 @@
                $(function () {
                 $('#datetimepicker8').datetimepicker();
             });
+                $(function () {
+                $('#datetimepicker9').datetimepicker();
+            });
+                 $(function () {
+                $('#datetimepicker10').datetimepicker();
+            });
         </script>
