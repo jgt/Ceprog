@@ -46,14 +46,12 @@ $(document).on('ready', function(){
 						
 		$.get(route, function(ran){
 
+			rango.html(" ");
+			
 			$(ran).each(function(key, value){
-
-				if(value.menor <= cont)
-				{
-					rango.html(" ");
+	
 					rango.append("<option value="+value.id+">"+value.name+"</option>");
-				}
-				
+			
 			});
 
 		});
