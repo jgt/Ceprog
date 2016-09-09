@@ -1,6 +1,7 @@
 <div id="listExamenDoc" Style="display:none">
       
         <a href="{{ route('listaPreguntasDocente')}}" Style="display:none" id="listPregDocente"></a>
+        <a href="{{ route('borrarExamenDocente') }}" Style="display:none" id="borrarExamenDocente"></a>
         <div class="table-responsive">
        <table class="table">
           <thead>

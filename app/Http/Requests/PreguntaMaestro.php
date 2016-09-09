@@ -26,7 +26,6 @@ class PreguntaMaestro extends Request
         return [
             
             'contenido' => 'required',
-            'valor' => 'required',
             'examen_docente_id' => 'required',
             'rango_id' => 'required'
 

@@ -13,7 +13,6 @@
 
     <div class="form-group">
 
-   {!! Form::text('materia_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'editExmatDoc']) !!}
     {!! Form::text('examen_docente_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'editExamDoc']) !!}
    </div>
 
@@ -26,16 +25,12 @@
   {!! Form::label('ciudad', 'Ciudad ', ['class' => 'form-group']) !!}
    {!! Form::text('ciudad', null, ['class' => 'form-control', 'id' => 'ciueditExam']) !!}
    </div>
-
+  
   <div class="form-group">
-  {!! Form::label('catedratico', 'Catedratico ', ['class' => 'form-group']) !!}
-  {!! Form::text('catedratico', null, ['class' => 'form-control', 'id' => 'catedraticoeditExa', 'readonly' => 'readonly']) !!}  
-</div>
-
-<div class="form-group">
-  {!! Form::label('carrera', 'Carrera ', ['class' => 'form-group']) !!}
-   {!! Form::text('carrera', null, ['class' => 'form-control', 'id' => 'editcarreraExa', 'readonly' => 'readonly']) !!}
+  {!! Form::label('materia_list', 'Materia ', ['class' => 'form-group']) !!}
+  {!!Form::select('materia_list[]', [], null, ['id' => 'selectMatdocenteEdit', 'multiple', 'style' => 'width:520px'])!!}
    </div>
+
 
   <div class="form-group">
   {!! Form::label('modalidad', 'Modalidad ', ['class' => 'form-group']) !!}

@@ -70,6 +70,7 @@
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
+          console.log(route);
 
           $.get(route, function(resp){
 

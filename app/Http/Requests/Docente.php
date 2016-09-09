@@ -27,10 +27,8 @@ class Docente extends Request
             
                 'modalidad' => 'required',
                 'modulo' => 'required',
-                'catedratico' => 'required',
                 'fecha' => 'required',
                 'fechaF' => 'required',
-                'materia_id' => 'required',
                 'ciudad' => 'required'
         ];
     }

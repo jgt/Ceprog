@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-md-4 col-md-offset-1">
+      <div class="col-md-6 col-md-offset-1">
         <div class="panel panel-default">
            <div class="panel-heading"></div>
            <div class="panel-body">
@@ -19,22 +19,11 @@
   {!! Form::label('ciudad', 'Ciudad ', ['class' => 'form-group']) !!}
    {!! Form::text('ciudad', null, ['class' => 'form-control']) !!}
    </div>
-
   
+
   <div class="form-group">
-  {!! Form::label('catedratico', 'Catedratico ', ['class' => 'form-group']) !!}
-  <select name="catedratico" id="docente" class="form-control"></select>
-  
-</div>
-
-<div class="form-group">
-  {!! Form::label('materia_id', 'Materia ', ['class' => 'form-group']) !!}
-    <select name="materia_id" id="selectMatdocente" class="form-control"></select>  
-   </div>
-
-<div class="form-group">
-  {!! Form::label('carrera', 'Carrera ', ['class' => 'form-group']) !!}
-   {!! Form::text('carrera', null, ['class' => 'form-control', 'id' => 'carreraDocente', 'readonly' => 'readonly']) !!}
+  {!! Form::label('materia_list', 'Materia ', ['class' => 'form-group']) !!}
+  {!!Form::select('materia_list[]', [], null, ['id' => 'selectMatdocente', 'multiple', 'style' => 'width:520px'])!!}
    </div>
 
   <div class="form-group">

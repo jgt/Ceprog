@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PosibleRespuesta extends Model
 {
-    protected $fillable = ['name', 'estado', 'pregunta_docente_id'];
+    
+    protected $fillable = ['name', 'estado', 'valor', 'pregunta_docente_id'];
 
     public function preguntaDocente()
     {

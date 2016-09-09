@@ -13,8 +13,8 @@ class CreateExamenDocentesTable extends Migration
     public function up()
     {
         Schema::create('examen_docentes', function (Blueprint $table) {
-
             $table->increments('id');
+
             $table->string('name');
             $table->string('ciudad');
             $table->string('carrera');
@@ -23,10 +23,7 @@ class CreateExamenDocentesTable extends Migration
             $table->string('modulo');
             $table->string('fecha');
             $table->string('fechaF');
-
-            $table->integer('materia_id')->unsigned();
-            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
-
+            
             $table->timestamps();
         });
     }

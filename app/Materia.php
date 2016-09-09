@@ -52,7 +52,7 @@ class Materia extends Model {
 
 	public function examenesDocente()
 	{
-		return $this->hasMany('App\Administrador\EvaluacionMaestro\ExamenDocente');
+		return $this->belongsToMany('App\Administrador\EvaluacionMaestro\ExamenDocente');
 	}
 
 

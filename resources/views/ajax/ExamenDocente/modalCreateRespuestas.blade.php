@@ -1,4 +1,4 @@
-<div id="modalRespuestasDocente" class="modal fade" role="dialog">
+<div id="modalCreateRespuestasDocente" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -7,7 +7,7 @@
         <h4 class="modal-title">Respuestas</h4>
       </div>
       <div class="modal-body">
-   {!! Form::open(['route' => 'createRespuestaDocente', 'method' => 'POST', 'id' => 'formRespDocente'])!!}
+   {!! Form::open(['route' => 'createRespuestaDocente', 'method' => 'POST', 'id' => 'form-resp-create'])!!}
 
    <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
   @include('errors.error')
@@ -34,10 +34,10 @@
 
     {!! Form::label('pregunta_docente_id', 'Examen id', ['class' => 'form-group', 'Style' => 'display:none']) !!}
 
-   {!! Form::text('pregunta_docente_id', null, ['class' => 'form-control', 'id' => 'prtIddocente', 'Style' => 'display:none']) !!}
+   {!! Form::text('pregunta_docente_id', null, ['class' => 'form-control', 'id' => 'docentePreguntaOut', 'Style' => 'display:none']) !!}
    <hr>
    <div class="modal-footer">
-      {!! Form::submit('Crear', ['class' => 'btn btn-primary', 'id' => 'createRespdocente']) !!}
+      {!! Form::submit('Crear', ['class' => 'btn btn-primary', 'id' => 'createRespdocenteOut']) !!}
     </div>
   
     </div>

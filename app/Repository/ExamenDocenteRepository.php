@@ -20,6 +20,7 @@ class ExamenDocenteRepository extends BaseRepository {
 	public function crearExamen(Docente $request)
 	{
 		$examen = ExamenDocente::create($request->all());
+		$examen->materias()->attach($request->get('materia_list'));
 		return $examen;
 	}
 

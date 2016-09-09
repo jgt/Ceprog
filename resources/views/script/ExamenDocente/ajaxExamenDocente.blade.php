@@ -97,49 +97,14 @@ $(document).on('ready', function(){
 
 		var route = $(this).attr('href');
 		var materias = $('#selectMatdocente');
-		var catedratico = $('#docente');
-
-		$('#docente').change(function(){
-
-				materias.html(" ");
-			});
 
 		$.get(route, function(resp){
+			
+			$(resp).each(function(key, mat){
 
-			catedratico.html(" ");
-		
-			$(resp).each(function(key, user){
-
-				$(user.roles).each(function(key, role){
-
-					if(role.name == "profesor")
-					{	
-
-						catedratico.append("<option value="+user.id+">"+user.name+"</option>");
-					}
-					
-				});
-					$(user.materias).each(function(key, mat){
-
-						$('#docente').change(function(){
-
-							var userId = this.value;
-							var materia = mat.pivot.user_id;
-							var carreraId = mat.semestre.carrera.id
-							var semestre = mat.semestre.carrera_id;
-
-							if(userId == materia && semestre == carreraId)
-							{	
-
-								materias.append("<option value="+mat.id+">"+mat.name+"</option>");
-								$('#carreraDocente').val(mat.semestre.carrera.name);
-							}
-
-						});
-
-					});
+				materias.append("<option value="+mat.id+">"+mat.name+"</option>");
+				
 			});
-
 		});
 
 	});
@@ -151,7 +116,6 @@ $(document).on('ready', function(){
 		var form = $('#evaDoc');
 		var metodo = form.attr('method');
 		var route = form.attr('action');
-		var valor = $('#valorDocente').val('0.5');
 		var numeracion = $('#contadorDocente').val('1');
 
 		$.ajax({
@@ -195,9 +159,6 @@ $(document).on('ready', function(){
 		var valor = $('#valorDocente').val();
 		var porcen = $('#porcenDocente').val();
 		var numeracion = $('#contadorDocente').val();
-
-		if(porcen <= 20)
-		{
 
 		$.ajax({
 
@@ -252,22 +213,6 @@ $(document).on('ready', function(){
 			}
 
 		});
-
-		}else{
-
-			$('#endQuestionDocente').show();
-			$('#pregDocente').hide();
-			alertify.alert("El limite de porcentaje de este examen se ha agotado.");
-
-			$('#endQuestionDocente').on('click', function(e){
-
-	          e.preventDefault();
-	          $('#preguntaDocente').hide();
-
-	        });
-
-		}
-
 	});
 
 	$('#createRespdocente').on('click', function(e){

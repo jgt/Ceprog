@@ -53,6 +53,8 @@
  @include('ajax.ExamenDocente.modalRespuestas')
  @include('ajax.ExamenDocente.modalQuizDocente')
  @include('ajax.ExamenDocente.modalEditexamenDocente')
+ @include('ajax.ExamenDocente.modalCreateRespuestas')
+ @include('ajax.ExamenDocente.editarPreguntas.modalEditarPreguntaDocente')
  
 <div class="container">
 
@@ -60,6 +62,8 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 					
+					@include('ajax.ExamenDocente.listPreguntas')
+					@include('ajax.ExamenDocente.editPreguntaDocente')
 					@include('ajax.ExamenDocente.listExamenAdmin')
 					@include('ajax.ExamenDocente.listaExamenDocente')
 					@include('ajax.ExamenDocente.crearPreguntaDocente')

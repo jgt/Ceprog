@@ -9,6 +9,9 @@
 		$('#carreraT_list').select2();
 		$('#semestreT_list').select2();
 		$('#role_list').select2();
+		$('#selectMatdocente').select2();
+		$('#docente').select2();
+		$('#selectMatdocenteEdit').select2();
 
 
 	</script>

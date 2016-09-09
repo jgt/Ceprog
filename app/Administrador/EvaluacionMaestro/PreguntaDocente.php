@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PreguntaDocente extends Model
 {
-    protected $fillable = [ 'contador', 'contenido', 'valor', 'rango_id', 'examen_docente_id'];
+    
+    protected $fillable = [ 'contador', 'contenido','rango_id', 'examen_docente_id'];
 
 
     public function examenDocente()

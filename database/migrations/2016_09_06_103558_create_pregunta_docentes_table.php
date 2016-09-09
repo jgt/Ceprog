@@ -13,8 +13,8 @@ class CreatePreguntaDocentesTable extends Migration
     public function up()
     {
         Schema::create('pregunta_docentes', function (Blueprint $table) {
-
             $table->increments('id');
+
             $table->string('contador');
             $table->text('contenido');
             $table->string('valor');
@@ -24,7 +24,7 @@ class CreatePreguntaDocentesTable extends Migration
 
             $table->integer('rango_id')->unsigned();
             $table->foreign('rango_id')->references('id')->on('rangos')->onDelete('cascade');
-
+            
             $table->timestamps();
         });
     }

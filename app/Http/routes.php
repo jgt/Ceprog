@@ -40,6 +40,11 @@ Route::group(['middleware' => 'admin',], function(){
 		Route::post('respDocente/{id}', ['as' => 'respDocente', 'uses' => 'QuizDocenteController@respDocente']);
 		Route::post('endQuiz', ['as' => 'endQuiz', 'uses' => 'QuizDocenteController@endQuiz']);
 		Route::get('listexaDocente', ['as' => 'listexaDocente', 'uses' => 'ExamenDocenteController@listexaDocente']);
+		Route::get('updatePreguntaDocente/{id}', ['as' => 'updatePreguntaDocente', 'uses' => 'ExamenDocenteController@updatePregunta']);
+		Route::get('borrarExamenDocente/{id}', ['as' => 'borrarExamenDocente', 'uses' => 'ExamenDocenteController@borrarExamenDocente']);
+		Route::get('edtPrtDoc/{id}', ['as' => 'edtPrtDoc', 'uses' => 'ExamenDocenteController@editarPregunta']);
+		Route::post('actualizarPregunta/{id}', ['as' => 'actualizarPregunta', 'uses' => 'ExamenDocenteController@actualizarPregunta']);
+		Route::get('borrarPreguntaDocente/{id}', ['as' => 'borrarPreguntaDocente', 'uses' => 'ExamenDocenteController@borrarPreguntaDocente']);
 	});
 
 });

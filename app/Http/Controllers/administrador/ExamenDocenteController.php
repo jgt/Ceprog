@@ -47,7 +47,7 @@ class ExamenDocenteController extends Controller
     public function create()
     {   
 
-        $materias = $this->userRepository->getModel()->with('materias.semestre.carrera', 'roles')->get();
+        $materias = $this->materiaRepository->getModel()->with('semestre.carrera')->get();
         return Response()->json($materias);
     }
 
@@ -72,7 +72,9 @@ class ExamenDocenteController extends Controller
      */
     public function show($id)
     {
-        //
+        $examen = $this->examenDocente->search($id)->with('preguntas')->get();
+
+        return Response()->json($examen);
     }
 
     /**
@@ -83,8 +85,15 @@ class ExamenDocenteController extends Controller
      */
     public function edit($id)
     {
-        $examen = $this->examenDocente->search($id);
-        return Response()->json($examen);
+        $examen = $this->examenDocente->search($id)->with('materias')->get();
+        $materias = $this->materiaRepository->getModel()->all();
+
+        $detalles = [
+
+                'examen' => $examen,
+                'materias' => $materias
+        ];
+        return Response()->json($detalles);
     }
 
     /**
@@ -98,6 +107,7 @@ class ExamenDocenteController extends Controller
     {
         $examen = $this->examenDocente->search($id);
         $examen->update($request->all());
+        $examen->materias()->sync($request->get('materia_list'));
         return Response()->json($examen);
     }
 
@@ -123,13 +133,15 @@ class ExamenDocenteController extends Controller
 
         $name= $request->input('name');
         $estado= $request->input('estado');
+        $valor= $request->input('valor');
         $pregunta_id= $request->input('pregunta_docente_id');
 
         foreach ($name as $key => $n) {
  
             $ins = new PosibleRespuesta;
             $ins->pregunta_docente_id = $pregunta_id;
-            $ins->name = $name[$key];           
+            $ins->name = $name[$key];
+            $ins->valor = $valor[$key];           
             $ins->estado = ($key == $estado);
             $ins->save();
 
@@ -143,4 +155,42 @@ class ExamenDocenteController extends Controller
         $examenes = $this->examenDocente->listaExamenes();
         return Response()->json($examenes);
     }
+
+    public function updatePregunta($id)
+    {
+        $preguntas = $this->examenDocente->search($id)->with('preguntas')->get();
+        $rangos = Rango::all();
+
+        $detalles = ['numeroPreguntas' => $preguntas, 'rangos' => $rangos];
+
+        return Response()->json($detalles);
+    }
+
+    public function borrarExamenDocente($id)
+    {
+        $examen = $this->examenDocente->search($id);
+        $examen->delete();
+    }
+
+    public function editarPregunta($id)
+    {
+        $pregunta = PreguntaDocente::where('id', $id)->with('rango')->get();
+        
+        return Response()->json($pregunta);
+    }
+
+    public function actualizarPregunta($id, Request $request)
+    {
+        $pregunta = PreguntaDocente::find($id);
+        $pregunta->update($request->all());
+        return Response()->json($pregunta);
+    }
+
+    public function borrarPreguntaDocente($id)
+    {
+        $pregunta = PreguntaDocente::find($id);
+        $pregunta->delete();
+
+    }
+
 }

@@ -13,8 +13,8 @@ class CreateRespuestaDocentesTable extends Migration
     public function up()
     {
         Schema::create('respuesta_docentes', function (Blueprint $table) {
-
             $table->increments('id');
+
 
             $table->integer('pregunta_docente_id')->unsigned()->index();
             $table->foreign('pregunta_docente_id')->references('id')->on('pregunta_docentes')->onDelete('no action');
@@ -24,7 +24,7 @@ class CreateRespuestaDocentesTable extends Migration
             
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('no action');
-
+            
             $table->timestamps();
         });
     }

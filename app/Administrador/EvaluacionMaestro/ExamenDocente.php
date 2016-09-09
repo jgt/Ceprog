@@ -10,18 +10,15 @@ class ExamenDocente extends Model
     protected $fillable = [
     'name',
     'ciudad',
-    'carrera', 
-    'catedratico', 
     'modalidad', 
     'modulo',
     'fecha', 
-    'fechaF', 
-    'materia_id'
+    'fechaF'
     ];
 
-    public function materia()
+    public function materias()
     {
-    	return $this->belongsTo('App\Materia');
+    	return $this->belongsToMany('App\Materia');
     }
 
     public function preguntas()

@@ -13,14 +13,15 @@ class CreatePosibleRespuestasTable extends Migration
     public function up()
     {
         Schema::create('posible_respuestas', function (Blueprint $table) {
-
             $table->increments('id');
-            
-            $table->string('name');
+
+             $table->string('name');
+            $table->string('valor');
             $table->boolean('estado')->default(false);
 
             $table->integer('pregunta_docente_id')->unsigned();
             $table->foreign('pregunta_docente_id')->references('id')->on('pregunta_docentes')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
