@@ -7,6 +7,7 @@ use App\Administrador\EvaluacionMaestro\PosibleRespuesta;
 use App\Administrador\EvaluacionMaestro\ExamenDocente;
 use App\Http\Requests\Docente;
 use Auth;
+use App\Administrador\EvaluacionMaestro\Rango;
 
 
 class ExamenDocenteRepository extends BaseRepository {

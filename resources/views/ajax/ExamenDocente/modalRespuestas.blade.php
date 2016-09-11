@@ -24,9 +24,6 @@
             {!! Form::label('valor', 'Porcentaje de la respuesta', ['class' => 'form-group']) !!}
 
             {!! Form::text('valor[]', null, ['class' => 'form-control', 'id' => 'valorContenido', 'style' => 'width:40px'])!!}
-            
-            {!! Form::label('estado', 'Si la respuesta es correcta selecciona esta opción', ['class' => 'form-group']) !!}
-            {!! Form::radio('estado', $i,['class' => 'form-control']) !!}
         </div>
     @endfor
       

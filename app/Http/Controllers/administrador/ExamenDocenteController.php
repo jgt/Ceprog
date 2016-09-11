@@ -134,7 +134,6 @@ class ExamenDocenteController extends Controller
     {
 
         $name= $request->input('name');
-        $estado= $request->input('estado');
         $valor= $request->input('valor');
         $pregunta_id= $request->input('pregunta_docente_id');
 
@@ -144,7 +143,6 @@ class ExamenDocenteController extends Controller
             $ins->pregunta_docente_id = $pregunta_id;
             $ins->name = $name[$key];
             $ins->valor = $valor[$key];           
-            $ins->estado = ($key == $estado);
             $ins->save();
 
         }

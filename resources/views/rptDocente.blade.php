@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Example 1</title>
+    <title>Reporte Evaluacion Docente</title>
     <link rel="stylesheet" href="{{'estiloPdf/css/pdfDocente.css'}}" media="all" />
   </head>
   <body>
@@ -27,36 +27,34 @@
           {{$user->name}}
         @endforeach
         </div>
-        <div><span>Fecha/Hora</span>{{$fecha}}</div>
+        <div><span>DATE</span> August 17, 2015</div>
+        <div><span>DUE DATE</span> September 17, 2015</div>
       </div>
     </header>
     <main>
       <table>
-      <tr>
-        <th>RANGOS/PUNTAJE</th>
-      </tr>
-       @foreach($rangos as $rango)
         <thead>
-          <tr>
-            <th class="service">{{$rango->name}}</th>
-          </tr>
+           @foreach($rangos as $rango)
+           <tr>
+                <th>{{$rango->name}}</th>
+                <th>Resultado</th>
+                <th>Promedio</th>
+           </tr>
         </thead>
         <tbody>
           <tr>
           <?php $total =0;  ?>
-              @foreach($rango->preguntas as $pregunta)
-                @if($pregunta->rango_id == $rango->id)
-                  @foreach($pregunta->respuestasDocentes as $respuesta)
-                      @if($respuesta->estado == 1)
-                        <?php $total += $respuesta->valor;?>
-                        <td>{{$total}}</td>
-                      @endif    
-                  @endforeach
-                @endif
+            @foreach($materia->semestre->users as $user)
+              @foreach($user->respuestasDocentesUser as $respuesta)
+                  @if($respuesta->preguntaDocente->rango_id == $rango->id)
+                  <?php $total += $respuesta->posibleRespuesta->valor;?>
+                      <td>{{$total}}</td>
+                  @endif
               @endforeach
+            @endforeach
           </tr>
         </tbody>
-           @endforeach
+         @endforeach
       </table>
       <div id="notices">
         <div>NOTICE:</div>
