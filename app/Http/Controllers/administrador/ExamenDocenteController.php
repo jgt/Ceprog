@@ -15,6 +15,8 @@ use App\Http\Requests\RespuestaMaestro;
 use App\Administrador\EvaluacionMaestro\Rango;
 use App\Administrador\EvaluacionMaestro\PreguntaDocente;
 use App\Administrador\EvaluacionMaestro\PosibleRespuesta;
+use App;
+use Carbon\Carbon;
 
 class ExamenDocenteController extends Controller
 {
@@ -190,6 +192,28 @@ class ExamenDocenteController extends Controller
     {
         $pregunta = PreguntaDocente::find($id);
         $pregunta->delete();
+
+    }
+
+    public function listMateias()
+    {
+        $materias = $this->materiaRepository->getModel()->with('semestre.carrera')->get();
+
+        return Response()->json($materias);
+    }
+
+    public function resporteExamenDocente($id)
+    {
+        $pdf = App::make('dompdf.wrapper');
+        $materia = $this->materiaRepository->search($id); 
+        $date = Carbon::now();
+        $fecha = $date->format('l jS \\of F Y h:i:s A');
+        $rangos = Rango::all();
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('rptDocente', compact('materia', 'fecha', 'rangos'));
+        return $pdf->stream();
 
     }
 

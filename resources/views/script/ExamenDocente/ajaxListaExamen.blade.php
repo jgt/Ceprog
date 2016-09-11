@@ -402,7 +402,42 @@
 
 		});
 
+		$('#listaEPD').on('click', function(e){
+
+			e.preventDefault();
+
+			$('#tbMateriaDoc').show();
+
+			var route = $('#lmdExamen').attr('href');
+			var tablaExamen = $('#tbListMateriaDoc');
+
+			$.get(route, function(resp){
+
+				tablaExamen.html(" ");
+
+				$(resp).each(function(key, value){
+
+					$(value.semestre.carrera).each(function(key, carrera){
+
+						tablaExamen.append("<tr><td>"+carrera.name+"</td><td>"+value.semestre.name+"</td><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='resporteDocente(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
+
+					});
+
+				});
+
+			});
+
+		});
+
 	});
+
+	function resporteDocente(btn)
+	{
+		var id = btn.value;
+		var link = $('#rptDocente').attr('href');
+		var route = link.split('%7Bid%7D').join(id);
+		window.open(route);
+	}
 	
 	//administracion de examenes para evaluar el maestro
 	function editExamenDocente(btn)

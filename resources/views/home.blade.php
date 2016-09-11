@@ -62,6 +62,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 					
+					@include('ajax.ExamenDocente.reportes.tablaMaterias')
 					@include('ajax.ExamenDocente.listPreguntas')
 					@include('ajax.ExamenDocente.editPreguntaDocente')
 					@include('ajax.ExamenDocente.listExamenAdmin')

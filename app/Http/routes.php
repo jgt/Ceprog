@@ -45,6 +45,8 @@ Route::group(['middleware' => 'admin',], function(){
 		Route::get('edtPrtDoc/{id}', ['as' => 'edtPrtDoc', 'uses' => 'ExamenDocenteController@editarPregunta']);
 		Route::post('actualizarPregunta/{id}', ['as' => 'actualizarPregunta', 'uses' => 'ExamenDocenteController@actualizarPregunta']);
 		Route::get('borrarPreguntaDocente/{id}', ['as' => 'borrarPreguntaDocente', 'uses' => 'ExamenDocenteController@borrarPreguntaDocente']);
+		Route::get('listMateriasDocente', ['as' => 'listMateriasDocente', 'uses' => 'ExamenDocenteController@listMateias']);
+		Route::get('resporteExamenDocente/{id}', ['as' => 'resporteExamenDocente', 'uses' => 'ExamenDocenteController@resporteExamenDocente']);
 	});
 
 });

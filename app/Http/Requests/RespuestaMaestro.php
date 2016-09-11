@@ -27,14 +27,8 @@ class RespuestaMaestro extends Request
             $rules =[
 
             'pregunta_docente_id' => 'required',
-            'estado' => 'required',
 
             ];
-
-        foreach ($this->request->get('name') as $key => $val) {
-            
-            $rules['name.'.$key] = 'required';
-        }
 
         return $rules;
     }

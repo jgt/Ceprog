@@ -63,4 +63,7 @@ class ExamenDocenteRepository extends BaseRepository {
 		$examenes = $this->getModel()->all();
 		return $examenes;
 	}
+
+	
+
 }
