@@ -209,10 +209,11 @@ class ExamenDocenteController extends Controller
         $rangos = Rango::all();
         $reporte = $this->materiaRepository->reporteDocente($id);
         $user = $this->materiaRepository->usuariosEvaluados($id);
+        $totalUser = intval($user);
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape';
         $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('rptDocente', compact('materia', 'fecha', 'rangos', 'reporte', 'user'));
+        $pdf->loadview('rptDocente', compact('materia', 'fecha', 'rangos', 'reporte', 'totalUser'));
         return $pdf->stream();
 
     }

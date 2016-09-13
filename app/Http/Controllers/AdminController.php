@@ -176,6 +176,15 @@ class AdminController extends Controller {
 
 	}
 
+	public function picturePerfil($id)
+	{
+		$imagen = $this->userRepository->downloadPerfil($id);
+		$public_path = public_path();
+     	$file =  $public_path.'/imagen/'.$imagen;
+
+		return response()->download($file);
+	}
+
 }
 
 

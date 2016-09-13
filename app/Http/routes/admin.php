@@ -2,6 +2,7 @@
 
 //busca un usuario en la lita del personal
 Route::get('buscarUser', ['as' => 'buscarUser', 'uses' => 'AdminController@buscarUser']);
+Route::get('picturePerfil/{id}', ['as' => 'picturePerfil', 'uses' => 'AdminController@picturePerfil']);
 //borra un usuario de la lista del personal.
 Route::get('deleteU/{id}', ['as' => 'deleteU', 'uses' => 'AdminController@delete']);
 

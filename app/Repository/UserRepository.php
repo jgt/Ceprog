@@ -184,5 +184,17 @@ class UserRepository extends BaseRepository {
 		return $promedio;
 	}
 
+	public function downloadPerfil($id)
+	{
+		$user = $this->search($id);
+		$imagenes = $user->imagenes()->get();
+		
+		foreach ($imagenes as $imagen) {
+			
+			$filename = $imagen->img;
+		}
+
+		return $filename;
+	}
 
 }

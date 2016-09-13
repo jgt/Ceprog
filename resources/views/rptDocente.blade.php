@@ -53,13 +53,13 @@
             @endforeach
             <td></td>
             <td>{{$total}}</td>
-            <td>{{number_format($total/2,1)}}%</td>
+            <td>{{number_format($total/$totalUser,1)}}%</td>
           </tr>
         </tbody>
          @endforeach
       </table>
 
-      <h3>Resultado Total: {{number_format($reporte/2,1)}}%</h3>
+      <h3>Resultado Total: {{number_format($reporte/$totalUser,1)}}%</h3>
       <div id="notices">
         <div>NOTICE:</div>
         <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>

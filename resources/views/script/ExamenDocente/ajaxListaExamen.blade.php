@@ -437,7 +437,17 @@
 		var id = btn.value;
 		var link = $('#rptDocente').attr('href');
 		var route = link.split('%7Bid%7D').join(id);
-		window.open(route);
+		
+		$.get(route, function(){
+			
+			window.open(route);
+		})
+
+		.fail(function(){
+
+			alertify.alert("Esta materia no tiene ningun reporte.");
+
+		});
 	}
 
 	function pdfDocente(btn)

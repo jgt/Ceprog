@@ -147,15 +147,19 @@ class MateriaRepository extends BaseRepository {
 		
 		foreach ($materia->semestre->users as $user) {
 		
-			foreach($user->resultadoDocenteUser as $resultado)
-			{
-				if($resultado->user_id == $user->id)
+			foreach ($materia->examenesDocente as $examen) {
+				
+				foreach($user->resultadoDocenteUser as $resultado)
 				{
-					$usuarios[] = $user;
+					if($resultado->examen_docente_id == $examen->id)
+					{
+						$usuarios[] = $user;
+
+					}
 				}
 			}
 		}
 		
-		return $usuarios;
+		return sizeof($usuarios);
 	}
 }
