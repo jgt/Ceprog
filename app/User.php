@@ -49,6 +49,11 @@ class User extends Entity implements AuthenticatableContract, CanResetPasswordCo
 		return $this->hasMany('App\Administrador\EvaluacionMaestro\RespuestaDocente');
 	}
 
+	public function resultadoDocenteUser()
+	{
+		return $this->hasMany('App\Administrador\EvaluacionMaestro\ResultadoDocente');
+	}
+
 	public function respuestasUser()
 	{
 		return $this->hasMany('App\RespuestaUser');

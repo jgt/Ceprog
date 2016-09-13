@@ -207,10 +207,26 @@ class ExamenDocenteController extends Controller
         $date = Carbon::now();
         $fecha = $date->format('l jS \\of F Y h:i:s A');
         $rangos = Rango::all();
+        $reporte = $this->materiaRepository->reporteDocente($id);
+        $user = $this->materiaRepository->usuariosEvaluados($id);
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape';
         $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('rptDocente', compact('materia', 'fecha', 'rangos'));
+        $pdf->loadview('rptDocente', compact('materia', 'fecha', 'rangos', 'reporte', 'user'));
+        return $pdf->stream();
+
+    }
+
+    public function examenDocentePdf($id)
+    {
+        $pdf = App::make('dompdf.wrapper');
+        $examen = $this->examenDocente->search($id); 
+        $date = Carbon::now();
+        $fecha = $date->format('d-m-Y');
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('examenDocentePdf', compact('examen', 'fecha'));
         return $pdf->stream();
 
     }

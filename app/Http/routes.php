@@ -32,13 +32,9 @@ Route::group(['middleware' => 'admin',], function(){
 	
 	Route::group(['namespace' => 'administrador'], function(){
 
-		Route::resource('quizDocente', 'QuizDocenteController');
 		Route::resource('examenDocente', 'ExamenDocenteController');
-		Route::get('listaPreguntasDocente/{id}', ['as' => 'listaPreguntasDocente', 'uses' => 'QuizDocenteController@examenPreguntas']);
 		Route::post('createPregDocente', ['as' => 'createPregDocente', 'uses' => 'ExamenDocenteController@createPregunta']);
 		Route::post('createRespuestaDocente', ['as' => 'createRespuestaDocente', 'uses' => 'ExamenDocenteController@createRespuesta']);
-		Route::post('respDocente/{id}', ['as' => 'respDocente', 'uses' => 'QuizDocenteController@respDocente']);
-		Route::post('endQuiz', ['as' => 'endQuiz', 'uses' => 'QuizDocenteController@endQuiz']);
 		Route::get('listexaDocente', ['as' => 'listexaDocente', 'uses' => 'ExamenDocenteController@listexaDocente']);
 		Route::get('updatePreguntaDocente/{id}', ['as' => 'updatePreguntaDocente', 'uses' => 'ExamenDocenteController@updatePregunta']);
 		Route::get('borrarExamenDocente/{id}', ['as' => 'borrarExamenDocente', 'uses' => 'ExamenDocenteController@borrarExamenDocente']);
@@ -47,6 +43,7 @@ Route::group(['middleware' => 'admin',], function(){
 		Route::get('borrarPreguntaDocente/{id}', ['as' => 'borrarPreguntaDocente', 'uses' => 'ExamenDocenteController@borrarPreguntaDocente']);
 		Route::get('listMateriasDocente', ['as' => 'listMateriasDocente', 'uses' => 'ExamenDocenteController@listMateias']);
 		Route::get('resporteExamenDocente/{id}', ['as' => 'resporteExamenDocente', 'uses' => 'ExamenDocenteController@resporteExamenDocente']);
+		Route::get('examenDocentePdf/{id}', ['as' => 'examenDocentePdf', 'uses' => 'ExamenDocenteController@examenDocentePdf']);
 	});
 
 });
@@ -75,6 +72,14 @@ Route::group(['middleware' => 'maestro'], function(){
 	
 
 Route::group(['middleware' => 'alumnos'], function(){
+
+	Route::group(['namespace' => 'administrador'], function(){
+
+		Route::resource('quizDocente', 'QuizDocenteController');
+		Route::get('listaPreguntasDocente/{id}', ['as' => 'listaPreguntasDocente', 'uses' => 'QuizDocenteController@examenPreguntas']);
+		Route::post('respDocente/{id}', ['as' => 'respDocente', 'uses' => 'QuizDocenteController@respDocente']);
+		Route::post('endQuiz', ['as' => 'endQuiz', 'uses' => 'QuizDocenteController@endQuiz']);
+	});
 
 	Route::get('fileentry/{id}', ['as' => 'fileentry', 'uses' => 'DescargaController@index']);
 

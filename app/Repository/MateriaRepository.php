@@ -6,6 +6,7 @@ use App\Materia;
 use App\Respuesta;
 use App\RespuestaUser;
 use Auth;
+use App\Administrador\EvaluacionMaestro\Rango;
 
 use Illuminate\Http\Request;
 
@@ -121,4 +122,40 @@ class MateriaRepository extends BaseRepository {
         return $totalExamen;
 	}
 
+	public function reporteDocente($id)
+	{
+		$materia = $this->search($id);
+		$rangos = Rango::all();
+		$total = 0;
+
+		foreach ($rangos as $rango) {
+		 	foreach ($materia->semestre->users as $user) {
+		 		foreach ($user->respuestasDocentesUser as $respuesta) {
+		 			if($respuesta->preguntaDocente->rango_id == $rango->id)
+		 			{
+		 				$total += $respuesta->posibleRespuesta->valor;
+		 			}
+		 		}
+		 	}
+		 } 
+		 return $total;
+	}
+
+	public function usuariosEvaluados($id)
+	{
+		$materia = $this->search($id);
+		
+		foreach ($materia->semestre->users as $user) {
+		
+			foreach($user->resultadoDocenteUser as $resultado)
+			{
+				if($resultado->user_id == $user->id)
+				{
+					$usuarios[] = $user;
+				}
+			}
+		}
+		
+		return $usuarios;
+	}
 }

@@ -85,6 +85,7 @@
 			var metodo = form.attr('method');
 			var route = link.split('%7Bid%7D').join(id);
 
+
 			$.ajax({
 
 				url: route,
@@ -197,7 +198,7 @@
 
 				$(resp).each(function(key, value){
 
-					listaExamenes.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editExamenDocente(this);' data-toggle='modal' data-target='#edtExmDoc'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='createPreguntadDocente(this);'><i class='fa fa-database' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='listPreguntaDocente(this);'><i class='fa fa-book' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExaDocente(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+					listaExamenes.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editExamenDocente(this);' data-toggle='modal' data-target='#edtExmDoc'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='createPreguntadDocente(this);'><i class='fa fa-database' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='listPreguntaDocente(this);'><i class='fa fa-book' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='pdfDocente(this);'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExaDocente(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
 				});
 
@@ -438,6 +439,14 @@
 		var route = link.split('%7Bid%7D').join(id);
 		window.open(route);
 	}
+
+	function pdfDocente(btn)
+	{
+		var id = btn.value;
+		var link = $('#exmDocPdf').attr('href');
+		var route = link.split('%7Bid%7D').join(id);
+		window.open(route);
+	}
 	
 	//administracion de examenes para evaluar el maestro
 	function editExamenDocente(btn)
@@ -636,9 +645,9 @@
 		var pregunta = $('#pregQuizDocente');
 		var respuesta = $('#quizRespDocente');
 		var examenId = $('#quizDocId').val(id);
-
+		
 		$.get(route, function(resp){
-	
+
 			pregunta.html(" ");
           	respuesta.html(" ");
 

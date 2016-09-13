@@ -36,26 +36,30 @@
         <thead>
            @foreach($rangos as $rango)
            <tr>
-                <th>{{$rango->name}}</th>
-                <th>Resultado</th>
-                <th>Promedio</th>
+                <td>{{$rango->name}}</td>
+                <td>Resultado</td>
+                <td>Porcentaje</td>
            </tr>
         </thead>
         <tbody>
           <tr>
-          <?php $total =0;  ?>
+          <?php $total =0;?>
             @foreach($materia->semestre->users as $user)
               @foreach($user->respuestasDocentesUser as $respuesta)
                   @if($respuesta->preguntaDocente->rango_id == $rango->id)
                   <?php $total += $respuesta->posibleRespuesta->valor;?>
-                      <td>{{$total}}</td>
                   @endif
               @endforeach
             @endforeach
+            <td></td>
+            <td>{{$total}}</td>
+            <td>{{number_format($total/2,1)}}%</td>
           </tr>
         </tbody>
          @endforeach
       </table>
+
+      <h3>Resultado Total: {{number_format($reporte/2,1)}}%</h3>
       <div id="notices">
         <div>NOTICE:</div>
         <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>

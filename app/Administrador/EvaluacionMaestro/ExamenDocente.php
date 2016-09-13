@@ -25,4 +25,9 @@ class ExamenDocente extends Model
     {
     	return $this->hasMany('App\Administrador\EvaluacionMaestro\PreguntaDocente');
     }
+
+    public function resultadoDoc()
+    {
+        return $this->hasMany('App\Administrador\EvaluacionMaestro\ResultadoDocente');
+    }
 }
