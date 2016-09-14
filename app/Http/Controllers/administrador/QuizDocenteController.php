@@ -59,8 +59,9 @@ class QuizDocenteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
         $examen = $this->materiaRepository->listExamen($id);
+
         return Response()->json($examen);
     }
 
@@ -98,9 +99,10 @@ class QuizDocenteController extends Controller
         //
     }
 
-    public function examenPreguntas($id)
-    {
-        $preguntas = $this->examenDocente->listaPreguntas($id);
+    public function examenPreguntas($id, $materia)
+    {   
+
+        $preguntas = $this->examenDocente->listaPreguntas($id, $materia);
         return Response()->json($preguntas);
     }
 
@@ -111,6 +113,7 @@ class QuizDocenteController extends Controller
 
                 'pregunta_docente_id' => $request->get('pregunta_docente_id'),
                 'posible_respuesta_id' => $request->get('posible_respuesta_id'),
+                'materia_id' => $request->get('materia_id'),
                 'user_id' => Auth::user()->id
 
             ]);
@@ -124,10 +127,11 @@ class QuizDocenteController extends Controller
 
             'user_id' => 'required',
             'examen_docente_id' => 'required',
-            'resultado' => 'required'
+            'materia_id' => 'required',
             ]);
 
         $resultado = ResultadoDocente::create($request->all());
         return Response()->json($resultado);
     }
+
 }

@@ -24,7 +24,10 @@ class CreateRespuestaDocentesTable extends Migration
             
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('no action');
-            
+
+            $table->integer('materia_id')->unsigned()->index();
+            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

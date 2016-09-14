@@ -7,6 +7,7 @@ use App\Administrador\EvaluacionMaestro\PosibleRespuesta;
 use App\Administrador\EvaluacionMaestro\ExamenDocente;
 use App\Http\Requests\Docente;
 use Auth;
+use App\Materia;
 
 
 class ExamenDocenteRepository extends BaseRepository {
@@ -24,28 +25,17 @@ class ExamenDocenteRepository extends BaseRepository {
 		return $examen;
 	}
 
-	public function listaPreguntas($id)
+	public function listaPreguntas($id, $materia)
 	{
 		$examen = $this->search($id);
+		$mat =  Materia::find($materia);
 		$preguntas = PreguntaDocente::where('examen_docente_id', $id)->orderBy('id', 'desc')->get();
 		$preguntaNext= [];
-		$nota =0;
 
 		foreach ($preguntas as  $pregunta) {
                 //comprobamos si las preguntas ya fueron contestadas por el alumno.
-            $repuestaUser = RespuestaDocente::where('pregunta_docente_id', $pregunta->id)->where('user_id',Auth::user()->id)->count();
-            // me traigo todas las respuestas correctas
-             $respuestas = PosibleRespuesta::where('pregunta_docente_id',$pregunta->id)->where('estado',1)->get();
+            $repuestaUser = RespuestaDocente::where('pregunta_docente_id', $pregunta->id)->where('user_id',Auth::user()->id)->where('materia_id', $mat->id)->count();
             
-             foreach ( $respuestas as $respuesta) {
-              $correcta = RespuestaDocente::where('posible_respuesta_id',$respuesta->id)->where('user_id',Auth::user()->id)->count();
-              
-              if($correcta==1):
-                        $nota += $pregunta->valor;
-                endif;
-
-          }
-
           if(! $repuestaUser):
 
                     $preguntaNext = PreguntaDocente::where('id', $pregunta->id)->with('respuestasDocentes')->orderBy('id', 'desc')->get();
@@ -53,7 +43,7 @@ class ExamenDocenteRepository extends BaseRepository {
                 endif;
             }
 
-            $detalles = ['pregunta' => $preguntaNext, 'nota' => $nota];
+            $detalles = ['pregunta' => $preguntaNext];
 
 		return $detalles;
 	}
@@ -63,5 +53,6 @@ class ExamenDocenteRepository extends BaseRepository {
 		$examenes = $this->getModel()->all();
 		return $examenes;
 	}
+
 
 }

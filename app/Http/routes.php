@@ -76,7 +76,7 @@ Route::group(['middleware' => 'alumnos'], function(){
 	Route::group(['namespace' => 'administrador'], function(){
 
 		Route::resource('quizDocente', 'QuizDocenteController');
-		Route::get('listaPreguntasDocente/{id}', ['as' => 'listaPreguntasDocente', 'uses' => 'QuizDocenteController@examenPreguntas']);
+		Route::get('listaPreguntasDocente/{id}/{materia}', ['as' => 'listaPreguntasDocente', 'uses' => 'QuizDocenteController@examenPreguntas']);
 		Route::post('respDocente/{id}', ['as' => 'respDocente', 'uses' => 'QuizDocenteController@respDocente']);
 		Route::post('endQuiz', ['as' => 'endQuiz', 'uses' => 'QuizDocenteController@endQuiz']);
 	});

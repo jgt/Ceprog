@@ -16,6 +16,7 @@
         {!! Form::text('examen_docente_id', null, ['Style' => 'display:none', 'id' => 'exaDocId'])!!}
         {!! Form::text('posible_respuesta_id', null, ['Style' => 'display:none'])!!}
         {!! Form::text('pregunta_docente_id', null, ['Style' => 'display:none', 'id' => 'pregIdDocente'])!!}
+        {!! Form::text('materia_id', null, ['Style' => 'display:none', 'id' => 'respDocMateriaId'])!!}
         {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none'])!!}
         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
         
@@ -34,6 +35,7 @@
 
               {!! Form::text('resultado', null, ['Style' => 'display:none', 'id' => 'resulDocente'])!!}
               {!! Form::text('examen_docente_id', null, ['Style' => 'display:none', 'id' => 'quizDocId'])!!}
+              {!! Form::text('materia_id', null, ['Style' => 'display:none', 'id' => 'quizMateriaId'])!!}
               {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none'])!!}
               <hr>
               {!! Form::submit('Terminar examen', ['class' => 'btn btn-danger', 'id' => 'endQuizDocente','Style' => 'display:none'])!!}

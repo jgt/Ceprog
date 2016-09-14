@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RespuestaDocente extends Model
 {
     
-     protected $fillable = ['pregunta_docente_id', 'posible_respuesta_id', 'user_id'];
+     protected $fillable = ['pregunta_docente_id', 'posible_respuesta_id', 'user_id', 'materia_id'];
     
 
     public function preguntaDocente()
@@ -18,6 +18,11 @@ class RespuestaDocente extends Model
     public function posibleRespuesta()
     {
     	return $this->belongsTo('App\Administrador\EvaluacionMaestro\PosibleRespuesta');
+    }
+
+    public function materia()
+    {
+        return $this->belongsTo('App\Materia');
     }
 
     public function user()

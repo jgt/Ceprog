@@ -46,7 +46,7 @@
           <?php $total =0;?>
             @foreach($materia->semestre->users as $user)
               @foreach($user->respuestasDocentesUser as $respuesta)
-                  @if($respuesta->preguntaDocente->rango_id == $rango->id)
+                  @if($respuesta->preguntaDocente->rango_id == $rango->id && $respuesta->materia_id == $materia->id)
                   <?php $total += $respuesta->posibleRespuesta->valor;?>
                   @endif
               @endforeach
