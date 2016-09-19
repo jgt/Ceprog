@@ -134,3 +134,25 @@ footer {
   padding: 8px 0;
   text-align: center;
 }
+
+#olLetras {
+  counter-reset: list;
+}
+#olLetras > li {
+  list-style: none;
+}
+#olLetras > li:before {
+  content: counter(list, upper-alpha) ") ";
+  counter-increment: list;
+}
+
+.olLetras {
+  counter-reset: list;
+}
+.olLetras > li {
+  list-style: none;
+}
+.olLetras > li:before {
+  content: counter(list, upper-alpha) ") ";
+  counter-increment: list;
+}

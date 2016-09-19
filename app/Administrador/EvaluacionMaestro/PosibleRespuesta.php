@@ -13,4 +13,9 @@ class PosibleRespuesta extends Model
     {
     	return $this->belongsTo('App\Administrador\EvaluacionMaestro\PreguntaDocente');
     }
+
+    public function respuestasDocentes()
+    {
+    	return $this->hasMany('App\Administrador\EvaluacionMaestro\RespuestaDocente');
+    }
 }

@@ -44,6 +44,7 @@ Route::group(['middleware' => 'admin',], function(){
 		Route::get('listMateriasDocente', ['as' => 'listMateriasDocente', 'uses' => 'ExamenDocenteController@listMateias']);
 		Route::get('resporteExamenDocente/{id}', ['as' => 'resporteExamenDocente', 'uses' => 'ExamenDocenteController@resporteExamenDocente']);
 		Route::get('examenDocentePdf/{id}', ['as' => 'examenDocentePdf', 'uses' => 'ExamenDocenteController@examenDocentePdf']);
+		Route::get('reporteGeneralDoc', ['as' => 'reporteGeneralDoc', 'uses' => 'ExamenDocenteController@reporteGeneral']);
 	});
 
 });

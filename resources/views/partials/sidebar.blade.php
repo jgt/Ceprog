@@ -120,6 +120,7 @@
                                       
                                       <ul class="treeview-menu">
                                        <li><a href="{{route('admin.index')}}" id="listaP">Lista de Personal</a></li>
+                                       <li><a href="{{ route('reporteGeneralDoc') }}" id="rptGenDoc">Reporte General</a></li>
                                        <li><a href="{{ route('listMateriasDocente') }}" id="listaEPD">Reporte Examen Docente</a></li>
                                        <li><a href="{{route('listForo')}}" id="listForoadm">Lista de Foros</a></li>
                                        <li><a href="{{route('carrera.index')}}" id ="lstCrra">Lista de carreras</a></li>

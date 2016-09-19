@@ -17,6 +17,7 @@ use App\Administrador\EvaluacionMaestro\PreguntaDocente;
 use App\Administrador\EvaluacionMaestro\PosibleRespuesta;
 use App;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExamenDocenteController extends Controller
 {
@@ -232,4 +233,19 @@ class ExamenDocenteController extends Controller
 
     }
 
+    public function reporteGeneral()
+    {
+
+        $pdf = App::make('dompdf.wrapper');
+        $materias = $this->materiaRepository->getModel()->all(); 
+        $date = Carbon::now();
+        $fecha = $date->format('l jS \\of F Y h:i:s A');
+        $suma = $this->materiaRepository->reporteGeneralExecel();
+        $rangos = Rango::all();
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('reporteGeneralDoc', compact('materias', 'fecha', 'rangos', 'suma'));
+        return $pdf->stream();
+    }
 }

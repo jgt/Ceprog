@@ -2,6 +2,15 @@
 	
 	$(document).on('ready', function(){
 
+		$('#rptGenDoc').on('click', function(e){
+
+			e.preventDefault();
+
+			var route = $(this).attr('href');
+			window.open(route);
+
+		});
+
 		$('a#Rexamen').on('click', function(e){
 
 			e.preventDefault();
@@ -99,7 +108,6 @@
 	            	var ruta = link.split('%7Bid%7D').join(id).split('%7Bmateria%7D').join(materiaId);
 	            	var pregunta = $('#pregQuizDocente');
 					var respuesta = $('#quizRespDocente');
-					console.log(ruta);
 
 					$.get(ruta, function(resp){
 

@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta charset="UTF-8">
-  <title>Examen</title>
-  <link href="{{'estiloPdf/css/pdf.css'}}" rel="stylesheet">
-</head>
-<body>
-
-   <div id="logo">
+  <head>
+    <meta charset="utf-8">
+    <title>Example Docente</title>
+     <link rel="stylesheet" href="{{'estiloPdf/css/pdfDocente.css'}}" media="all" />
+  </head>
+  <body>
+    <header class="clearfix">
+      <div id="logo">
         <img src="img/logo.jpg">
       </div>
-      <br><br><br><br><br><br><br><br>
-      <h3 align="center"><strong>Evaluación ordinaria</strong></h3>
+      <h1>Examen Docente</h1>
+      <div id="company" class="clearfix">
+         <div>Universidad Ceprog</div>
+        <div>Carretera Palenque - Catazajá Km <br /> 26+500 a un costado del Aeropuerto </div>
+        <div>+52 (916) 345 3906 </div>
+        <div><a href="#">contacto@uceprog.edu.mx</a></div>
+      </div>
       <div id="project">
-      	<div><span>Materias:</span></div>
-        @foreach ($examen->materias as $materia)
-        	{{$materia->name}},
+        <div><span>Materia:</span>
+        @foreach($examen->materias as $materia)
+        {{$materia->name}},
         @endforeach
-        <hr>
-        <div><span>Modalidad: </span>{{$examen->modalidad}}</div>
-        <hr>
-        <div><span>Semestres: </span></div>
-        @foreach ($examen->materias as $materia)
-        	{{$materia->semestre->name}},
-        @endforeach
-        <hr>
-        <div><span>Fecha: </span>{{$fecha}}</div>
-        <hr>
-        <div><span>Catedratico: </span></div>
-        @foreach ($examen->materias as $materia)
-        	@foreach ($materia->users as $user)
-        		{{$user->name}},
-        	@endforeach
-        @endforeach
-        <hr>
-        <div><span>Modulo: </span>{{ $examen->modulo}}</div>
-        <hr>
-        <div><strong>Instrucción: </strong> Selecciona el inciso que contenga la respuesta correcta.</div>
+        </div>
+        <div><span>Catedratico</span>
+          @foreach($examen->materias as $materia)
+            @foreach($materia->users as $user)
+              {{$user->name}},
+            @endforeach
+          @endforeach
+        </div>
+        <div><span>Modalidad</span>{{$examen->modalidad}}</div>
+        <div><span>Semestre</span>
+          @foreach($examen->materias as $materia)
+            {{$materia->semestre->name}}
+          @endforeach
+        </div>
+        <div><span>Modulo</span>{{$examen->modulo}}</div>
+        <div><span>Fecha</span>{{$fecha}}</div>
       </div>
     </header>
-    <hr>
     <main>
+    <hr>
       <ol class="olNumeros">
       @foreach($examen->preguntas as $pregunta)
           
@@ -58,12 +58,12 @@
       @endforeach
       </ol>
       <div id="notices">
-        <div class="notice"></div>
+        <div>NOTICE:</div>
+        <div class="notice">Este formato es un reporte de la creacion del examen docente.</div>
       </div>
     </main>
     <footer>
       Universidad ceprog Construimos tu futuro.
     </footer>
-  
-</body>
+  </body>
 </html>
