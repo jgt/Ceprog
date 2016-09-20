@@ -26,7 +26,13 @@
     <main>
      @foreach($materias as $materia)
      <?php $porcentaje = 0;?>
-      
+      @foreach($materia->resultados as $resultado)
+        @if($materia->id == $resultado->materia_id)
+            <?php $usuarios[] = $resultado;
+                  $num = sizeof($usuarios);
+             ?>
+        @endif
+      @endforeach
      <ul>
           <li>{{$materia->name}}</li>
           @foreach($rangos as $rango)
@@ -39,17 +45,6 @@
                       @foreach($posResp->respuestasDocentes as $respuesta)
                         @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
                           <?php $total +=$posResp->valor;?> 
-                          @foreach($materia->semestre->users as $user)
-                           @foreach($materia->examenesDocente as $examen)
-                              @foreach($examen->resultadoDoc as $resultado)
-                                @if($resultado->examen_docente_id == $examen->id && $materia->id == $resultado->materia_id)
-                                  <?php $usuarios[] = $user;
-                                      $num = sizeof($usuarios);
-                                  ?>
-                              @endif
-                              @endforeach
-                           @endforeach
-                          @endforeach
                         @endif
                       @endforeach
                     @endforeach
@@ -59,7 +54,7 @@
               </li>
             </ul>
           @endforeach
-           <li style="list-style-type:none">Porcentaje = {{number_format($porcentaje/$num,1)}}</li>
+           <li style="list-style-type:none">Porcentaje = {{number_format($porcentaje/$num,1)}}%</li>
            <hr>
      </ul>
      @endforeach 
