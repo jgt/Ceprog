@@ -27,8 +27,7 @@
           {{$user->name}}
         @endforeach
         </div>
-        <div><span>DATE</span> August 17, 2015</div>
-        <div><span>DUE DATE</span> September 17, 2015</div>
+        <div><span>Fecha</span>{{$fecha}}</div>
       </div>
     </header>
     <main>

@@ -163,28 +163,4 @@ class MateriaRepository extends BaseRepository {
 		return sizeof($usuarios);
 	}
 
-
-	public function reporteGeneralExecel()
-	{
-		$materias = $this->getModel()->all();
-		$rangos = Rango::all();
-		$sum = 0;
-
-		foreach ($materias as $materia) {
-			
-			foreach ($rangos as $rango) {
-				foreach ($rango->preguntas as $pregunta) {
-					foreach ($pregunta->respuestasDocentes as $posResp) {
-						foreach ($posResp->respuestasDocentes as $respuesta) {
-							if($materia->id == $respuesta->materia_id)
-							{
-								$sum +=$posResp->valor;
-							}
-						}
-					}
-				}
-			}
-		}
-		return $sum;
-	}
 }

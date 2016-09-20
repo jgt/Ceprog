@@ -24,30 +24,45 @@
       </div>
     </header>
     <main>
-      @foreach($materias as $materia)
-        <ul>
+     @foreach($materias as $materia)
+     <?php $porcentaje = 0;?>
+      
+     <ul>
           <li>{{$materia->name}}</li>
           @foreach($rangos as $rango)
           <?php $total=0; ?>
             <ul>
               <li>{{$rango->name}} =
+                
                 @foreach($rango->preguntas as $pregunta)
-                        @foreach($pregunta->respuestasDocentes as $posResp)
-                            @foreach($posResp->respuestasDocentes as $respuesta)
-                                    @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
-                                        <?php $total +=$posResp->valor; ?> 
-                                    @endif
-                            @endforeach
-                        @endforeach
+                    @foreach($pregunta->respuestasDocentes as $posResp)
+                      @foreach($posResp->respuestasDocentes as $respuesta)
+                        @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
+                          <?php $total +=$posResp->valor;?> 
+                          @foreach($materia->semestre->users as $user)
+                           @foreach($materia->examenesDocente as $examen)
+                              @foreach($examen->resultadoDoc as $resultado)
+                                @if($resultado->examen_docente_id == $examen->id && $materia->id == $resultado->materia_id)
+                                  <?php $usuarios[] = $user;
+                                      $num = sizeof($usuarios);
+                                  ?>
+                              @endif
+                              @endforeach
+                           @endforeach
+                          @endforeach
+                        @endif
+                      @endforeach
+                    @endforeach
                 @endforeach
                 {{$total}}
+                <?php $porcentaje += $total; ?>
               </li>
             </ul>
           @endforeach
-          <li style="list-style-type:none">Porcentaje =</li>
-        </ul>
-        <hr>
-      @endforeach  
+           <li style="list-style-type:none">Porcentaje = {{number_format($porcentaje/$num,1)}}</li>
+           <hr>
+     </ul>
+     @endforeach 
       <div id="notices">
         <div>NOTICE:</div>
         <div class="notice">Este formato es un reporte General de la evaluacion al docente.</div>

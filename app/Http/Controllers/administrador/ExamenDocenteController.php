@@ -205,8 +205,7 @@ class ExamenDocenteController extends Controller
     {
         $pdf = App::make('dompdf.wrapper');
         $materia = $this->materiaRepository->search($id); 
-        $date = Carbon::now();
-        $fecha = $date->format('l jS \\of F Y h:i:s A');
+        $fecha = Carbon::now();
         $rangos = Rango::all();
         $reporte = $this->materiaRepository->reporteDocente($id);
         $user = $this->materiaRepository->usuariosEvaluados($id);
@@ -223,8 +222,7 @@ class ExamenDocenteController extends Controller
     {
         $pdf = App::make('dompdf.wrapper');
         $examen = $this->examenDocente->search($id); 
-        $date = Carbon::now();
-        $fecha = $date->format('d-m-Y');
+        $fecha = Carbon::now();
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape';
         $pdf->setPaper($customPaper,$paper_orientation);
@@ -238,14 +236,12 @@ class ExamenDocenteController extends Controller
 
         $pdf = App::make('dompdf.wrapper');
         $materias = $this->materiaRepository->getModel()->all(); 
-        $date = Carbon::now();
-        $fecha = $date->format('l jS \\of F Y h:i:s A');
-        $suma = $this->materiaRepository->reporteGeneralExecel();
+        $fecha = Carbon::now();
         $rangos = Rango::all();
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape';
         $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('reporteGeneralDoc', compact('materias', 'fecha', 'rangos', 'suma'));
+        $pdf->loadview('reporteGeneralDoc', compact('materias', 'fecha', 'rangos'));
         return $pdf->stream();
     }
 }
