@@ -6,6 +6,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#semm').hide();
@@ -106,6 +107,7 @@
 
 			e.preventDefault()
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#listExamenDocente').hide();

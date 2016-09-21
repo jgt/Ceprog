@@ -163,4 +163,17 @@ class MateriaRepository extends BaseRepository {
 		return sizeof($usuarios);
 	}
 
+	public function resultados()
+	{
+		$materias = $this->getModel()->all();
+
+		foreach ($materias as $materia) {
+			foreach ($materia->resultados as $resultado) {
+				
+				$resp[] = $resultado;
+			}
+		}
+		return $resp;
+	}
+
 }

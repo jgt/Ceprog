@@ -35,6 +35,7 @@
 
 				e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#crr').hide();
@@ -127,6 +128,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#crr').hide();
@@ -154,6 +156,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#crr').hide();
@@ -496,6 +499,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#crr').hide();
@@ -558,6 +562,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#crr').hide();
@@ -652,6 +657,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#crr').hide();

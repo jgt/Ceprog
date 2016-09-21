@@ -12,6 +12,7 @@
 		$('#selectMatdocente').select2();
 		$('#docente').select2();
 		$('#selectMatdocenteEdit').select2();
+		$('#optp').select2();
 
 
 	</script>

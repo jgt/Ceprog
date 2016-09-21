@@ -36,11 +36,12 @@ class ExamenDocenteRepository extends BaseRepository {
                 //comprobamos si las preguntas ya fueron contestadas por el alumno.
             $repuestaUser = RespuestaDocente::where('pregunta_docente_id', $pregunta->id)->where('user_id',Auth::user()->id)->where('materia_id', $mat->id)->count();
             
-          if(! $repuestaUser):
+          if(! $repuestaUser)
+          {
+          	 $preguntaNext = PreguntaDocente::where('id', $pregunta->id)->with('respuestasDocentes')->orderBy('id', 'desc')->get();
+          	 
+          }
 
-                    $preguntaNext = PreguntaDocente::where('id', $pregunta->id)->with('respuestasDocentes')->orderBy('id', 'desc')->get();
-
-                endif;
             }
 
             $detalles = ['pregunta' => $preguntaNext];

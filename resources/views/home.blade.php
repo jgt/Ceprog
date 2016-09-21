@@ -55,6 +55,7 @@
  @include('ajax.ExamenDocente.modalEditexamenDocente')
  @include('ajax.ExamenDocente.modalCreateRespuestas')
  @include('ajax.ExamenDocente.editarPreguntas.modalEditarPreguntaDocente')
+ @include('ajax.ExamenDocente.modalDosOpciones')
  
 <div class="container">
 

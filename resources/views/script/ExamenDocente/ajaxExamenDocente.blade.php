@@ -93,6 +93,7 @@ $(document).on('ready', function(){
       $('#listPersonal').hide();
       $('#reportes').hide();
       $('#crr').hide();
+      $('#listExamenAdmin').hide();
 	  $('#crtExamenDocente').show();
 
 		var route = $(this).attr('href');
@@ -168,13 +169,22 @@ $(document).on('ready', function(){
 			data: form.serialize(),
 
 			success:function(resp){
-
+				
 				sum = sum+parseFloat($('#valorDocente').val());
 	            $('#porcenDocente').val(sum);
 	            $('#valorDocente').val(" ");
 	            $('#prtIddocente').val(resp.id);
+	            $('#prtDosOpciones').val(resp.id);
 				alertify.alert("La preunta fue creada correctamente.");
-				$('#modalRespuestasDocente').modal('show');
+
+				if(resp.opciones == 0)
+				{	
+					$('#modalDosOpciones').modal('show');
+					
+				}else{
+
+					$('#modalRespuestasDocente').modal('show');
+				}
 
 				//conteo de preguntas.
 				var preguntas = [resp];
@@ -255,6 +265,49 @@ $(document).on('ready', function(){
 
 		});
 
+
+	});
+
+	$('#createDosOpciones').on('click', function(e){
+
+		e.preventDefault();
+
+		var form = $('#formDosOpciones');
+		var metodo = form.attr('method');
+		var route = form.attr('action');
+
+		$.ajax({
+
+			url: route,
+			headers: { 'X-CSFR-TOKEN': token},
+			type: metodo,
+			data: form.serialize(),
+
+			success:function(resp){
+
+				alertify.alert("Las respuestas han sido creadas.");
+				$('#modalDosOpciones').modal('hide');
+				$('#enunciadoDocente').val(" ");
+				$('input#respDosOpciones').val(" ");
+
+			},
+
+			error:function(error, request){
+
+				if(error == 'timeout')
+		            {
+		              alertify.alert('Lo sentimos la pregunta no fue creada por problemas de conexion');
+		            }else{
+
+		              alertify.alert('Por favor rellena todos los campos solicitados en el formulario');
+		              
+		            }
+
+
+			}
+
+
+		});
 
 	});
 

@@ -21,6 +21,7 @@
 
       e.preventDefault();
 
+      $('#tbMateriaDoc').hide();
       $('#mtaList').hide();
       $('#crr').hide();
       $('#semm').hide();

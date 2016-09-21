@@ -28,6 +28,7 @@
 
           e.preventDefault();
 
+          $('#tbMateriaDoc').hide();
         $('#crtExamenDocente').hide();
         $('#mtaList').hide();
         $('#crr').hide();
@@ -238,6 +239,7 @@
 
         var tablaExamenes = $('#tablaExamenes');
         var route = $(this).attr('href');
+        $('#tbMateriaDoc').hide();
           $('#listExamen').show();
           $('div#act').hide();
           $('div#examen').hide();

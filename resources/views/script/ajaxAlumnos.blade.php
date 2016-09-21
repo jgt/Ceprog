@@ -7,6 +7,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
 			$('#crr').hide();
@@ -149,6 +150,7 @@
 			var link = $('#verAct').attr('href');
 			var tablaAct = $('#tablaAlmact');
 			var route = link.split('%7Bid%7D').join(id);
+			$('#tbMateriaDoc').hide();
 			$('#AlmUni').hide();
 			$('div#act').hide();
 			$('div#listAct').hide();

@@ -40,6 +40,12 @@
    {!! Form::text('examen_docente_id', null, ['class' => 'form-control','Style' => 'display:none', 'id' => 'edtExaID']) !!}
    
     </div>
+
+     <div class="form-group">
+
+     {!! Form::label('opciones', 'Numero de Opciones', ['class' => 'form-group']) !!}
+     <select name="opciones" id="optp" class="form-control"></select>
+    </div>
   
   <div class="form-group">
 

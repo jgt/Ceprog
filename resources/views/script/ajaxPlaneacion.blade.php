@@ -10,6 +10,8 @@ $(document).on('ready', function(){
 		var materia = $(this).parents('ul');
 		var id = materia.data('id');
 		var route = link.split('%7Bid%7D').join(id);
+
+		$('#tbMateriaDoc').hide();
 		$('#planeacionC').show();
 		$('div#examen').hide();
 		$('div#act').hide();

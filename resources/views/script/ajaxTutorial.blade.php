@@ -6,6 +6,7 @@
 
 				e.preventDefault();
 				
+				$('#tbMateriaDoc').hide();
 				$('#preForo').hide();
 				$('#chatForo').hide();
 				$('#listPersonal').hide();
@@ -78,6 +79,7 @@
 
 				e.preventDefault();
 
+				$('#tbMateriaDoc').hide();
 				$('#preForo').hide();
 				$('#chatForo').hide();
 				$('#listPersonal').hide();

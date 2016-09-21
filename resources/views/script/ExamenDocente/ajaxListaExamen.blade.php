@@ -197,9 +197,46 @@
 
 			e.preventDefault();
 
+			$('#mtaList').hide();
+			$('#crr').hide();
+			$('#semm').hide();
+			$('#listExamenDocente').hide();
+			$('#preForo').hide();
+			$('div#act').hide();
+			$('div#listAct').hide();
+		    $('div#examen').hide();
+		    $('div#listExamen').hide();
+		    $('div#calAct').hide();
+		    $('div#planeacionC').hide();
+		    $('div#listSubtemas').hide();
+		    $('#createVideos').hide();
+			$('div#listAct').hide();
+			$('#Almact').hide();
+			$('div#vizuaUnidad').hide();
+			$('div#AlmUni').hide();
+			$('div#VunidadE').hide();
+			$('div#calAct').hide();
+			$('div#notasRubricas').hide();
+			$('#listRub').hide();
+			$('#listTutAlm').hide();
+			$('#adminPlan').hide();
+			$('#admRole').hide();
+			$('div#user').hide();
+			$('#admForo').hide();
+			$('#listTut').hide();
+			$('div#listUnidades').hide();
+			$('#listPersonal').hide();
+			$('#prflistTuto').hide();
+			$('#alumnosListUser').hide();
+			$('#reportes').hide();
+			$('#crr').hide();
+			$('#froadm').hide();
+			$('#tutoriales').hide();
+			$('#crtExamenDocente').hide();
+			$('#listExamenAdmin').show();
+
 			var route = $('#docenteListexa').attr('href');
 			var listaExamenes = $('#tablaExamenesAdm');
-			$('#listExamenAdmin').show();
 
 			$.get(route, function(resp){
 
@@ -572,10 +609,12 @@
 		var link = $('#preguntaLts').attr('href');
 		var route = link.split('%7Bid%7D').join(id);
 		var rango = $('#edtRango');
+		var option = $('#optp');
 
 		$.get(route, function(resp){
 
 			rango.html(" ");
+			option.html(" ");
 		
 			$(resp).each(function(key, value){
 
@@ -583,8 +622,10 @@
 				$('#edtCont').val(value.contenido);
 				$('#edtExaID').val(value.examen_docente_id);
 				$('#actIdpreg').val(value.id);
+				
 
 				rango.append("<option value="+value.rango.id+">"+value.rango.name+"</option>");
+				option.append("<option >"+value.opciones+"</option>");
 
 			});
 

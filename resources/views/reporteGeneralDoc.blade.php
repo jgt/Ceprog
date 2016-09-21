@@ -28,9 +28,7 @@
      <?php $porcentaje = 0;?>
       @foreach($materia->resultados as $resultado)
         @if($materia->id == $resultado->materia_id)
-            <?php $usuarios[] = $resultado;
-                  $num = sizeof($usuarios);
-             ?>
+            {{$materia->id}}
         @endif
       @endforeach
      <ul>
@@ -54,7 +52,7 @@
               </li>
             </ul>
           @endforeach
-           <li style="list-style-type:none">Porcentaje = {{number_format($porcentaje/$num,1)}}%</li>
+           <li style="list-style-type:none">Porcentaje = {{number_format($porcentaje)}}%</li>
            <hr>
      </ul>
      @endforeach 

@@ -99,6 +99,7 @@
 		        e.preventDefault();
 		        crearUsuario();
 
+		        $('#tbMateriaDoc').hide();
 		        $('#preForo').hide();
 		        $('#listPersonal').hide();
 		       $('div#user').show();

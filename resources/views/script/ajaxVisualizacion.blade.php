@@ -6,6 +6,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#listExamenDocente').hide();
 			$('#prflistTuto').hide();
 			$('#listTutAlm').hide();
@@ -59,6 +60,7 @@
 
 					e.preventDefault();
 
+					$('#tbMateriaDoc').hide();
 					$('#listExamenDocente').hide();
 					$('#prflistTuto').hide();
 					$('#listTutAlm').hide();
@@ -155,6 +157,7 @@
 
 			e.preventDefault();
 
+			$('#tbMateriaDoc').hide();
 			$('#listExamenDocente').hide();
 			$('#prflistTuto').hide();
 			$('#listTutAlm').hide();
@@ -206,6 +209,7 @@
 
 					e.preventDefault();
 
+					$('#tbMateriaDoc').hide();
 					$('#listExamenDocente').hide();
 					$('#prflistTuto').hide();
 					$('#listTutAlm').hide();
