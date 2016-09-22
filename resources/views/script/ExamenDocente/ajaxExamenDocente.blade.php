@@ -160,6 +160,7 @@ $(document).on('ready', function(){
 		var valor = $('#valorDocente').val();
 		var porcen = $('#porcenDocente').val();
 		var numeracion = $('#contadorDocente').val();
+		$.blockUI();
 
 		$.ajax({
 
@@ -170,6 +171,7 @@ $(document).on('ready', function(){
 
 			success:function(resp){
 				
+				$.unblockUI();
 				sum = sum+parseFloat($('#valorDocente').val());
 	            $('#porcenDocente').val(sum);
 	            $('#valorDocente').val(" ");
@@ -210,6 +212,7 @@ $(document).on('ready', function(){
 
 			error:function(error, request){
 
+					$.unblockUI();
 				 if(resp == 'timeout')
 		            {
 		              alertify.alert('Lo sentimos la pregunta no fue creada por problemas de conexion');
@@ -232,6 +235,7 @@ $(document).on('ready', function(){
 		var form = $('#formRespDocente');
 		var metodo = form.attr('method');
 		var route = form.attr('action');
+		$.blockUI();
 
 		$.ajax({
 
@@ -242,6 +246,7 @@ $(document).on('ready', function(){
 
 			success:function(resp){
 
+				$.unblockUI();
 				alertify.alert("Las respuestas han sido creadas.");
 				$('#modalRespuestasDocente').modal('hide');
 				$('#enunciadoDocente').val(" ");
@@ -251,6 +256,7 @@ $(document).on('ready', function(){
 
 			error:function(error, request){
 
+				$.unblockUI();
 				if(error == 'timeout')
 		            {
 		              alertify.alert('Lo sentimos la pregunta no fue creada por problemas de conexion');
@@ -275,6 +281,7 @@ $(document).on('ready', function(){
 		var form = $('#formDosOpciones');
 		var metodo = form.attr('method');
 		var route = form.attr('action');
+		$.blockUI();
 
 		$.ajax({
 
@@ -285,6 +292,7 @@ $(document).on('ready', function(){
 
 			success:function(resp){
 
+				$.unblockUI();
 				alertify.alert("Las respuestas han sido creadas.");
 				$('#modalDosOpciones').modal('hide');
 				$('#enunciadoDocente').val(" ");
@@ -294,6 +302,7 @@ $(document).on('ready', function(){
 
 			error:function(error, request){
 
+				$.unblockUI();
 				if(error == 'timeout')
 		            {
 		              alertify.alert('Lo sentimos la pregunta no fue creada por problemas de conexion');

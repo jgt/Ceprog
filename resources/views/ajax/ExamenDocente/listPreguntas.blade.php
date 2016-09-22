@@ -9,6 +9,7 @@
         <div class="table-responsive">
        <table class="table">
           <thead>
+            <td>#</td>
             <td><strong>Nombre</strong></td>
             <td><strong>Editar</strong></td>
             <td><strong>Borrar</strong></td>

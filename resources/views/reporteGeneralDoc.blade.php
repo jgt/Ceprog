@@ -28,7 +28,7 @@
      <?php $porcentaje = 0;?>
       @foreach($materia->resultados as $resultado)
         @if($materia->id == $resultado->materia_id)
-            {{$materia->id}}
+            {{$resultdo->resultado}}
         @endif
       @endforeach
      <ul>

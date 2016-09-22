@@ -41,6 +41,12 @@
    
     </div>
 
+     <div class="form-group">
+
+     {!! Form::label('opciones', 'Numero de posibles Respuestas', ['class' => 'form-group']) !!}
+    {!!Form::select('opciones', ['2', '3'], null, ['class' => 'form-control', 'id' => 'optp'])!!}
+    </div>
+
    <div class="form-group">
 
    {!! Form::label('numeroP', 'Preguntas creadas', ['class' => 'form-group']) !!}

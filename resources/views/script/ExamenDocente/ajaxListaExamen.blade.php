@@ -308,6 +308,7 @@
 			var form = $('#formPregDocenteEdit');
 			var route = form.attr('action');
 			var metodo = form.attr('method');
+			$.blockUI();
 
 			$.ajax({
 
@@ -318,11 +319,22 @@
 
 	            success:function(resp){
 
+	            	$.unblockUI();
 	            	alertify.alert("La pregunta ha sido creada correctamente.");
 	            	$('#contenidoCreate').val(" ");
 	            	$('#mdlEditPreguntaDoc').modal('hide');
 	            	$('#docentePreguntaOut').val(resp.id);
-	            	$('#modalCreateRespuestasDocente').modal('show');
+	            	$('#prtDosOpciones').val(resp.id);
+					$('#prtIddocente').val(resp.id);
+
+	            	if(resp.opciones == 0)
+					{	
+						$('#modalDosOpciones').modal('show');
+						
+					}else{
+
+						$('#modalRespuestasDocente').modal('show');
+					}
 
 	            	$('#npDocenteEdit').val(resp.contador);
 					var numeroPreguntas = $('#npDocenteEdit').val();
@@ -368,6 +380,7 @@
 			var form = $('#form-resp-create');
 			var route = form.attr('action');
 			var metodo = form.attr('method');
+			$.blockUI();
 
 			$.ajax({
 
@@ -378,12 +391,14 @@
 
 	            success:function(resp)
 	            {
+	            	$.unblockUI();
 	            	alertify.alert("Las respuestas han sido creadas correctamente.");
 	            	$('#modalCreateRespuestasDocente').modal('hide');
 	            },
 
 	            error:function(request, error)
 	            {
+	            	$.unblockUI();
 	            	if(error)
 	            	{
 	            		alertify.alert("Error al procesar la solicitud.");
@@ -427,7 +442,7 @@
 
 							$(value.preguntas).each(function(key, preg){
 
-								pregunta.append("<tr><td>"+preg.contenido+"</td><td><button class='btn btn-primary' value="+preg.id+" OnClick='editPreg(this);' data-toggle='modal' data-target='#'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+preg.id+" OnClick='borrarPreg(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
+								pregunta.append("<tr><td>"+preg.contador+"</td><td>"+preg.contenido+"</td><td><button class='btn btn-primary' value="+preg.id+" OnClick='editPreg(this);' data-toggle='modal' data-target='#'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+preg.id+" OnClick='borrarPreg(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
 
 							});
 						});
@@ -552,6 +567,8 @@
 
 		$.get(route, function(resp){
 
+			$('#rangoEditId').html(" ");
+
 			$(resp.numeroPreguntas).each(function(key, value){
 
 				$(value.preguntas).each(function(key, preg){
@@ -593,7 +610,7 @@
 
 				$(value.preguntas).each(function(key, preg){
 
-					pregunta.append("<tr><td>"+preg.contenido+"</td><td><button class='btn btn-primary' value="+preg.id+" OnClick='editPreg(this);' data-toggle='modal' data-target='#'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+preg.id+" OnClick='borrarPreg(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
+					pregunta.append("<tr><td>"+preg.contador+"</td><td>"+preg.contenido+"</td><td><button class='btn btn-primary' value="+preg.id+" OnClick='editPreg(this);' data-toggle='modal' data-target='#'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+preg.id+" OnClick='borrarPreg(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
 
 				});
 			});
@@ -656,7 +673,7 @@
 
 				$(value.preguntas).each(function(key, preg){
 
-					pregunta.append("<tr><td>"+preg.contenido+"</td><td><button class='btn btn-primary' value="+preg.id+" OnClick='editPreg(this);' data-toggle='modal' data-target='#'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+preg.id+" OnClick='borrarPreg(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
+					pregunta.append("<tr><td>"+preg.contador+"</td><td>"+preg.contenido+"</td><td><button class='btn btn-primary' value="+preg.id+" OnClick='editPreg(this);' data-toggle='modal' data-target='#'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-danger' value="+preg.id+" OnClick='borrarPreg(this);'><i class='fa fa-pencil-square-o'></i></td></tr>");
 
 				});
 			});
