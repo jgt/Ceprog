@@ -32,7 +32,7 @@
               <th class="desc">{{$rango->name}}</th>
               <?php  $rngs[] = $rango;?>
               @endforeach
-              <th>Porcentaje</th>
+              <th>Total</th>
           </tr>
         </thead>
         <tbody>
@@ -59,10 +59,6 @@
                   <td class="service">{{$porcentaje}}</td>
                </tr>
             @endforeach 
-          <tr>
-            <td colspan="4" class="grand total">GRAND TOTAL</td>
-            <td class="grand total">$6,500.00</td>
-          </tr>
         </tbody>
       </table>
       <div id="notices">
