@@ -9,7 +9,7 @@
   <body>
     <header class="clearfix">
       <div id="logo">
-        <img src="img/logo.jpg">
+        <img src="img/logo_10A_FullColor.png">
       </div>
       <h1>Reporte General</h1>
       <div id="company" class="clearfix">
@@ -24,38 +24,47 @@
       </div>
     </header>
     <main>
-     @foreach($materias as $materia)
-     <?php $porcentaje = 0;?>
-      @foreach($materia->resultados as $resultado)
-        @if($materia->id == $resultado->materia_id)
-            {{$resultdo->resultado}}
-        @endif
-      @endforeach
-     <ul>
-          <li>{{$materia->name}}</li>
-          @foreach($rangos as $rango)
-          <?php $total=0; ?>
-            <ul>
-              <li>{{$rango->name}} =
-                
-                @foreach($rango->preguntas as $pregunta)
-                    @foreach($pregunta->respuestasDocentes as $posResp)
-                      @foreach($posResp->respuestasDocentes as $respuesta)
-                        @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
-                          <?php $total +=$posResp->valor;?> 
-                        @endif
+      <table>
+        <thead>
+          <tr>
+            <th class="service">Materias</th>
+             @foreach($rangos as $rango)
+              <th class="desc">{{$rango->name}}</th>
+              <?php  $rngs[] = $rango;?>
+              @endforeach
+              <th>Porcentaje</th>
+          </tr>
+        </thead>
+        <tbody>
+           @foreach($materias as $materia)
+            <?php $porcentaje = 0;?>
+               <tr>
+                 <td class="service">{{$materia->name}}</td>
+                 @foreach($rngs as $rango)
+                  <?php $total=0; ?>
+                    @foreach($rango->preguntas as $pregunta)
+                      @foreach($pregunta->respuestasDocentes as $posResp)
+                        @foreach($posResp->respuestasDocentes as $respuesta)
+                            @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
+
+                            <?php $total +=$posResp->valor;?>
+                                
+                            @endif
+                        @endforeach
                       @endforeach
                     @endforeach
-                @endforeach
-                {{$total}}
-                <?php $porcentaje += $total; ?>
-              </li>
-            </ul>
-          @endforeach
-           <li style="list-style-type:none">Porcentaje = {{number_format($porcentaje)}}%</li>
-           <hr>
-     </ul>
-     @endforeach 
+                    <td class="service">{{$total}}</td>
+                    <?php $porcentaje += $total; ?>
+                 @endforeach
+                  <td class="service">{{$porcentaje}}</td>
+               </tr>
+            @endforeach 
+          <tr>
+            <td colspan="4" class="grand total">GRAND TOTAL</td>
+            <td class="grand total">$6,500.00</td>
+          </tr>
+        </tbody>
+      </table>
       <div id="notices">
         <div>NOTICE:</div>
         <div class="notice">Este formato es un reporte General de la evaluacion al docente.</div>

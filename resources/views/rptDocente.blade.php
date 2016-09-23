@@ -9,7 +9,7 @@
   <body>
     <header class="clearfix">
       <div id="logo">
-        <img src="img/logo.jpg">
+        <img src="img/logo_10A_FullColor.png">
       </div>
       <h1>Reporte Evaluacion Docente</h1>
       <div id="company" class="clearfix">
