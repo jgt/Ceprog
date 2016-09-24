@@ -30,34 +30,33 @@
             <th class="service">Materias</th>
              @foreach($rangos as $rango)
               <th class="desc">{{$rango->name}}</th>
-              <?php  $rngs[] = $rango;?>
               @endforeach
               <th>Total</th>
           </tr>
         </thead>
         <tbody>
            @foreach($materias as $materia)
-            <?php $porcentaje = 0;?>
+            @foreach($resultados as $resultado)
+            @if($materia->id == $resultado->materia_id)
                <tr>
                  <td class="service">{{$materia->name}}</td>
-                 @foreach($rngs as $rango)
+                 @foreach($rangos as $rango)
                   <?php $total=0; ?>
                     @foreach($rango->preguntas as $pregunta)
                       @foreach($pregunta->respuestasDocentes as $posResp)
                         @foreach($posResp->respuestasDocentes as $respuesta)
                             @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
-
-                            <?php $total +=$posResp->valor;?>
-                                
-                            @endif
+                            <?php $total +=$posResp->valor;?>   
+                            @endif  
                         @endforeach
                       @endforeach
                     @endforeach
                     <td class="service">{{$total}}</td>
-                    <?php $porcentaje += $total; ?>
                  @endforeach
-                  <td class="service">{{$porcentaje}}</td>
+                  <td class="service">{{$suma}}</td>
                </tr>
+                @endif
+                  @endforeach
             @endforeach 
         </tbody>
       </table>

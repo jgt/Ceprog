@@ -163,17 +163,62 @@ class MateriaRepository extends BaseRepository {
 		return sizeof($usuarios);
 	}
 
-	public function resultados()
+	public function materiasResultados()
 	{
 		$materias = $this->getModel()->all();
 
 		foreach ($materias as $materia) {
-			foreach ($materia->resultados as $resultado) {
-				
-				$resp[] = $resultado;
-			}
+			
+			return $materia->resultados()->where('materia_id', $materia->id)->get();
 		}
-		return $resp;
+	}
+
+	public function sumaValor()
+	{	
+		$materias = $this->getModel()->all();
+		$rangos = Rango::all();
+		$total = 0;
+
+		foreach ($materias as $materia) {
+			foreach ($rangos as $rango) {	
+				foreach ($rango->preguntas as $pregunta) {
+					foreach ($pregunta->respuestasDocentes as $posResp) {
+						foreach ($posResp->respuestasDocentes as $respuesta) {
+							if ($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id) 
+								{
+									$total +=$posResp->valor;
+								}
+							}
+						}
+					}
+				}
+			}
+
+		return $total;
+	}
+
+	public function sumaRangos()
+	{	
+		$materias = $this->getModel()->all();
+		$rangos = Rango::all();
+
+		foreach ($materias as $materia) {
+			foreach ($rangos as $rango) {	
+				$total = 0;
+				foreach ($rango->preguntas as $pregunta) {
+					foreach ($pregunta->respuestasDocentes as $posResp) {
+						foreach ($posResp->respuestasDocentes as $respuesta) {
+							if ($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id) 
+								{
+									$total +=$posResp->valor;
+								}
+							}
+						}
+					}
+				}
+			}
+
+		return $total;
 	}
 
 }
