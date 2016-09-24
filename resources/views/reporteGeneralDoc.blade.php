@@ -36,8 +36,7 @@
         </thead>
         <tbody>
            @foreach($materias as $materia)
-            @foreach($resultados as $resultado)
-            @if($materia->id == $resultado->materia_id)
+           <?php $porcentaje =0; ?>
                <tr>
                  <td class="service">{{$materia->name}}</td>
                  @foreach($rangos as $rango)
@@ -52,11 +51,10 @@
                       @endforeach
                     @endforeach
                     <td class="service">{{$total}}</td>
+                    <?php $porcentaje += $total; ?>
                  @endforeach
-                  <td class="service">{{$suma}}</td>
+                  <td class="service">{{$porcentaje}}</td>
                </tr>
-                @endif
-                  @endforeach
             @endforeach 
         </tbody>
       </table>

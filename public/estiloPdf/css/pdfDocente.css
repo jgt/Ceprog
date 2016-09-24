@@ -72,7 +72,7 @@ h1 {
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: unset;
   border-spacing: 0;
   margin-bottom: 20px;
 }
