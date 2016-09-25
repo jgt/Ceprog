@@ -169,6 +169,21 @@ class MateriaRepository extends BaseRepository {
 		return $materias;
 	}
 
+	public function cont()
+	{
+		$materias = $this->getModel()->has('resultados')->get();
+
+		foreach ($materias as $materia) {
+		 	foreach ($materia->resultados as $resultado) {
+		 		if($materia->id == $resultado->materia_id)
+		 		{
+		 			$cont = $materia->resultados()->count();
+		 		}
+		 	}
+		 } 
+		 return $cont;
+	}
+
 	public function sumaValor()
 	{	
 		$materias = $this->getModel()->all();
@@ -177,30 +192,6 @@ class MateriaRepository extends BaseRepository {
 
 		foreach ($materias as $materia) {
 			foreach ($rangos as $rango) {	
-				foreach ($rango->preguntas as $pregunta) {
-					foreach ($pregunta->respuestasDocentes as $posResp) {
-						foreach ($posResp->respuestasDocentes as $respuesta) {
-							if ($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id) 
-								{
-									$total +=$posResp->valor;
-								}
-							}
-						}
-					}
-				}
-			}
-
-		return $total;
-	}
-
-	public function sumaRangos()
-	{	
-		$materias = $this->getModel()->all();
-		$rangos = Rango::all();
-
-		foreach ($materias as $materia) {
-			foreach ($rangos as $rango) {	
-				$total = 0;
 				foreach ($rango->preguntas as $pregunta) {
 					foreach ($pregunta->respuestasDocentes as $posResp) {
 						foreach ($posResp->respuestasDocentes as $respuesta) {

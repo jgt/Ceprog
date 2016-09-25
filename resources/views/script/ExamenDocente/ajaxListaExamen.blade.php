@@ -53,12 +53,15 @@
         $('#listExamenDocente').hide();
         $('#listPreg').hide();
 		$('#listExamenDoc').show();
-			var route = $(this).attr('href');
-			var tablaExamen = $('#tablaExamenesDoc');
+		var route = $(this).attr('href');
+		var tablaExamen = $('#tablaExamenesDoc');
 
 			$.get(route, function(resp){
 
 				tablaExamen.html(" ");
+				$('#endQuizDocente').hide();
+				$('#nextQuizDocente').show();
+				$('#endQuizDocente').attr('disabled', false);
 
 				$(resp).each(function(key, value){
 
@@ -93,6 +96,8 @@
 			var link = form.attr('action');
 			var metodo = form.attr('method');
 			var route = link.split('%7Bid%7D').join(id);
+			$('#nextQuizDocente').attr('disabled', true);
+			$.blockUI();
 
 			$.ajax({
 
@@ -103,6 +108,7 @@
 
 	            success:function(resp){
 
+	            	$.unblockUI();
 	            	var materiaId = $('#respDocMateriaId').val();
 	            	var link = $('#listPregDocente').attr('href');
 	            	var ruta = link.split('%7Bid%7D').join(id).split('%7Bmateria%7D').join(materiaId);
@@ -113,6 +119,7 @@
 
 						pregunta.html(" ");
           				respuesta.html(" ");
+          				$('#nextQuizDocente').attr('disabled', false);
 
           				var resultado = $('#resulDocente').val(resp.nota);
 						
@@ -148,7 +155,9 @@
 	            error:function(error, $request){
 
 	            	 if(error)
-              		{
+              		{	
+              			$.unblockUI();
+              			$('#nextQuizDocente').attr('disabled', false);
                 		alertify.alert("Recuerda que tienes que responder la pregunta.");
               		}
 
@@ -166,6 +175,8 @@
 			var form = $('#exFormDocente');
 			var route = form.attr('action');
 			var metodo = form.attr('method');
+			$('#endQuizDocente').attr('disabled', true);
+			$.blockUI();
 
 			$.ajax({
 
@@ -176,6 +187,7 @@
 
 	            success:function(resp){
 
+	            	$.unblockUI();
 	            	alertify.alert('El quiz ha terminado gracias por tu tiempo.');
 	            	$('#quizDocente').modal('hide');
 
@@ -185,6 +197,8 @@
 
 	            	if(error)
               		{
+              			$.unblockUI();
+              			$('endQuizDocente').attr('disabled', false);
                 		alertify.alert("Error al procesar la solicitud.");
               		}
 	            }

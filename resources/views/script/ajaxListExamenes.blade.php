@@ -239,6 +239,8 @@
 
         var tablaExamenes = $('#tablaExamenes');
         var route = $(this).attr('href');
+        $('#endQuiz').attr('disabled', false);
+
         $('#tbMateriaDoc').hide();
           $('#listExamen').show();
           $('div#act').hide();
@@ -309,6 +311,8 @@
         var link = form.attr('action');
         var metodo = form.attr('method');
         var route = link.split('%7Bid%7D').join(id);
+        $('#nextQuiz').attr('disabled', true);
+        $.blockUI();
 
         $.ajax({
 
@@ -319,6 +323,7 @@
 
             success:function(resp){
 
+              $.unblockUI();
               var id = $('#exaId').val();
               var prueba = $('#pruebaR').attr('href');
               var route = prueba.split('%7Bid%7D').join(id);
@@ -329,6 +334,7 @@
 
                 divPreg.html(" ");
                 ulQuiz.html(" ");
+                $('#nextQuiz').attr('disabled', false);
 
                 var nota = $('#ntEx').val(resp.nota);
 
@@ -364,6 +370,8 @@
 
               if(error)
               {
+                $.unblockUI();
+                $('#nextQuiz').attr('disabled', false);
                 alertify.alert("Recuerda que tienes que responder la pregunta.");
               }
 
@@ -382,6 +390,8 @@
         var link = form.attr('action');
         var metodo = form.attr('method');
         var route = link.split('%7Bid%7D').join(id);
+        $('#endQuiz').attr('disabled', true);
+        $.blockUI();
         
         $.ajax({
 
@@ -392,6 +402,7 @@
 
             success:function(resp){
 
+              $.unblockUI();
               $('#ntEx').val(' ');
               $('#qexaId').val(' ');
               $('#quiz').modal('hide');
@@ -406,7 +417,8 @@
 
               if(error)
               {
-
+                $('#endQuiz').attr('disabled', false);
+                $.unblockUI();
                 alertify.alert("Error al procesar la solicitud.");
               }
 
