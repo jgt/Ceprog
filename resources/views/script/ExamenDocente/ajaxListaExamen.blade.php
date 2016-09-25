@@ -7,7 +7,20 @@
 			e.preventDefault();
 
 			var route = $(this).attr('href');
-			window.open(route);
+			$.blockUI();
+
+			$.get(route, function(resp){
+
+				$.unblockUI();
+				window.open(route);
+			})
+			
+			.fail(function(){
+				
+			$.unblockUI();
+			alertify.alert("Error al procesar la solicitud, no hay materias evaluadas.");
+
+			});
 
 		});
 
@@ -512,15 +525,18 @@
 		var id = btn.value;
 		var link = $('#rptDocente').attr('href');
 		var route = link.split('%7Bid%7D').join(id);
+		$.blockUI();
 		
-		$.get(route, function(){
+		$.get(route, function(resp){
 			
+			$.unblockUI();
 			window.open(route);
 		})
 
 		.fail(function(){
 
-			alertify.alert("Esta materia no tiene ningun reporte.");
+			$.unblockUI();
+			alertify.alert("Error al procesar la solicitud.");
 
 		});
 	}
