@@ -196,7 +196,7 @@ class ExamenDocenteController extends Controller
 
     public function listMateias()
     {
-        $materias = $this->materiaRepository->getModel()->with('semestre.carrera')->get();
+        $materias = $this->materiaRepository->getModel()->has('resultados')->with('semestre.carrera')->get();
 
         return Response()->json($materias);
     }

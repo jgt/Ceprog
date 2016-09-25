@@ -31,7 +31,6 @@
               <th class="desc">{{$rango->name}}</th>
               @endforeach
               <th>Total</th>
-              <th>Porcentaje</th>
           </tr>
         </thead>
         <tbody>
@@ -40,7 +39,7 @@
                <tr>
                  <td class="service">{{$materia->name}}</td>
                  @foreach($rangos as $rango)
-                  <?php $total=0; ?>
+                  <?php $total=0;?>
                     @foreach($rango->preguntas as $pregunta)
                       @foreach($pregunta->respuestasDocentes as $posResp)
                         @foreach($posResp->respuestasDocentes as $respuesta)
@@ -51,16 +50,24 @@
                       @endforeach
                     @endforeach
                     <td class="service">{{$total}}</td>
-                    <?php $porcentaje += $total; ?>
+                    <?php $porcentaje += $total;?>
                  @endforeach
                   <td class="service">{{$porcentaje}}</td>
-                  <td class="service">{{number_format($porcentaje/$cont,1)}}%</td>
                </tr>
             @endforeach 
         </tbody>
       </table>
       <hr>
-      <h3><strong>Suma de los totales de cada materia: </strong>{{$suma}}</h3>
+      <h3><strong>Suma de los totales de cada materia: </strong>{{$suma}} - {{number_format($suma/$cont,1)}}%</h3>
+      <hr>
+      <h3><strong>Suma de rangos de cada materia
+        @foreach($rangos as $rango)
+          <ul>
+            <li>{{$rango->name}} = </li>
+          </ul>
+        @endforeach
+      </strong></h3>
+      <hr>
       <div id="notices">
         <div>NOTICE:</div>
         <div class="notice">Este formato es un reporte General de la evaluacion al docente.</div>
