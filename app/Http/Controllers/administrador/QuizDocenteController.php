@@ -11,6 +11,8 @@ use App\Repository\MateriaRepository;
 use App\Administrador\EvaluacionMaestro\RespuestaDocente;
 use App\Administrador\EvaluacionMaestro\ResultadoDocente;
 use Auth;
+use App;
+use Carbon\Carbon;
 
 class QuizDocenteController extends Controller
 {
@@ -131,7 +133,22 @@ class QuizDocenteController extends Controller
             ]);
 
         $resultado = ResultadoDocente::create($request->all());
-        return Response()->json($resultado);
+        $materia = $resultado->materia;
+
+        return Response()->json($materia);
+    }
+
+    public function alumnoReportePdf($id, Request $request)
+    {
+        $materia = $this->materiaRepository->search($id);
+        $user = Auth::user();
+        $pdf = App::make('dompdf.wrapper'); 
+        $fecha = Carbon::now();
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('almReporteEncuesta', compact('materia', 'fecha', 'user'));
+        return $pdf->stream();
     }
 
 }

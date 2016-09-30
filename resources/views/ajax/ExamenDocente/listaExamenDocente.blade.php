@@ -2,6 +2,7 @@
       
         <a href="{{ route('listaPreguntasDocente')}}" Style="display:none" id="listPregDocente"></a>
         <a href="{{ route('borrarExamenDocente') }}" Style="display:none" id="borrarExamenDocente"></a>
+        <a href="{{ route('alumnoReportePdf') }}" Style="display:none" id="alumnoReportePdf"></a>
         <div class="table-responsive">
        <table class="table">
           <thead>

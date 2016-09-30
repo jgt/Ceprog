@@ -200,9 +200,29 @@
 
 	            success:function(resp){
 
-	            	$.unblockUI();
-	            	alertify.alert('El quiz ha terminado gracias por tu tiempo.');
-	            	$('#quizDocente').modal('hide');
+	            	var idMateria = resp.id;
+	            	var link = $('#alumnoReportePdf').attr('href');
+	            	var route = link.split('%7Bid%7D').join(idMateria);
+
+	            	$.get(route, function(resp){
+
+	            		window.open(route);
+
+	            	})
+
+	            	.fail(function(){
+
+	            		$('#endQuizDocente').attr('disabled', false);
+						alertify.alert("Error al procesar la solicitud.");
+
+					})
+
+					.done(function(){
+
+						$.unblockUI();
+	            		$('#quizDocente').modal('hide');
+
+					})
 
 	            },
 

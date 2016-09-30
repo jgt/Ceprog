@@ -80,6 +80,7 @@ Route::group(['middleware' => 'alumnos'], function(){
 		Route::get('listaPreguntasDocente/{id}/{materia}', ['as' => 'listaPreguntasDocente', 'uses' => 'QuizDocenteController@examenPreguntas']);
 		Route::post('respDocente/{id}', ['as' => 'respDocente', 'uses' => 'QuizDocenteController@respDocente']);
 		Route::post('endQuiz', ['as' => 'endQuiz', 'uses' => 'QuizDocenteController@endQuiz']);
+		Route::get('alumnoReportePdf/{id}', ['as' => 'alumnoReportePdf', 'uses' => 'QuizDocenteController@alumnoReportePdf']);
 	});
 
 	Route::get('fileentry/{id}', ['as' => 'fileentry', 'uses' => 'DescargaController@index']);

@@ -44,7 +44,7 @@
                       @foreach($pregunta->respuestasDocentes as $posResp)
                         @foreach($posResp->respuestasDocentes as $respuesta)
                             @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
-                            <?php $total +=$posResp->valor;?>   
+                            <?php $total +=$posResp->valor;?>  
                             @endif  
                         @endforeach
                       @endforeach
@@ -59,14 +59,6 @@
       </table>
       <hr>
       <h3><strong>Suma de los totales de cada materia: </strong>{{$suma}} - {{number_format($suma/$cont,1)}}%</h3>
-      <hr>
-      <h3><strong>Suma de rangos de cada materia
-        @foreach($rangos as $rango)
-          <ul>
-            <li>{{$rango->name}} = </li>
-          </ul>
-        @endforeach
-      </strong></h3>
       <hr>
       <div id="notices">
         <div>NOTICE:</div>
