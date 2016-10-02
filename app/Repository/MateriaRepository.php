@@ -5,6 +5,7 @@ use App\User;
 use App\Materia;
 use App\Respuesta;
 use App\Administrador\EvaluacionMaestro\Rango;
+use App\Administrador\EvaluacionMaestro\ResultadoDocente;
 use App\RespuestaUser;
 use Auth;
 
