@@ -142,28 +142,6 @@ class MateriaRepository extends BaseRepository {
 		 return $total;
 	}
 
-	public function usuariosEvaluados($id)
-	{
-		$materia = $this->search($id);
-		
-		foreach ($materia->semestre->users as $user) {
-		
-			foreach ($materia->examenesDocente as $examen) {
-				
-				foreach($user->resultadoDocenteUser as $resultado)
-				{
-					if($resultado->examen_docente_id == $examen->id)
-					{
-						$usuarios[] = $user;
-
-					}
-				}
-			}
-		}
-		
-		return sizeof($usuarios);
-	}
-
 	public function materiasResultados()
 	{
 		$materias = $this->getModel()->has('resultados')->get();

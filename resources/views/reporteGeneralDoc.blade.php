@@ -31,6 +31,7 @@
               <th class="desc">{{$rango->name}}</th>
               @endforeach
               <th>Total</th>
+              <th>Alumnos</th>
               <th>Porcentaje</th>
           </tr>
         </thead>
@@ -54,6 +55,7 @@
                     <?php $porcentaje += $total;?>
                  @endforeach
                   <td class="service">{{$porcentaje}}</td>
+                  <td class="service">{{count($materia->resultados)}}</td>
                   <td class="service">{{number_format($porcentaje/count($materia->resultados),1)}}%</td>
                </tr>
             @endforeach 

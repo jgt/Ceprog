@@ -19,15 +19,16 @@
         <div><a href="#">contacto@uceprog.edu.mx</a></div>
       </div>
       <div id="project">
-        <div><span>Materia</span>{{$materia->name}}</div>
-        <div><span>Carrera</span>{{$materia->semestre->carrera->name}}</div>
-        <div><span>Semetre</span>{{$materia->semestre->name}}</div>
-        <div><span>Catedratico</span>
+        <div><span>Materia:</span>{{$materia->name}}</div>
+        <div><span>Carrera:</span>{{$materia->semestre->carrera->name}}</div>
+        <div><span>Semetre:</span>{{$materia->semestre->name}}</div>
+        <div><span>Catedratico:</span>
         @foreach($materia->users as $user)
           {{$user->name}},
         @endforeach
         </div>
         <div><span>Fecha</span>{{$fecha}}</div>
+        <div><span>Alumnos Evaluados:</span>{{count($materia->resultados)}}</div>
       </div>
     </header>
     <main>

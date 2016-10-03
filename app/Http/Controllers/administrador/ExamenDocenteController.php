@@ -208,12 +208,10 @@ class ExamenDocenteController extends Controller
         $fecha = Carbon::now();
         $rangos = Rango::all();
         $reporte = $this->materiaRepository->reporteDocente($id);
-        $user = $this->materiaRepository->usuariosEvaluados($id);
-        $totalUser = intval($user);
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape';
         $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('rptDocente', compact('materia', 'fecha', 'rangos', 'reporte', 'totalUser'));
+        $pdf->loadview('rptDocente', compact('materia', 'fecha', 'rangos', 'reporte'));
         return $pdf->stream();
 
     }
