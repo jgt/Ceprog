@@ -688,6 +688,8 @@
 			var form = $('#form-plan');
 			var metodo = form.attr('method');
 			var route = form.attr('action');
+			$('#crePlan').attr('disabled', true);
+			$.blockUI();
 
 			$.ajax({
 
@@ -699,6 +701,8 @@
 
 				success:function(resp){
 
+					$('#crePlan').attr('disabled', false);
+					$.unblockUI();
 					alertify.alert(" El plan ha sido creado correctamente.");
 
 					$('#carrModal').val(resp.name);
@@ -711,11 +715,13 @@
 					if(error == "timeout")
 
 					{
-
+						$.unblockUI();
+						$('#crePlan').attr('disabled', false);
 						alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
 					}else{
 
-
+						$.unblockUI();
+						$('#crePlan').attr('disabled', false);
 						alertify.alert('Tienes errores en el formulario.');
 					}
 
@@ -736,6 +742,8 @@
 						var form = $('#form-mdl');
 						var route = form.attr('action');
 						var metodo = form.attr('method');
+						$('#mdlSem').attr('disabled', true);
+						$.blockUI();
 
 						$.ajax({
 
@@ -746,6 +754,8 @@
 
 							success:function(resp){
 
+								$('#mdlSem').attr('disabled', false);
+								$.unblockUI();
 								alertify.alert('El semestre ha sido creado correctamente.');
 								$('#nameSemmodal').val(resp.name);
 								$('#idSemmodal').val(resp.id);
@@ -757,11 +767,13 @@
 								if(error == "timeout")
 
 									{
-
+										$('#mdlSem').attr('disabled', false);
+										$.unblockUI();
 										alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
 									}else{
 
-
+										$('#mdlSem').attr('disabled', false);
+										$.unblockUI();
 										alertify.alert('Tienes errores en el formulario.');
 									}
 
@@ -782,6 +794,8 @@
 						var form = $('#form-mdlMat');
 						var route = form.attr('action');
 						var metodo = form.attr('method');
+						$('#mdlMat').attr('disabled', true);
+						$.blockUI();
 
 						$.ajax({
 
@@ -792,6 +806,8 @@
 
 							success:function(resp){
 
+								$('#mdlMat').attr('disabled', false);
+								$.unblockUI();
 								alertify.alert('La materia ha sido creada correctamente.');
 								$('#mdlMta').val(" ");
 								$('#mdlCreditos').val(" ");
@@ -804,11 +820,13 @@
 								if(error == "timeout")
 
 									{
-
+										$('#mdlMat').attr('disabled', false);
+										$.unblockUI();
 										alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
 									}else{
 
-
+										$('#mdlMat').attr('disabled', false);
+										$.unblockUI();
 										alertify.alert('Tienes errores en el formulario.');
 									}
 

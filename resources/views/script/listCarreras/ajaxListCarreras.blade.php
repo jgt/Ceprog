@@ -79,6 +79,8 @@
 				var link = form.attr('action');
 				var metodo = form.attr('method');
 				var route = link.split('%7Bmateria%7D').join(id);
+				$('#mtaEdtCeprog').attr('disabled', true);
+				$.blockUI();
 				
 				$.ajax({
 
@@ -89,6 +91,8 @@
 
 					success:function(resp){
 
+						$('#mtaEdtCeprog').attr('disabled', false);
+						$.unblockUI();
 						alertify.alert("La materia ha sido editada correctamente.");
 
 						var id = resp.semestre_id;
@@ -112,6 +116,23 @@
 						});
 
 
+					},
+
+					error: function(request, error){
+
+						if(error == "timeout"){
+
+							$('#mtaEdtCeprog').attr('disabled', false);
+							$.unblockUI();
+							alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+							
+						}else{
+
+							$('#mtaEdtCeprog').attr('disabled', false);
+							$.unblockUI();
+							alertify.alert('Tienes errores en el formulario.');
+							
+						}
 					}
 
 				});
@@ -129,6 +150,8 @@
 			var metodo = form.attr('method');
 			var link = form.attr('action');
 			var route = link.split('%7Bsemestre%7D').join(id);
+			$('#semmEditar').attr('disabled', true);
+			$.blockUI();
 
 			$.ajax({
 
@@ -139,6 +162,8 @@
 
 				success:function(resp){
 
+					$('#semmEditar').attr('disabled', false);
+					$.unblockUI();
 					alertify.alert("El semestres ha sido editado correctamente.");
 
 					var id = resp.carrera_id;
@@ -156,7 +181,24 @@
 
 						});
 					});
-				}
+				},
+
+				error: function(request, error){
+
+						if(error == "timeout"){
+
+							$('#semmEditar').attr('disabled', false);
+							$.unblockUI();
+							alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+							
+						}else{
+
+							$('#semmEditar').attr('disabled', false);
+							$.unblockUI();
+							alertify.alert('Tienes errores en el formulario.');
+							
+						}
+					}
 
 			});
 		});
@@ -168,6 +210,8 @@
 			var form = $('#form-mdldos');
 			var route = form.attr('action');
 			var metodo = form.attr('method');
+			$('#mdlSemdos').attr('disabled', true);
+			$.blockUI();
 
 			$.ajax({
 
@@ -178,6 +222,8 @@
 
 			success:function(resp){
 
+				$('#mdlSemdos').attr('disabled', false);
+				$.unblockUI();
 				alertify.alert('El semestre ha sido creado correctamente.');
 				$('#nameSemmodaldos').val(resp.name);
 				$('#idSemmodaldos').val(resp.id);
@@ -188,11 +234,13 @@
 				if(error == "timeout")
 
 				{
-
+					$('#mdlSemdos').attr('disabled', false);
+					$.unblockUI();
 					alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
 				}else{
 
-
+					$('#mdlSemdos').attr('disabled', false);
+					$.unblockUI();
 					alertify.alert('Tienes errores en el formulario.');
 				}
 
@@ -209,6 +257,8 @@
 						var form = $('#form-mdlMatdos');
 						var route = form.attr('action');
 						var metodo = form.attr('method');
+						$('#mdlMatdos').attr('disabled', true);
+						$.blockUI();
 
 						$.ajax({
 
@@ -219,6 +269,8 @@
 
 							success:function(resp){
 
+								$('#mdlMatdos').attr('disabled', false);
+								$.unblockUI();
 								alertify.alert('La materia ha sido creada correctamente.');
 								$('#mdlMtados').val(" ");
 								$('#mdlCreditosdos').val(" ");
@@ -231,11 +283,13 @@
 								if(error == "timeout")
 
 									{
-
+										$('#mdlMatdos').attr('disabled', false);
+										$.unblockUI();
 										alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
 									}else{
 
-
+										$('#mdlMatdos').attr('disabled', false);
+										$.unblockUI();
 										alertify.alert('Tienes errores en el formulario.');
 									}
 
@@ -252,6 +306,8 @@
 			var link = form.attr('action');
 			var metodo = form.attr('method');
 			var route = link.split('%7Bcarrera%7D').join(id);
+			$('#editPlancrr').attr('disabled', true);
+			$.blockUI();
 
 			$.ajax({
 
@@ -262,10 +318,30 @@
 
 				success:function(resp){
 
+					$('#editPlancrr').attr('disabled', false);
+					$.unblockUI();
 					alertify.alert('La carrera fue editada correctamente.');
 					listCarrera();
 					
-				}
+				},
+
+				error:function(error, request){
+
+
+								if(error == "timeout")
+
+									{
+										$('#editPlancrr').attr('disabled', false);
+										$.unblockUI();
+										alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+									}else{
+
+										$('#editPlancrr').attr('disabled', false);
+										$.unblockUI();
+										alertify.alert('Tienes errores en el formulario.');
+									}
+
+							}
 
 			});
 

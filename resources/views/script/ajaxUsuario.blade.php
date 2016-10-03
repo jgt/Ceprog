@@ -138,6 +138,8 @@
 				var form = $('#form-create');
 				var metodo = form.attr('method');
 				var action = form.attr('action');
+				$('#submit').attr('disabled', true);
+				$.blockUI();
 
 				
 				$.ajax({
@@ -149,6 +151,8 @@
 
 					success: function(resp){
 
+						$.unblockUI();
+						$('#submit').attr('disabled', false);
 						alertify.alert('Usuario creado correctamente');
 						$('input#form').val("");	
 						crearUsuario();
@@ -160,10 +164,14 @@
 
 						if(error == "timeout"){
 
+							$('#submit').attr('disabled', false);
+							$.unblockUI();
 							alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
 							
 						}else{
 
+							$('#submit').attr('disabled', false);
+							$.unblockUI();
 							alertify.alert('Tienes errores en el formulario de usurio puede ser que te falte un campo o el usuario ya existe.');
 							
 						}
