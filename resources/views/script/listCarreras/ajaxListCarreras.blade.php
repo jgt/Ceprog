@@ -67,6 +67,22 @@
 
 		});
 
+		$('#backCarrera').on('click', function(e){
+
+			e.preventDefault();
+
+			$('#semmAlumnos').hide();
+			$('#semm').hide();
+			$('#crr').show();
+
+		});
+
+		$('#backSemAlm').on('click', function(e){
+
+			$('#semmAlumnos').hide();
+			$('#semm').show();
+		});
+
 		
 	});
 
@@ -177,7 +193,7 @@
 
 						$(resp).each(function(key, sem){
 
-							semestre.append("<tr><td>"+sem.name+"</td><td><button class='btn btn-primary' value="+sem.id+" OnClick='editSemestre(this);' data-toggle='modal' data-target='#editSemm'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='listMaterias(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='crearMat(this);'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+sem.id+" OnClick='borrarSemm(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+							semestre.append("<tr><td>"+sem.name+"</td><td><button class='btn btn-primary' value="+sem.id+" OnClick='alumnosSem(this);'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='editSemestre(this);' data-toggle='modal' data-target='#editSemm'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='listMaterias(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='crearMat(this);' data-toggle='modal' data-target='#mdlMateriados'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+sem.id+" OnClick='borrarSemm(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
 						});
 					});
@@ -202,6 +218,80 @@
 
 			});
 		});
+
+
+	$('#studentUpdate').on('click', function(e){
+
+		e.preventDefault();
+
+		var id = $('#studentId').val();
+		var form = $('#studentForm-update');
+		var link = form.attr('action');
+		var metodo = form.attr('method');
+		var route = link.split('%7Bid%7D').join(id);
+		$.blockUI();
+
+		$.ajax({
+
+			url: route,
+			headers: { 'X-CSFR-TOKEN': token},
+			type: metodo,
+			data: form.serialize(),
+
+
+			success:function(resp)
+			{
+					$.unblockUI();
+					alertify.alert('Se ha dado de baja al alumno '+resp.name);
+					$('#udpAlmSem').modal('hide');
+
+					var id = $('#studentSemId').val();
+					var link = $('#almListSem').attr('href');
+					var route = link.split('%7Bid%7D').join(id);
+					var tabla = $('#almsemBaja');
+
+					$.get(route, function(resp){
+
+						tabla.html(" ");
+
+							if(resp.length > 0)
+							{
+								$(resp).each(function(key, user){
+
+								tabla.append("<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+user.id+" OnClick='editAlm(this);' data-toggle='modal' data-target='#udpAlmSem'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+user.id+" OnClick='bajaCarrera(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+
+								});
+
+							}else
+							{	
+								$('#semmAlumnos').hide();
+								$('#semm').show();
+								alertify.alert("Este semestre no tiene alumnos inscritos.");
+							}
+
+					});
+			},
+
+			error:function(error, request)
+			{
+				if(error == "timeout"){
+
+					$.unblockUI();
+					$('#udpAlmSem').modal('hide');
+					alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+							
+				}else{
+
+					$('#udpAlmSem').modal('hide');
+					alertify.alert('Error al procesar la solicitud.');
+							
+				}
+			}
+
+		});
+		
+	});
 
 	//Todas las funciones estan apartir de aqui.
 	
@@ -358,6 +448,8 @@
 
 				$(resp.data).each(function(key, value){
 
+					var idCarrera = $('#studentCarrId').val(value.id);
+
 					tabla.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='asignarId(this);' id="+value.name+" data-toggle='modal' data-target='#mdlPlandos'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='editCarrera(this);' data-toggle='modal' data-target='#mdlEditcrt'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='listSemestres(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrar(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
 				});
@@ -382,7 +474,7 @@
 
 			$(resp).each(function(key, sem){
 
-				semestre.append("<tr><td>"+sem.name+"</td><td><button class='btn btn-primary' value="+sem.id+" OnClick='editSemestre(this);' data-toggle='modal' data-target='#editSemm'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='listMaterias(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='crearMat(this);' data-toggle='modal' data-target='#mdlMateriados'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+sem.id+" OnClick='borrarSemm(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+				semestre.append("<tr><td>"+sem.name+"</td><td><button class='btn btn-primary' value="+sem.id+" OnClick='alumnosSem(this);'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='editSemestre(this);' data-toggle='modal' data-target='#editSemm'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='listMaterias(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='crearMat(this);' data-toggle='modal' data-target='#mdlMateriados'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+sem.id+" OnClick='borrarSemm(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
 			});
 		});
@@ -529,6 +621,80 @@
 		});
 
 	}
+
+	function alumnosSem(btn)
+	{
+		var id = btn.value;
+		$('#studentSemId').val(id);
+		$('#semmAlumnos').show();
+		$('#semm').hide();
+
+		var link = $('#almListSem').attr('href');
+		var route = link.split('%7Bid%7D').join(id);
+		var tabla = $('#almsemBaja');
+
+		$.get(route, function(resp){
+
+			tabla.html(" ");
+
+			if(resp.length > 0)
+			{
+				$(resp).each(function(key, user){
+
+				tabla.append("<tr><td>"+user.name+"</td><td><button class='btn btn-warning' value="+user.id+" OnClick='editAlm(this);' data-toggle='modal' data-target='#udpAlmSem'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+
+
+				});
+
+			}else
+			{	
+				$('#semmAlumnos').hide();
+				$('#semm').show();
+				alertify.alert("Este semestre no tiene alumnos inscritos.");
+			}
+
+		});
+	}
+
+	function editAlm(btn)
+	{
+		var id = btn.value;
+		var link = $('#studentUdp').attr('href');
+		var route = link.split('%7Badmin%7D').join(id);
+		var carrera = $('#studentCarrera');
+		var semestre = $('#studentSemestre');
+		var carreraId = $('#studentCarrId').val();
+		var semestreId = $('#studentSemId').val();
+
+		$.get(route, function(resp){
+
+			carrera.html(" ");
+			semestre.html(" ");
+
+			$(resp.user).each(function(key, user){
+
+				$('#studentName').val(user.name);
+				$('#studentCuenta').val(user.cuenta);
+				$('#studentId').val(user.id);
+				
+				$(user.carreras).each(function(key, carr){
+
+					$(carr.semestres).each(function(key, sem){
+
+						if(carr.id == carreraId && sem.id == semestreId)
+						{
+							carrera.append("<option selected value="+carr.id+">"+carr.name+"</option>");
+							semestre.append("<option selected value="+sem.id+">"+sem.name+"</option>");
+						}
+
+					});
+
+				});
+				
+			});
+		});
+	}
+
 
 
 

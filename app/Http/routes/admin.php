@@ -3,6 +3,7 @@
 //busca un usuario en la lita del personal
 Route::get('buscarUser', ['as' => 'buscarUser', 'uses' => 'AdminController@buscarUser']);
 Route::get('picturePerfil/{id}', ['as' => 'picturePerfil', 'uses' => 'AdminController@picturePerfil']);
+Route::post('downCarrera/{id}', ['as' => 'downCarrera', 'uses' => 'AdminController@downCarrera']);
 //borra un usuario de la lista del personal.
 Route::get('deleteU/{id}', ['as' => 'deleteU', 'uses' => 'AdminController@delete']);
 
@@ -21,3 +22,6 @@ Route::resource('materia', 'MateriaController');
 Route::get('deleteCarrera/{id}', ['as' => 'deleteCarrera', 'uses' => 'CarreraController@deleteCarrera']);
 
 Route::post('storeTutorial', ['as' => 'storeTutorial', 'uses' => 'VideosController@storeTutorial']);
+
+Route::get('alumnosSem/{id}', ['as' => 'alumnosSem', 'uses' => 'SemestreController@alumnosSem']);
+

@@ -27,6 +27,7 @@
         <thead>
           <tr>
             <th class="service">Materias</th>
+            <th>Maestro</th>
              @foreach($rangos as $rango)
               <th class="desc">{{$rango->name}}</th>
               @endforeach
@@ -40,6 +41,9 @@
            <?php $porcentaje =0;?>
                <tr>
                  <td class="service">{{$materia->name}}</td>
+                 @foreach($materia->users as $user)
+                    <td class="service">{{$user->name}}</td>
+                 @endforeach
                  @foreach($rangos as $rango)
                   <?php $total=0;?>
                     @foreach($rango->preguntas as $pregunta)
@@ -51,18 +55,18 @@
                         @endforeach
                       @endforeach
                     @endforeach
-                    <td class="service">{{$total}}</td>
+                    <td class="service">{{number_format($total/$materia->mat_results,1)}}%</td>
                     <?php $porcentaje += $total;?>
                  @endforeach
-                  <td class="service">{{$porcentaje}}</td>
-                  <td class="service">{{count($materia->resultados)}}</td>
-                  <td class="service">{{number_format($porcentaje/count($materia->resultados),1)}}%</td>
+                  <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
+                  <td class="service">{{$materia->mat_results}}</td>
+                  <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}} / 25</td>
                </tr>
             @endforeach 
         </tbody>
       </table>
       <hr>
-      <h3><strong>Suma de los totales de cada materia: </strong>{{$suma}} - {{number_format($suma/$cont,1)}}%</h3>
+      <h3><strong>Suma de los totales de cada materia: </strong>{{number_format($suma/$materia->cont,1)}}%</h3>
       <hr>
       <div id="notices">
         <div>NOTICE:</div>

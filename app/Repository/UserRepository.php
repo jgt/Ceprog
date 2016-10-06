@@ -102,6 +102,15 @@ class UserRepository extends BaseRepository {
 		return $user;
 	}
 
+	public function bajaCarrera($id, Request $request)
+	{
+		$alumno = $this->search($id);
+		$alumno->carreras()->detach($request->get('crr_list'));
+		$alumno->semestres()->detach($request->get('sem_list'));
+
+		return $alumno;
+	}
+
 
 	public function crearAlumno(Request $request)
 	{

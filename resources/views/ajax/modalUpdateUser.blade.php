@@ -1,4 +1,3 @@
-
 <div id="updateUser" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -55,23 +54,23 @@
   <div class="form-group" id="car_list">
       
  {!! Form::label('carrera_list', 'Lista de carreras:', ['class' => 'form-group']) !!}
-  {!! Form::select('carrera_list[]', [], null, ['class' => 'form-control', 'id' => 'carrera_list', 'multiple']) !!}
+  {!! Form::select('carrera_list[]', [], null, ['class' => 'form-control', 'id' => 'carrera_list', 'style' => 'width:500px', 'multiple']) !!}
 
   </div>
 
   <div class="form-group" id="sem_list">
   {!! Form::label('semestre_list', 'Lista de semestre:', ['class' => 'form-group']) !!}
-  {!! Form::select('semestre_list[]', [], null, ['class' => 'form-control', 'id' => 'semestre_list', 'multiple']) !!}
+  {!! Form::select('semestre_list[]', [], null, ['class' => 'form-control', 'id' => 'semestre_list', 'style' => 'width:500px', 'multiple']) !!}
   </div>
 
   <div class="form-group" id="mat_list">
   {!! Form::label('materia_list', 'Lista de materias:', ['class' => 'form-group']) !!}
-  {!! Form::select('materia_list[]', [], null, ['class' => 'form-control', 'id' => 'materia_list', 'multiple']) !!}
+  {!! Form::select('materia_list[]', [], null, ['class' => 'form-control', 'id' => 'materia_list', 'style' => 'width:500px', 'multiple']) !!}
   </div>
 
    <div class="form-group">
       {!! Form::label('role_list', 'Lista de Roles: ', ['class' => 'form-group']) !!}
-     {!! Form::select('role_list[]', $roles, null, ['class' => 'form-control', 'id' => 'role_list', 'multiple']) !!}
+     {!! Form::select('role_list[]', $roles, null, ['class' => 'form-control', 'id' => 'role_list', 'style' => 'width:500px', 'multiple']) !!}
    </div>
 
   {!! Form::close() !!}

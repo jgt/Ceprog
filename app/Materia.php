@@ -81,4 +81,14 @@ class Materia extends Model {
     	return $this->hasMany('App\Foro');
     }
 
+    public function getMatResultsAttribute()
+    {	
+    	return count($this->resultados);
+    }
+
+    public function getContAttribute()
+    {
+    	return  $this->has('resultados')->count();
+    }
+
 }

@@ -56,6 +56,7 @@
  @include('ajax.ExamenDocente.modalCreateRespuestas')
  @include('ajax.ExamenDocente.editarPreguntas.modalEditarPreguntaDocente')
  @include('ajax.ExamenDocente.modalDosOpciones')
+ @include('ajax.Semestres.modalEditAlumnos')
  
 <div class="container">
 
@@ -72,6 +73,7 @@
 					@include('ajax.ExamenDocente.crearExamenDocente')
 					@include('ajax.Materias.listMaterias')
 					@include('ajax.Semestres.listSemestres')
+					@include('ajax.Semestres.listAlumnos')
 					@include('ajax.planeacion')
 					@include('ajax.crearActividad')
 					@include('ajax.subirTutorial')

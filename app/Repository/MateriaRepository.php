@@ -148,12 +148,6 @@ class MateriaRepository extends BaseRepository {
 		return $materias;
 	}
 
-	public function cont()
-	{
-		$materias = $this->getModel()->has('resultados')->count();
-		return $materias;
-	}
-
 	public function sumaValor()
 	{	
 		$materias = $this->getModel()->all();

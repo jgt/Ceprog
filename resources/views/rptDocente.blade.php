@@ -55,7 +55,7 @@
             <td></td>
             <td>{{$total}}</td>
             <?php $sum +=$total; ?>
-            <td>{{number_format($total/count($materia->resultados),1)}}%</td>
+            <td>{{number_format($total/count($materia->resultados),1)}}</td>
           </tr>
         </tbody>
          @endforeach

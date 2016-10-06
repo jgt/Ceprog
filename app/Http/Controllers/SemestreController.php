@@ -104,4 +104,12 @@ class SemestreController extends Controller {
 		$semestre->delete();
 	}
 
+	public function alumnosSem($id, Request $request)
+	{
+		$semestre = $this->semestreRepository->search($id);
+		$alumnos = $semestre->users()->get();
+
+		return response()->json($alumnos);
+	}
+
 }
