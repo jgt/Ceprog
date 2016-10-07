@@ -56,7 +56,7 @@
                         @endforeach
                       @endforeach
                     @endforeach
-                    <td class="service">{{number_format($total/$materia->mat_results,1)}} / {{$pregunta->preg_rango}}</td>
+                    <td class="service">{{number_format($total/$materia->mat_results,1)}}%</td>
                     <?php $porcentaje += $total;?>
                  @endforeach
                   <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
