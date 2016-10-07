@@ -91,7 +91,7 @@
 	<label name="materia" class="col-lg-2 control-label">Materias</label>
 
 	<div class="col-lg-10">
-		<select name="materia_list[]" class="form-control" id="mtausr"></select>
+		<select name="materia_list[]" class="form-control" id="mtausr" style="width:430px" multiple></select>
 	</div>
 
 	</div>
