@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repository\ExamenDocenteRepository;
 use App\Repository\MateriaRepository;
+use App\Repository\CarreraRepository;
 use App\Administrador\EvaluacionMaestro\RespuestaDocente;
 use App\Administrador\EvaluacionMaestro\ResultadoDocente;
 use Auth;
@@ -18,14 +19,17 @@ class QuizDocenteController extends Controller
 {
     private $examenDocente;
     private $materiaRepository;
+    private $carreraRepository;
 
     public function __construct(
 
         ExamenDocenteRepository $examenDocente,
-        MateriaRepository $materiaRepository)
+        MateriaRepository $materiaRepository,
+        CarreraRepository $carreraRepository)
     {
         $this->examenDocente = $examenDocente;
         $this->materiaRepository = $materiaRepository;
+        $this->carreraRepository = $carreraRepository;
     }
 
     public function index()

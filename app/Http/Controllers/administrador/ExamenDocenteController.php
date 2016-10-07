@@ -9,12 +9,14 @@ use App\Http\Controllers\Controller;
 use App\Repository\ExamenDocenteRepository;
 use App\Repository\MateriaRepository;
 use App\Repository\UserRepository;
+use App\Repository\CarreraRepository;
 use App\Http\Requests\Docente;
 use App\Http\Requests\PreguntaMaestro;
 use App\Http\Requests\RespuestaMaestro;
 use App\Administrador\EvaluacionMaestro\Rango;
 use App\Administrador\EvaluacionMaestro\PreguntaDocente;
 use App\Administrador\EvaluacionMaestro\PosibleRespuesta;
+use App\Administrador\EvaluacionMaestro\ExamenDocente;
 use App;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -25,15 +27,18 @@ class ExamenDocenteController extends Controller
     private $examenDocente;
     private $materiaRepository;
     private $userRepository;
+    private $carreraRepository;
     
     public function __construct(
         ExamenDocenteRepository $examenDocente,
         MateriaRepository $materiaRepository,
-        UserRepository $userRepository)
+        UserRepository $userRepository,
+        CarreraRepository $carreraRepository)
     {
         $this->examenDocente = $examenDocente;
         $this->materiaRepository = $materiaRepository;
         $this->userRepository = $userRepository;
+        $this->carreraRepository = $carreraRepository;
     }
 
     public function index()
@@ -50,8 +55,8 @@ class ExamenDocenteController extends Controller
     public function create()
     {   
 
-        $materias = $this->materiaRepository->getModel()->with('semestre.carrera')->get();
-        return Response()->json($materias);
+        $carreras = $this->carreraRepository->getModel()->with('semestres.materias')->get();
+        return Response()->json($carreras);
     }
 
     /**
@@ -88,13 +93,13 @@ class ExamenDocenteController extends Controller
      */
     public function edit($id)
     {
-        $examen = $this->examenDocente->search($id)->with('materias')->get();
-        $materias = $this->materiaRepository->getModel()->all();
+        $examen = ExamenDocente::find($id)->where('id', $id)->with('carreras')->get();
+        $carreras = $this->carreraRepository->getModel()->all();
 
         $detalles = [
 
                 'examen' => $examen,
-                'materias' => $materias
+                'carrera' => $carreras
         ];
         return Response()->json($detalles);
     }
@@ -110,7 +115,7 @@ class ExamenDocenteController extends Controller
     {
         $examen = $this->examenDocente->search($id);
         $examen->update($request->all());
-        $examen->materias()->sync($request->get('materia_list'));
+        $examen->carreras()->sync($request->get('carrera_list'));
         return Response()->json($examen);
     }
 

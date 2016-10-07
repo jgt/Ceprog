@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExamendocenteMateriaPivotTable extends Migration
+class CreateCarreraExamendocentePivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateExamendocenteMateriaPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('examen_docente_materia', function (Blueprint $table) {
+        Schema::create('carrera_examen_docente', function (Blueprint $table) {
+            $table->integer('carrera_id')->unsigned()->index();
+            $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
             $table->integer('examen_docente_id')->unsigned()->index();
             $table->foreign('examen_docente_id')->references('id')->on('examen_docentes')->onDelete('cascade');
-            $table->integer('materia_id')->unsigned()->index();
-            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
-            $table->primary(['examen_docente_id', 'materia_id']);
+            $table->primary(['carrera_id', 'examen_docente_id']);
         });
     }
 
@@ -28,6 +28,6 @@ class CreateExamendocenteMateriaPivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('examen_docente_materia');
+        Schema::drop('carrera_examen_docente');
     }
 }

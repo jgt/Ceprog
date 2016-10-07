@@ -22,8 +22,8 @@
   
 
   <div class="form-group">
-  {!! Form::label('materia_list', 'Materia ', ['class' => 'form-group']) !!}
-  {!!Form::select('materia_list[]', [], null, ['id' => 'selectMatdocente', 'multiple', 'style' => 'width:520px'])!!}
+  {!! Form::label('carrera_list', 'Carrera ', ['class' => 'form-group']) !!}
+  {!!Form::select('carrera_list[]', [], null, ['id' => 'selectMatdocente', 'multiple', 'style' => 'width:520px'])!!}
    </div>
 
   <div class="form-group">

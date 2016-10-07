@@ -22,7 +22,7 @@ class MateriaRepository extends BaseRepository {
 	public function listExamen($id)
 	{
 		$materia = $this->search($id);
-		$examenes = $materia->examenesDocente()->get();
+		$examenes = $materia->where('id', $id)->with('semestre.carrera.examenesDocente')->get();
 		return $examenes;
 	}
 

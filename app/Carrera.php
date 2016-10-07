@@ -13,6 +13,11 @@ class Carrera extends Model {
 		return $this->belongsToMany('App\User');
 	}
 
+	public function examenesDocente()
+	{
+		return $this->belongsToMany('App\Administrador\EvaluacionMaestro\ExamenDocente');
+	}
+
 
 	public function semestres()
 	{

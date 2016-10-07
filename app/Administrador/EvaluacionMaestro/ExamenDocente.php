@@ -16,9 +16,9 @@ class ExamenDocente extends Model
     'fechaF'
     ];
 
-    public function materias()
+    public function carreras()
     {
-    	return $this->belongsToMany('App\Materia');
+    	return $this->belongsToMany('App\Carrera');
     }
 
     public function preguntas()

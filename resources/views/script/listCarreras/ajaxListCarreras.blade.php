@@ -679,10 +679,12 @@
 				
 				$(user.carreras).each(function(key, carr){
 
-					$(carr.semestres).each(function(key, sem){
+					carrera.append("<option selected value="+carr.id+">"+carr.name+"</option>");
 
-						if(carr.id == carreraId && sem.id == semestreId)
-						{
+					$(carr.semestres).each(function(key, sem){
+	
+						if(sem.id == semestreId)
+						{	
 							carrera.append("<option selected value="+carr.id+">"+carr.name+"</option>");
 							semestre.append("<option selected value="+sem.id+">"+sem.name+"</option>");
 						}

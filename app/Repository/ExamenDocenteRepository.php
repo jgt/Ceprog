@@ -17,11 +17,11 @@ class ExamenDocenteRepository extends BaseRepository {
 		return new ExamenDocente();
 	}
 
-
+	
 	public function crearExamen(Docente $request)
 	{
 		$examen = ExamenDocente::create($request->all());
-		$examen->materias()->attach($request->get('materia_list'));
+		$examen->carreras()->attach($request->get('carrera_list'));
 		return $examen;
 	}
 

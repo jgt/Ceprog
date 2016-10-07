@@ -70,28 +70,31 @@
 		var tablaExamen = $('#tablaExamenesDoc');
 
 			$.get(route, function(resp){
-
 				tablaExamen.html(" ");
 				$('#endQuizDocente').hide();
 				$('#nextQuizDocente').show();
 				$('#endQuizDocente').attr('disabled', false);
 
 				$(resp).each(function(key, value){
+					console.log(value);
+					$('#quizMateriaId').val(value.id);
+					$('#respDocMateriaId').val(value.id);
+					
+					$(value.semestre.carrera.examenes_docente).each(function(key, exa){
 
-					$('#quizMateriaId').val(value.pivot.materia_id);
-					$('#respDocMateriaId').val(value.pivot.materia_id);
-					var now = new Date();
-		            var startDate = new Date(value.fecha);
-		            var endDate = new Date(value.fechaF);
+						var now = new Date();
+			            var startDate = new Date(exa.fecha);
+			            var endDate = new Date(exa.fechaF);
 
-		            if(now >= startDate &&  now <= endDate)
-		            {
-		            	tablaExamen.append("<tr><td>"+value.name+"</td><td><button class='btn btn-success' id="+value.pivot.materia_id+" value="+value.id+" OnClick='examenDocente(this);' data-toggle='modal' data-target='#quizDocente'><i class='fa fa-pencil-square-o'></i></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td></tr>");
-		            }else{
+			            if(now >= startDate &&  now <= endDate)
+			            {
+			            	tablaExamen.append("<tr><td>"+exa.name+"</td><td><button class='btn btn-success' id="+value.id+" value="+exa.id+" OnClick='examenDocente(this);' data-toggle='modal' data-target='#quizDocente'><i class='fa fa-pencil-square-o'></i></td><td>"+exa.fecha+"</td><td>"+exa.fechaF+"</td></tr>");
+			            }else{
 
-		            	tablaExamen.append("<tr><td>"+value.name+"</td><td><button class='btn btn-danger'><i class='fa fa-pencil-square-o'></i></td><td>"+value.fecha+"</td><td>"+value.fechaF+"</td></tr>");
+			            	tablaExamen.append("<tr><td>"+exa.name+"</td><td><button class='btn btn-danger'><i class='fa fa-pencil-square-o'></i></td><td>"+exa.fecha+"</td><td>"+exa.fechaF+"</td></tr>");
 
-		            }
+			            }
+					});
 
 				});
 
@@ -321,6 +324,7 @@
 	            	alertify.alert("El examen ha sido editado");
 	            	var route = $('#docenteListexa').attr('href');
 					var listaExamenes = $('#tablaExamenesAdm');
+					var carreras = $('#selectMatdocenteEdit').remove();
 
 					$.get(route, function(resp){
 
@@ -575,17 +579,19 @@
 		var id = btn.value;
 		var link = $('#editdocenteExa').attr('href');
 		var route = link.split('%7BexamenDocente%7D').join(id);
-		var materias = $('#selectMatdocenteEdit');
+		var carreras = $('#selectMatdocenteEdit');
 
 		$.get(route, function(resp){
-			
-			$(resp.materias).each(function(key, mate){
 
-				materias.append("<option value="+mate.id+">"+mate.name+"</option>");
+			carreras.html(" ");
+
+			$(resp.carrera).each(function(key, carr){
+
+				carreras.append("<option value="+carr.id+">"+carr.name+"</option>");
 			});
 
 			$(resp.examen).each(function(key, value){
-
+		
 			$('#editExamDoc').val(value.id);
 			$('#edtnamExamen').val(value.name);
 			$('#ciueditExam').val(value.ciudad);
@@ -594,14 +600,13 @@
 			$('#editfechaExa').val(value.fecha);
 			$('#editfechafExa').val(value.fechaF);
 
-			$(value.materias).each(function(key, mat){
+				$(value.carreras).each(function(key, carr){
 
-				materias.find("option[value="+mat.id+"]").remove();
-				materias.append("<option selected value="+mat.id+">"+mat.name+"</option>");
+					carreras.find("option[value="+carr.id+"]").remove();
+					carreras.append("<option selected value="+carr.id+">"+carr.name+"</option>");
+				});	
+
 			});
-
-			});
-
 			
 		});
 	}

@@ -97,13 +97,12 @@ $(document).on('ready', function(){
 	  $('#crtExamenDocente').show();
 
 		var route = $(this).attr('href');
-		var materias = $('#selectMatdocente');
+		var carrera = $('#selectMatdocente');
 
 		$.get(route, function(resp){
-			
-			$(resp).each(function(key, mat){
+			$(resp).each(function(key, carr){
 
-				materias.append("<option value="+mat.id+">"+mat.name+"</option>");
+				carrera.append("<option value="+carr.id+">"+carr.name+"</option>");
 				
 			});
 		});

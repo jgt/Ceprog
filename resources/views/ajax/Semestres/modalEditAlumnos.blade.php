@@ -32,13 +32,13 @@
   </div>
 
   <div class="form-group">  
-  {!! Form::label('crr_list', 'Lista de carreras:', ['class' => 'form-group', 'style' => 'display:none']) !!}
+  {!! Form::label('crr_list', 'Lista de carreras:', ['class' => 'form-group']) !!}
   {!! Form::select('crr_list[]', [], null, ['class' => 'form-control', 'id' => 'studentCarrera', 'multiple']) !!}
 
   </div>
 
   <div class="form-group">
-  {!! Form::label('sem_list', 'Lista de semestre:', ['class' => 'form-group', 'style' => 'display:none']) !!}
+  {!! Form::label('sem_list', 'Lista de semestre:', ['class' => 'form-group']) !!}
   {!! Form::select('sem_list[]', [], null, ['class' => 'form-control', 'id' => 'studentSemestre','multiple']) !!}
   </div>
 

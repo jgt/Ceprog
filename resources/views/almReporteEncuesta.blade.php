@@ -29,7 +29,7 @@
         <div><span>Semestre</span>{{$materia->semestre->name}}</div>
         <div><span>Carrera</span>{{$materia->semestre->carrera->name}}</div>
         <div><span>Fecha</span>{{$fecha}}</div>
-        @foreach($materia->examenesDocente as $examen)
+        @foreach($materia->semestre->carrera->examenesDocente as $examen)
         <div><span>Nombre</span>{{$examen->name}}</div>
         <div><span>Ciudad</span>{{$examen->ciudad}}</div>
         <div><span>Modalidad</span>{{$examen->modalidad}}</div>
