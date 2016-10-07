@@ -19,21 +19,31 @@
       </div>
       <div id="project">
         <div><span>Materia:</span>
-        @foreach($examen->materias as $materia)
-        {{$materia->name}},
+        @foreach($examen->carreras as $carrera)
+          @foreach($carrera->semestres as $semestre)
+            @foreach($semestre->materias as $materia)
+              {{$materia->name}},
+            @endforeach
+          @endforeach
         @endforeach
         </div>
         <div><span>Catedratico</span>
-          @foreach($examen->materias as $materia)
-            @foreach($materia->users as $user)
-              {{$user->name}},
+          @foreach($examen->carreras as $carrera)
+            @foreach($carrera->semestres as $semestre)
+              @foreach($semestre->materias as $materia)
+                @foreach($materia->users as $user)
+                  {{$user->name}},
+                @endforeach
+              @endforeach
             @endforeach
           @endforeach
         </div>
         <div><span>Modalidad</span>{{$examen->modalidad}}</div>
         <div><span>Semestre</span>
-          @foreach($examen->materias as $materia)
-            {{$materia->semestre->name}}
+          @foreach($examen->carreras as $carrera)
+            @foreach($carrera->semestres as $semestre)
+              {{$semestre->name}}
+            @endforeach
           @endforeach
         </div>
         <div><span>Modulo</span>{{$examen->modulo}}</div>

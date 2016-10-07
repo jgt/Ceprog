@@ -25,9 +25,4 @@ class PreguntaDocente extends Model
     	return $this->hasMany('App\Administrador\EvaluacionMaestro\PosibleRespuesta');
     }
 
-    public function getPregRangoAttribute()
-    {
-        return count($this->respuestasDocentes);
-    }
-
 }
