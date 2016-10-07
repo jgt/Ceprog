@@ -14,4 +14,5 @@ class Rango extends Model
     {
     	return $this->hasMany('App\Administrador\EvaluacionMaestro\PreguntaDocente');
     }
+
 }

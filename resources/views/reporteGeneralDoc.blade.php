@@ -50,12 +50,13 @@
                       @foreach($pregunta->respuestasDocentes as $posResp)
                         @foreach($posResp->respuestasDocentes as $respuesta)
                             @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
-                            <?php $total +=$posResp->valor;?>  
+                            <?php $total +=$posResp->valor;?> 
+
                             @endif  
                         @endforeach
                       @endforeach
                     @endforeach
-                    <td class="service">{{number_format($total/$materia->mat_results,1)}}%</td>
+                    <td class="service">{{number_format($total/$materia->mat_results,1)}} / {{$pregunta->preg_rango}}</td>
                     <?php $porcentaje += $total;?>
                  @endforeach
                   <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
