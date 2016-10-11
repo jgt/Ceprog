@@ -22,7 +22,7 @@ class Carrera extends Model {
 	public function semestres()
 	{
 
-		return $this->hasMany('App\Semestre')->orderBy('created_at','DESC');
+		return $this->hasMany('App\Semestre')->orderBy('created_at','ASC');
 	}
 
 	

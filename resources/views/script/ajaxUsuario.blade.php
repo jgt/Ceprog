@@ -48,7 +48,7 @@
 								var carreraId = this.value;
 
 							$(carrera.semestres).each(function(key, sem){
-	
+				
 								if(carreraId == sem.carrera_id)
 								{	
 									
@@ -172,7 +172,7 @@
 
 							$('#submit').attr('disabled', false);
 							$.unblockUI();
-							alertify.alert('Tienes errores en el formulario de usurio puede ser que te falte un campo o el usuario ya existe.');
+							alertify.alert('Tienes errores en el formulario de usuario puede ser que te falte un campo o el usuario ya existe.');
 							
 						}
 					}

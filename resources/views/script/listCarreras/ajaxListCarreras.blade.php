@@ -615,7 +615,7 @@
 
 		$.get(route, function(resp){
 
-			alertify.alert("La carrera ha sido borrado.");
+			alertify.alert("La carrera ha sido borrada.");
 			listCarrera();
 
 		});
@@ -696,9 +696,5 @@
 			});
 		});
 	}
-
-
-
-
 
 </script>

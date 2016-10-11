@@ -269,6 +269,7 @@
 		var divSemestres = $('#semestre_list');
 		var divRoles = $('#role_list');
 		var divMaterias = $('#materia_list');
+		console.log(route);
 		
 		$.get(route, function(resp){
 
