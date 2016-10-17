@@ -248,4 +248,6 @@ class ExamenDocenteController extends Controller
         $pdf->loadview('reporteGeneralDoc', compact('materias', 'fecha', 'rangos', 'suma'));
         return $pdf->stream();
     }
+    
+    
 }

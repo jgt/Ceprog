@@ -106,6 +106,7 @@
                     <li><a href="{{ route('tutorial')}}" id="admin"><i class="fa fa-film"></i> Subir tutoriales</a></li>
                     <li><a href="{{ route('allTutorial')}}" id="listTutorial"><i class="fa fa-file-video-o"></i> Lista de tutoriales</a></li>
                     <li><a href="{{ route('examenDocente.create') }}" id="evaDocente"><i class="fa fa-laptop" aria-hidden="true"></i> Evaluacion Docente</a></li>
+                    <li><a href="{{ route('recursos.store') }}" id="recursos"><i class="fa fa-file-archive-o" aria-hidden="true"></i> Recursos</a></li>
                 
                 <li><a href="#"><i class='fa fa-plus fa-fw'></i> Administracion</a>
                                       
@@ -125,6 +126,7 @@
                                        <li><a href="{{route('listForo')}}" id="listForoadm">Lista de Foros</a></li>
                                        <li><a href="{{route('carrera.index')}}" id ="lstCrra">Lista de carreras</a></li>
                                        <li><a href="{{ route('listexaDocente') }}" id ="docenteListexa">Lista de examen</a></li>
+                                       <li><a href="{{ route('recursos.index') }}" id ="listRecurso">Lista de recurso</a></li>
                                       </ul>
                                 </li>
                 </ul>

@@ -4,6 +4,10 @@
   clear: both;
 }
 
+.page-break {
+    page-break-after: always;
+}
+
 a {
   color: #5D6975;
   text-decoration: underline;

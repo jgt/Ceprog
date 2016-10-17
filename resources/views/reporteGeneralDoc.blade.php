@@ -45,6 +45,7 @@
            <?php $porcentaje =0;?>
                <tr>
                  <td class="service">{{$materia->name}}</td>
+                 <div class="page-break"></div>
                  @foreach($materia->users as $user)
                     <td class="service">{{$user->name}}</td>
                  @endforeach

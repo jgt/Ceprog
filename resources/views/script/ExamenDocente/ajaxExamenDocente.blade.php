@@ -61,7 +61,7 @@ $(document).on('ready', function(){
 
 		e.preventDefault();
 
-		$('#mtaList').hide();
+	  $('#mtaList').hide();
       $('#crr').hide();
       $('#semm').hide();
       $('#preForo').hide();
@@ -95,6 +95,7 @@ $(document).on('ready', function(){
       $('#crr').hide();
       $('#listExamenAdmin').hide();
 	  $('#crtExamenDocente').show();
+	  $('#listRec').hide();
 
 		var route = $(this).attr('href');
 		var carrera = $('#selectMatdocente');

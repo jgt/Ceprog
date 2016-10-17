@@ -19,6 +19,7 @@ Route::resource('carrera', 'CarreraController');
 Route::resource('semestre', 'SemestreController');
 Route::resource('materia', 'MateriaController');
 
+
 Route::get('deleteCarrera/{id}', ['as' => 'deleteCarrera', 'uses' => 'CarreraController@deleteCarrera']);
 
 Route::post('storeTutorial', ['as' => 'storeTutorial', 'uses' => 'VideosController@storeTutorial']);

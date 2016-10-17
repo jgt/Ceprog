@@ -57,6 +57,10 @@
  @include('ajax.ExamenDocente.editarPreguntas.modalEditarPreguntaDocente')
  @include('ajax.ExamenDocente.modalDosOpciones')
  @include('ajax.Semestres.modalEditAlumnos')
+ @include('ajax.Recursos.recurso')
+ @include('ajax.Recursos.listRecurso')
+ @include('ajax.Recursos.videoRecurso')
+ @include('ajax.Recursos.modalDescripcion')
  
 <div class="container">
 

@@ -32,6 +32,9 @@ Route::group(['middleware' => 'admin',], function(){
 	
 	Route::group(['namespace' => 'administrador'], function(){
 
+		Route::get('deleteRecurso/{id}', ['as' => 'deleteRecurso', 'uses' => 'RecursosController@deleteRecurso']);
+		Route::get('downloadRecursos/{filename}', ['as' => 'downloadRecursos', 'uses' => 'RecursosController@downloadRecursos']);
+		Route::resource('recursos', 'RecursosController');
 		Route::resource('examenDocente', 'ExamenDocenteController');
 		Route::post('createPregDocente', ['as' => 'createPregDocente', 'uses' => 'ExamenDocenteController@createPregunta']);
 		Route::post('createRespuestaDocente', ['as' => 'createRespuestaDocente', 'uses' => 'ExamenDocenteController@createRespuesta']);
