@@ -24,15 +24,13 @@
                 <div><span>Planeacion:</span>4 puntaje maximo</div>
                 <div><span>Motivacion:</span>4 puntaje maximo</div>
                 <div><span>Desenvolvimiento de la asignatura:</span>7 puntaje maximo</div>
-                @foreach($materias as $materia)
-                  <div><span>Suma de los totales de cada materia: </span>{{number_format($suma/$materia->cont,1)}}%</div>
-                @endforeach
             </div>
         </header>
         <main>
         {{-- */ $count=1 /* --}}
-        {{-- */ $lineaspag=10 /* --}}
+        {{-- */ $lineaspag=30 /* --}}
         @foreach($materias as $materia)
+        <div><span>Suma de los totales de cada materia: </span>{{number_format($suma/$materia->cont,1)}}%</div>
             @if($count==1)
                 <table class="page-break">
                     <thead>
