@@ -41,8 +41,10 @@
 				$('#crr').hide();
 				$('#semm').hide();
 				$('#mtaList').hide();
-				$('#crtExamenDocente').hide
+				$('#crtExamenDocente').hide();
 				$('#listExamenDoc').hide();
+				$('#listRec').hide();
+				$('#listRecMa').hide();
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -108,6 +110,8 @@
 			    $('#listExamenDocente').hide();
 			    $('#crtExamenDocente').hide();
 			    $('#listExamenDoc').hide();
+			    $('#listRec').hide();
+			    $('#listRecMa').hide();
 
 			    var route = $('#allTutorialAlm').attr('href');
 			    var tutorialAlm = $('#tablaTutorialAlm');

@@ -73,6 +73,8 @@
 			$('#froadm').hide();
 			$('#tutoriales').hide();
 			$('#listExamenDoc').hide();
+			$('#listRec').hide();
+			$('#listRecMa').hide();
 
 				var route = $('#admIndex').attr('href');
 				var personal = $('#tablaPersonal');
@@ -148,6 +150,8 @@
 			$('#crr').hide();
 			$('#froadm').hide();
 			$('#listExamenDoc').hide();
+			$('#listRec').hide();
+			$('#listRecMa').hide();
 
 		});
 
@@ -176,6 +180,8 @@
 			$('#crr').hide();
 			$('#froadm').hide();
 			$('#listExamenDoc').hide();
+			$('#listRec').hide();
+			$('#listRecMa').hide();
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -518,6 +524,8 @@
 			$('#crr').hide();
 			$('#froadm').hide();
 			$('#listExamenDoc').hide();
+			$('#listRec').hide();
+			$('#listRecMa').hide();
 
 
 		});
@@ -588,6 +596,8 @@
 			$('#listRub').hide();
 			$('#vizuaUnidad').hide();
 			$('#listExamenDoc').hide();
+			$('#listRec').hide();
+			$('#listRecMa').hide();
 
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -677,6 +687,8 @@
 			$('#crr').hide();
 			$('#froadm').hide();
 			$('#listExamenDoc').hide();
+			$('#listRec').hide();
+			$('#listRecMa').hide();
 
 
 		});

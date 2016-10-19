@@ -56,6 +56,9 @@
       $('#crr').hide();
       $('#crtExamenDocente').hide();
       $('#listExamenDoc').hide();
+      $('#listRec').hide();
+      $('#listRecMa').hide();
+      
 
       var route = $(this).attr('href');
       

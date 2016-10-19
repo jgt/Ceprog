@@ -58,9 +58,11 @@
  @include('ajax.ExamenDocente.modalDosOpciones')
  @include('ajax.Semestres.modalEditAlumnos')
  @include('ajax.Recursos.recurso')
- @include('ajax.Recursos.listRecurso')
  @include('ajax.Recursos.videoRecurso')
  @include('ajax.Recursos.modalDescripcion')
+ @include('ajax.Recursos.modalEditarRecurso')
+ @include('ajax.Recursos.modalDescripcionMaestro')
+ @include('ajax.Recursos.modalVideoMaestro')
  
 <div class="container">
 
@@ -68,6 +70,8 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 					
+					@include('ajax.Recursos.listRecursosMaestro')
+					@include('ajax.Recursos.listRecurso')
 					@include('ajax.ExamenDocente.reportes.tablaMaterias')
 					@include('ajax.ExamenDocente.listPreguntas')
 					@include('ajax.ExamenDocente.editPreguntaDocente')

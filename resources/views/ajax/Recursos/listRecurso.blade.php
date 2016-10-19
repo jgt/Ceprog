@@ -4,6 +4,7 @@
         <a href="{{ route('downloadRecursos') }}" Style="display:none" id="downloadRecursos"></a>
         <a href="{{ route('deleteRecurso') }}" Style="display:none" id="deleteRecurso"></a>
         <a href="{{ route('recursos.index') }}" Style="display:none" id="allRecursos"></a>
+        <a href="{{ route('recursos.edit') }}" Style="display:none" id="updateRecursos"></a>
 
        <div id="msj-success" class="alert alert-success alert-dismissible" role="alert" style="display:none">
        </div>

@@ -68,10 +68,11 @@
         $('#listPreg').hide();
         $('#listExamenDoc').hide();
         $('#listExamenDoc').hide();
+        $('#listRec').hide();
+        $('#listRecMa').hide();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
-          console.log(route);
 
           $.get(route, function(resp){
 
@@ -273,6 +274,8 @@
           $('#mtaList').hide();
           $('#crtExamenDocente').hide();
           $('#listExamenDoc').hide();
+          $('#listRec').hide();
+          $('#listRecMa').hide();
         
         $.get(route, function(resp){
 

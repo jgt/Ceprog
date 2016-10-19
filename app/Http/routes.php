@@ -71,6 +71,15 @@ Route::group(['middleware' => 'adminMaestro'], function(){
 Route::group(['middleware' => 'maestro'], function(){
 
 	require __DIR__ .'/routes/maestro.php';
+
+	Route::group(['namespace' => 'administrador'], function(){
+
+		Route::get('downRecurso/{filename}', ['as' => 'downRecursos', 'uses' => 'RecMaestroControlles@downloadRecursos']);
+		
+		Route::resource('recmaestro', 'RecMaestroControlles');
+
+	});
+
 });
 
 	

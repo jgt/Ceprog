@@ -9,12 +9,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
-use File as Archivo;
 
 use Auth;
 use App\Recursos;
 
-class RecursosController extends Controller
+class RecMaestroControlles extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,30 +43,8 @@ class RecursosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-
-        $file = $request->file('archivo');
-        $dir = public_path().'/recurso';
-        $original_filename = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
-        $mime = $file->getClientMimeType();
-        $ruta = $file->move($dir, $original_filename);
-
-    
-             $recurso = Recursos::create([
-
-            'name' => $request->get('name'),
-            'descripcion' => $request->get('descripcion'),
-            'filename' => $file->getfilename(),
-            'original_filename' => $original_filename,
-            'mime' => $mime,
-            'ruta' => $ruta
-
-            ]);
-
-             $recurso->save();
-             return response()->json($recurso);
-
+    {
+        //
     }
 
     /**
@@ -78,7 +55,7 @@ class RecursosController extends Controller
      */
     public function show($id)
     {
-        $recurso = Recursos::find($id);
+         $recurso = Recursos::find($id);
         return response()->json($recurso);
     }
 
@@ -90,8 +67,7 @@ class RecursosController extends Controller
      */
     public function edit($id)
     {
-        $recurso = Recursos::find($id);
-        return response()->json($recurso);
+        //
     }
 
     /**
@@ -103,9 +79,7 @@ class RecursosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recurso = Recursos::find($id);
-        $recurso->update($request->all());
-        return response()->json($recurso);
+        //
     }
 
     /**
@@ -119,32 +93,12 @@ class RecursosController extends Controller
         //
     }
 
-    public function downloadRecursos($filename)
+     public function downloadRecursos($filename)
     {   
 
         $public_path = public_path();
         $file =  $public_path.'/recurso/'.$filename;
         return response()->download($file);
-
-    }
-
-    public function deleteRecurso($id, Request $request)
-    {
-
-        $recurso = Recursos::find($id);
-        $public_path = public_path();
-
-        $file = $public_path.'/recurso/'.$recurso->original_filename;
-        
-        if($file){
-
-
-            Archivo::delete($file);
-            $recurso->delete();
-
-        }
-
-        return response()->json($recurso);
 
     }
 }

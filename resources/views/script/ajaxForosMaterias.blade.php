@@ -98,6 +98,9 @@
 					$('#preForo').show();
 					$('#listExamenDocente').hide();
 					$('#listExamenDoc').hide();
+					$('#listRec').hide();
+					$('#listRecMa').hide();
+					$('#listRecMa').hide();
 					
 
 					var id = $(this).attr('href');
@@ -223,6 +226,9 @@
 			$('#alumnosListUser').hide();
 			$('#listExamenDocente').hide();
 			$('#listExamenDoc').hide();
+			$('#listRec').hide();
+			$('#listRecMa').hide();
+			
 
 			var route = $(this).attr('href');
 			var tablaForo = $('#tablaForoadm');

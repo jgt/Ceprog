@@ -126,6 +126,8 @@
 			   $('#listExamenDocente').hide();
 			   $('#crtExamenDocente').hide();
 			   $('#listExamenDoc').hide();
+			   $('#listRec').hide();
+			   $('#listRecMa').hide();
 
 				
 			      
