@@ -279,6 +279,7 @@
 
 			var descripcion = btn.value;
 			var tabla = $('#descripcionRec');
+			tabla.html(" ");
 			tabla.append(descripcion);
 		}
 

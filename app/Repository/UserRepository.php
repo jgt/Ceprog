@@ -34,7 +34,7 @@ class UserRepository extends BaseRepository {
 	public function listaUser(Request $request)
 	{
 
-		 $users = User::name($request->get('name'))->paginate(10);
+		 $users = User::with('imagenes')->paginate(10);
 		return $users; 
 
 	}

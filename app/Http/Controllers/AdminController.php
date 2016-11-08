@@ -185,6 +185,13 @@ class AdminController extends Controller {
 		return response()->download($file);
 	}
 
+	public function notification($id)
+	{
+		$user = $this->userRepository->search($id)->where('id', $id)->with('imagenes')->get();
+
+		return response()->json($user);
+	}
+
 	public function downCarrera($id, Request $request)
 	{
 		$alumno = $this->userRepository->bajaCarrera($id, $request);

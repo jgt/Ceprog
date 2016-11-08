@@ -5,6 +5,7 @@
         <a href="{{route('deleteU')}}" id="adminDelete" Style="display:none"></a>
         <a href="{{route('admin.edit')}}" id="adminEdit" Style="display:none"></a>
         <a href="{{ route('picturePerfil') }}" id="pctrDownload" Style="display:none"></a>
+        <a href="{{ route('notification') }}" id="notification" Style="display:none"></a>
 
         @include('include.buscar', ['submitButtonText' => 'Buscar'])  
         <div class="table-responsive">

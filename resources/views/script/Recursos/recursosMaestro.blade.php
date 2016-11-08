@@ -68,6 +68,7 @@
 	{
 		var descripcion = btn.value;
 		var tabla = $('#descripcionRecmaestro');
+		tabla.html(" ");
 		tabla.append(descripcion);
 	}
 

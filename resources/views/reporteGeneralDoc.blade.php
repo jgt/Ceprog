@@ -46,26 +46,26 @@
                     </thead>
                     <tbody>
                     @endif
-                    <?php $porcentaje = 0;?>
+                    {{--*/ $porcentaje=0 /*--}}
                     <tr>
                         <td class="service">{{$materia->name}}</td>
                         @foreach($materia->users as $user)
                           <td class="service">{{$user->name}}</td>
                         @endforeach
                         @foreach($rangos as $rango)
-                  <?php $total=0;?>
+                  {{--*/ $total=0 /*--}}
                     @foreach($rango->preguntas as $pregunta)
                       @foreach($pregunta->respuestasDocentes as $posResp)
                         @foreach($posResp->respuestasDocentes as $respuesta)
 
                             @if($materia->id == $respuesta->materia_id && $pregunta->rango_id == $rango->id)
-                            <?php $total +=$posResp->valor;?>
+                            {{--*/ $total +=$posResp->valor /*--}}
                             @endif  
                         @endforeach
                       @endforeach
                     @endforeach
                     <td class="service">{{number_format($total/$materia->mat_results,1)}}%</td>
-                    <?php $porcentaje += $total;?>
+                    {{--*/ $porcentaje += $total /*--}}
                  @endforeach
                  <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
                   <td class="service">{{$materia->mat_results}}</td>
