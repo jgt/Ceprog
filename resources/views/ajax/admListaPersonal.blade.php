@@ -10,10 +10,9 @@
        <table class="table table-bordered" id="users-table">
         <thead>
             <tr>
-            
+
                 <th>Nombre</th>
                 <th>Cuenta</th>
-                <th>Fotos</th>
                 <th>Acciones</th>
             </tr>
         </thead>
