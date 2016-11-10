@@ -13,7 +13,6 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Cuenta</th>
-                <th>Fotos</th>
                 <th>Acciones</th>
             </tr>
         </thead>
