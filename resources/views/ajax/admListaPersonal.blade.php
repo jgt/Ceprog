@@ -7,21 +7,17 @@
         <a href="{{ route('picturePerfil') }}" id="pctrDownload" Style="display:none"></a>
         <a href="{{ route('notification') }}" id="notification" Style="display:none"></a>
 
-        @include('include.buscar', ['submitButtonText' => 'Buscar'])  
-        <div class="table-responsive">
-       <table class="table">
-          <thead>
-            <td><strong>Usuarios</strong></td>
-            <td><strong>Ver</strong></td>
-            <td><strong>Editar</strong></td>
-            <td><strong>Foto de Perfil</strong></td>
-            <td><strong>Borrar</strong></td>
-          </thead> 
-          <tbody id="tablaPersonal">
-          </tbody>
-       </table>
+       <table class="table table-bordered" id="users-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Cuenta</th>
+                <th>Fotos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
 
-       {!! $users->render() !!}
-       
-  </div>
+    </table>
+      
      </div>

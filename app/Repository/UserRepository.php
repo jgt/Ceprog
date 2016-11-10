@@ -8,6 +8,7 @@ use App\User;
 use App\Materia;
 use Bican\Roles\Models\Role;
 use Auth;
+use Datatables;
 
 
 use Illuminate\Http\Request;
@@ -34,8 +35,9 @@ class UserRepository extends BaseRepository {
 	public function listaUser(Request $request)
 	{
 
-		 $users = User::with('imagenes')->paginate(10);
-		return $users; 
+		 $users = User::with('imagenes')->get();
+		 return $users;
+
 
 	}
 

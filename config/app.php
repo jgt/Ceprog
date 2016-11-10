@@ -149,6 +149,9 @@ return [
         App\Providers\HtmlGeneratorServiceProvider::class,
          Styde\Seeder\SeederServiceProvider::class,
          Anouar\Fpdf\FpdfServiceProvider::class,
+         Yajra\Datatables\DatatablesServiceProvider::class,
+
+
 
 
 

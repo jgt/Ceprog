@@ -2,7 +2,6 @@
 	
 	$(document).on('ready', function(){
 
-
 		$('#findUser').on('click', function(e){
 
 			e.preventDefault();
@@ -77,68 +76,193 @@
 			$('#listRecMa').hide();
 
 				var route = $('#admIndex').attr('href');
-				var personal = $('#tablaPersonal');
+				var tabla = $('#users-table').DataTable({
 
-				$.get(route, function(resp){
+					processing: true,
+        			serverSide: true,
+        			ajax: route,
+        			columns: [
 
-					personal.html(" ");
-				
-					$(resp.data).each(function(key, value){
-
-						if(value.imagenes.length == 0)
-						{
-							personal.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='verUser(this);' value="+value.id+" data-toggle='modal' data-target='#showUser'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#updateUser' OnClick='editarUser(this);' value="+value.id+"><i class='fa fa-user'></i></button></td><td><button class='btn btn-danger' OnClick='descargarImagen(this);' value="+value.id+"><i class='fa fa-file-image-o' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' OnClick='borrarUser(this);' value="+value.id+"><i class='fa fa-eraser'></i></button></td></tr>");
-						}else{
-
-
-							personal.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='verUser(this);' value="+value.id+" data-toggle='modal' data-target='#showUser'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#updateUser' OnClick='editarUser(this);' value="+value.id+"><i class='fa fa-user'></i></button></td><td><button class='btn btn-primary' OnClick='descargarImagen(this);' value="+value.id+"><i class='fa fa-file-image-o' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' OnClick='borrarUser(this);' value="+value.id+"><i class='fa fa-eraser'></i></button></td></tr>");
-						}
-
-					});
-
+        				{data: 'id'},
+        				{data: 'name'},
+        				{data: 'cuenta'},
+        				{defaultContent: ['<a href="{{route('admin.edit')}}" data-toggle="modal" data-target="#updateUser" class="btn btn-warning">Editar</a>', '<a href="{{ route('picturePerfil') }}" class="btn btn-primary">Fotos</a>', '<a href="{{route('deleteU')}}" class="btn btn-danger">Borrar</a>']}
+        			]
 
 				});
 
 
-			});	
+				$('#users-table').on('click', 'a', function(e){
+
+					e.preventDefault();
+					var data = tabla.row($(this).parents('tr')).data();
+					var link = $(this).attr('href');
+					var editar = '{{route('admin.edit')}}';
+					var fotos = '{{ route('picturePerfil') }}';
+					var borrar = '{{route('deleteU')}}'
+					if(link == editar)
+					{
+						var editar = link.split('%7Badmin%7D').join(data.id);
+						var userRoles = $('#rolesUser');
+						var userCarreras = $('#userCarreras');
+						var userSemestres = $('#userSemestres');
+						var userMaterias = $('#userMaterias');
+						var divCarreras = $('#carrera_list');
+						var divSemestres = $('#semestre_list');
+						var divRoles = $('#role_list');
+						var divMaterias = $('#materia_list');
+						
+						$.get(editar, function(resp){
+
+							userRoles.html(" ");
+							userCarreras.html(" ");
+							userSemestres.html(" ");
+							userMaterias.html(" ");
+							divCarreras.html(" "); 
+						 	divSemestres.html(" ");
+							divRoles.html(" "); 
+						 	divMaterias.html(" "); 
+
+						 	$(resp.carreras).each(function(key, value){
 
 
-		$('.pagination a').on('click', function(e){
+									divCarreras.append("<option value="+value.id+">"+value.name+"</option>");
 
-							e.preventDefault();
+								});
 
-							var page = $(this).attr('href');
-							var personal = $('#tablaPersonal');
-							var id = page.split('page=')[1];
-							var route = $('#admIndex').attr('href');
+						 	$(resp.semestres).each(function(key, value){
 
-							$.ajax({
+									divSemestres.append("<option value="+value.id+">"+value.name+"</option>");
 
-								url: route,
-								headers: { 'X-CSFR-TOKEN': token},
-								data: {page: id},
-								type: 'GET',
-								dataType: 'json',
-								success:function(resp){
+								});
 
-									personal.html(" ");
+						 	$(resp.materias).each(function(key, value){
 
-									$(resp.data).each(function(key, value){
+									divMaterias.append("<option value="+value.id+">"+value.name+"</option>");
 
-										if(value.imagenes.length == 0)
-						{
-							personal.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='verUser(this);' value="+value.id+" data-toggle='modal' data-target='#showUser'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#updateUser' OnClick='editarUser(this);' value="+value.id+"><i class='fa fa-user'></i></button></td><td><button class='btn btn-danger' OnClick='descargarImagen(this);' value="+value.id+"><i class='fa fa-file-image-o' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' OnClick='borrarUser(this);' value="+value.id+"><i class='fa fa-eraser'></i></button></td></tr>");
-						}else{
+								});
 
 
-							personal.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='verUser(this);' value="+value.id+" data-toggle='modal' data-target='#showUser'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#updateUser' OnClick='editarUser(this);' value="+value.id+"><i class='fa fa-user'></i></button></td><td><button class='btn btn-primary' OnClick='descargarImagen(this);' value="+value.id+"><i class='fa fa-file-image-o' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' OnClick='borrarUser(this);' value="+value.id+"><i class='fa fa-eraser'></i></button></td></tr>");
-						}
+						 	$(resp.roles).each(function(key, value){
+
+									divRoles.append("<option value="+value.id+">"+value.name+"</option>");
+
+								});
+
+							$(resp.user).each(function(key, value){
+
+								$('#nameUpdate').val(value.name);
+								$('#cuentaUpdate').val(value.cuenta);
+								$('#udpUser').val(value.id);
+
+								$(value.roles).each(function(key, role){
+
+									userRoles.append("<li>"+role.name+"</li>");
+
+									divRoles.find("option[value="+role.id+"]").remove();
+									divRoles.append("<option selected value="+role.id+">"+role.name+"</option");
+
+
+									if(role.name == "admin")
+									{
+
+										$('#mat_list').removeClass('alert');
+										$('#car_list').removeClass('alert');
+										$('#sem_list').removeClass('alert');
+
+									}
+
+									
+									if(role.name == "alumno")
+									{
+										$('#mat_list').addClass('alert');
+										$('#car_list').removeClass('alert');
+										$('#sem_list').removeClass('alert');
+									}
+
+									if(role.name == "profesor")
+									{
+										$('#mat_list').removeClass('alert');
+										$('#car_list').addClass('alert');
+										$('#sem_list').addClass('alert');
+
+									}
+
+									if(role.name == "admin" || role.name == "alumno")
+									{
+										$('#mat_list').addClass('alert');
+										$('#car_list').removeClass('alert');
+										$('#sem_list').removeClass('alert');
+									}
+
+									if(role.name == "admin" || role.name == "profesor")
+									{
+										$('#mat_list').removeClass('alert');
+										$('#car_list').addClass('alert');
+										$('#sem_list').addClass('alert');
+									}
+
+
+									
+								});
+
+								$(value.carreras).each(function(key, carr){
+
+									userCarreras.append("<li>"+carr.name+"</li>");
+
+									divCarreras.find("option[value="+carr.id+"]").remove();
+									divCarreras.append("<option selected value="+carr.id+">"+carr.name+"</option>");
+
+									$(carr.semestres).each(function(key, sem){
+
+										userSemestres.append("<li>"+sem.name+"</li>");
+										
+										divSemestres.find("option[value="+sem.id+"]").remove();
+										divSemestres.append("<option selected value="+sem.id+">"+sem.name+"</option>");
+
+										$(sem.materias).each(function(key, mat){
+
+											userMaterias.append("<li>"+mat.name+"</li>");
+
+											divMaterias.find("option[value="+mat.id+"]").remove();
+											divMaterias.append("<option selected value="+mat.id+">"+mat.name+"</option>");
+
+										});
+
 									});
-								}
+
+								});
 
 							});
 
 						});
+					}else if(link == borrar){
+
+						var borrar = link.split('%7Bid%7D').join(data.id);
+						$.get(borrar, function(resp){
+
+							$('#listPersonal').hide();
+							alertify.alert("El usuario ha sido borrado correctamente.");
+
+						}); 
+
+						
+					}else if(link == fotos){
+
+						var foto = link.split('%7Bid%7D').join(data.id);
+						$.get(foto, function(){
+
+							window.open(foto);
+						})
+						.fail(function(){
+							alertify.alert("Este usuario no tiene foto de perfil.");
+						});
+					}
+										
+				});
+
+			});	
+
 
 		$('#admin').on('click', function(e){
 
@@ -218,48 +342,8 @@
 		});
 
 	});
+
 	
-	function descargarImagen(btn)
-	{
-		var id = btn.value;
-		var link = $('#pctrDownload').attr('href');
-		var route = link.split('%7Bid%7D').join(id);
-
-		$.get(route, function(){
-
-			window.open(route);
-
-		})
-		.fail(function(){
-
-			alertify.alert("Este usuario no tiene foto de perfil.");
-		});
-	}
-
-	function verUser(btn){
-
-		var id = btn.value;
-		var link = $('#adminShow').attr('href');
-		var route = link.split('%7Badmin%7D').join(id);
-		var showUser = $('#ShowUser');
-		
-		$.get(route, function(resp){
-
-			showUser.html(" ");
-
-			$(resp).each(function(key, value){
-
-				$(value.roles).each(function(key, role){
-
-					showUser.append("<tr><td>"+value.name+"</td><td>"+value.cuenta+"</td><td>"+role.name+"</td></tr>");
-
-				});
-
-			});
-
-		});
-
-	}
 
 	function borrarUser(btn){
 
@@ -271,148 +355,6 @@
 
 			$('#listPersonal').hide();
 			alertify.alert("El usuario ha sido borrado correctamente.");
-
-		});
-
-	}
-
-	function editarUser(btn){
-
-		var id = btn.value;
-		var link = $('#adminEdit').attr('href');
-		var route = link.split('%7Badmin%7D').join(id);
-		var userRoles = $('#rolesUser');
-		var userCarreras = $('#userCarreras');
-		var userSemestres = $('#userSemestres');
-		var userMaterias = $('#userMaterias');
-		var divCarreras = $('#carrera_list');
-		var divSemestres = $('#semestre_list');
-		var divRoles = $('#role_list');
-		var divMaterias = $('#materia_list');
-		console.log(route);
-		
-		$.get(route, function(resp){
-
-			userRoles.html(" ");
-			userCarreras.html(" ");
-			userSemestres.html(" ");
-			userMaterias.html(" ");
-			divCarreras.html(" "); 
-		 	divSemestres.html(" ");
-			divRoles.html(" "); 
-		 	divMaterias.html(" "); 
-
-		 	$(resp.carreras).each(function(key, value){
-
-
-					divCarreras.append("<option value="+value.id+">"+value.name+"</option>");
-
-				});
-
-		 	$(resp.semestres).each(function(key, value){
-
-					divSemestres.append("<option value="+value.id+">"+value.name+"</option>");
-
-				});
-
-		 	$(resp.materias).each(function(key, value){
-
-					divMaterias.append("<option value="+value.id+">"+value.name+"</option>");
-
-				});
-
-
-		 	$(resp.roles).each(function(key, value){
-
-					divRoles.append("<option value="+value.id+">"+value.name+"</option>");
-
-				});
-
-			$(resp.user).each(function(key, value){
-
-				$('#nameUpdate').val(value.name);
-				$('#cuentaUpdate').val(value.cuenta);
-				$('#udpUser').val(value.id);
-
-				$(value.roles).each(function(key, role){
-
-					userRoles.append("<li>"+role.name+"</li>");
-
-					divRoles.find("option[value="+role.id+"]").remove();
-					divRoles.append("<option selected value="+role.id+">"+role.name+"</option");
-
-
-					if(role.name == "admin")
-					{
-
-						$('#mat_list').removeClass('alert');
-						$('#car_list').removeClass('alert');
-						$('#sem_list').removeClass('alert');
-
-					}
-
-					
-					if(role.name == "alumno")
-					{
-						$('#mat_list').addClass('alert');
-						$('#car_list').removeClass('alert');
-						$('#sem_list').removeClass('alert');
-					}
-
-					if(role.name == "profesor")
-					{
-						$('#mat_list').removeClass('alert');
-						$('#car_list').addClass('alert');
-						$('#sem_list').addClass('alert');
-
-					}
-
-					if(role.name == "admin" || role.name == "alumno")
-					{
-						$('#mat_list').addClass('alert');
-						$('#car_list').removeClass('alert');
-						$('#sem_list').removeClass('alert');
-					}
-
-					if(role.name == "admin" || role.name == "profesor")
-					{
-						$('#mat_list').removeClass('alert');
-						$('#car_list').addClass('alert');
-						$('#sem_list').addClass('alert');
-					}
-
-
-					
-				});
-
-				$(value.carreras).each(function(key, carr){
-
-					userCarreras.append("<li>"+carr.name+"</li>");
-
-					divCarreras.find("option[value="+carr.id+"]").remove();
-					divCarreras.append("<option selected value="+carr.id+">"+carr.name+"</option>");
-
-					$(carr.semestres).each(function(key, sem){
-
-						userSemestres.append("<li>"+sem.name+"</li>");
-						
-						divSemestres.find("option[value="+sem.id+"]").remove();
-						divSemestres.append("<option selected value="+sem.id+">"+sem.name+"</option>");
-
-						$(sem.materias).each(function(key, mat){
-
-							userMaterias.append("<li>"+mat.name+"</li>");
-
-							divMaterias.find("option[value="+mat.id+"]").remove();
-							divMaterias.append("<option selected value="+mat.id+">"+mat.name+"</option>");
-
-						});
-
-					});
-
-				});
-
-			});
 
 		});
 
@@ -862,7 +804,6 @@
 						});
 
 					});
-
 
 		});
 

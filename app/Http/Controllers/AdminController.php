@@ -14,6 +14,7 @@ use Auth;
 use Input;
 use Hash;
 use App;
+use Datatables;
 
 use Illuminate\Http\Request;
 use App\Repository\UserRepository;
@@ -53,12 +54,7 @@ class AdminController extends Controller {
 
 		$users = $this->userRepository->listaUser($request);
 
-		if($request->ajax())
-		{
-			return response()->json($users);
-		}
-
-
+		 return Datatables::of($users)->make(true);
 	}
 
 	public function buscarUser(Request $request)
