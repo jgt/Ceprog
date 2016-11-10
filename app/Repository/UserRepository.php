@@ -35,7 +35,7 @@ class UserRepository extends BaseRepository {
 	public function listaUser(Request $request)
 	{
 
-		 $users = User::with('imagenes')->get();
+		 $users =  User::with('imagenes')->select('users.*');
 		 return $users;
 
 

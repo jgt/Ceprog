@@ -54,7 +54,13 @@ class AdminController extends Controller {
 
 		$users = $this->userRepository->listaUser($request);
 
-		 return Datatables::of($users)->make(true);
+		 return Datatables::of($users)
+		 ->addColumn('img', function (User $user) {
+                    return $user->imagenes->map(function($imagenes) {
+                        return str_limit($imagenes->img, 30, '...');
+                    })->implode('<br>');
+                })
+		 ->make(true);
 	}
 
 	public function buscarUser(Request $request)

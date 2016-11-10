@@ -85,6 +85,7 @@
 
         				{data: 'name'},
         				{data: 'cuenta'},
+        				{data: 'img'},
         				{defaultContent: ['<a href="{{route('admin.edit')}}" data-toggle="modal" data-target="#updateUser" class="btn btn-warning">Editar</a>', '<a href="{{ route('picturePerfil') }}" class="btn btn-primary">Fotos</a>', '<a href="{{route('deleteU')}}" class="btn btn-danger">Borrar</a>']}
         			]
 

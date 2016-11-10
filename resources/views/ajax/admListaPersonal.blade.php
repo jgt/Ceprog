@@ -13,6 +13,7 @@
 
                 <th>Nombre</th>
                 <th>Cuenta</th>
+                <th>Imagenes</th>
                 <th>Acciones</th>
             </tr>
         </thead>
