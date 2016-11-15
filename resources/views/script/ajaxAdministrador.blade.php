@@ -2,34 +2,6 @@
 	
 	$(document).on('ready', function(){
 
-		$('#findUser').on('click', function(e){
-
-			e.preventDefault();
-
-			var form = $('#formFindUser');
-			var route = form.attr('action');
-			var personal = $('#tablaPersonal');
-			var name = $('#nameUser').val();
-			var cuenta = $('#modelo').val();
-
-			$.get(route, function(resp){
-
-				personal.html(" ");
-
-				$(resp).each(function(key, value){
-
-					if(name == value.name || cuenta == value.cuenta)
-					{
-
-						personal.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='verUser(this);' value="+value.id+" data-toggle='modal' data-target='#showUser'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' data-toggle='modal' data-target='#updateUser' OnClick='editarUser(this);' value="+value.id+"><i class='fa fa-user'></i></button></td><td>><button class='btn btn-primary' OnClick='descargarImagen(this);' value="+value.id+"><i class='fa fa-file-image-o' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' OnClick='borrarUser(this);' value="+value.id+"><i class='fa fa-eraser'></i></button></td></tr>");
-					}
-
-				});
-			});
-
-
-		});
-
 		$('#listaP').on('click', function(e){
 
 				e.preventDefault();
@@ -78,9 +50,11 @@
 				var route = $('#admIndex').attr('href');
 				var tabla = $('#users-table').DataTable({
 
+					destroy:true,
 					processing: true,
         			serverSide: true,
         			ajax: route,
+        			language: { url: "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"},
         			columns: [
 
         				{data: 'name'},
@@ -344,22 +318,6 @@
 	});
 
 	
-
-	function borrarUser(btn){
-
-		var id = btn.value;
-		var link = $('#adminDelete').attr('href');
-		var route = link.split('%7Bid%7D').join(id);
-		
-		$.get(route, function(resp){
-
-			$('#listPersonal').hide();
-			alertify.alert("El usuario ha sido borrado correctamente.");
-
-		});
-
-	}
-
 	$('#usrEdi').on('click', function(e){
 
 		e.preventDefault();

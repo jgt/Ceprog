@@ -33,7 +33,7 @@
 
 		        error:function(request, error){
 
-				if(error == "timeout")
+				if(error)
 				{
 
 					alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');

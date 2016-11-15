@@ -9,9 +9,8 @@
       <div class="modal-body">
        <table class="table">
          <thead>
-         {!! Form::open(['route' => 'recursos.update', 'method' => 'PUT', 'enctype' => 'multipart/form-data', 'id' => 'form-recursoUpdate', 'files' => true]) !!}
-       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-
+         {!! Form::open(['route' => 'recursoUpdate', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'form-recursoUpdate', 'files' => true]) !!}
+         
     {!! Form::label('name', 'Nombre: ', ['class' => 'form-group']) !!}
     {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'recursoEdit'])!!}
     {!! Form::text('id', null, ['class' => 'form-control', 'id' => 'idRecurso', 'style' => 'display:none'])!!}

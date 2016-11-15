@@ -1,16 +1,11 @@
 <script>
 
 	$(document).on('ready', function(){
-
+		
 		$('#recursos').on('click', function(e){
-
 			e.preventDefault();
-
 			$('#recursoVideo').modal('show');
-
-
 		});
-
 
 		$('#createRecurso').on('click', function(e){
 
@@ -72,8 +67,6 @@
 		$('#listRecurso').on('click', function(e){
 
 			e.preventDefault();
-
-			var route = $(this).attr('href');
 			var tabla = $('#tablaRecurso');
 			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
@@ -115,195 +108,161 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').show();
 
-			$.get(route, function(resp){
-
-				tabla.html(" ");
-
-				$(resp).each(function(key, value){
-
-					tabla.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='editarRecurso(this);' value="+value.id+" data-toggle='modal' data-target='#editarRecurso'><i class='fa fa-pencil-square'></i></button></td><td><button class='btn btn-primary' OnClick='descripcion(this);' value="+value.descripcion+" data-toggle='modal' data-target='#recursoDescripcion'><i class='fa fa-pencil-square'></i></button></td><td><button class='btn btn-primary' OnClick='verVideo(this);' value="+value.id+" data-toggle='modal' data-target='#videoRecurso'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' OnClick='descargarRecurso(this);' value="+value.original_filename+"><i class='fa fa-download' aria-hidden='true'></i></button></td><td><button class='btn btn-danger' OnClick='borrarRecurso(this);' value="+value.id+"><i class='fa fa-eraser' aria-hidden='true'></i></button></td></tr>");
-				});
-
-			});
+			listar();	
 
 		});
 
 		$('#upRecursos').on('click', function(e){
 
-			e.preventDefault();
+						e.preventDefault();
+						var id = $('#idRecurso').val();
+						var form = $('#form-recursoUpdate');
+						var metodo = form.attr('method');
+						var link = form.attr('action');
+						var route = link.split('%7Bid%7D').join(id);
 
-			var id = $('#idRecurso').val();
-			var form = $('#form-recursoUpdate');
-			var link = form.attr('action');
-			var metodo = form.attr('method');
-			var route = link.split('%7Brecursos%7D').join(id);
+					$.ajax({
 
-			$.ajax({
+						url: route,
+						type: metodo,
+						data: form.serialize(),
 
-				url: route,
-				type: metodo,
-				data: form.serialize(),
+						success:function(resp){
 
-				success:function(resp){
+							alertify.alert('El recurso ha sido editado.');
+							listar();
+						},
 
-					alertify.alert('El recurso ha sido editado.');
-					var route = $('#allRecursos').attr('href');
-					var tabla = $('#tablaRecurso');
-
-					$.get(route, function(resp){
-
-						tabla.html(" ");
-
-						$(resp).each(function(key, value){
-
-							tabla.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='editarRecurso(this);' value="+value.id+" data-toggle='modal' data-target='#editarRecurso'><i class='fa fa-pencil-square'></i></button></td><td><button class='btn btn-primary' OnClick='descripcion(this);' value="+value.descripcion+" data-toggle='modal' data-target='#recursoDescripcion'><i class='fa fa-pencil-square'></i></button></td><td><button class='btn btn-primary' OnClick='verVideo(this);' value="+value.id+" data-toggle='modal' data-target='#videoRecurso'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' OnClick='descargarRecurso(this);' value="+value.original_filename+"><i class='fa fa-download' aria-hidden='true'></i></button></td><td><button class='btn btn-danger' OnClick='borrarRecurso(this);' value="+value.id+"><i class='fa fa-eraser' aria-hidden='true'></i></button></td></tr>");
-
-						});
+						error:function(request, error)
+						{
+							alertify.alert('Error al procesar la solicitud.');
+						}
 
 					});
-
-				},
-
-				error:function(request, error)
-				{
-					alertify.alert('Error al procesar la solicitud.');
-				}
-
-			});
 
 		});
 
-	});
-
-	function verVideo(btn)
+		function listar()
 		{
-			var id = btn.value;
-			var link = $('#recursoShow').attr('href');
-			var route = link.split('%7Brecursos%7D').join(id);
-			var video = $('#videoRec');
+			var route = '/recursoIndex';
+			var tabla = $('#recurso-tabla').DataTable({
 
-			$.get(route, function(resp){
+						destroy:true,
+						processing: true,
+        				serverSide: true,
+        				ajax:route,
+        				language: { url: "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"},
+        				columns:[
 
-				video.html(" ");
+        					{data: 'name'},
+        					{data: 'descripcion'},
+        					{defaultContent: "<button data-toggle='modal' data-target='#editarRecurso' type='button' class='editar btn btn-warning'><i class='fa fa-pencil' aria-hidden='true'></i></button> <button type='button' data-toggle='modal' data-target='#videoRecurso' class='verVideo btn btn-primary'><i class='fa fa-eye' aria-hidden='true'></i></button> <button type='button' class='descargar btn btn-success'><i class='fa fa-download' aria-hidden='true'></i></button> <button type='button' class='delete btn btn-danger'><i class='fa fa-eraser' aria-hidden='true'></i></button>"}
+        				]
 
-				if(resp.mime == "video/mp4")
-				{
-					video.append("<li><video width='500'  height='300' controls='controls'><source src='/recurso/"+resp.original_filename+"' type='video/webm'/><source src='/recurso/"+resp.original_filename+"' type='video/ogg'/><source src='/recurso/"+resp.original_filename+"' type='video/mp4'/></video></li><hr>");
+			});
 
-				}else{
-
-					$('#videoRecurso').modal('hide');
-					alertify.alert("Este recurso contiene archivos, para vizualizarlos por favor descargar  el archivo.");
-				}
-
-			})
-
-			.fail(function(){
-
-				alertify.alert("Error al procesar la solicitud.");
-
-			})
+			editar("#recurso-tabla tbody", tabla);
+			verOnline("#recurso-tabla tbody", tabla);
+			descargar("#recurso-tabla tbody", tabla);
+			borrarRecurso("#recurso-tabla tbody", tabla);
 
 		}
 
-		function descargarRecurso(btn)
+		function editar(tbody, tabla)
 		{
-			var link = $('#downloadRecursos').attr('href');
-			var route = link.split('%7Bfilename%7D').join(btn.value);
-			$.blockUI();
-			
-			$.get(route,function(resp){
-
-				window.open(route);
-
-			})
-
-			.fail(function(){
-
-				$.unblockUI();
-				alertify.alert("Error al descargar el archivo por favor intentalo de nuevo.");
-			})
-
-			.done(function(){
-
-				alertify.alert("El archivo/video se ha descargado.");
-				$.unblockUI();
+			$(tbody).on("click", "button.editar", function(){
+				var data = tabla.row($(this).parents('tr')).data();
+				var route = "/recursoEdit/"+data.id;
+			$.get(route, function(resp){
+				
+					$('#recursoEdit').val(resp.name);
+					$('#descripcionEdit').val(resp.descripcion);
+					$('#idRecurso').val(resp.id);
+				})
+				.fail(function(){
+					alertify.alert('Error al procesar la solicitud.');
+				})
+				
 			});
 		}
 
-		function borrarRecurso(btn)
-		{	
-			var id = btn.value;
-			var link = $('#deleteRecurso').attr('href');
-			var route = link.split('%7Bid%7D').join(id);
-			$.blockUI();
-
-			$.get(route, function(resp){
-
-				$.unblockUI();
-				alertify.alert("El recurso "+resp.name+" ha sido eliminado.");
-
-			})
-
-			.fail(function(){
-
-				$.unblockUI();
-				alertify.alert("Error al eliminar el recurso.");
-
-			})
-
-			.done(function(resp){
-
-				$.unblockUI();
-				var route = $('#allRecursos').attr('href');
-				var tabla = $('#tablaRecurso');
+		function verOnline(tbody, tabla)
+		{
+			$(tbody).on("click", "button.verVideo", function(){
+				var data = tabla.row($(this).parents('tr')).data();
+				var route = '/recursoShow/'+data.id;
+				var video = $('#videoRec');
 
 				$.get(route, function(resp){
 
-					tabla.html(" ");
+					video.html(" ");
 
-					$(resp).each(function(key, value){
+					if(resp.mime == "video/mp4")
+					{
+						video.append("<li><video width='500'  height='300' controls='controls'><source src='/recurso/"+resp.original_filename+"' type='video/webm'/><source src='/recurso/"+resp.original_filename+"' type='video/ogg'/><source src='/recurso/"+resp.original_filename+"' type='video/mp4'/></video></li><hr>");
 
-						tabla.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='editarRecurso(this);' value="+value.id+" data-toggle='modal' data-target='#editarRecurso'><i class='fa fa-pencil-square'></i></button></td><td><button class='btn btn-primary' OnClick='descripcion(this);' value="+value.descripcion+" data-toggle='modal' data-target='#recursoDescripcion'><i class='fa fa-pencil-square'></i></button></td><td><button class='btn btn-primary' OnClick='verVideo(this);' value="+value.id+" data-toggle='modal' data-target='#videoRecurso'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' OnClick='descargarRecurso(this);' value="+value.original_filename+"><i class='fa fa-download' aria-hidden='true'></i></button></td><td><button class='btn btn-danger' OnClick='borrarRecurso(this);' value="+value.id+"><i class='fa fa-eraser' aria-hidden='true'></i></button></td></tr>");
+					}else{
 
-					});
+						$('#videoRecurso').modal('hide');
+						alertify.alert("Este recurso contiene archivos, para vizualizarlos por favor descargar  el archivo.");
+					}
 
+				})
+
+					.fail(function(){
+
+						alertify.alert("Error al procesar la solicitud.");
+
+					})
+
+			});
+		}
+
+		function descargar(tbody, tabla)
+		{
+			$(tbody).on("click", "button.descargar", function(){
+				var data = tabla.row($(this).parents('tr')).data();
+				var route = '/downloadRecursos/'+data.original_filename;
+				$.blockUI();
+			
+			$.get(route,function(resp){
+					window.open(route);
+				})
+				.fail(function(){
+					$.unblockUI();
+					alertify.alert("Error al descargar el archivo por favor intentalo de nuevo.");
+				})
+				.done(function(){
+					alertify.alert("El archivo/video se ha descargado.");
+					$.unblockUI();
 				});
-
-			})
+			});
 		}
 
-
-		function descripcion(btn)
+		function borrarRecurso(tbody, tabla)
 		{
+			$(tbody).on("click", "button.delete", function(){
+				var data = tabla.row($(this).parents('tr')).data();
+				var route = '/deleteRecurso/'+data.id;
+				$.blockUI();
 
-			var descripcion = btn.value;
-			var tabla = $('#descripcionRec');
-			tabla.html(" ");
-			tabla.append(descripcion);
-		}
+				$.get(route, function(resp){
+					$.unblockUI();
+					alertify.alert("El recurso "+resp.name+" ha sido eliminado.");
+				})
+				.fail(function(){
+					$.unblockUI();
+					alertify.alert("Error al eliminar el recurso.");
+				})
+				.done(function(resp){
+					$.unblockUI();
+					listar();
+				})
 
-		function editarRecurso(btn)
-		{
-			var id = btn.value;
-			var link = $('#updateRecursos').attr('href');
-			var route = link.split('%7Brecursos%7D').join(id);
-
-			$.get(route, function(resp){
-
-				console.log(resp);
-				$('#recursoEdit').val(resp.name);
-				$('#descripcionEdit').val(resp.descripcion);
-				$('#idRecurso').val(resp.id);
-
-			})
-
-			.fail(function(){
-
-				alertify.alert('Error al procesar la solicitud.');
-
-			})
+			});
 
 		}
+
+	});
 
 </script>

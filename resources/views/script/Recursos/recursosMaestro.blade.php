@@ -5,9 +5,6 @@
 		$('a#recursosMaestro').on('click', function(e){
 
 			e.preventDefault();
-
-			var route = $(this).attr('href');
-			var tabla = $('#tablaRecursoMa');
 			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
@@ -49,83 +46,91 @@
 			$('#listRec').hide();
 			$('#listRecMa').show();
 
-			$.get(route, function(resp){
-
-				tabla.html(" ");
-
-				$(resp).each(function(key, value){
-
-					tabla.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' OnClick='desmaestro(this);' value="+value.descripcion+" data-toggle='modal' data-target='#recursoDesmaestro'><i class='fa fa-pencil-square'></i></button></td><td><button class='btn btn-primary' OnClick='verVideoMaestro(this);' value="+value.id+" data-toggle='modal' data-target='#videoRecmaestro'><i class='fa fa-eye'></i></button></td><td><button class='btn btn-primary' OnClick='descargarRecursoMaestro(this);' value="+value.original_filename+"><i class='fa fa-download' aria-hidden='true'></i></button></td></tr>");
-				});
-
-			});
+			listar();
 
 		});
 
-	});
+		function listar()
+		{	
+			var route = '/recIndex';
+			var tabla = $('#maestros-recursos').DataTable({
 
-	function desmaestro(btn)
-	{
-		var descripcion = btn.value;
-		var tabla = $('#descripcionRecmaestro');
-		tabla.html(" ");
-		tabla.append(descripcion);
-	}
+				destroy:true,
+				processing: true,
+	        	serverSide: true,
+	        	ajax:route,
+	        	language: { url: "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"},
+	        	columns:[
 
-	function verVideoMaestro(btn)
-	{
-		var id = btn.value;
-		var link = $('#showRecMaestro').attr('href');
-		var route = link.split('%7Brecmaestro%7D').join(id);
-		var video = $('#vidRecmaestro');
+	        		{data: 'name'},
+	        		{data: 'descripcion'},
+	        		{defaultContent: "<button data-toggle='modal' data-target='#videoRecmaestro' type='button' class='video btn btn-primary'><i class='fa fa-eye' aria-hidden='true'></i></button> <button type='button' class='descargar btn btn-success'><i class='fa fa-download' aria-hidden='true'></i></button> "}
+	        	]
 
-		$.get(route, function(resp){
-
-			video.html(" ");
-
-				if(resp.mime == "video/mp4")
-				{
-					video.append("<video width='500'  height='300' controls='controls'><source src='/recurso/"+resp.original_filename+"' type='video/webm'/><source src='/recurso/"+resp.original_filename+"' type='video/ogg'/><source src='/recurso/"+resp.original_filename+"' type='video/mp4'/></video><hr>");
-
-				}else{
-
-					$('#videoRecmaestro').modal('hide');
-					alertify.alert("Este recurso contiene archivos, para vizualizarlos por favor descargar  el archivo.");
-				}
-
-		})
-
-		.fail(function(){
-
-				alertify.alert("Error al procesar la solicitud.");
-
-			})
-	}
-
-	function descargarRecursoMaestro(btn)
-	{
-
-			var link = $('#decMaestro').attr('href');
-			var route = link.split('%7Bfilename%7D').join(btn.value);
-			$.blockUI();
-			
-			$.get(route,function(resp){
-
-				window.open(route);
-
-			})
-
-			.fail(function(){
-
-				$.unblockUI();
-				alertify.alert("Error al descargar el archivo por favor intentalo de nuevo.");
-			})
-
-			.done(function(){
-
-				alertify.alert("El archivo/video se ha descargado.");
-				$.unblockUI();
 			});
-	}
+
+			verOnline("#maestros-recursos tbody", tabla);
+			descargar("#maestros-recursos tbody", tabla);
+		}
+
+		function verOnline(tbody, tabla)
+		{
+			$(tbody).on("click", "button.video", function(){
+				var data = tabla.row($(this).parents('tr')).data();
+				var route = '/recShow/'+data.id;
+				var video = $('#vidRecmaestro');
+
+				$.get(route, function(resp){
+
+					video.html(" ");
+
+						if(resp.mime == "video/mp4")
+						{
+							video.append("<video width='500'  height='300' controls='controls'><source src='/recurso/"+resp.original_filename+"' type='video/webm'/><source src='/recurso/"+resp.original_filename+"' type='video/ogg'/><source src='/recurso/"+resp.original_filename+"' type='video/mp4'/></video><hr>");
+
+						}else{
+
+							$('#videoRecmaestro').modal('hide');
+							alertify.alert("Este recurso contiene archivos, para vizualizarlos por favor descargar  el archivo.");
+						}
+
+					})
+					.fail(function(){
+
+						alertify.alert("Error al procesar la solicitud.");
+
+					})
+
+			});
+
+		}
+
+		function descargar(tbody, tabla)
+		{
+			$(tbody).on("click", "button.descargar", function(){
+				var data = tabla.row($(this).parents('tr')).data();
+				var route = '/downRecurso/'+data.original_filename;
+				$.blockUI();
+			
+				$.get(route,function(resp){
+
+					window.open(route);
+
+				})
+				.fail(function(){
+
+					$.unblockUI();
+					alertify.alert("Error al descargar el archivo por favor intentalo de nuevo.");
+				})
+				.done(function(){
+
+					alertify.alert("El archivo/video se ha descargado.");
+					$.unblockUI();
+				});
+
+			});
+		}
+
+	});
 
 </script>

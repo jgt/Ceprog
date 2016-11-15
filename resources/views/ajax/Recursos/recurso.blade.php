@@ -11,7 +11,7 @@
          <thead>
            <div class="form-group">
 
-     {!! Form::open(['route' => 'recursos.store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'form-recurso', 'files' => true]) !!}
+     {!! Form::open(['route' => 'recursoStore', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'form-recurso', 'files' => true]) !!}
        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 
     {!! Form::label('name', 'Nombre: ', ['class' => 'form-group']) !!}

@@ -32,9 +32,15 @@ Route::group(['middleware' => 'admin',], function(){
 	
 	Route::group(['namespace' => 'administrador'], function(){
 
-		Route::get('deleteRecurso/{id}', ['as' => 'deleteRecurso', 'uses' => 'RecursosController@deleteRecurso']);
-		Route::get('downloadRecursos/{filename}', ['as' => 'downloadRecursos', 'uses' => 'RecursosController@downloadRecursos']);
-		Route::resource('recursos', 'RecursosController');
+		Route::get('deleteRecurso/{id}', ['as' => 'deleteRecurso', 'uses' => 'RecursosControllers@deleteRecurso']);
+		Route::get('downloadRecursos/{filename}', ['as' => 'downloadRecursos', 'uses' => 'RecursosControllers@downloadRecursos']);
+		Route::get('recursoIndex', ['as' => 'recursoIndex', 'uses' => 'RecursosControllers@index']);
+		Route::post('recursoStore', ['as' => 'recursoStore', 'uses' => 'RecursosControllers@store']);
+		Route::get('recursoShow/{id}', ['as' => 'recursoShow', 'uses' => 'RecursosControllers@show']);
+		Route::get('recursoEdit/{id}', ['as' => 'recursoEdit', 'uses' => 'RecursosControllers@edit']);
+		Route::post('recursoUpdate/{id}', ['as' => 'recursoUpdate', 'uses' => 'RecursosControllers@update']);
+		
+
 		Route::resource('examenDocente', 'ExamenDocenteController');
 		Route::post('createPregDocente', ['as' => 'createPregDocente', 'uses' => 'ExamenDocenteController@createPregunta']);
 		Route::post('createRespuestaDocente', ['as' => 'createRespuestaDocente', 'uses' => 'ExamenDocenteController@createRespuesta']);
@@ -57,9 +63,6 @@ Route::group(['middleware' => 'alumnosMaestros'], function(){
 	require __DIR__ .'/routes/alumnos_maestros.php';
 });
 
-Route::group(['middleware' => 'alumnosAdmision'], function(){
-	
-});
 
 Route::group(['middleware' => 'adminMaestro'], function(){
 
@@ -74,10 +77,10 @@ Route::group(['middleware' => 'maestro'], function(){
 
 	Route::group(['namespace' => 'administrador'], function(){
 
-		Route::get('downRecurso/{filename}', ['as' => 'downRecursos', 'uses' => 'RecMaestroControlles@downloadRecursos']);
+		Route::get('downRecurso/{filename}', ['as' => 'downRecursos', 'uses' => 'RecMaestroControllers@downloadRecursos']);
+		Route::get('recIndex', ['as' => 'recIndex', 'uses' => 'RecMaestroControllers@index']);
+		Route::get('recShow/{id}', ['as' => 'recShow', 'uses' => 'RecMaestroControllers@show']);
 		
-		Route::resource('recmaestro', 'RecMaestroControlles');
-
 	});
 
 });
@@ -125,28 +128,6 @@ Route::group(['middleware' => 'alumnos'], function(){
 	Route::get('descarga/{id}', ['as' => 'descarga', 'uses' => 'DescargaController@create']);
 	Route::post('descarga/{id}', ['as' => 'descarga', 'uses' => 'DescargaController@add']);
 	Route::get('borrar/{filename}', ['as' => 'borrar', 'uses' => 'DescargaController@borrar']);
-
-});
-
-
-Route::group(['middleware' => 'admision'], function(){
-
-
-	Route::get('tutores', ['as' => 'tutores', 'uses' => 'AdmisionController@verCarreraTutores']);
-
-	Route::get('mtmTutores/{id}', ['as' => 'mtm', 'uses' => 'AdmisionController@mtmTutores']);
-
-	Route::get('actTutores/{id}', ['as' => 'actTutores', 'uses' => 'AdmisionController@actTutores']);
-
-	Route::get('sinNota/{id}', ['as' => 'sinNota', 'uses' => 'AdmisionController@sinNota']);
-
-	Route::get('admcreate', ['as' => 'admcreate', 'uses' => 'AdmisionController@createUser']);
-	Route::post('storeUser', ['as' => 'storeUser', 'uses' => 'AdmisionController@storeUser']);
-
-	Route::get('editaralumno/{id}', ['as' => 'edt', 'uses' => 'AdmisionController@editar']);
-	Route::post('updateAlumno/{id}', ['as' => 'updateAlumno', 'uses' => 'AdmisionController@update']);
-
-	Route::get('ver', ['as' => 'ver', 'uses' => 'AdmisionController@ver']);
 
 });
 

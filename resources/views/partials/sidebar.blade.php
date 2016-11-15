@@ -48,7 +48,7 @@
                     <li><a href="{{ route('listplan', $materia)}}" id="listUni">Herramientas</a></li>
                     <li><a href="{{ route('almSem', $materia->id)}}" id="menuListUser">Lista de Alumnos</a></li>
                     <li><a href="{{route('listExamen', $materia )}}" id="LexamenMaestro">Lista de examenes</a></li>
-                    <li><a href="{{route('recursos.index')}}" id="recursosMaestro">Lista Recursos</a></li>
+                    <li><a href="{{route('recursoIndex')}}" id="recursosMaestro">Lista Recursos</a></li>
                     <li><a href="{{ route('allTutorial')}}" id="prfTutorial">Tutoriales</a></li>
                 <li><a href="{{ route('listplan', $materia)}}" id="ListUniSub"><i class='fa fa-plus fa-fw'></i>Base Teórica</a>
                     <ul class="treeview-menu" id="nameUni"></ul>  
@@ -107,7 +107,7 @@
                     <li><a href="{{ route('tutorial')}}" id="admin"><i class="fa fa-film"></i> Subir tutoriales</a></li>
                     <li><a href="{{ route('allTutorial')}}" id="listTutorial"><i class="fa fa-file-video-o"></i> Lista de tutoriales</a></li>
                     <li><a href="{{ route('examenDocente.create') }}" id="evaDocente"><i class="fa fa-laptop" aria-hidden="true"></i> Evaluacion Docente</a></li>
-                    <li><a href="{{ route('recursos.store') }}" id="recursos"><i class="fa fa-file-archive-o" aria-hidden="true"></i> Recursos</a></li>
+                    <li><a href="{{ route('recursoStore') }}" id="recursos"><i class="fa fa-file-archive-o" aria-hidden="true"></i> Recursos</a></li>
                 
                 <li><a href="#"><i class='fa fa-plus fa-fw'></i> Administracion</a>
                                       
@@ -127,7 +127,7 @@
                                        <li><a href="{{route('listForo')}}" id="listForoadm">Lista de Foros</a></li>
                                        <li><a href="{{route('carrera.index')}}" id ="lstCrra">Lista de carreras</a></li>
                                        <li><a href="{{ route('listexaDocente') }}" id ="docenteListexa">Lista de examen</a></li>
-                                       <li><a href="{{ route('recursos.index') }}" id ="listRecurso">Lista de recurso</a></li>
+                                       <li><a href="{{ route('recursoIndex') }}" id ="listRecurso">Lista de recurso</a></li>
                                       </ul>
                                 </li>
                 </ul>

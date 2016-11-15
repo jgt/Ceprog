@@ -45,7 +45,7 @@ class ResetController extends Controller {
 	public function resetC(Peticion $request, $id)
    {	
 
-   	  $dir = public_path().'/imagen';
+   	   $dir = public_path().'/imagen';
    	  $users = User::find($id);
       $users->update($request->all());
    	  $user = Auth::user()->id;
@@ -53,25 +53,20 @@ class ResetController extends Controller {
    	  $nombre = $file->getClientOriginalName();
    	  $ruta = $file->move($dir, $nombre);
 	  $extension = $file->getClientOriginalExtension();
-
 	  	$img = ImagenUser::create([
-
 	  		'mime' => $file->getClientMimeType(),
 	  		'ruta' => $ruta,
 			'original_img' => $file->getClientOriginalName(),
 			'img' => $nombre,
 			'user_id' => $user
-
 	  		]);
-
 	  		$img->save();
-
-
 	  		if($request->ajax())
 			   {
 			   	
 			   	return response()->json($img);
 			   }
+
 
    }
 
