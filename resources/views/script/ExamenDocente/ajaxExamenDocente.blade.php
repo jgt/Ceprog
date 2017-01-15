@@ -96,6 +96,8 @@ $(document).on('ready', function(){
       $('#listExamenAdmin').hide();
 	  $('#crtExamenDocente').show();
 	  $('#listRec').hide();
+	  $('#plcList').hide();
+	  $('#admPlc').hide();
 
 		var route = $(this).attr('href');
 		var carrera = $('#selectMatdocente');

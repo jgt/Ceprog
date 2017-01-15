@@ -45,6 +45,8 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 
 			var route = $(this).attr('href');
 			var tablaAlumnos = $('#tablaAlumnosList');
@@ -147,6 +149,8 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 			
 			var link = $('#uniList').attr('href');
 			var materia = $(this).parents('ul');

@@ -45,6 +45,8 @@
 				$('#listExamenDoc').hide();
 				$('#listRec').hide();
 				$('#listRecMa').hide();
+				$('#plcList').hide();
+				$('#admPlc').hide();
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -112,6 +114,8 @@
 			    $('#listExamenDoc').hide();
 			    $('#listRec').hide();
 			    $('#listRecMa').hide();
+			    $('#plcList').hide();
+			    $('#admPlc').hide();
 
 			    var route = $('#allTutorialAlm').attr('href');
 			    var tutorialAlm = $('#tablaTutorialAlm');

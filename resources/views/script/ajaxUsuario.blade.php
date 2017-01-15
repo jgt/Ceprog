@@ -128,6 +128,8 @@
 			   $('#listExamenDoc').hide();
 			   $('#listRec').hide();
 			   $('#listRecMa').hide();
+			   $('#plcList').hide();
+			   $('#admPlc').hide();
 
 				
 			      

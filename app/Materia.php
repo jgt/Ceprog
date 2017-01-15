@@ -40,9 +40,9 @@ class Materia extends Model {
 		return $this->belongsToMany('App\User');
 	}
 
-	public function planeaciones()
+	public function planeacion()
 	{
-		return $this->hasMany('App\Planeacion');
+		return $this->hasOne('App\Planeacion');
 	}
 
 	public function examenes()
@@ -86,5 +86,7 @@ class Materia extends Model {
     {
     	return  $this->has('resultados')->count();
     }
+
+     
 
 }

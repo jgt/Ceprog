@@ -65,7 +65,10 @@
         $('#alumnosListUser').hide();
         $('#listExamenDocente').hide();
         $('#listPreg').hide();
+        $('#plcList').hide();
 		$('#listExamenDoc').show();
+		$('#admPlc').hide();
+		
 		var route = $(this).attr('href');
 		var tablaExamen = $('#tablaExamenesDoc');
 

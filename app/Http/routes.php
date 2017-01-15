@@ -68,6 +68,7 @@ Route::group(['middleware' => 'adminMaestro'], function(){
 
 	Route::get('showForo/{id}', ['as' => 'showForo', 'uses' => 'ForoController@showForo']);
 	Route::get('listForo', ['as' => 'listForo', 'uses' => 'ForoController@listForo']);
+	Route::get('plcDescargar/{filename}', ['as' => 'plcDescargar', 'uses' => 'PlaneacionController@plcDescargar']);
 
 });
 

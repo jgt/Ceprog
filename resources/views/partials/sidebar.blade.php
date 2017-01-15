@@ -44,9 +44,11 @@
                 <ul class="treeview-menu" Style="display:none" data-id="{{ $materia->id}}">
                    
                     <li><a href="{{ route('planeacion', $materia)}}" id="planeacion">Crear Unidad</a></li>
+                    <li><a href="{{ route('plc.show', $materia)}}" id="plcMaestro">Subir Planeacion</a></li>
                     <li><a href="{{ route('examen', $materia)}}" id="createExa">Crear Examen</a></li>
                     <li><a href="{{ route('listplan', $materia)}}" id="listUni">Herramientas</a></li>
                     <li><a href="{{ route('almSem', $materia->id)}}" id="menuListUser">Lista de Alumnos</a></li>
+                    <li><a href="{{ route('listPlaneacion', $materia) }}" id="mtaPlan">Lista de Planeaciones</a></li>
                     <li><a href="{{route('listExamen', $materia )}}" id="LexamenMaestro">Lista de examenes</a></li>
                     <li><a href="{{route('recursoIndex')}}" id="recursosMaestro">Lista Recursos</a></li>
                     <li><a href="{{ route('allTutorial')}}" id="prfTutorial">Tutoriales</a></li>
@@ -101,6 +103,14 @@
             <li class="header">Administrador</li>
             <!-- Optionally, you can add icons to the links -->
                 <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Reportes</span><i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                     <li><a href="{{ route('plc.index') }}" id="planeacionAdm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Planeaciones</a></li>
+                     <li><a href="{{ route('reporteGeneralDoc') }}" id="rptGenDoc"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Reporte General</a></li>
+                     <li><a href="{{ route('listMateriasDocente') }}" id="listaEPD"><i class="fa fa-database" aria-hidden="true"></i>Reporte Examen Docente</a></li>
+                  </ul>
+                </li>
+                <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Herramientas</span><i class="fa fa-angle-left pull-right"></i></a>
                 
                 <ul class="treeview-menu">
@@ -122,8 +132,6 @@
                                       
                                       <ul class="treeview-menu">
                                        <li><a href="{{route('admin.index')}}" id="listaP">Lista de Personal</a></li>
-                                       <li><a href="{{ route('reporteGeneralDoc') }}" id="rptGenDoc">Reporte General</a></li>
-                                       <li><a href="{{ route('listMateriasDocente') }}" id="listaEPD">Reporte Examen Docente</a></li>
                                        <li><a href="{{route('listForo')}}" id="listForoadm">Lista de Foros</a></li>
                                        <li><a href="{{route('carrera.index')}}" id ="lstCrra">Lista de carreras</a></li>
                                        <li><a href="{{ route('listexaDocente') }}" id ="docenteListexa">Lista de examen</a></li>

@@ -101,6 +101,8 @@
 					$('#listRec').hide();
 					$('#listRecMa').hide();
 					$('#listRecMa').hide();
+					$('#plcList').hide();
+					$('#admPlc').hide();
 					
 
 					var id = $(this).attr('href');
@@ -228,6 +230,8 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 			
 
 			var route = $(this).attr('href');

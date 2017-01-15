@@ -46,6 +46,8 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');
@@ -186,6 +188,8 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 
 			//retroceso a unidades de estudiantes.
 			$('#backActalm').on('click', function(){

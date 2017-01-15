@@ -23,3 +23,4 @@ Route::get('portafolio/{id}', ['as' => 'portafolio', 'uses' => 'PortafolioContro
 Route::get('pdf/{id}', ['as' => 'pdf', 'uses' => 'ActividadController@verPdf']);
 //te muestra el material de apoyo de una actividad.
 Route::get('material/{id}', ['as' => 'material', 'uses' => 'FileEntryController@material']);
+

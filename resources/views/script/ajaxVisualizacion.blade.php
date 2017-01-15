@@ -41,6 +41,8 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
@@ -96,6 +98,8 @@
 					$('#listExamenDoc').hide();
 					$('#listRec').hide();
 					$('#listRecMa').hide();
+					$('#plcList').hide();
+					$('#admPlc').hide();
 
 					var id = $(this).attr('href');
 					var link = $('#idSubtemas').attr('href');
@@ -197,6 +201,8 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 			
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -250,6 +256,8 @@
 					$('#listExamenDoc').hide();
 					$('#listRec').hide();
 					$('#listRecMa').hide();
+					$('#plcList').hide();
+					$('#admPlc').hide();
 
 					var id = $(this).attr('href');
 					var link = $('#idSubtemasAlm').attr('href');

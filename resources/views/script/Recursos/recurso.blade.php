@@ -107,7 +107,8 @@
 			$('#tutoriales').hide();
 			$('#listExamenDoc').hide();
 			$('#listRec').show();
-
+			$('#plcList').hide();
+			$('#admPlc').hide();
 			listar();	
 
 		});

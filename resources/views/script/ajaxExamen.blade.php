@@ -41,12 +41,12 @@
       $('div#calAct').hide();
       $('div#listUnidades').hide();
       $('div#listSubtemas').hide();
-       $('#createVideos').hide();
-       $('div#vizuaUnidad').hide();
-        $('div#VunidadE').hide();
-        $('#listRub').hide();
-        $('#prflistTuto').hide();
-          $('#adminPlan').hide();
+      $('#createVideos').hide();
+      $('div#vizuaUnidad').hide();
+      $('div#VunidadE').hide();
+      $('#listRub').hide();
+      $('#prflistTuto').hide();
+      $('#adminPlan').hide();
       $('#admRole').hide();
       $('div#user').hide();
       $('#admForo').hide();
@@ -58,6 +58,8 @@
       $('#listExamenDoc').hide();
       $('#listRec').hide();
       $('#listRecMa').hide();
+      $('#plcList').hide();
+      $('#admPlc').hide();
       
 
       var route = $(this).attr('href');

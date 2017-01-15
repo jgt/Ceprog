@@ -46,6 +46,8 @@ $(document).on('ready', function(){
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 
 
 		$.get(route, function(resp){

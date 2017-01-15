@@ -80,3 +80,11 @@ Route::get('show/{id}', ['as' => 'showPdf', 'uses' => 'DisenoController@show']);
 Route::resource('profesor', 'ProfesorController');
 Route::get('deleteActividad/{id}', ['as' => 'deleteActividad', 'uses' => 'ProfesorController@deleteActividad']);
 Route::get('createActividad/{id}', ['as' => 'createAct', 'uses' => 'ProfesorController@createActividad']);
+
+Route::resource('plc', 'PlaneacionController');
+Route::post('plcStore/{id}', ['as' => 'plcStore', 'uses' => 'PlaneacionController@plcStore']);
+Route::post('borrarPlc/{id}', ['as' => 'borrarPlc', 'uses' => 'PlaneacionController@borrarPlc']);
+Route::get('listPlaneacion/{id}', ['as' => 'listPlaneacion', 'uses' => 'PlaneacionController@listPlaneacion']);
+
+
+

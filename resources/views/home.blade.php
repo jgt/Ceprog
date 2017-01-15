@@ -63,13 +63,17 @@
  @include('ajax.Recursos.modalEditarRecurso')
  @include('ajax.Recursos.modalDescripcionMaestro')
  @include('ajax.Recursos.modalVideoMaestro')
- 
+ @include('ajax.Planeacion.createPlaneacion')
+ @include('ajax.Planeacion.modalDeletePlc')
+
 <div class="container">
 
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 					
+					@include('ajax.Planeacion.listPlanAdm')
+					@include('ajax.Planeacion.listPlaneacion')
 					@include('ajax.Recursos.listRecursosMaestro')
 					@include('ajax.Recursos.listRecurso')
 					@include('ajax.ExamenDocente.reportes.tablaMaterias')

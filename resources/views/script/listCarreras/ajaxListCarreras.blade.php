@@ -39,6 +39,8 @@
 			$('#froadm').hide();
 			$('#semm').hide();
 			$('#mtaList').hide();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 
 			listCarrera();
 

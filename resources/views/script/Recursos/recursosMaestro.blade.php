@@ -45,6 +45,8 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').show();
+			$('#plcList').hide();
+			$('#admPlc').hide();
 
 			listar();
 
