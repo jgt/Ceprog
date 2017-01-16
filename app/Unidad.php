@@ -44,7 +44,6 @@ class Unidad extends Model
 		return $this->belongsTo('App\User');
 	}
 
-
     public function subtemas()
     {
 
@@ -56,11 +55,10 @@ class Unidad extends Model
         return $this->hasMany('App\Video');
     }
 
-
     public function getMateriaListAttribute()
 	{
 
 		return $this->materia->get('id');
 	}
-
+    
 }

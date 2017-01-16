@@ -12,7 +12,6 @@ use App;
 
 use Illuminate\Http\Request;
 use App\Repository\ActividadRepository;
-use App\Repository\SemestreRepository;
 use App\Repository\UserRepository;
 use App\Repository\MateriaRepository;
 use App\Repository\CalificacionRepository;
@@ -24,7 +23,6 @@ class ActividadController extends Controller {
 
 
 	private $actividadRepository;
-	private $semestreRepository;
 	private $userRepository;
 	private $materiaRepository;
 	private $calificacionRepository;
@@ -35,7 +33,6 @@ class ActividadController extends Controller {
 	public function __construct(
 
 		ActividadRepository $actividadRepository, 
-		SemestreRepository $semestreRepository,
 		UserRepository $userRepository,
 		MateriaRepository $materiaRepository,
 		CalificacionRepository $calificacionRepository,
@@ -45,7 +42,6 @@ class ActividadController extends Controller {
 	{
 
 		$this->actividadRepository = $actividadRepository;
-		$this->semestreRepository = $semestreRepository;
 		$this->userRepository = $userRepository;
 		$this->materiaRepository = $materiaRepository;
 		$this->calificacionRepository = $calificacionRepository;
@@ -54,23 +50,7 @@ class ActividadController extends Controller {
 		$this->unidadRepository = $unidadRepository;
 	}
 
-	public function verCarreras(Request $request)
-	{
-
-		$semestres = $this->userRepository->verCarrera($request);
-
-		return view('listalumnos', compact('semestres'));
-	}
-
-
-	public function verMaterias($id)
-	{
-
-		$materias = $this->semestreRepository->verMaterias($id);
-        return view('vermaterias', compact('materias'));
-	}
-
-
+	
 	public function verUnidades($id, Request $request)
 	{
 
@@ -100,19 +80,19 @@ class ActividadController extends Controller {
 	}
 
 	
-			public function verPdf($id)
-			{
+	public function verPdf($id)
+	{
 		
-		 		$pdf = App::make('dompdf.wrapper');
-                $unidad = Unidad::find($id);
-                $customPaper = array(0,0,950,950);
-                $paper_orientation = 'landscape';
-                $pdf->setPaper($customPaper,$paper_orientation);
-                $pdf->loadview('showalumno', compact('unidad'));
-                return $pdf->stream();
+		 $pdf = App::make('dompdf.wrapper');
+         $unidad = Unidad::find($id);
+         $customPaper = array(0,0,950,950);
+         $paper_orientation = 'landscape';
+         $pdf->setPaper($customPaper,$paper_orientation);
+         $pdf->loadview('showalumno', compact('unidad'));
+         return $pdf->stream();
 
 		
-			}
+	}
 
 
 	public function promedio($id, Request $request)
@@ -131,17 +111,6 @@ class ActividadController extends Controller {
         $pdf->setPaper($customPaper,$paper_orientation);
        $pdf->loadview('calificacionAlm', compact('actividades', 'promedio', 'user', 'totalExamen'));
         return $pdf->stream('Calificacion.pdf');	
-	}
-
-
-	public function calCarrera($id)
-	{
-
-		$semestre = Semestre::find($id);
-		$materias = $semestre->materias()->get();
-
-		return view('calCarrera', compact('materias', 'semestre'));
-
 	}
 
 	public function verExamen($id, Request $request)

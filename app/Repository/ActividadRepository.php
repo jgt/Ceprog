@@ -36,31 +36,21 @@ class ActividadRepository extends BaseRepository {
 
 	public function crearActividad(Maestro $request)
 	{
-
 		$profesor = Actividad::create($request->all());
 		return $profesor;
-
 	}
 
 	public function updateActividad(Editact $request, $id)
 	{
-
 		$actividad = $this->search($id);
-
 		$actividad->update($request->all());
-
-		flash()->overlay('Ha sido asignado/editado correctamente ', 'La actividad '. $actividad->actividad);
+		return $actividad;
 	}
 
 	public function delete($id)
 	{
-
 		$profesor = $this->search($id);
-
 		$profesor->delete($id);
-
-		flash()->overlay('Ha sido borrado', 'La actividad ' . $profesor->actividad);
-
 	}
 
 
@@ -71,5 +61,6 @@ class ActividadRepository extends BaseRepository {
 
 		return $users;
 	}
+
 
 }

@@ -27,13 +27,13 @@ class PlaneacionRepository extends BaseRepository
 
      public function descargarPlaneacion($filename)
     {
-        $file = $this->path($filename);
+        $file = $this->descargar($filename);
         return $file;
     }
 
     public function borrarPlc($id)
     {
-        $file = $this->path($this->search($id)->filename);
+        $file = $this->descargar($this->search($id)->filename);
 
         if($file){
 
@@ -48,8 +48,8 @@ class PlaneacionRepository extends BaseRepository
     {
         if(!$this->getModel()->hasArchivo($id, $this->authUser()))
         {
-            $move = $this->movePath($request);
-            $planeacion = Planeacion::create([
+            $this->movePath($request);
+            return Planeacion::create([
 
             'mime' => $this->type($request),
             'original_filename' => $this->fileName($request),
@@ -58,9 +58,6 @@ class PlaneacionRepository extends BaseRepository
             'user_id' => $this->authUser()
 
             ]);
-
-            $planeacion->save();
-            return $planeacion;
         }
 
         return abort(404, 'El archivo ya existe');
@@ -78,32 +75,29 @@ class PlaneacionRepository extends BaseRepository
 
     protected function fileName(Request $request)
     {
-        $file = $this->file($request);
-        $filename = $file->getClientOriginalName();
-        return $filename;
+        return $this->file($request)->getClientOriginalName();
+    }
+
+    protected function path()
+    {
+        return public_path().'/planeacion';
     }
 
     protected function movePath(Request $request)
     {
-        $dir = public_path().'/planeacion';
-        $file = $this->file($request);
-        $ruta = $file->move($dir, $this->fileName($request));
-        return $ruta;
+        return $this->file($request)->move($this->path(), $this->filename($request));
     }
 
     protected function type(Request $request)
     {
-        $type = $request->file('archivo');
-        $type->getClientMimeType();
-        return $type;
+        return $request->file('archivo')->getClientMimeType();
     }
 
-    protected function path($filename)
+    protected function descargar(Request $request)
     {   
         $public_path = public_path();
         $archivo = $public_path.'/planeacion/'.$filename;
         return $archivo;
-
     }
 
 }

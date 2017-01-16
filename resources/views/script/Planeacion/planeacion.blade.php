@@ -176,6 +176,8 @@
 		{
 			var tabla = $('#planeacion-table').DataTable({
 
+				filter: false,
+				paging: false,
 				destroy:true,
 				processing: true,
 	       		serverSide: true,

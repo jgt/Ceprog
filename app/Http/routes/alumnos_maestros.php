@@ -16,8 +16,8 @@ Route::get('descarga/get/{filename}', ['as' => 'getentry', 'uses' => 'DescargaCo
 Route::get('fileentry/get/{filename}', ['as' => 'apoyo', 'uses' => 'FileEntryController@get']);
 Route::post('update/{id}', ['as' => 'archivoupdate', 'uses' => 'FileEntryController@update']);
 //me muestra las unidades que tiene la materia  con sus subtemas y las actividades que tiene cada unidad. 
-Route::get('idUnidad/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@idUnidad']);
-Route::get('idSubtemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@idSubtemas']);
+Route::get('baseTeorica/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@baseTeorica']);
+Route::get('baseTeoricaSubTemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@baseTeoricaSubTemas']);
 Route::get('portafolio/{id}', ['as' => 'portafolio', 'uses' => 'PortafolioController@portafolio']);
 //muestra la unidad del alumno y maestro en formato pdf
 Route::get('pdf/{id}', ['as' => 'pdf', 'uses' => 'ActividadController@verPdf']);

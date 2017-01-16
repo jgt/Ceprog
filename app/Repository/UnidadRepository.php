@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class UnidadRepository extends BaseRepository {
 
+	protected $detalles = [];
 
 	public function getModel()
 	{
@@ -19,30 +20,44 @@ class UnidadRepository extends BaseRepository {
 
 	public function crearUnidad(Request $request)
 	{
-
 		$unidad = Unidad::create($request->all());
-		
 		return $unidad;
 
 	}
 
-	public function updateUnidad(Request $request, $id)
+	public function updateUnidad($id, Request $request)
 	{
-
-		$unidad = $this->search($id);
-		$unidad->update($request->all());
-
+		$unidad = $this->search($id)->update($request->all());
 		return $unidad;
 	}
 
-	public function subtemas(Request $request, $id)
+	public function subtemas($id)
 	{
-
-		$unidad = $this->search($id); // encuentro la unidad
-		$imagenes= $unidad->where('id', $id)->with('subtemas', 'subtemas.imagenes')->get(); // devuelve todas las imagenes que tiene los subtemas de la unidad
-
-		return $imagenes;
-		
+		$imagenes = $this->subTemasImg($id);
+		return $imagenes;	
 	}
+
+	public  function baseTeoricaSubTemas($id)
+    {
+    	$unidad = $this->subTemasImg($id);
+		$videos = $this->videosUnidad($id);
+		$detalles = [
+		
+			'unidad' => $unidad,
+			'videos' => $videos
+		];
+			
+		return response()->json($detalles);
+    }
+
+	protected function subTemasImg($id)
+    {
+        return $this->search($id)->where('id', $id)->with('subtemas.imagenes')->get();
+    }
+
+    protected function videosUnidad($id)
+    {
+    	return $this->search($id)->videos()->get();
+    }
 
 }

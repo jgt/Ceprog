@@ -47,8 +47,7 @@
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
-			var link = $('#idUnidad').attr('href');
-			var route = link.split('%7Bid%7D').join(id);
+			var route = '/baseTeorica/'+id;
 			
 			$.get(route, function(resp){
 
@@ -102,8 +101,7 @@
 					$('#admPlc').hide();
 
 					var id = $(this).attr('href');
-					var link = $('#idSubtemas').attr('href');
-					var route = link.split('%7Bid%7D').join(id);
+					var route = '/baseTeoricaSubTemas/'+id;
 					var ulSubtemas = $('#ulvizu');
 					var video = $('#videolistUni');
 					var imgSub = $('#imsub');
@@ -206,8 +204,7 @@
 			
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
-			var link = $('#idUnidadAlm').attr('href');
-			var route = link.split('%7Bid%7D').join(id);
+			var route = '/baseTeorica/'+id;
 			var alm = $('ul#AlmuniList');
 
 			$.get(route, function(resp){
@@ -260,8 +257,7 @@
 					$('#admPlc').hide();
 
 					var id = $(this).attr('href');
-					var link = $('#idSubtemasAlm').attr('href');
-					var route = link.split('%7Bid%7D').join(id);
+					var route = '/baseTeoricaSubTemas/'+id;
 					var subtemaAlm = $('#ulalmV');
 					var videosAlm = $('#ulvideoAlm');
 					var imgAlm = $('#imsubAlm');

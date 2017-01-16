@@ -625,6 +625,7 @@
 		var id = btn.value;
 		var link = $('#imgList').attr('href');
 		var route = link.split('%7Bid%7D').join(id);
+		console.log(route);
 		var img = $('#tablaImagenes');
 
 		$.get(route, function(resp){

@@ -60,6 +60,8 @@
 		{
 			var tabla = $('#plcadmin-table').DataTable({
 
+				filter: false,
+				paging: false,
 				destroy:true,
 				processing: true,
 	       		serverSide: true,

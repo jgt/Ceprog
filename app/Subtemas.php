@@ -22,5 +22,4 @@ class Subtemas extends Model
     	return $this->hasMany('App\Imagenes', 'subtema_id', 'id');
     }
 
-
 }

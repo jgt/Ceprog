@@ -42,72 +42,39 @@ class DisenoController extends Controller {
 
 		];
 
-		if($request->ajax())
-		{
+		return response()->json($detalles);
 
-			return response()->json($detalles);
-
-		}
 	}
 
 	public function storePlan(plt $request)
 	{
-
 		$unidad = $this->unidadRepository->crearUnidad($request);
-
-		if($request->ajax()){
-
-			return response()->json($unidad);
-		}
+		return response()->json($unidad);
 
 	}
 
 	public function listPlan($id, Request $request)
 	{
-		$materia = $this->materiaRepository->search($id);
-		$unidades = $materia->unidades()->get();
-		
-		if($request->ajax())
-		{
-
-			return response()->json($unidades);
-		}
-		
+		$unidades = $this->materiaRepository->search($id)->unidades()->get();
+		return response()->json($unidades);		
 	}
-
 
 	public function editplan($id, Request $request)
 	{
-		$user = Auth::user();
 		$unidad = $this->unidadRepository->search($id);
-		
-		if($request->ajax())
-		{
-
-			return response()->json($unidad);
-		}
-
-
+		return response()->json($unidad);
 	}
 
 
 	public function updateplan($id, Request $request)
 	{
-		
-		$update = $this->unidadRepository->updateUnidad($request, $id);
-		
-		if($request->ajax())
-
-		{
-			return response()->json($update);
-		}
-
+		$update = $this->unidadRepository->updateUnidad($id, $request);
+		return response()->json($update);
 	}
 
-
+	//esto va en el controller de actvidades.
 	public function planPdf($id, Request $request)
 	{
-		
 		$pdf = App::make('dompdf.wrapper');
 		$actividad = Actividad::find($id);
 		$customPaper = array(0,0,950,950);
@@ -117,47 +84,15 @@ class DisenoController extends Controller {
 		return $pdf->stream('Actividad.pdf');
 	}
 
-	public function show($id)
+	public function baseTeorica($id, Request $request)
 	{
-		$planeacion = $this->unidadRepository->search($id);
-		return view('pdf.vistaprevia', compact('planeacion'));
-
+		$unidades = $this->materiaRepository->search($id)->unidades()->get();
+		return response()->json($unidades);
 	}
 
-	public function idUnidad($id, Request $request)
-
+	public function baseTeoricaSubTemas($id)
 	{
-
-		$materia = $this->materiaRepository->search($id);
-		$unidades = $materia->unidades()->get();
-	
-		if($request->ajax())
-		{
-			return response()->json($unidades);
-		}
-	}
-
-
-	public function idSubtemas($id, Request $request)
-	{
-
-		$unidad = $this->unidadRepository->subtemas($request, $id);
-		$und = $this->unidadRepository->search($id);
-		$videos = $und->videos()->get();
-
-		$detalles = [
-
-			'unidad' => $unidad,
-			'videos' => $videos
-
-		];
-		
-		if($request->ajax())
-		{
-
-			return response()->json($detalles);
-		}
-
+		return $this->unidadRepository->baseTeoricaSubTemas($id);
 	}
 
 }
