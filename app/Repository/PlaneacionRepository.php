@@ -93,7 +93,7 @@ class PlaneacionRepository extends BaseRepository
         return $request->file('archivo')->getClientMimeType();
     }
 
-    protected function descargar(Request $request)
+    protected function descargar($filename)
     {   
         $public_path = public_path();
         $archivo = $public_path.'/planeacion/'.$filename;

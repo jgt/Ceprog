@@ -77,8 +77,14 @@
 			e.preventDefault();
 			var route = $(this).attr('href');
 			ocultar();
-			listar(route);
+			if (! $.fn.DataTable.isDataTable('#planeacion-table')){
+				listar(route);
+			}else{
 
+				var tabla = $('#planeacion-table').DataTable();
+				tabla.ajax.reload();
+			}
+			
 		});
 
 		$('#crt-deletePlc').on('click', function(e){

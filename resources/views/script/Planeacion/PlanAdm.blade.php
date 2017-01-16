@@ -6,7 +6,13 @@
 			e.preventDefault();
 			ocultar();
 			var route = $(this).attr('href');
-			listar(route);
+			if (! $.fn.DataTable.isDataTable('#plcadmin-table')){
+				listar(route);
+			}else{
+
+				var tabla = $('#plcadmin-table').DataTable();
+				tabla.ajax.reload();
+			}
 
 		});
 
