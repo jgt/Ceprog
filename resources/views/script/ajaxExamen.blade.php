@@ -60,6 +60,7 @@
       $('#listRecMa').hide();
       $('#plcList').hide();
       $('#admPlc').hide();
+      $('#plcAlm').hide();
       
 
       var route = $(this).attr('href');

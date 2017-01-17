@@ -27,7 +27,10 @@
 @include('script.Recursos.recursosMaestro')
 
 @include('script.Planeacion.PlanAdm')
+
 @include('script.Planeacion.planeacion')
+
+@include('script.Planeacion.planeacionAlm')
 
 @include('script.Recursos.recurso')
 

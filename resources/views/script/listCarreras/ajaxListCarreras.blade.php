@@ -41,6 +41,7 @@
 			$('#mtaList').hide();
 			$('#plcList').hide();
 			$('#admPlc').hide();
+			$('#plcAlm').hide();
 
 			listCarrera();
 

@@ -1,24 +1,19 @@
 <script>
+	
 	$(document).on('ready', function(){
 
-		$('#planeacionAdm').on('click', function(e){
+		$('a#listplcAlm').on('click', function(e){
 
 			e.preventDefault();
 			ocultar();
 			var route = $(this).attr('href');
-			if (! $.fn.DataTable.isDataTable('#plcadmin-table')){
-				listar(route);
-			}else{
-
-				var tabla = $('#plcadmin-table').DataTable();
-				tabla.ajax.reload();
-			}
-
+			listar(route);
+			
 		});
 
 		function ocultar()
 		{
-			$('#admPlc').show();
+			$('#plcAlm').show();
 			$('#tbMateriaDoc').hide();
 			$('#crtExamenDocente').hide();
 			$('#mtaList').hide();
@@ -59,13 +54,13 @@
 			$('#listExamenDoc').hide();
 			$('#listRec').hide();
 			$('#listRecMa').hide();
+			$('#admPlc').hide();
 			$('#plcList').hide();
-			$('#plcAlm').hide();
 		}
 
 		function listar(route)
 		{
-			var tabla = $('#plcadmin-table').DataTable({
+			var tabla = $('#plcalm-table').DataTable({
 
 				filter: false,
 				paging: false,
@@ -76,27 +71,27 @@
 	       		language: { url: "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"},
 	       		columns:[
 
-	        		{data: 'name'},
-	        		{data: 'planeacion.filename', name: 'planeacion.filename'},
-	        		{data: 'planeacion.user.name', name: 'planeacion.user.name'},
+	        		{data: 'filename'},
+	        		{data: 'mime'},
 	        		{defaultContent: "<button type='button' class='descargar btn btn-primary'><i class='fa fa-cloud-download' aria-hidden='true'></i></button>"}
 	        					
 	        		]
 
 				});
 
-				descargar("#plcadmin-table tbody", tabla);
+				descargar("#plcalm-table tbody", tabla);
 		}
 
 		function descargar(tbody, tabla)
 		{
 			$(tbody).on("click", "button.descargar", function(){
 				var data = tabla.row($(this).parents('tr')).data();
-				var route = '/plcDescargar/'+data.planeacion.filename;
+				var route = '/plcDescargar/'+data.filename;
 				window.open(route);
 
 			});
 		}
 
 	});
+
 </script>

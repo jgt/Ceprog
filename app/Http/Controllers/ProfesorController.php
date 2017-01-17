@@ -9,7 +9,6 @@ use App\Rubrica;
 use App\Materia;
 use App\Actividad;
 use App\User;
-use App;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -40,95 +39,38 @@ class ProfesorController extends Controller {
 
 	}
 
-	
-	public function index(Request $request)
-	{
-		
-	}
-
-	
-	public function create()
-	{
-
-	}
-
-	public function createActividad($id)
-	{
-
-		$unidad = $this->unidadRepository->search($id);
-		$rubricas = Rubrica::lists('name', 'id');
-
-		return view('create.actividad', compact('unidad', 'rubricas'));
-	}
-
-	
 	public function store(Maestro $request)
 	{
-		
 		$datos = $this->actividadRepository->crearActividad($request);
-		
-		if($request->ajax())
-		{
-			return response()->json($datos);
-		}
-
+		return response()->json($datos);
 	}
 
-	
 	public function show($id, Request $request)
 	{
-
-		$actividad = $this->actividadRepository->search($id)->rubricas()->with('actividad')->get();
-		
-		if($request->ajax())
-		{
-			return response()->json($actividad);
-		}	
-   
+		$actividad = $this->actividadRepository->show($id);
+		return response()->json($actividad);   
 	}
 
-	
-	public function edit($id, Request $request)
+	public function edit($id)
 	{
-		
-		$actividad = $this->actividadRepository->search($id);
-		$rubricas = $this->actividadRepository->getRubricas($id);
-		$detalles = [
-
-				'actividad' => $actividad,
-				'rubricas' => $rubricas,
-				'unidad' => $actividad->unidad
-		];
-
-		if($request->ajax()){
-
-			return response()->json($detalles);
-		}
-
-		return view('edit.editactividad', compact('actividad', 'rubricas'));
+		$actividad = $this->actividadRepository->edit($id);
+		return response()->json($actividad);
 	}
 
-	
 	public function update($id, Editact $request)
 	{
-		
-		$this->actividadRepository->updateActividad($request, $id);
-		return redirect()->back();
-	}
-
-	
-	public function destroy($id)
-	{
-		
-		$actividad = $this->actividadRepository->delete($id);
-		return redirect()->back();
+	  	$actividad = $this->actividadRepository->updateActividad($request, $id);
+		return response()->json($actividad);
 	}
 
 	public function deleteActividad($id)
 	{
-		
-		$actividad = $this->actividadRepository->delete($id);
-		return redirect()->back();
+		return $this->actividadRepository->delete($id);
+	}
+
+	public function planPdf($id)
+	{
+		return $this->actividadRepository->convertir($id);
 	}
 
 }

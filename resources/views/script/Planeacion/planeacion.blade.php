@@ -176,6 +176,7 @@
 			$('#listRecMa').hide();
 			$('#admPlc').hide();
 			$('#plcList').show();
+			$('#plcAlm').hide();
 		}
 
 		function listar(route)

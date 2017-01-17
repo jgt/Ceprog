@@ -81,6 +81,7 @@
                          <a href="{{ route('idSubtemas')}}" id="idSubtemasAlm" Style="display:none"></a>
                         <li><a href="{{ route('act', $materia)}}" id="almUni">Herramientas</a></li>
                         <li><a href="{{route('listExamen', $materia )}}" id="Lexamen">Lista de examenes</a></li>
+                        <li><a href="{{ route('listPlaneacion', $materia) }}" id="listplcAlm">Planeacion</a></li>
                         <li><a href="{{route('quizDocente.show', $materia )}}" id="Rexamen">Evalua tu Docente</a></li>
                         <li><a href="{{ route('allTutorial')}}" id="almTutorial">Tutoriales</a></li>
                         <li><a href="{{ route('listplan', $materia)}}" id="almUnidadList"><i class='fa fa-plus fa-fw'></i>Base Teórica</a>

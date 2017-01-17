@@ -72,6 +72,7 @@
         $('#listRecMa').hide();
         $('#plcList').hide();
         $('#admPlc').hide();
+        $('#plcAlm').hide();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
@@ -280,6 +281,7 @@
           $('#listRecMa').hide();
           $('#plcList').hide();
           $('#admPlc').hide();
+          $('#plcAlm').hide();
         
         $.get(route, function(resp){
 

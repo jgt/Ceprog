@@ -48,6 +48,7 @@
 			$('#listRecMa').hide();
 			$('#plcList').hide();
 			$('#admPlc').hide();
+			$('#plcAlm').hide();
 			
 				var route = $('#admIndex').attr('href');
 				var tabla = $('#users-table').DataTable({
@@ -267,6 +268,7 @@
 			$('#listRec').hide();
 			$('#listRecMa').hide();
 			$('#plcList').hide();
+			$('#plcAlm').hide();
 
 		});
 
@@ -298,6 +300,7 @@
 			$('#listRec').hide();
 			$('#listRecMa').hide();
 			$('#plcList').hide();
+			$('#plcAlm').hide();
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -445,6 +448,7 @@
 			$('#listRec').hide();
 			$('#listRecMa').hide();
 			$('#plcList').hide();
+			$('#plcAlm').hide();
 
 
 		});
@@ -518,6 +522,7 @@
 			$('#listRec').hide();
 			$('#listRecMa').hide();
 			$('#plcList').hide();
+			$('#plcAlm').hide();
 
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -610,6 +615,7 @@
 			$('#listRec').hide();
 			$('#listRecMa').hide();
 			$('#plcList').hide();
+			$('#plcAlm').hide();
 
 
 		});

@@ -43,6 +43,7 @@
 			$('#listRecMa').hide();
 			$('#plcList').hide();
 			$('#admPlc').hide();
+			$('#plcAlm').hide();
 
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
@@ -99,6 +100,7 @@
 					$('#listRecMa').hide();
 					$('#plcList').hide();
 					$('#admPlc').hide();
+					$('#plcAlm').hide();
 
 					var id = $(this).attr('href');
 					var route = '/baseTeoricaSubTemas/'+id;
@@ -201,6 +203,7 @@
 			$('#listRecMa').hide();
 			$('#plcList').hide();
 			$('#admPlc').hide();
+			$('#plcAlm').hide();
 			
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -255,6 +258,7 @@
 					$('#listRecMa').hide();
 					$('#plcList').hide();
 					$('#admPlc').hide();
+					$('#plcAlm').hide();
 
 					var id = $(this).attr('href');
 					var route = '/baseTeoricaSubTemas/'+id;

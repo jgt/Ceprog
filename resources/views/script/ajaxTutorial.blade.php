@@ -47,6 +47,7 @@
 				$('#listRecMa').hide();
 				$('#plcList').hide();
 				$('#admPlc').hide();
+				$('#plcAlm').hide();
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -116,6 +117,7 @@
 			    $('#listRecMa').hide();
 			    $('#plcList').hide();
 			    $('#admPlc').hide();
+			    $('#plcAlm').hide();
 
 			    var route = $('#allTutorialAlm').attr('href');
 			    var tutorialAlm = $('#tablaTutorialAlm');

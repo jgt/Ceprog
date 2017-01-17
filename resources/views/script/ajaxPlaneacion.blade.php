@@ -48,6 +48,7 @@ $(document).on('ready', function(){
 			$('#listRecMa').hide();
 			$('#plcList').hide();
 			$('#admPlc').hide();
+			$('#plcAlm').hide();
 
 
 		$.get(route, function(resp){

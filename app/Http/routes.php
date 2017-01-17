@@ -68,8 +68,6 @@ Route::group(['middleware' => 'adminMaestro'], function(){
 
 	Route::get('showForo/{id}', ['as' => 'showForo', 'uses' => 'ForoController@showForo']);
 	Route::get('listForo', ['as' => 'listForo', 'uses' => 'ForoController@listForo']);
-	Route::get('plcDescargar/{filename}', ['as' => 'plcDescargar', 'uses' => 'PlaneacionController@plcDescargar']);
-
 });
 
 Route::group(['middleware' => 'maestro'], function(){
@@ -130,6 +128,12 @@ Route::group(['middleware' => 'alumnos'], function(){
 	Route::post('descarga/{id}', ['as' => 'descarga', 'uses' => 'DescargaController@add']);
 	Route::get('borrar/{filename}', ['as' => 'borrar', 'uses' => 'DescargaController@borrar']);
 
+});
+
+
+Route::group(['middleware' => 'allRoles'], function(){
+
+	Route::get('plcDescargar/{filename}', ['as' => 'plcDescargar', 'uses' => 'PlaneacionController@plcDescargar']);
 });
 
 

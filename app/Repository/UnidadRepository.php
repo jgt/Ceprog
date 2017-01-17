@@ -20,21 +20,17 @@ class UnidadRepository extends BaseRepository {
 
 	public function crearUnidad(Request $request)
 	{
-		$unidad = Unidad::create($request->all());
-		return $unidad;
-
+		return Unidad::create($request->all());
 	}
 
 	public function updateUnidad($id, Request $request)
 	{
-		$unidad = $this->search($id)->update($request->all());
-		return $unidad;
+		return $this->search($id)->update($request->all());
 	}
 
 	public function subtemas($id)
 	{
-		$imagenes = $this->subTemasImg($id);
-		return $imagenes;	
+		return $this->subTemasImg($id);	
 	}
 
 	public  function baseTeoricaSubTemas($id)

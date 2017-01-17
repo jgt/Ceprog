@@ -35,6 +35,8 @@
 			$('#reportes').show();
 			$('#plcList').hide();
 			$('#admPlc').hide();
+			$('#plcAlm').hide();
+			
 			var route = $('#reportesCarrera').attr('href');
 			var tablaReporte = $('#tablaReportes');
 

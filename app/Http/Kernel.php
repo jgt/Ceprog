@@ -26,6 +26,7 @@ class Kernel extends HttpKernel {
 	 */
 	protected $routeMiddleware = [
 
+		'allRoles' => 'App\Http\Middleware\AdminAlmPrf',
 		'adminMaestro' => 'App\Http\Middleware\AdminMaestro',
 		'alumnosAdmision' => 'App\Http\Middleware\AlumnosAdmision',
 		'alumnosMaestros' => 'App\Http\Middleware\AlumnosMaestros',

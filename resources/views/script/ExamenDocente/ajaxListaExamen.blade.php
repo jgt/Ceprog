@@ -68,6 +68,7 @@
         $('#plcList').hide();
 		$('#listExamenDoc').show();
 		$('#admPlc').hide();
+		$('#plcAlm').hide();
 		
 		var route = $(this).attr('href');
 		var tablaExamen = $('#tablaExamenesDoc');

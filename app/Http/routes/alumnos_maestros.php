@@ -10,7 +10,7 @@ Route::get('forosMateria/{id}', ['as' => 'forosMateria', 'uses' => 'ForoControll
 Route::get('comentario/{id}', ['as' => 'comentario', 'uses' => 'ForoController@comentario']);
 Route::post('preguntas/{id}', ['as' => 'preguntas', 'uses' => 'ForoController@store']);	
 //muestra la actividad creada en formato PDF.
-Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'DisenoController@planPdf']);
+Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'ProfesorController@planPdf']);
 //descargar de archivos tanto maestros como estudiantes.
 Route::get('descarga/get/{filename}', ['as' => 'getentry', 'uses' => 'DescargaController@get']);
 Route::get('fileentry/get/{filename}', ['as' => 'apoyo', 'uses' => 'FileEntryController@get']);
@@ -23,4 +23,5 @@ Route::get('portafolio/{id}', ['as' => 'portafolio', 'uses' => 'PortafolioContro
 Route::get('pdf/{id}', ['as' => 'pdf', 'uses' => 'ActividadController@verPdf']);
 //te muestra el material de apoyo de una actividad.
 Route::get('material/{id}', ['as' => 'material', 'uses' => 'FileEntryController@material']);
+Route::get('listPlaneacion/{id}', ['as' => 'listPlaneacion', 'uses' => 'PlaneacionController@listPlaneacion']);
 

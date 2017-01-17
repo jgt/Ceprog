@@ -98,6 +98,7 @@ $(document).on('ready', function(){
 	  $('#listRec').hide();
 	  $('#plcList').hide();
 	  $('#admPlc').hide();
+	  $('#plcAlm').hide();
 
 		var route = $(this).attr('href');
 		var carrera = $('#selectMatdocente');

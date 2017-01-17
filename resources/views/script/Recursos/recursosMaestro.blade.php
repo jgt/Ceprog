@@ -47,6 +47,7 @@
 			$('#listRecMa').show();
 			$('#plcList').hide();
 			$('#admPlc').hide();
+			$('#plcAlm').hide();
 
 			listar();
 

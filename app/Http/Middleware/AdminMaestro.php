@@ -34,9 +34,8 @@ class AdminMaestro
     {
         if ( ! Auth::check())
         {
-            
-                
-                return view('auth.login');
+             
+            return view('auth.login');
 
         }elseif ($this->auth->user()->is('prf') || $this->auth->user()->is('adm')) {
             

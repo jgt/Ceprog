@@ -72,18 +72,6 @@ class DisenoController extends Controller {
 		return response()->json($update);
 	}
 
-	//esto va en el controller de actvidades.
-	public function planPdf($id, Request $request)
-	{
-		$pdf = App::make('dompdf.wrapper');
-		$actividad = Actividad::find($id);
-		$customPaper = array(0,0,950,950);
-        $paper_orientation = 'landscape';
-        $pdf->setPaper($customPaper,$paper_orientation);
-		$pdf->loadview('showactividad', compact('actividad'));
-		return $pdf->stream('Actividad.pdf');
-	}
-
 	public function baseTeorica($id, Request $request)
 	{
 		$unidades = $this->materiaRepository->search($id)->unidades()->get();
