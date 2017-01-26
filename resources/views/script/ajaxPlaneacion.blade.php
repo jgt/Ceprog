@@ -12,8 +12,8 @@ $(document).on('ready', function(){
 		var route = link.split('%7Bid%7D').join(id);
 
 		$('#tbMateriaDoc').hide();
-		$('#planeacionC').show();
-		$('div#examen').hide();
+		$('div#planeacionC').fadeIn();
+		$('div#examen').fadeOut();
 		$('div#act').hide();
         $('div#pregunta').hide();
         $('div#listExamen').hide();
@@ -49,6 +49,15 @@ $(document).on('ready', function(){
 			$('#plcList').hide();
 			$('#admPlc').hide();
 			$('#plcAlm').hide();
+			$('#act').fadeOut();
+			  $('#crtSub').fadeOut();
+			  $('#editUnidad').fadeOut();
+			  $('#videoUnidad').fadeOut();
+			  $('#listSubtemas').fadeOut();
+			  $('#listAct').fadeOut();
+			  $('#calAct').fadeOut();
+			  $('#menUnidad').fadeOut();
+			  $('div#preguntaExmamen').hide();
 
 
 		$.get(route, function(resp){

@@ -33,4 +33,9 @@ class Rubrica extends Model
       
     }
 
+    public function hasCalificacion($id)
+	{
+		return $this->calificaciones()->where('rubrica_id', $id)->count();
+	}
+
 }

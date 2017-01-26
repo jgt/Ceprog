@@ -23,6 +23,7 @@
 <script src="{{ asset('js/vendor/datatables.responsive.js')}}"></script>
 <script src="{{ asset('js/vendor/datatables.tableTools.min.js')}}"></script>
 
+@include('script.Unidades.Unidades')
 
 @include('script.Recursos.recursosMaestro')
 

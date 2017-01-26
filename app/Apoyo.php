@@ -30,4 +30,12 @@ class Apoyo extends Model
         }
       
     }
+
+     public function hasMaterial($id, $user)
+	{
+
+	return 	Apoyo::where('actividad_id', $id)
+    		->where('user_id', $user)
+            ->count();
+	}
 }

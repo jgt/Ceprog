@@ -65,8 +65,8 @@ $(document).on('ready', function(){
       $('#crr').hide();
       $('#semm').hide();
       $('#preForo').hide();
-      $('#examen').hide();
-      $('div#planeacionC').hide();
+      $('#examen').fadeOut();
+      $('div#planeacionC').fadeOut();
       $('#pregunta').hide();
       $('#chatForo').hide();
       $('#froadm').hide();
@@ -99,6 +99,14 @@ $(document).on('ready', function(){
 	  $('#plcList').hide();
 	  $('#admPlc').hide();
 	  $('#plcAlm').hide();
+	  $('#act').fadeOut();
+	  $('#crtSub').fadeOut();
+	  $('#editUnidad').fadeOut();
+	  $('#videoUnidad').fadeOut();
+	  $('#listSubtemas').fadeOut();
+	  $('#listAct').fadeOut();
+	  $('#calAct').fadeOut();
+	  $('#menUnidad').fadeOut();
 
 		var route = $(this).attr('href');
 		var carrera = $('#selectMatdocente');

@@ -44,6 +44,14 @@
 
 		       success:function(resp){
 
+		       		if (! $.fn.DataTable.isDataTable('#planeacion-table')){
+						listar(route);
+					}else{
+
+						var tabla = $('#planeacion-table').DataTable();
+						tabla.ajax.reload();
+						
+					}
 		       		$('#plcModal').modal('hide');
 		       		$('#mtrPlc').attr('disabled', false);
 		        	 alertify.alert("La planeacion se ha subido correctamente.");
@@ -81,8 +89,8 @@
 				listar(route);
 			}else{
 
-				var tabla = $('#planeacion-table').DataTable();
-				tabla.ajax.reload();
+				var tabla = $('#planeacion-table').DataTable().clear();
+				
 			}
 			
 		});
@@ -143,10 +151,10 @@
 			$('#preForo').hide();
 			$('div#act').hide();
 			$('div#listAct').hide();
-		    $('div#examen').hide();
+		    $('div#examen').fadeOut();
 		    $('div#listExamen').hide();
 		    $('div#calAct').hide();
-		    $('div#planeacionC').hide();
+		    $('div#planeacionC').fadeOut();
 		    $('div#listSubtemas').hide();
 		    $('#createVideos').hide();
 			$('div#listAct').hide();
@@ -177,6 +185,15 @@
 			$('#admPlc').hide();
 			$('#plcList').show();
 			$('#plcAlm').hide();
+			$('#act').fadeOut();
+		  $('#crtSub').fadeOut();
+		  $('#editUnidad').fadeOut();
+		  $('#videoUnidad').fadeOut();
+		  $('#listSubtemas').fadeOut();
+		  $('#listAct').fadeOut();
+		  $('#calAct').fadeOut();
+		  $('#menUnidad').fadeOut();
+		  $('div#preguntaExmamen').hide();
 		}
 
 		function listar(route)
@@ -209,7 +226,7 @@
 			$(tbody).on("click", "button.descargar", function(){
 				var data = tabla.row($(this).parents('tr')).data();
 				var route = '/plcDescargar/'+data.filename;
-				window.open(route);
+				console.log(data);
 
 			});
 

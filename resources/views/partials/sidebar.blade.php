@@ -44,12 +44,16 @@
                 <ul class="treeview-menu" Style="display:none" data-id="{{ $materia->id}}">
                    
                     <li><a href="{{ route('planeacion', $materia)}}" id="planeacion">Crear Unidad</a></li>
-                    <li><a href="{{ route('plc.show', $materia)}}" id="plcMaestro">Subir Planeacion</a></li>
+                    <li><a href="{{ route('plc.show', $materia)}}" id="plcMaestro">Subir Planeación </a></li>
                     <li><a href="{{ route('examen', $materia)}}" id="createExa">Crear Examen</a></li>
-                    <li><a href="{{ route('listplan', $materia)}}" id="listUni">Herramientas</a></li>
+                    <li class="treeview">
+                      <a href="{{ route('listplan', $materia)}}" id="herramientas"><i class="fa fa-angle-left pull-right"></i><i class="fa fa-cog" aria-hidden="true"></i>Unidades</a>
+                      <ul class="treeview-menu" id="listUni"></ul>
+                       
+                    </li>
                     <li><a href="{{ route('almSem', $materia->id)}}" id="menuListUser">Lista de Alumnos</a></li>
                     <li><a href="{{ route('listPlaneacion', $materia) }}" id="mtaPlan">Lista de Planeaciones</a></li>
-                    <li><a href="{{route('listExamen', $materia )}}" id="LexamenMaestro">Lista de examenes</a></li>
+                    <li><a href="{{route('listExamen', $materia )}}" id="LexamenMaestro">Lista de exámenes </a></li>
                     <li><a href="{{route('recursoIndex')}}" id="recursosMaestro">Lista Recursos</a></li>
                     <li><a href="{{ route('allTutorial')}}" id="prfTutorial">Tutoriales</a></li>
                 <li><a href="{{ route('listplan', $materia)}}" id="ListUniSub"><i class='fa fa-plus fa-fw'></i>Base Teórica</a>

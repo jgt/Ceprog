@@ -10,7 +10,7 @@
         <a href="{{ route('deleteActividad')}}" Style="display:none" id="deleteActividad"></a>
         <a href="{{ route('borrarM')}}" Style="display:none" id="borrarM"></a>
         <a href="{{ route('listrubrica')}}" Style="display:none" id="listRubrica"></a>
-        <a href="{{ route('profesor.show') }}" Style="display:none" id="rbCrt"></a>
+        <a href="{{ route('showActividad') }}" Style="display:none" id="rbCrt"></a>
          <a href="{{ route('calUnidad') }}" id="calUni" Style="display:none"></a>
          <a href="{{ route('listExamen') }}" id="ltexa" Style="display:none"></a>
 

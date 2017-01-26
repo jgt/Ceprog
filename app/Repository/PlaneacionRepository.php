@@ -34,13 +34,9 @@ class PlaneacionRepository extends BaseRepository
     public function borrarPlc($id)
     {
         $file = $this->descargar($this->search($id)->filename);
-
-        if($file){
-
-            Archivo::delete($file);
-            $this->search($id)->delete();
-        }
-
+        Archivo::delete($file);
+        $this->search($id)->delete();
+ 
         return $file;
     }
 
@@ -95,8 +91,7 @@ class PlaneacionRepository extends BaseRepository
 
     protected function descargar($filename)
     {   
-        $public_path = public_path();
-        $archivo = $public_path.'/planeacion/'.$filename;
+        $archivo = public_path().'/planeacion/'.$filename;
         return $archivo;
     }
 

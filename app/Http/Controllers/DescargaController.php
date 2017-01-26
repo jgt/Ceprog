@@ -40,15 +40,11 @@ class DescargaController extends Controller {
 
 	}
 
-	public function index($id, Asignacion $request)
+	public function index($id, Request $request)
 	{
 		$actividad = $this->actividadRepository->search($id);
 		$archivos = $actividad->fileentries()->where('user_id', Auth::user()->id)->get();
-		
-		if($request->ajax())
-		{
-			return response()->json($archivos);
-		}
+		return response()->json($archivos);
 	}
 
 

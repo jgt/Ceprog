@@ -10,6 +10,7 @@ use App\Subtemas;
 use App\Repository\SubTemasRepository;
 use App\Unidad;
 use App\Imagenes;
+use Datatables;
 use File as Archivo;
 
 class SubtemasController extends Controller
@@ -27,15 +28,17 @@ class SubtemasController extends Controller
 		return response()->json($subtemas);
 	}
 
-	public function editSubtemas($id, Request $request)
+	public function listSubtemas($id, Request $request)
 	{
-		$subtemas = Unidad::find($id)->subtemas()->get();
-		return response()->json($subtemas);
+		$unidad = Unidad::find($id);
+		$subtemas = $unidad->subTemas()->get();
+        return response()->json($subtemas);
 	}
 
 	public function updateSubtemas($id, Request $request)
 	{
-		$subtema = Subtemas::find($id)->update($request->all());
+		$subtema = Subtemas::find($id);
+		$subtema->update($request->all());
 		return response()->json($subtema);
 	}
 

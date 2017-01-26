@@ -10,10 +10,10 @@ Route::get('forosMateria/{id}', ['as' => 'forosMateria', 'uses' => 'ForoControll
 Route::get('comentario/{id}', ['as' => 'comentario', 'uses' => 'ForoController@comentario']);
 Route::post('preguntas/{id}', ['as' => 'preguntas', 'uses' => 'ForoController@store']);	
 //muestra la actividad creada en formato PDF.
-Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'ProfesorController@planPdf']);
+Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'ActividadController@planPdf']);
 //descargar de archivos tanto maestros como estudiantes.
 Route::get('descarga/get/{filename}', ['as' => 'getentry', 'uses' => 'DescargaController@get']);
-Route::get('fileentry/get/{filename}', ['as' => 'apoyo', 'uses' => 'FileEntryController@get']);
+Route::get('fileentry/{filename}', ['as' => 'apoyo', 'uses' => 'FileEntryController@get']);
 Route::post('update/{id}', ['as' => 'archivoupdate', 'uses' => 'FileEntryController@update']);
 //me muestra las unidades que tiene la materia  con sus subtemas y las actividades que tiene cada unidad. 
 Route::get('baseTeorica/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@baseTeorica']);

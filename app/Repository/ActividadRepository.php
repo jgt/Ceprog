@@ -42,7 +42,7 @@ class ActividadRepository extends BaseRepository {
 
 	public function show($id)
 	{
-		return $this->search($id)->rubricas()->with('actividad')->get();
+		return $this->search($id)->where('id', $id)->with('rubricas')->get();
 	}
 
 	public function edit($id)
@@ -57,7 +57,9 @@ class ActividadRepository extends BaseRepository {
 
 	public function updateActividad(Editact $request, $id)
 	{
-		return $this->search($id)->update($request->all());
+		$actividad = $this->search($id);
+		$actividad->update($request->all());
+		return $actividad;
 	}
 
 	public function delete($id)
@@ -75,23 +77,12 @@ class ActividadRepository extends BaseRepository {
 
 	public function convertir($id)
 	{ 
-        $this->paper();
-		$this->load($id);
-		return $this->pdf()->stream('Actividad.pdf');
-	}
-
-	protected function pdf()
-	{
-		return App::make('dompdf.wrapper');
-	}
-
-	protected function paper()
-	{
-		return $this->pdf()->setPaper([0,0,950,950], 'landscape');
-	}
-
-	protected function load($id)
-	{
-		return $this->pdf()->loadview('showactividad', $this->search($id));
+         $pdf = App::make('dompdf.wrapper');
+         $actividad = $this->search($id);
+         $customPaper = array(0,0,950,950);
+         $paper_orientation = 'landscape';
+         $pdf->setPaper($customPaper,$paper_orientation);
+         $pdf->loadview('showactividad', compact('actividad'));
+         return $pdf->stream();	
 	}
 }

@@ -4,9 +4,8 @@
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
-use Illuminate\Http\Request as Asignacion;
-use Illuminate\Support\Facades\Request;
-use App\Http\Requests\Peticion;
+use Illuminate\Http\Request;
+use File as Archivo;
 use App\Apoyo;
 use Auth;
 use Input;
@@ -15,62 +14,66 @@ class ApoyoRepository extends BaseRepository {
 
 	public function getModel()
 	{
-
 		return new Apoyo();
 	}
 
+	public function apoyo(Request $request, $id)
+	{		
+			$dir = public_path().'/material/';
+			$file = $dir.$this->filename($request);
+			if(!file_exists($file))
+			{
+				$this->movePath($request);
+				return Apoyo::create([
 
-	public function apoyo(Asignacion $request, $id)
-	{
+				'mime' => $this->type($request),
+				'original_filename' => 	$this->filename($request),
+				'filename' => $this->filename($request),
+				'actividad_id' => $id,
+				'user_id' => Auth::user()->id
 
-		$user = Auth::user()->id;
-		$actividad = $this->search($id);
-		$file = Request::file('archivo');
-		$nombre = $file->getClientOriginalName();
-		$extension = $file->getClientOriginalExtension();
-		$exists = Storage::disk('local')->exists($nombre);
+				]);	
+			}else{
 
-		if (! $exists) {
-			
-			Storage::disk('local')->put($nombre, File::get($file));
-
-			$entry = Apoyo::create([
-
-			'mime' => $file->getClientMimeType(),
-			'original_filename' => 	$file->getClientOriginalName(),
-			'filename' => $nombre,
-			'actividad_id'   => $id,
-			'user_id' => $user
-
-			]);
-
-		$entry->save();
-		
-		}
+				return abort(404, 'El archivo ya existe');
+			}
 	}
 
 	public function descargar($filename)
 	{
-
-		return Apoyo::where('filename', '=', $filename)->firstOrFail();
+		$archivo = public_path().'/material/'.$filename;
+        return $archivo;
 	}
 
-
-	public function deleteApoyo($filename)
+	public function deleteApoyo($id)
 	{
-
-		$archivo = $this->descargar($filename);
-		$exists = Storage::disk('local')->exists($archivo->filename);
-
-		if ($exists) {
-			
-
-			Storage::delete($archivo->filename);
-			$archivo->delete();
-
-
-			flash()->overlay('Ha sido borrado sactifactoriamente', 'El archivo '.$archivo->filename);
-
-		}
+		$file = $this->descargar($this->search($id)->filename);
+        Archivo::delete($file);
+        $this->search($id)->delete();
 	}
+
+	protected function file(Request $request)
+    {
+        return $request->file('archivo');
+    }
+
+    protected function fileName(Request $request)
+    {
+        return $this->file($request)->getClientOriginalName();
+    }
+
+    protected function type(Request $request)
+    {
+        return $request->file('archivo')->getClientMimeType();
+    }
+
+    protected function path()
+    {
+        return public_path().'/material';
+    }
+
+	protected function movePath(Request $request)
+    {
+        return $this->file($request)->move($this->path(), $this->filename($request));
+    }
 }

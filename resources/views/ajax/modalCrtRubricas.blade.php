@@ -9,8 +9,8 @@
       </div>
       <div class="modal-body">
        {!! Form::open(['route' => 'storeRubrica', 'method' => 'POST', 'class' => 'form-group', 'id' => 'formRu']) !!}
-         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-  @include('errors.error')
+
+
   <div class="form-group">
   {!! Form::label('name', 'Nombre de la rubrica ', ['class' => 'form-group']) !!}
    {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'actRub']) !!}
@@ -25,18 +25,18 @@
   
   <div class="form-group">
   {!! Form::label('actividadN', 'Nombre de la actividad  ', ['class' => 'form-group']) !!}
-   {!! Form::text('actividadN', null, ['class' => 'form-control', 'id' => 'actN']) !!}
-   {!! Form::text('actividad_id', null, ['Style' => 'display:none', 'id' => 'acId'])!!}
+   {!! Form::text('actividadN', null, ['class' => 'form-control', 'id' => 'actN', 'readonly' => 'readonly']) !!}
+   {!! Form::text('actividad_id', null, [ 'style' => 'display:none', 'id' => 'acId'])!!}
   </div>
 
    <div class="form-group">
   {!! Form::label('porcentaje', 'Porcentaje de la actividad ', ['class' => 'form-group']) !!}
-   {!! Form::text('porcentaje', null, ['class' => 'form-control', 'id' => 'actPr']) !!}
+   {!! Form::text('porcentaje', null, ['class' => 'form-control', 'id' => 'actPr', 'readonly' => 'readonly']) !!}
   </div>
 
   <div class="form-group">
   {!! Form::label('porcentajeD', 'Porcentaje disponible ', ['class' => 'form-group']) !!}
-   {!! Form::text('porcentajeD', null, ['class' => 'form-control', 'id' => 'actD']) !!}
+   {!! Form::text('porcentajeD', null, ['class' => 'form-control', 'id' => 'actD', 'readonly' => 'readonly']) !!}
   </div>
 
   <div class="form-group">
@@ -48,8 +48,7 @@
   {!! Form::close() !!}
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-primary" data-dismiss="modal" id="crtR">Crear</a>
-        <a href="#" class="btn btn-danger" id="salirR" data-dismiss="modal" Style="display:none">Salir</a>
+        <a href="#" class="btn btn-primary"  id="crtR">Crear</a>
       </div>
     </div>
 

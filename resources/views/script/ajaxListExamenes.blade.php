@@ -39,10 +39,10 @@
         $('#chatForo').hide();
         $('div#act').hide();
         $('div#listAct').hide();
-        $('div#examen').hide();
+        $('div#examen').fadeOut();
         $('div#listExamen').hide();
         $('div#calAct').hide();
-        $('div#planeacionC').hide();
+        $('div#planeacionC').fadeOut();
         $('div#listSubtemas').hide();
         $('#createVideos').hide();
         $('div#listAct').hide();
@@ -73,6 +73,15 @@
         $('#plcList').hide();
         $('#admPlc').hide();
         $('#plcAlm').hide();
+        $('#act').fadeOut();
+        $('#crtSub').fadeOut();
+        $('#editUnidad').fadeOut();
+        $('#videoUnidad').fadeOut();
+        $('#listSubtemas').fadeOut();
+        $('#listAct').fadeOut();
+        $('#calAct').fadeOut();
+        $('#menUnidad').fadeOut();
+        $('div#preguntaExmamen').hide();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
@@ -89,7 +98,7 @@
 
               $(resp.data).each(function(key, value){
 
-               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='reporteGeneral(this);'><i class='fa fa-eye' aria-hidden='true'></i></td</td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
             }); 
 
@@ -134,7 +143,7 @@
 
             $(resp.data).each(function(key, value){
 
-               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='reporteGeneral(this);'><i class='fa fa-eye' aria-hidden='true'></i></td</td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+               tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
 
             });  
 
@@ -248,13 +257,13 @@
         $('#tbMateriaDoc').hide();
           $('#listExamen').show();
           $('div#act').hide();
-          $('div#examen').hide();
+          $('div#examen').fadeOut();
           $('div#pregunta').hide();
           $('div#user').hide();
           $('div#AlmUni').hide();
           $('div#listAct').hide();
           $('div#calAct').hide();
-          $('div#planeacionC').hide();
+          $('div#planeacionC').fadeOut();
           $('div#listUnidades').hide();
           $('div#listSubtemas').hide();
           $('#createVideos').hide();
@@ -282,6 +291,15 @@
           $('#plcList').hide();
           $('#admPlc').hide();
           $('#plcAlm').hide();
+          $('#act').fadeOut();
+          $('#crtSub').fadeOut();
+          $('#editUnidad').fadeOut();
+          $('#videoUnidad').fadeOut();
+          $('#listSubtemas').fadeOut();
+          $('#listAct').fadeOut();
+          $('#calAct').fadeOut();
+          $('#menUnidad').fadeOut();
+          $('div#preguntaExmamen').hide();
         
         $.get(route, function(resp){
 
@@ -715,7 +733,7 @@
 
                 $(resp.data).each(function(key, value){
 
-              tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='reporteGeneral(this);'><i class='fa fa-eye' aria-hidden='true'></i></td</td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+              tabla.append("<tr><td>"+value.modulo+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='editarExamen(this);' data-toggle='modal' data-target='#editarExamen'><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearPreguntas(this);' data-toggle='modal' data-target='#crearPreguntas'><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='preguntas(this);'><i class='fa fa-search' aria-hidden='true'></i><td><button class='btn btn-primary' value="+value.id+" OnClick='verExamen(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='examenPdf(this);'><i class='fa fa-eye' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarExamen(this);'><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
             }); 
 
              });

@@ -10,6 +10,8 @@ use App\Unidad;
 use Auth;
 use App;
 
+use App\Http\Requests\Maestro;
+use App\Http\Requests\Editact;
 use Illuminate\Http\Request;
 use App\Repository\ActividadRepository;
 use App\Repository\UserRepository;
@@ -50,50 +52,30 @@ class ActividadController extends Controller {
 		$this->unidadRepository = $unidadRepository;
 	}
 
-	
 	public function verUnidades($id, Request $request)
 	{
-
 		 $materia = $this->materiaRepository->search($id);
 		 $unidades = $this->materiaRepository->getUnidades($id);
-    	 
-    	 if($request->ajax())
-    	 {
-
-    	 	return response()->json($unidades);
-    	 }
+    	 return response()->json($unidades);
 	}
-
 
 	public function verActividades($id, Request $request)
 	{
-
 		$unidad = $this->unidadRepository->search($id);
 		$actividades = $this->unidadRepository->getActividades($id);
-
-		if($request->ajax())
-		{
-			return response()->json($actividades);
-		}
-
-
+		return response()->json($actividades);
 	}
 
-	
 	public function verPdf($id)
 	{
-		
 		 $pdf = App::make('dompdf.wrapper');
          $unidad = Unidad::find($id);
          $customPaper = array(0,0,950,950);
          $paper_orientation = 'landscape';
          $pdf->setPaper($customPaper,$paper_orientation);
          $pdf->loadview('showalumno', compact('unidad'));
-         return $pdf->stream();
-
-		
+         return $pdf->stream();		
 	}
-
 
 	public function promedio($id, Request $request)
 	{
@@ -118,11 +100,40 @@ class ActividadController extends Controller {
 
 		$materia = $this->materiaRepository->search($id);
 		$examenes = $this->materiaRepository->getExamen($id);
+		return response()->json($examenes);
+	}
 
-		if($request->ajax())
-		{
-			return response()->json($examenes);
-		}
+	public function storeActividad(Maestro $request)
+	{
+		$datos = $this->actividadRepository->crearActividad($request);
+		return response()->json($datos);
+	}
 
+	public function rubricas($id, Request $request)
+	{
+		$actividad = $this->actividadRepository->show($id);
+		return response()->json($actividad);   
+	}
+
+	public function editarAct($id)
+	{
+		$actividad = $this->actividadRepository->edit($id);
+		return response()->json($actividad);
+	}
+
+	public function updateActividad($id, Editact $request)
+	{
+	  	$actividad = $this->actividadRepository->updateActividad($request, $id);
+		return response()->json($actividad);
+	}
+
+	public function deleteActividad($id)
+	{
+		return $this->actividadRepository->delete($id);
+	}
+
+	public function planPdf($id)
+	{
+		return $this->actividadRepository->convertir($id);
 	}
 }

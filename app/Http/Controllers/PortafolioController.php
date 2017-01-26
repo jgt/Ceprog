@@ -11,6 +11,7 @@ use App\Rubrica;
 use App\Materia;
 use App;
 use Auth;
+use Datatables;
 
 use App\Repository\CalificacionRepository;
 use App\Repository\ActividadRepository;
@@ -44,17 +45,9 @@ class PortafolioController extends Controller {
 
 	public function portafolio($id, Request $request)
 	{
-
 		$unidad = $this->unidadRepository->search($id);
-
-		$actividades = $unidad->actividades()->orderBy('actividad', 'desc')->paginate(20);
-
-		if($request->ajax())
-		{
-			return response()->json($actividades);
-		}
-
-		return view('include.actmaterias', compact('actividades', 'materia'));
+		$actividad = $unidad->actividades()->with('rubricas', 'unidad.materia.users')->get();
+        return response()->json($actividad);
 	}
 
 	public function verArchivos($id, Request $request)

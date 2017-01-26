@@ -45,57 +45,32 @@ class FileEntryController extends Controller {
 	{
 		$actividad = $this->actividadRepository->search($id);
 		$archivos = $this->actividadRepository->getApoyos($id);
-
-		if($request->ajax())
-		{
-			return response()->json($archivos->toArray());
-		}
-
-		return view('archivo', compact('actividad', 'archivos'));
+		return response()->json($archivos->toArray());
 	}
-
 
 	public function create($id, Asignacion $request)
 	{
 		
-		$user = Auth::user();
-		$actividad = $this->actividadRepository->search($id);
-		
-		if($request->ajax())
-		{
-
-			return response()->json($user);
-		}
+		$actividad = $this->actividadRepository->search($id)->where('id', $id)->with('unidad')->get();
+		return response()->json($actividad);
 	}
 
 	public function add($id, Asignacion $request) 
 	{
  		
 		$apoyo = $this->apoyoRepository->apoyo($request, $id);
-		
-		if($request->ajax())
-		{
-			return response()->json($apoyo);
-		}
-		
+		return response()->json($apoyo);
 	}
 
-	public function get($filename, Asignacion $request){
+	public function get($filename){
 	
-		$entry = $this->apoyoRepository->descargar($filename);
-		$file = Storage::disk('local')->get($entry->filename); 
-
-		return (new Response($file, 200))
-              ->header('Content-Type', $entry->mime);
+		$file = $this->apoyoRepository->descargar($filename);
+		return response()->download($file);
 	}
 
-
-	public function borrarM($filename)
+	public function borrarM($id)
 	{
-
-		$this->apoyoRepository->deleteApoyo($filename);
-		return redirect()->back();
+		$this->apoyoRepository->deleteApoyo($id);
 	}
-
 
 }

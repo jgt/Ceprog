@@ -1,28 +1,15 @@
-<div id="listUnidades"  Style="display:none">
+<div id="listUnidades" class="table-responsive"  Style="display:none">
+        
+        <input type="text" id="routePlc" Style="display:none">
+
+       <table class="table table-striped table-bordered dt-responsive nowrap" id="monda-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Ubicacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+    </table>
       
-       <a href="{{ route('listplan')}}" id="uniList" Style="display:none"></a> 
-       <a href="{{ route('portafolio')}}" id="port" Style="display:none"></a>
-       <a href="{{ route('editSubtemas')}}" id="editSubtemas" Style="display:none"></a>
-       <a href="{{ route('showVideos')}}" id="showVideosDocente" Style="display:none"></a>
-       <a href="{{ route('delete')}}" id="deleteVideos" Style="display:none"></a>
-       <a href="{{ route('pdf')}}" id="pdfunidad" Style="display:none"></a>
-      
-      <div class="table-responsive">
-       <table class="table">
-          <thead>
-            <td><strong>Unidad</strong></td>
-            <td><strong>Ver/Editar</strong></td>
-            <td><strong>Lista de SubTemas</strong></td>
-            <td><strong>Crear subtemas</strong></td>
-            <td><strong>Crear Actividad</strong></td>
-            <td><strong>Ver Actividades</strong></td>
-            <td><strong>Videos</strong></td>
-            <td><strong>Lista de videos</strong></td>
-            <td><strong>Ver Pdf</strong></td>
-          </thead> 
-          <tbody id="tablaUnidad">
-            
-          </tbody>
-       </table>
-      </div>
      </div>

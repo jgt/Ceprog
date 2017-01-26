@@ -8,11 +8,10 @@
       </div>
       <div class="modal-body">
           
-          <a href="{{route('profesor.edit')}}" id="editarRoute" Style="display:none"></a>
           {!! Form::text('actividad_id', null, ['Style' => 'display:none', 'id' => 'actID'])!!}
             
-  {!! Form::open(['route' => 'profesor.update', 'method' => 'PUT',  'id' => 'form-edit', 'class' => 'form-group']) !!}
-       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+  {!! Form::open(['route' => 'updateActividad', 'method' => 'POST',  'id' => 'form-edit', 'class' => 'form-group']) !!}
+       
     {!! Form::text('unidad_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'unID']) !!}
 
     <div class="form-group">
@@ -114,4 +113,3 @@
 
   </div>
 </div>
-

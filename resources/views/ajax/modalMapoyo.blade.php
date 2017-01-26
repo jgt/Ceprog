@@ -12,9 +12,9 @@
            <div class="form-group">
 
      {!! Form::open(['route' => 'material', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'apoyoM_id', 'files' => true]) !!}
-         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+
       {!! Form::label('Docente', 'Docente: ',['class' => 'form-group']) !!}
-     {!! Form::text('Authuser', null, ['class' => 'form-control', 'id' => 'AuthUserApoyo']) !!}
+     {!! Form::text('Authuser', null, ['class' => 'form-control', 'id' => 'AuthUserApoyo', 'readonly' => 'readonly']) !!}
    {!! Form::text('actividad_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'apoyo_id']) !!}
    {!! Form::text('user_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'userApoyo_id']) !!}
     </div>
@@ -24,7 +24,7 @@
 
    {!! Form::file('archivo', null, ['class' => 'form-control'])!!}
    <hr>
-  {!! Form::submit('Responder', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'apoy'])!!}
+  {!! Form::submit('Subir material', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'apoy'])!!}
    </div>
 
         </div>

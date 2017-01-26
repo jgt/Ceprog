@@ -12,7 +12,7 @@
 			$('#listTutAlm').hide();
 			$('#preForo').hide();
 			$('div#act').hide();
-	        $('div#examen').hide();
+	        $('div#examen').fadeOut();
 	        $('div#pregunta').hide();
 	        $('div#listExamen').hide();
 	        $('div#calAct').hide();
@@ -20,7 +20,7 @@
 	        $('div#listUnidades').hide();
 	        $('div#listSubtemas').hide();
 	        $('#createVideos').hide();
-	        $('div#planeacionC').hide();
+	        $('div#planeacionC').fadeOut();
 	        $('div#vizuaUnidad').show();
 	        $('div#AlmUni').hide();
 	        $('#listRub').hide();
@@ -44,6 +44,15 @@
 			$('#plcList').hide();
 			$('#admPlc').hide();
 			$('#plcAlm').hide();
+			$('#act').fadeOut();
+			  $('#crtSub').fadeOut();
+			  $('#editUnidad').fadeOut();
+			  $('#videoUnidad').fadeOut();
+			  $('#listSubtemas').fadeOut();
+			  $('#listAct').fadeOut();
+			  $('#calAct').fadeOut();
+			  $('#menUnidad').fadeOut();
+			  $('div#preguntaExmamen').hide();
 
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
@@ -71,7 +80,7 @@
 					$('#listTutAlm').hide();
 					$('#preForo').hide();
 					$('div#act').hide();
-			        $('div#examen').hide();
+			        $('div#examen').fadeOut();
 			        $('div#pregunta').hide();
 			        $('div#listExamen').hide();
 			        $('div#calAct').hide();
@@ -79,7 +88,7 @@
 			        $('div#listUnidades').hide();
 			        $('div#listSubtemas').hide();
 			        $('#createVideos').hide();
-			        $('div#planeacionC').hide();
+			        $('div#planeacionC').fadeOut();
 			        $('div#AlmUni').hide();
 			        $('#listRub').hide();
 			        $('#adminPlan').hide();
@@ -101,6 +110,15 @@
 					$('#plcList').hide();
 					$('#admPlc').hide();
 					$('#plcAlm').hide();
+					$('#act').fadeOut();
+				  $('#crtSub').fadeOut();
+				  $('#editUnidad').fadeOut();
+				  $('#videoUnidad').fadeOut();
+				  $('#listSubtemas').fadeOut();
+				  $('#listAct').fadeOut();
+				  $('#calAct').fadeOut();
+				  $('#menUnidad').fadeOut();
+				  $('div#preguntaExmamen').hide();
 
 					var id = $(this).attr('href');
 					var route = '/baseTeoricaSubTemas/'+id;
@@ -173,7 +191,7 @@
 			$('#listTutAlm').hide();
 			$('#preForo').hide();
 			$('div#act').hide();
-	        $('div#examen').hide();
+	        $('div#examen').fadeOut();
 	        $('div#pregunta').hide();
 	        $('div#listExamen').hide();
 	        $('div#calAct').hide();
@@ -181,7 +199,7 @@
 	        $('div#listUnidades').hide();
 	        $('div#listSubtemas').hide();
 	        $('#createVideos').hide();
-	        $('div#planeacionC').hide();
+	        $('div#planeacionC').fadeOut();
 	        $('div#vizuaUnidad').hide();
 	        $('div#AlmUni').hide();
 	        $('#listRub').hide();
@@ -204,6 +222,15 @@
 			$('#plcList').hide();
 			$('#admPlc').hide();
 			$('#plcAlm').hide();
+			$('#act').fadeOut();
+			  $('#crtSub').fadeOut();
+			  $('#editUnidad').fadeOut();
+			  $('#videoUnidad').fadeOut();
+			  $('#listSubtemas').fadeOut();
+			  $('#listAct').fadeOut();
+			  $('#calAct').fadeOut();
+			  $('#menUnidad').fadeOut();
+			  $('div#preguntaExmamen').hide();
 			
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -229,7 +256,7 @@
 					$('#listTutAlm').hide();
 					$('#preForo').hide();
 					$('div#act').hide();
-			        $('div#examen').hide();
+			        $('div#examen').fadeOut();
 			        $('div#pregunta').hide();
 			        $('div#listExamen').hide();
 			        $('div#calAct').hide();
@@ -237,7 +264,7 @@
 			        $('div#listUnidades').hide();
 			        $('div#listSubtemas').hide();
 			        $('#createVideos').hide();
-			        $('div#planeacionC').hide();
+			        $('div#planeacionC').fadeOut();
 			        $('div#AlmUni').hide();
 			        $('#listRub').hide();
 			        $('#adminPlan').hide();
@@ -259,6 +286,15 @@
 					$('#plcList').hide();
 					$('#admPlc').hide();
 					$('#plcAlm').hide();
+					$('#act').fadeOut();
+				  $('#crtSub').fadeOut();
+				  $('#editUnidad').fadeOut();
+				  $('#videoUnidad').fadeOut();
+				  $('#listSubtemas').fadeOut();
+				  $('#listAct').fadeOut();
+				  $('#calAct').fadeOut();
+				  $('#menUnidad').fadeOut();
+				  $('div#preguntaExmamen').hide();
 
 					var id = $(this).attr('href');
 					var route = '/baseTeoricaSubTemas/'+id;

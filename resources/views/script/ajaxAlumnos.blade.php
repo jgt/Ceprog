@@ -18,10 +18,10 @@
 			$('#listPersonal').hide();
 			$('div#act').hide();
 			$('div#listAct').hide();
-		    $('div#examen').hide();
+		    $('div#examen').fadeOut();
 		    $('div#listExamen').hide();
 		    $('div#calAct').hide();
-		    $('div#planeacionC').hide();
+		    $('div#planeacionC').fadeOut();
 		    $('div#listSubtemas').hide();
 		    $('#createVideos').hide();
 			$('div#listAct').hide();
@@ -49,6 +49,15 @@
 			$('#plcList').hide();
 			$('#admPlc').hide();
 			$('#plcAlm').hide();
+			$('#act').fadeOut();
+		  $('#crtSub').fadeOut();
+		  $('#editUnidad').fadeOut();
+		  $('#videoUnidad').fadeOut();
+		  $('#listSubtemas').fadeOut();
+		  $('#listAct').fadeOut();
+		  $('#calAct').fadeOut();
+		  $('#menUnidad').fadeOut();
+		  $('div#preguntaExmamen').hide();
 
 			var route = $(this).attr('href');
 			var tablaAlm = $('#tablaAlm');
@@ -159,10 +168,10 @@
 			$('#AlmUni').hide();
 			$('div#act').hide();
 			$('div#listAct').hide();
-		    $('div#examen').hide();
+		    $('div#examen').fadeOut();
 		    $('div#listExamen').hide();
 		    $('div#calAct').hide();
-		    $('div#planeacionC').hide();
+		    $('div#planeacionC').fadeOut();
 		    $('div#listSubtemas').hide();
 		    $('#createVideos').hide();
 			$('#Almact').show();
@@ -192,6 +201,15 @@
 			$('#plcList').hide();
 			$('#admPlc').hide();
 			$('#plcAlm').hide();
+			$('#act').fadeOut();
+		  $('#crtSub').fadeOut();
+		  $('#editUnidad').fadeOut();
+		  $('#videoUnidad').fadeOut();
+		  $('#listSubtemas').fadeOut();
+		  $('#listAct').fadeOut();
+		  $('#calAct').fadeOut();
+		  $('#menUnidad').fadeOut();
+		  $('div#preguntaExmamen').hide();
 
 			//retroceso a unidades de estudiantes.
 			$('#backActalm').on('click', function(){
@@ -282,16 +300,22 @@
 	function verPdf(btn){
 
 		var id = btn.value;
-		var link = $('#actPdf').attr('href');
-		var route = link.split('%7Bid%7D').join(id);
-		window.open(route);
+		var route = '/planpdf/'+id;
+		
+		$.get(route, function(resp){
+
+			window.open(route);
+
+		}).fail(function(resp){
+
+			alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo.");
+		});
 	}
 
 	function archivosList(btn){
 
 		var id = btn.value;
-		var link = $('#fileentry').attr('href');
-		var route = link.split('%7Bid%7D').join(id);
+		var route = '/fileSend/'+id;
 		var tablaFile = $('#tablaFile');
 		
 		$.get(route, function(resp){

@@ -26,8 +26,8 @@
       $('#crr').hide();
       $('#semm').hide();
       $('#preForo').hide();
-      $('#examen').show();
-      $('div#planeacionC').hide();
+      $('#examen').fadeIn();
+      $('div#planeacionC').fadeOut();
       $('#pregunta').hide();
       $('#chatForo').hide();
       $('#froadm').hide();
@@ -61,6 +61,15 @@
       $('#plcList').hide();
       $('#admPlc').hide();
       $('#plcAlm').hide();
+      $('#act').fadeOut();
+    $('#crtSub').fadeOut();
+    $('#editUnidad').fadeOut();
+    $('#videoUnidad').fadeOut();
+    $('#listSubtemas').fadeOut();
+    $('#listAct').fadeOut();
+    $('#calAct').fadeOut();
+    $('#menUnidad').fadeOut();
+    $('div#preguntaExmamen').hide();
       
 
       var route = $(this).attr('href');

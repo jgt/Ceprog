@@ -16,7 +16,7 @@ Route::post('imagenSubtema/{id}', ['as' => 'imagenSubtema', 'uses' => 'SubtemasC
 Route::get('showSubtema/{id}', ['as' => 'showSubtema', 'uses' => 'SubtemasController@showSubtema']);
 Route::post('storeSubtemas', ['as' => 'storeSubtemas', 'uses' => 'SubtemasController@storeSubtemas']);
 Route::get('deleteSubtemas/{id}', ['as' => 'deleteSubtemas', 'uses' => 'SubtemasController@deleteSubtemas']);
-Route::get('editSubtemas/{id}', ['as' => 'editSubtemas', 'uses' => 'SubtemasController@editSubtemas']);
+Route::get('listSubtemas/{id}', ['as' => 'listSubtemas', 'uses' => 'SubtemasController@listSubtemas']);
 Route::post('updateSubtemas/{id}', ['as' => 'updateSubtemas', 'uses' => 'SubtemasController@updateSubtemas']);
 
 Route::get('examenPreguntas/{id}', ['as' => 'examenPreguntas', 'uses' => 'ExamenController@examenPreguntas']);
@@ -50,7 +50,7 @@ Route::get('totalCal/{id}', ['as' => 'totalCal', 'uses' => 'PortafolioController
 
 Route::get('apollo/{id}', ['as' => 'apollo', 'uses' => 'FileEntryController@create']);
 Route::post('material/{id}', ['as' => 'material', 'uses' => 'FileEntryController@add']);
-Route::get('borrarM/{filename}', ['as' => 'borrarM', 'uses' => 'FileEntryController@borrarM']);
+Route::get('borrarM/{id}', ['as' => 'borrarM', 'uses' => 'FileEntryController@borrarM']);
 
 Route::get('verArchivos/{id}', ['as' => 'verArchivos', 'uses' => 'PortafolioController@verArchivos']);
 
@@ -69,20 +69,21 @@ Route::post('storeRubrica', ['as' => 'storeRubrica', 'uses' => 'RubricaControlle
 	
 Route::get('listplan/{id}', ['as' => 'listplan', 'uses' => 'DisenoController@listPlan']);
 
-Route::get('editplan/{id}', ['as' => 'editplan', 'uses' => 'DisenoController@editplan']);
+Route::get('editplan/{id}', ['as' => 'editplan', 'uses' => 'DisenoController@editPlan']);
 Route::post('updateplan/{id}', ['as' => 'updateplan', 'uses' => 'DisenoController@updateplan']);
-
 Route::post('storePlan', ['as' => 'storePlan', 'uses' => 'DisenoController@storePlan']);
 Route::get('planeacion/{id}', ['as' => 'planeacion', 'uses' => 'DisenoController@planeacion']);
 Route::get('show/{id}', ['as' => 'showPdf', 'uses' => 'DisenoController@show']);
 
-	
-Route::resource('profesor', 'ProfesorController');
-Route::get('deleteActividad/{id}', ['as' => 'deleteActividad', 'uses' => 'ProfesorController@deleteActividad']);
-Route::get('createActividad/{id}', ['as' => 'createAct', 'uses' => 'ProfesorController@createActividad']);
+Route::get('deleteActividad/{id}', ['as' => 'deleteActividad', 'uses' => 'ActividadController@deleteActividad']);
+Route::get('showActividad/{id}', ['as' => 'showActividad', 'uses' => 'ActividadController@rubricas']);
+Route::post('storeActividad', ['as' => 'storeActividad', 'uses' => 'ActividadController@storeActividad']);
+Route::post('updateActividad/{id}', ['as' => 'updateActividad', 'uses' => 'ActividadController@updateActividad']);
 
 Route::post('plcStore/{id}', ['as' => 'plcStore', 'uses' => 'PlaneacionController@plcStore']);
 Route::post('borrarPlc/{id}', ['as' => 'borrarPlc', 'uses' => 'PlaneacionController@borrarPlc']);
+
+Route::get('actEdit/{id}', ['as' => 'actEdit', 'uses' => 'ActividadController@editarAct']);
 
 
 

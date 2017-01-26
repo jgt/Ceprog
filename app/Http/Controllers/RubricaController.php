@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Rubricas;
 use App\Actividad;
 use App\Rubrica;
+use Datatables;
 
 use Illuminate\Http\Request;
 
@@ -20,8 +21,9 @@ class RubricaController extends Controller {
 
 	public function listRubrica($id, Request $request)
 	{
-		$rubricas = Actividad::find($id)->rubricas()->get();
-		return response()->json($rubricas);
+		$actividad = Actividad::find($id);
+        $rubricas = $actividad->rubricas()->get();
+        return response()->json($rubricas);
 	}
 
 	public function editRubrica($id, Request $request)
@@ -38,7 +40,15 @@ class RubricaController extends Controller {
 
 	public function deleteRubrica($id)
 	{
-		$rubrica = Rubrica::find($id)->delete($id);
+		$rubrica = Rubrica::find($id);
+
+		if(!$rubrica->hasCalificacion($id))
+		{
+			$rubrica = Rubrica::find($id)->delete($id);
+		}else{
+
+			abort('404', 'error al procesar la solicitud.');
+		}
 	}
 
 }

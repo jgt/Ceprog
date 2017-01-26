@@ -12,10 +12,11 @@
            <div class="form-group">
 
      {!! Form::open(['route' => 'imagenSubtema', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'imgSub', 'files' => true]) !!}
-       <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+  
+
     {!! Form::label('subtema', 'Subtema: ', ['class' => 'form-group']) !!}
 
-  {!! Form::text('subtema', null, ['class' => 'form-control', 'id' => 'namSubtema']) !!}
+  {!! Form::text('subtema', null, ['class' => 'form-control', 'id' => 'namSubtema', 'readonly' => 'readonly']) !!}
    {!! Form::text('subtema_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'subimgId']) !!}
     </div>
   
@@ -24,7 +25,7 @@
 
    {!! Form::file('archivo', null, ['class' => 'form-control', 'id' => 'fileImagen'])!!}
    <hr>
-   {!! Form::submit('Responder', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'fimg'])!!}
+   {!! Form::submit('Subir Imagen', ['class' => 'btn btn-sm btn btn-info upload', 'id' => 'fimg'])!!}
    </div>
 
         </div>

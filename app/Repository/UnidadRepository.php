@@ -24,8 +24,10 @@ class UnidadRepository extends BaseRepository {
 	}
 
 	public function updateUnidad($id, Request $request)
-	{
-		return $this->search($id)->update($request->all());
+	{	
+		$unidad = $this->search($id);
+		$unidad->update($request->all());
+		return $unidad;
 	}
 
 	public function subtemas($id)

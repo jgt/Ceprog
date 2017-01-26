@@ -38,10 +38,10 @@
         $('#chatForo').hide();
         $('div#act').hide();
         $('div#listAct').hide();
-        $('div#examen').hide();
+        $('div#examen').fadeOut();
         $('div#listExamen').hide();
         $('div#calAct').hide();
-        $('div#planeacionC').hide();
+        $('div#planeacionC').fadeOut();
         $('div#listSubtemas').hide();
         $('#createVideos').hide();
         $('div#listAct').hide();
@@ -69,6 +69,15 @@
 		$('#listExamenDoc').show();
 		$('#admPlc').hide();
 		$('#plcAlm').hide();
+		$('#act').fadeOut();
+	    $('#crtSub').fadeOut();
+	    $('#editUnidad').fadeOut();
+	    $('#videoUnidad').fadeOut();
+	    $('#listSubtemas').fadeOut();
+	    $('#listAct').fadeOut();
+	    $('#calAct').fadeOut();
+	    $('#menUnidad').fadeOut();
+	    $('div#preguntaExmamen').hide();
 		
 		var route = $(this).attr('href');
 		var tablaExamen = $('#tablaExamenesDoc');
@@ -258,10 +267,10 @@
 			$('#preForo').hide();
 			$('div#act').hide();
 			$('div#listAct').hide();
-		    $('div#examen').hide();
+		    $('div#examen').fadeOut();
 		    $('div#listExamen').hide();
 		    $('div#calAct').hide();
-		    $('div#planeacionC').hide();
+		    $('div#planeacionC').fadeOut();
 		    $('div#listSubtemas').hide();
 		    $('#createVideos').hide();
 			$('div#listAct').hide();
@@ -288,6 +297,15 @@
 			$('#tutoriales').hide();
 			$('#crtExamenDocente').hide();
 			$('#listExamenAdmin').show();
+			$('#act').fadeOut();
+			  $('#crtSub').fadeOut();
+			  $('#editUnidad').fadeOut();
+			  $('#videoUnidad').fadeOut();
+			  $('#listSubtemas').fadeOut();
+			  $('#listAct').fadeOut();
+			  $('#calAct').fadeOut();
+			  $('#menUnidad').fadeOut();
+			  $('div#preguntaExmamen').hide();
 
 			var route = $('#docenteListexa').attr('href');
 			var listaExamenes = $('#tablaExamenesAdm');

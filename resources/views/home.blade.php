@@ -9,20 +9,16 @@
  
  @include('ajax.modalUnidad')
  @include('ajax.modalRespuestas')
- @include('ajax.modalEditUnidad')
- @include('ajax.modalEditsubtemas')
- @include('ajax.modalImagen')
- @include('ajax.modalListImagenes') 
- @include('ajax.modalCrearSubtema')
- @include('ajax.modalRubricas')
+ @include('ajax.Subtemas.modalEditsubtemas')
+ @include('ajax.Subtemas.modalImagen')
+ @include('ajax.Subtemas.modalListImagenes') 
+ @include('ajax.Rubricas.modalRubricas')
  @include('ajax.modalArchivos')
- @include('ajax.modalMaterial')
- @include('ajax.modalEditar')
+ @include('ajax.Material.modalMaterial')
  @include('ajax.modalMapoyo')
  @include('ajax.modalEditRubricas')
- @include('ajax.modalVideos')
  @include('ajax.modalListVideos')
- @include('ajax.modalListVideoDocente')
+ @include('ajax.Videos.modalListVideoDocente')
  @include('ajax.modalActUser')
  @include('ajax.modalListVideos')
  @include('ajax.modalMapoyoAlm')
@@ -49,7 +45,7 @@
  @include('ajax.Semestres.modalEditSemestre')
  @include('ajax.Materias.modalEditMateria')
  @include('ajax.modalCrtRubricas')
- @include('ajax.modalUserNota')
+ @include('ajax.Calificaciones.modalUserNota')
  @include('ajax.ExamenDocente.modalRespuestas')
  @include('ajax.ExamenDocente.modalQuizDocente')
  @include('ajax.ExamenDocente.modalEditexamenDocente')
@@ -65,16 +61,28 @@
  @include('ajax.Recursos.modalVideoMaestro')
  @include('ajax.Planeacion.createPlaneacion')
  @include('ajax.Planeacion.modalDeletePlc')
+ @include('ajax.Actividad.deleteActividad')
+ @include('ajax.Rubricas.modalDelete')
 
 <div class="container">
 
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
 					
+					
+					@include('ajax.Unidades.editUnidad')
+					@include('ajax.Actividad.ListActividad')
+					@include('ajax.Calificaciones.crearCalificacion')
+					@include('ajax.Actividad.editar')
+					@include('ajax.Subtemas.listSubtemas')
+					@include('ajax.Videos.modalVideos')
+					@include('ajax.Actividad.crearActividad')
+					@include('ajax.Subtemas.modalCrearSubtema')
+					@include('ajax.Unidades.Unidades')
 					@include('ajax.Planeacion.listPlaneacionAlm')
 					@include('ajax.Planeacion.listPlanAdm')
 					@include('ajax.Planeacion.listPlaneacion')
+					@include('ajax.Unidades.planeacion')
 					@include('ajax.Recursos.listRecursosMaestro')
 					@include('ajax.Recursos.listRecurso')
 					@include('ajax.ExamenDocente.reportes.tablaMaterias')
@@ -87,8 +95,6 @@
 					@include('ajax.Materias.listMaterias')
 					@include('ajax.Semestres.listSemestres')
 					@include('ajax.Semestres.listAlumnos')
-					@include('ajax.planeacion')
-					@include('ajax.crearActividad')
 					@include('ajax.subirTutorial')
 					@include('ajax.admPlan')
 					@include('ajax.crearPregunta')
@@ -109,24 +115,11 @@
 					@include('ajax.chatCeprog')
 					@include('ajax.admForo')
 					@include('ajax.Carreras.ajaxListCarreras')
-					@include('ajax.listSubtemas')
-					@include('ajax.listUnidades')
-					@include('ajax.ListaActividades')
 					@include('ajax.admRole')
 					@include('ajax.listForoadm')
-					@include('ajax.listRubricas')
 					@include('ajax.vizualizacionUnidad')
 					@include('ajax.notasRubricas')
-					@include('ajax.crearCalificacion')
 
-
-
-
-
-
-					
-					
-			</div>
 		</div>
 	</div>
 </div>

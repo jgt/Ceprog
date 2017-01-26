@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<meta charset="UTF-8">
-	<title>Actividad</title>
-	<link href="{{'estiloPdf/css/pdf.css'}}" rel="stylesheet">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta charset="UTF-8">
+  <title>Actividad</title>
+  <link href="{{'estiloPdf/css/pdf.css'}}" rel="stylesheet">
 </head>
 <body>
       <div id="logo">
@@ -20,7 +20,7 @@
       </div>
     </header>
     <main>
-    	<hr>
+      <hr>
       <table>
        
         <tbody>
@@ -44,10 +44,7 @@
             <td class="service">Valor total de la actividad</td>
             <td class="desc">{{ $actividad->valoractividad }}</td>
           </tr>
-          <tr>
-            <td class="service">Unidad(es)</td>
-            <td class="desc">{{ $actividad->unidad->unidad }}</td>
-          </tr>
+          
           <tr>
             <td class="service">Evidencias</td>
             <td class="desc">{{ $actividad->evidencia }}</td>
@@ -89,6 +86,5 @@
     </footer>
 </body>
 </html>
-
 
 

@@ -89,6 +89,4 @@ class Actividad extends Model
 		return $this->fileentries()->where('actividad_id', $act->id);
 	}
 
-
-
 }

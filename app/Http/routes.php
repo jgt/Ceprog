@@ -97,7 +97,7 @@ Route::group(['middleware' => 'alumnos'], function(){
 		Route::get('alumnoReportePdf/{id}', ['as' => 'alumnoReportePdf', 'uses' => 'QuizDocenteController@alumnoReportePdf']);
 	});
 
-	Route::get('fileentry/{id}', ['as' => 'fileentry', 'uses' => 'DescargaController@index']);
+	Route::get('fileSend/{id}', ['as' => 'fileSend', 'uses' => 'DescargaController@index']);
 
 	Route::post('terminarExamen/{id}', ['as' => 'terminarExamen', 'uses' => 'ExamenController@terminarExamen']);
 	Route::post('resultadoExamen/{id}', ['as' => 'resultadoExamen', 'uses' => 'ExamenController@resultadoExamen']);

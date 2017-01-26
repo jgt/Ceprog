@@ -13,115 +13,51 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Response as respuesta;
+use App\Repository\VideoRepository;
+use App\Repository\UnidadRepository;
 
 class VideosController extends Controller {
 
-	
+	private $videoRepository;
+	private $unidadRepository;
 
+	public function __construct(VideoRepository $videoRepository, UnidadRepository $unidadRepository)
+	{
+		$this->videoRepository = $videoRepository;
+		$this->unidadRepository = $unidadRepository;
+	}
+	
 	public function index($id, Request $request)
 	{	
-		$unidad = Unidad::find($id);
-
-		if($request->ajax())
-		{
-			return response()->json($unidad);
-		}
-
-		return view('dropzone', compact('unidad'));
+		$unidad = $this->unidadRepository->search($id);
+		return response()->json($unidad);
 	}
-
 
 	public function showVideos($id, Request $request)
 	{
-
-		$unidad = Unidad::find($id);
-
-		$videos = $unidad->videos()->get();
-
-		if($request->ajax())
-		{
-			return response()->json($videos);
-		}
-
+		$videos = $this->unidadRepository->search($id)->videos()->get();
+		return response()->json($videos);
 	}
-
 
 	public function allVideos($id, Request $request)
 	{
-
 		$tutorial = Tutorial::find($id);
-		
-		if($request->ajax())
-		{
-			return response()->json($tutorial);
-		}
+		return response()->json($tutorial);
 	}
-
 
 	public function storeSubir($id, Request $request)
 	{
-		$dir = public_path().'/uploads';
-
-		$unidad = Unidad::find($id);
-
-		$file = $request->file('archivo');
-			
-			$fileName = $file->getClientOriginalName();
-			$entry = Video::where('original_filename',  $fileName)->get();
-			
-			$ruta = $file->move($dir, $fileName);
-
-			$video = Video::create([
-
-				'mime' => $file->getClientMimeType(),
-				'original_filename' => 	$fileName,
-				'filename' => $file->getfilename(),
-				'ruta' => $ruta,
-				'unidad_id' => $id,
-
-				]);
-
-			$video->save();
+		return $this->videoRepository->subirVideo($id, $request);
 	}
 
-	public function download($filename){
-	
-		$public_path = public_path();
-		$entry = Video::where('original_filename', '=', $filename)->firstOrFail();
-     	$file =  $public_path.'/uploads/'.$filename;
-
-		return response()->download($file);
+	public function download($filename)
+	{
+		return response()->download($this->videoRepository->descargar($filename));
 	}
 
 	public function delete($id, Request $request)
 	{
-
-		$video = Video::find($id);
-
-		$public_path = public_path();
-
-		$file = $public_path.'/uploads/'.$video->original_filename;
-		
-		if($file){
-
-
-			Archivo::delete($file);
-			$video->delete();
-
-		}
-
-		if($request->ajax())
-		{
-
-			return response()->json($video);
-		}
-	}
-
-
-	public function tutorial()
-	{
-
-		return view('tutorial');
+		return $this->videoRepository->borrar($id, $request);
 	}
 
 	public function storeTutorial(Request $request)

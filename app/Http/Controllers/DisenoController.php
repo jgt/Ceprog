@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 use App;
+use Datatables;
 use App\Actividad;
 use Illuminate\Http\Request;
 use App\Http\Requests\EditUnidad;
@@ -50,21 +51,19 @@ class DisenoController extends Controller {
 	{
 		$unidad = $this->unidadRepository->crearUnidad($request);
 		return response()->json($unidad);
-
 	}
 
 	public function listPlan($id, Request $request)
 	{
 		$unidades = $this->materiaRepository->search($id)->unidades()->get();
-		return response()->json($unidades);		
+        return response()->json($unidades);	
 	}
 
-	public function editplan($id, Request $request)
+	public function editPlan($id)
 	{
 		$unidad = $this->unidadRepository->search($id);
 		return response()->json($unidad);
 	}
-
 
 	public function updateplan($id, Request $request)
 	{
