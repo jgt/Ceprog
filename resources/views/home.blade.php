@@ -71,7 +71,7 @@
 					
 					
 					@include('ajax.Unidades.editUnidad')
-					@include('ajax.Actividad.ListActividad')
+					@include('ajax.Actividad.listActividad')
 					@include('ajax.Calificaciones.crearCalificacion')
 					@include('ajax.Actividad.editar')
 					@include('ajax.Subtemas.listSubtemas')

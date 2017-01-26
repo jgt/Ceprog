@@ -1171,17 +1171,8 @@
 
 		var filename = btn.value;
 		var route = '/fileentry/'+filename;
-		
-		$.get(route, function(resp){
-
-			window.open(route);
-
-		}).fail(function(resp){
-
-			alertify.alert("Error al descargar el archivo por favor intentalo de nuevo.");
-
-		});
-
+		window.open(route);
+	
 	  }
 
       function fileApoyo(btn)
