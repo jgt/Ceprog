@@ -45,6 +45,11 @@ class Materia extends Model {
 		return $this->hasOne('App\Planeacion');
 	}
 
+	public function seguimiento()
+	{
+		return $this->hasOne('App\Seguimiento');
+	}
+
 	public function examenes()
 	{
 		return $this->hasMany('App\Examen');

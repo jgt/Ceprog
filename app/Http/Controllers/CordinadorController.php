@@ -4,12 +4,18 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Cordinador;
 use App\Http\Requests\EditCordinador;
+use App\Http\Requests\rptSemestral;
 
+use App\Http\Requests\DtaM;
 use App\User;
 use App\Materia;
 use App\Actividad;
+use App\DatosDocente;
+use App\Seguimiento;
+use App\Campus;
 use Bican\Roles\Models\Role;
 use Auth;
+use Datatables;
 
 use Illuminate\Http\Request;
 use App\Repository\UserRepository;
@@ -36,44 +42,38 @@ class CordinadorController extends Controller {
 
 	}
 
-	public function index(Request $request)
+	public function listDocente(Request $request)
 	{
 
-		$users = $this->userRepository->listaUser($request);
-		return view('cordinador.listmaestros', compact('users'));
+		$users = DatosDocente::with('user.materias.seguimiento', 'user.materias.semestre.carrera')->select('datos_docentes.*');
+		return Datatables::of($users)->make(true);
+
 	}
 
 	public function create()
 	{
-		$materias = $this->materiaRepository->searchList();
-		return view('cordinador.create.maestro', compact('materias'));
+		$materias = $this->materiaRepository->getModel()->get();
+		return response()->json($materias);
 	}
 
-	
-	public function store(Cordinador $request)
-	{	
-		$this->userRepository->crearMaestro($request);
-		return redirect('cordinador');
-	}
-
-	
-	public function show($id)
+	public function store(Request $request)
 	{
+		$user = $this->userRepository->crearMaestro($request);
+		$campus = Campus::get();
+		$detalles = [
 
-		$maestro = $this->userRepository->search($id);
-		$planeaciones = $this->userRepository->getPlaneaciones($id);
-		return view('cordinador.planeaciones', compact('planeaciones'));
+			'user' => $user,
+			'campus' => $campus
+		];
+		return response()->json($detalles);
 	}
 
-	
-	public function edit($id)
+	public function datosDocente(DtaM $request)
 	{
-		$maestro = $this->userRepository->search($id);
-		$materias = $this->materiaRepository->searchList();
-		return view('cordinador.edit.maestro', compact('maestro', 'materias'));
+		$user = $this->userRepository->datosMaestro($request);
+		return response()->json($user);
 	}
-
-	
+			
 	public function update($id, EditCordinador $request)
 	{
 
@@ -81,72 +81,10 @@ class CordinadorController extends Controller {
       return redirect('cordinador');
 	}
 
-
-	public function destroy($id)
+	public function crearReporteSem(rptSemestral $request)
 	{
-		
-		$this->userRepository->delete($id);
-		return redirect('cordinador');
-	}
-
-	public function materiaCordinador(Request $request)
-	{
-
-		$materias = $this->materiaRepository->listaMaterias($request);
-		return view('cordinador.listamaterias', compact('materias'));
-	}
-
-	public function actividadCordinador($id)
-	{
-
-		$maestro = $this->userRepository->search($id);
-		$materias = $this->userRepository->getMaterias($id);
-		return view('cordinador.actividades', compact('materias', 'maestro'));
-
-
-	}
-
-	public function actividadMateria($id)
-	{
-		$materia = $this->materiaRepository->search($id);
-		$actividades = $this->materiaRepository->getActividades($id);
-		return view('cordinador.actividadesMaterias', compact('actividades'));
-
-	}
-
-	public function notaCordinador($id)
-	{
-
-		$actividad = $this->actividadRepository->search($id);
-		return view('cordinador.notaCordinador', compact('actividad'));
-	}
-
-
-	public function notaRubricaCordinador($id)
-	{
-
-		 $actividad = $this->actividadRepository->search($id);
-    	 $rubricas = $this->actividadRepository->getRubricas($id);
-    	 $promedio = $this->actividadRepository->getNota($id);
-   		 return view('cordinador.notarubricascordinador', compact('actividad', 'promedio'));
-	}
-
-	public function videoCordinador($id)
-	{
-
-		$materia = $this->materiaRepository->search($id);
-		$videos = $this->materiaRepository->getVideos($id);
-		return view('cordinador.dropzone', compact('videos'));
-	}
-
-
-	public function archivoCordinador($id)
-	{
-
-		$actividad = $this->actividadRepository->search($id);
-		$entries = $this->actividadRepository->getApoyos($id);
-		return view('cordinador.archivoCordinador', compact('entries', 'actividad'));
-
+		$reporte = Seguimiento::create($request->all());
+		return response()->json($reporte);
 	}
 	
 }

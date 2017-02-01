@@ -33,10 +33,8 @@ class Cordinador implements Middleware {
 	public function handle($request, Closure $next)
 	{
 		if ( ! Auth::check())
-		{
-			
-				
-				return view('auth.login');
+		{	
+			return view('auth.login');
 
 		}elseif ($this->auth->user()->is('cdo')) {
 			

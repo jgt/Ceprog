@@ -139,23 +139,12 @@ Route::group(['middleware' => 'allRoles'], function(){
 
 Route::group(['middleware' => 'cordinador'], function(){
 
+	Route::get('cdoMaterias', ['as' => 'cdoMaterias', 'uses' => 'CordinadorController@create']);
+	Route::get('cdoDocentes', ['as' => 'cdoDocentes', 'uses' => 'CordinadorController@listDocente']);
 
-	Route::resource('cordinador', 'CordinadorController');
-
-	Route::get('mtmCordinador', ['as' => 'mtmCordinador', 'uses' => 'CordinadorController@materiaCordinador']);
-
-	Route::get('actCordinador/{id}', ['as' => 'actCordinador', 'uses' => 'CordinadorController@actividadCordinador']);
-
-	Route::get('actividadMateria/{id}', ['as' => 'actividadMateria', 'uses' => 'CordinadorController@actividadMateria']);
-
-	Route::get('notaCordinador/{id}', ['as' => 'notaCordinador', 'uses' => 'CordinadorController@notaCordinador']);
-
-	Route::get('ntCordinador/{id}', ['as' => 'ntCordinador', 'uses' => 'CordinadorController@notaRubricaCordinador']);
-
-	Route::get('videoCordinador/{id}', ['as' => 'videoCordinador', 'uses' => 'CordinadorController@videoCordinador']);
-
-	Route::get('archivoCordinador/{id}', ['as' => 'archivoCordinador', 'uses' => 'CordinadorController@archivoCordinador']);
-
+	Route::post('rptSemestral', ['as' => 'rptSemestral', 'uses' => 'CordinadorController@crearReporteSem']);
+	Route::post('cdoStore', ['as' => 'cdoStore', 'uses' => 'CordinadorController@store']);
+	Route::post('datosMaestro', ['as' => 'datosMaestro', 'uses' => 'CordinadorController@datosDocente']);
 
 });
 

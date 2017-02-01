@@ -21,21 +21,25 @@
     </header>
     <main>
       <hr>
-      <h3>Descripción</h3>
+      <h2>Descripción</h2>
       <p>{{$actividad->descripcion}}</p>
       <br><br>
-      <h3>Objetivos</h3>
+      <h2>Objetivos</h2>
       <p>{{$actividad->estrategia}}</p>
       <br><br>
-      <h3>Caracteristicas de entrega</h3>
+      <h2>Caracteristicas de entrega</h2>
       <p>{{$actividad->caracteristicas}}</p>
       <br><br>
-      <h3>Sugerencias de realización</h3>
+      <h2>Sugerencias de realización</h2>
       <p>{{$actividad->realizacion}}</p>
-      <div id="notices">
-        <div>NOTA:</div>
-        <div class="notice">Este formato es un reporte de la actividad creada.</div>
-      </div>
+      <br><br>
+      <h2>Rubricas/Material</h2>
+      <hr>
+      @foreach($actividad->rubricas as $rubrica)
+  
+          <ul><strong><li>{{$rubrica->name}} - {{$rubrica->descripcion}}</strong></li></ul>  
+
+      @endforeach
     </main>
     <footer>
       Universidad ceprog Construimos tu futuro.

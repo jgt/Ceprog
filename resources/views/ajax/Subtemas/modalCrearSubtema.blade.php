@@ -17,7 +17,7 @@
    <div class="form-group">
   {!! Form::label('descripcion', 'Descripcion ', ['class' => 'control-label col-xs-3']) !!}
    <div class="col-xs-9">
-      {!! Form::textarea('descripcion', null, ['class' => 'form-control',  'rows' => '3', 'id' => 'createDesc']) !!}
+      {!! Form::textarea('descripcion', null, ['class' => 'form-control ckeditor',  'rows' => '3', 'id' => 'createDesc']) !!}
    </div>
   </div>
 

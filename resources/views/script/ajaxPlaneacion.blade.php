@@ -10,7 +10,7 @@ $(document).on('ready', function(){
 		var materia = $(this).parents('ul');
 		var id = materia.data('id');
 		var route = link.split('%7Bid%7D').join(id);
-
+	
 		$('#tbMateriaDoc').hide();
 		$('div#planeacionC').fadeIn();
 		$('div#examen').fadeOut();
@@ -98,6 +98,8 @@ $('#crunidad').on('click', function(e){
 			var form = $('#plcuni');
 			var route = form.attr('action');
 			var metodo = form.attr('method');
+			CKEDITOR.instances.objetivo.updateElement();
+			CKEDITOR.instances.actividadP.updateElement();
 	
 			$.ajax({
 
@@ -148,6 +150,7 @@ $('#crearU').on('click', function(e){
 			var form = $('#formT');
 			var route = form.attr('action');
 			var metodo = form.attr('method');
+			CKEDITOR.instances.descSub.updateElement();
 
 			$.ajax({
 

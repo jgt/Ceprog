@@ -6,9 +6,12 @@ use App\Http\Requests\EditAdmin;
 use App\Http\Requests\EditCordinador;
 use App\User;
 use App\Materia;
+use App\DatosDocente;
 use Bican\Roles\Models\Role;
 use Auth;
 use Datatables;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 
 use Illuminate\Http\Request;
@@ -153,11 +156,67 @@ class UserRepository extends BaseRepository {
 	public function crearMaestro(Request $request)
 	{
 
-		$role = Role::find(23);
+		$role = Role::where('name', 'profesor')->first();
 		$user = User::create($request->all());
 		$user->attachRole($role);
-		$user->materias()->attach($request->input('materias'));
-		flash()->overlay('Ha sdo creado correctamente', 'El maestro '. $user->name);
+		$user->materias()->attach($request->input('materia_list'));
+		return $user;
+	}
+
+	public function datosMaestro(Request $request)
+	{	
+		$ruta = public_path().'/curriculum/';
+		$file = $request->file('curriculum');
+		$filename = $file->getClientOriginalName();
+		$existe = public_path().'/curriculum/'.$filename;
+
+		if(!file_exists($existe))
+		{
+			$move = $file->move($ruta, $filename);	
+			$user = DatosDocente::create([
+
+			'formacion' => $request->get('formacion'),
+			'celular' => $request->get('celular'),
+			'antiguedad' => $request->get('antiguedad'),
+			'curriculum' => $filename,
+			'modelo' => $request->get('modelo'),
+			'contrato' => $request->get('contrato'),
+			'entrevista' => $request->get('entrevista'),
+			'identidad' => $request->get('identidad'),
+			'planeacion' => $request->get('planeacion'),
+			'erom' => $request->get('erom'),
+			'apa' => $request->get('apa'),
+			'user_id' => $request->get('user_id')
+
+			]);
+
+			$user->campuses()->attach($request->input('campus'));
+			return $user;
+
+		}else{
+
+			$move = $file->move($ruta, $file);
+
+			$user = DatosDocente::create([
+
+			'formacion' => $request->get('formacion'),
+			'celular' => $request->get('celular'),
+			'antiguedad' => $request->get('antiguedad'),
+			'curriculum' => $file,
+			'modelo' => $request->get('modelo'),
+			'contrato' => $request->get('contrato'),
+			'entrevista' => $request->get('entrevista'),
+			'identidad' => $request->get('identidad'),
+			'planeacion' => $request->get('planeacion'),
+			'erom' => $request->get('erom'),
+			'apa' => $request->get('apa'),
+			'user_id' => $request->get('user_id')
+
+			]);
+
+			$user->campuses()->attach($request->input('campus'));
+			return $user;
+		}
 	}
 
 	public function updateMaestro(EditCordinador $request, $id)

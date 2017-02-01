@@ -26,7 +26,9 @@
 		"acacha/admin-lte-template-laravel": "1.*",
 		"maatwebsite/excel": "~2.0",
 		"anouar/fpdf": "1.0.2",
-		"yajra/laravel-datatables-oracle": "~6.0"
+		"yajra/laravel-datatables-oracle": "~6.0",
+		"ckeditor/ckeditor": "^4.6",
+		"unisharp/laravel-filemanager": "^1.6"
 		
 
 

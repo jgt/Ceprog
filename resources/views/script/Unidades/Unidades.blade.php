@@ -78,7 +78,6 @@
 						$('#editsemes').val(resp.semestre);
 						$('#editseriacion').val(resp.seriacion).attr('disabled', true);
 						$('#editclave').val(resp.clave).attr('disabled', true);
-						$('#editobjetivo').val(resp.objetivo).attr('disabled', true);
 						$('#editasesor').val(resp.asesor);
 						$('#editunidad').val(resp.unidad).attr('disabled', true);
 						$('#edittema').val(resp.tema).attr('disabled', true);
@@ -87,6 +86,8 @@
 						$('#editmateria').val(resp.materia_id).attr('disabled', true);
 						$('#editUs').val(resp.user_id).attr('disabled', true);
 						$('#unidadId').val(resp.id).attr('disabled', true);
+						CKEDITOR.instances.editobjetivo.setData(resp.objetivo);
+						CKEDITOR.instances.editactividadP.setData(resp.editactividadP);
 
 						menu.append("<tr><td><button value="+resp.id+" OnClick='activar(this)'>Activar Edicion</button></td><td><button type='button' value="+resp.id+" OnClick='subtema(this)'>Crear Subtemas</button></td><td><button type='button' value="+resp.id+" OnClick='actividad(this)'>Crear Actividad</button></td><td><button type='button' value="+resp.id+" OnClick='video(this)'>Subir Video</button></td><td><button type='button' value="+resp.id+" OnClick='pdf(this)'>Ver Pdf</button></td><td><button type='button' value="+resp.id+" OnClick='listSubtema(this)'>Lista subtemas</button></td><td><button type='button' value="+resp.id+" OnClick='listAct(this)'>Lista actividad</button></td><td><button type='button' value="+resp.id+" OnClick='listVideo(this)'>Lista videos</button></td></tr>");
 
@@ -107,6 +108,8 @@
 			var route = '/updateplan/'+id;
 			$(this).attr('disabled', true);
 			$.blockUI();
+			CKEDITOR.instances.editobjetivo.updateElement();
+			CKEDITOR.instances.editactividadP.updateElement();
 
 			$.ajax({
 
@@ -151,6 +154,7 @@
 			var route = '/storeSubtemas';
 			$(this).attr('disabled', true);
 			$.blockUI();
+			CKEDITOR.instances.createDesc.updateElement();
 
 			$.ajax({
 
@@ -203,9 +207,11 @@
 					$('#caracteristicas').val(" ");
 					$('#realizacion').val(" ");
 					$('#codigoactividad').val(" ");
+					$('#numeroR').val(" ");
 					$('#actividadId').val(resp.id);
 					$('#actividadP').val(resp.valoractividad)
 					$('#crtAct').attr('disabled', false);
+
 					$.unblockUI();
 					alertify.alert("La actividad <strong>"+resp.actividad+"</strong> ha sido creada correctamente.");
 				},
@@ -367,6 +373,7 @@
 			var route = '/updateSubtemas/'+id;
 			$(this).attr('disabled', true);
 			$.blockUI();
+			CKEDITOR.instances.descSubedit.updateElement();
 			
 			$.ajax({
 
@@ -886,8 +893,7 @@
 				$('#editsubId').val(value.unidad_id);
 				$('#Idsubtemas').val(value.id);
 				$('#editsubT').val(value.subtemas);
-				$('#descSubedit').val(value.descripcion);
-
+				CKEDITOR.instances.descSubedit.setData(value.descripcion);
 			});
 
 		});

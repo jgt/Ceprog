@@ -64,6 +64,24 @@
                  @endforeach
         </ul><!-- /.sidebar-menu -->
         @endif
+        @if(Auth::user()->is('cdo'))
+        <ul class="sidebar-menu">
+            <li class="header">Cordinador</li>
+            <!-- Optionally, you can add icons to the links -->
+                @foreach($materias as $materia)
+                 <li class="treeview">
+                <a href="{{$materia->id}}" id="matId" style="display:none;"></a>
+                <a href="{{ route('idUnidad')}}" id="idUnidad" style="display:none;"></a>
+                <a href="{{ route('idSubtemas')}}" id="idSubtemas" style="display:none;"></a>
+
+                <a href="#"><i class='fa fa-link'></i><span>Herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu" Style="display:none" data-id="{{ $materia->id}}">
+                    <li><a href="#" id="crtDocente">Crear docente</a></li>
+                     <li><a href="{{ route('cdoDocentes') }}" id="cdoListdocente">Lista de docentes</a></li>
+                     <li><a href="#" id="rptSemestral">Reporte semestral</a></li>
+                 @endforeach
+        </ul><!-- /.sidebar-menu -->
+        @endif
          @if(Auth::user()->is('alm'))
         <ul class="sidebar-menu">
             <li class="header">Alumno</li>

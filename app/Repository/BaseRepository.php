@@ -22,7 +22,7 @@ abstract class BaseRepository {
 	public function showMaterias()
 	{
 
-		return $this->newQuery()->lists('creditos', 'id');
+		return $this->newQuery()->lists('name', 'id');
 	}
 
 	public function searchList()

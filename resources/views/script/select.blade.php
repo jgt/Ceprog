@@ -14,6 +14,8 @@
 		$('#selectMatdocenteEdit').select2();
 		$('#optp').select2();
 		$('#mtausr').select2();
+		$('#cdoMta').select2();
+		$('#sltCampus').select2();
 
 
 	</script>

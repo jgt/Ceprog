@@ -33,7 +33,7 @@
 
   <div class="form-group">
   {!! Form::label('descripcion', 'Descripcion ', ['class' => 'form-group']) !!}
-   {!! Form::textarea('descripcion', null, ['class' => 'form-control',  'rows' => '3', 'id' => 'descSub']) !!}
+   {!! Form::textarea('descripcion', null, ['class' => 'form-control ckeditor',  'rows' => '3', 'id' => 'descSub']) !!}
   </div>
 
   {!! Form::close() !!}

@@ -63,6 +63,7 @@
  @include('ajax.Planeacion.modalDeletePlc')
  @include('ajax.Actividad.deleteActividad')
  @include('ajax.Rubricas.modalDelete')
+ @include('ajax.reportes.reporteSemestral')
 
 <div class="container">
 
@@ -71,6 +72,10 @@
 					
 					
 					@include('ajax.Unidades.editUnidad')
+					@include('ajax.reportes.semestral')
+					@include('ajax.Cordinador.crearDocentes')
+					@include('ajax.Cordinador.listDocentes')
+					@include('ajax.Cordinador.reporteSemestral')
 					@include('ajax.Actividad.listActividad')
 					@include('ajax.Calificaciones.crearCalificacion')
 					@include('ajax.Actividad.editar')

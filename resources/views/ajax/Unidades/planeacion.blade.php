@@ -33,7 +33,7 @@
     <div class="form-group">
   {!! Form::label('objetivo', 'Objetivo de la materia:', ['class' => 'control-label col-xs-3']) !!}
    <div class="col-xs-9">
-     {!! Form::textarea('objetivo', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'objetivo']) !!}
+     {!! Form::textarea('objetivo', null, ['class' => 'ckeditor', 'rows' => '3', 'id' => 'objetivo']) !!}
    </div>
   </div>
   <div class="form-group">
@@ -57,7 +57,7 @@
   <div class="form-group">
   {!! Form::label('actividadP', 'Actividades de Aprendizaje:', ['class' => 'control-label col-xs-3']) !!}
   <div class="col-xs-9">
-     {!! Form::textarea('actividadP', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'actividadP']) !!}
+     {!! Form::textarea('actividadP', null, ['class' => 'form-control ckeditor', 'rows' => '3', 'id' => 'actividadP']) !!}
   </div>
   </div>
    <div class="form-group">
