@@ -33,8 +33,8 @@ class PlaneacionController extends Controller
     public function listPlaneacion($id)
     {   
         $materia = Materia::find($id);
-        $planeacion = $materia->planeacion()->select('planeacions.*');
-        return Datatables::of($planeacion)->make(true);
+        $planeacion = $materia->planeacion()->get();
+        return response()->json($planeacion);
     }
 
     public function show($id)
