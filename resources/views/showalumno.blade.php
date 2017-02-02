@@ -40,44 +40,32 @@
             <td class="service">Tema</td>
             <td class="desc">{{ $unidad->tema }}</td>
           </tr>
-  
-        
           <hr>
         </tbody>
       </table>
       <hr>
-      <div id="notices">
-        <h2 align="center">SUBTEMAS</h2>
+      <br>
         <div class="notice">
             
             @foreach($unidad->subtemas as $subtema)
                 
                 @forelse ($subtema->imagenes as $imagen)
-
-                    <ul>
-                        <li><strong>{{ $subtema->subtemas}}</strong> <p style="text-align: justify;">{{$subtema->descripcion}}</p></li>
-                        <li><img src="{{$imagen->ruta}}"></li>
-              
-                  </ul>
+                  <br>
+                  {!! $subtema->subtemas !!} 
+                  {!! $subtema->descripcion !!}
+                  <img src="{{$imagen->ruta}}">
 
                   @empty
 
-                  <ul>
-                        <li><strong>{{ $subtema->subtemas}}</strong> <p style="text-align: justify;">{{$subtema->descripcion}}</p></li>
-              
-                  </ul>
+                {!! $subtema->subtemas !!}
+                {!! $subtema->descripcion !!}
 
                 @endforelse
                         
         @endforeach
 
         </div>
-      </div>
     </main>
-    <footer>
-      Universidad ceprog Construimos tu futuro.
-    </footer>
-	
 </body>
 </html>
 				

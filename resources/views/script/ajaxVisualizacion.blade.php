@@ -143,18 +143,13 @@
 							$('#materiaU').html(value.materia);
 
 							$(value.subtemas).each(function(key, sub){
+	
+								ulSubtemas.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
+									
+								$(sub.imagenes).each(function(key, img){
 
-
-									if(sub.imagenes.length == 0)
-									{
-										ulSubtemas.append("<li><h4><strong>"+sub.subtemas+"</strong></h4></li>");
-									}else{
-
-										$(sub.imagenes).each(function(key, img){
-
-											ulSubtemas.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><img src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
-										});
-									}
+									ulSubtemas.append("<li><img src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
+								});
 		
 							});
 
@@ -325,16 +320,12 @@
 							$(value.subtemas).each(function(key, sub){
 
 
-									if(sub.imagenes.length == 0)
-									{
-										subtemaAlm.append("<li><h4><strong>"+sub.subtemas+"</strong></h4></li>");
-									}else{
+								subtemaAlm.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
+									
+								$(sub.imagenes).each(function(key, img){
 
-										$(sub.imagenes).each(function(key, img){
-
-											subtemaAlm.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><img src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
-										});
-									}
+									subtemaAlm.append("<li><img src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
+								});
 		
 							});
 							
