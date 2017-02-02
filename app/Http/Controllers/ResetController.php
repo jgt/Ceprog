@@ -20,53 +20,44 @@ class ResetController extends Controller {
 
 	public function reset(Peticion $request)
 	{
-
 		$user = Auth::user();
-
-		if($request->ajax())
-		{
-			return response()->json($user);
-		}
+		return response()->json($user);
 	}
 
 	public function addImg(Peticion $request, $id)
 	{
 		$user = User::find($id);
 		$imagenes = $user->imagenes()->get();
-	
-		if($request->ajax())
-		{
-			return response()->json($imagenes);
-		}
+		return response()->json($imagenes);
 	}
-
-
 
 	public function resetC(Peticion $request, $id)
    {	
 
-   	   $dir = public_path().'/imagen';
-   	  $users = User::find($id);
+   	  $imagen = new ImagenUser;
+   	  $dir = public_path().'/imagen';
       $users->update($request->all());
    	  $user = Auth::user()->id;
    	  $file = Request::file('archivo');	
    	  $nombre = $file->getClientOriginalName();
-   	  $ruta = $file->move($dir, $nombre);
 	  $extension = $file->getClientOriginalExtension();
-	  	$img = ImagenUser::create([
-	  		'mime' => $file->getClientMimeType(),
-	  		'ruta' => $ruta,
+
+	  if(!$imagen->hasImg($user))
+	  {
+	  	$ruta = $file->move($dir, $nombre);
+		$img = ImagenUser::create([
+		  	'mime' => $file->getClientMimeType(),
+		  	'ruta' => $ruta,
 			'original_img' => $file->getClientOriginalName(),
 			'img' => $nombre,
 			'user_id' => $user
-	  		]);
-	  		$img->save();
-	  		if($request->ajax())
-			   {
-			   	
-			   	return response()->json($img);
-			   }
 
+	  	]);
+	  }else{
+
+	  	abort('404', 'ya tiene una foto.');
+	  }	
+		return response()->json($img);
 
    }
 

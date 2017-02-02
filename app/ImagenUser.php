@@ -16,4 +16,11 @@ class ImagenUser extends Model
 
     	return $this->belongsTo('App\User');
     }
+
+    public function hasImg($user)
+	{
+
+	return 	ImagenUser::where('user_id', $user)
+            ->count();
+	}
 }

@@ -64,7 +64,7 @@ abstract class BaseRepository {
 	public function getUnidades($id)
 	{
 
-		return $this->search($id)->unidades()->paginate(5);
+		return $this->search($id)->unidades()->paginate(18);
 	}
 
 

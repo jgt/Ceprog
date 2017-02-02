@@ -67,7 +67,7 @@
 				tablaAlm.html(" ");
 
 				$(resp.data).each(function(key, value){
-
+					
 					tablaAlm.append("<tr><td>"+value.unidad+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='act(this);'</button><i class='fa fa-search'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='VideosAlm(this);' data-toggle='modal' data-target='#modalListVideos' </button><i class='fa fa-eye'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='calificacionAlm(this);'</button><i class='fa fa-pencil-square-o'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='pdfUnidad(this);' </button><i class='fa fa-eye'></i></td></tr>");
 
 				});
