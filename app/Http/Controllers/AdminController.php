@@ -9,6 +9,7 @@ use App\Materia;
 use App\User;
 use App\Carrera;
 use App\Semestre;
+use App\Campus;
 use Bican\Roles\Models;
 use Auth;
 use Input;
@@ -89,40 +90,21 @@ class AdminController extends Controller {
 
     ];
 	
-	if($request->ajax())
-	{
 		return response()->json($arreglo);
-	}	
-
 	}
 
-	
 	public function store(Admin $request)
 	{
-
 		$user = $this->userRepository->createUser($request);
-	
-		if($request->ajax())
-		{
-			return response()->json(['success' => $user]);
-		}
-
+		return response()->json($user);
 	}
 
-	
 	public function show($id, Request $request)
 	{
 		$users = $this->userRepository->search($id)->where('id', $id)->with('roles')->get();
-
-
-		if($request->ajax())
-		{
-			return response()->json($users);
-		}
-
+		return response()->json($users);
 	}
 
-	
 	public function edit($id, Request $request)
 	{	
 		
@@ -143,23 +125,14 @@ class AdminController extends Controller {
 
 		];
 		
-		if($request->ajax())
-		{
-
-			return response()->json($detalles);
-		}
+		return response()->json($detalles);
 
 	}
 
 	public function update($id, EditAdmin $request)
 	{
-		
 		$user = $this->userRepository->updateUser($request, $id);
-		
-		if($request->ajax())
-		{
-			return response()->json($user);
-		}
+		return response()->json($user);
 	}
 
 	
@@ -172,10 +145,8 @@ class AdminController extends Controller {
 
 	public function delete($id)
 	{
-
 		$this->userRepository->delete($id);
 		return redirect('admin');
-
 	}
 
 	public function picturePerfil($id)
@@ -183,14 +154,12 @@ class AdminController extends Controller {
 		$imagen = $this->userRepository->downloadPerfil($id);
 		$public_path = public_path();
      	$file =  $public_path.'/imagen/'.$imagen;
-
 		return response()->download($file);
 	}
 
 	public function notification($id)
 	{
 		$user = $this->userRepository->search($id)->where('id', $id)->with('imagenes')->get();
-
 		return response()->json($user);
 	}
 

@@ -68,8 +68,9 @@ class UserRepository extends BaseRepository {
 		$user->semestres()->attach($request->get('semestre_list'));
 		$user->materias()->attach($request->get('materia_list'));
 		$user->attachRole($request->get('role_list'));
+		$usuario = $user->where('id', $user->id)->with('roles')->get();
 
-		return $user;
+		return $usuario;
 
 	}
 

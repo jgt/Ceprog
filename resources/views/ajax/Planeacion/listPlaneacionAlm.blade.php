@@ -1,13 +1,17 @@
-<div id="plcAlm" class="table-responsive"  Style="display:none">
-        
-       <table class="table table-striped table-bordered dt-responsive nowrap" id="plcalm-table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Ubicacion</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-    </table>
-      
+   <div id="plcAlm" class="col-md-10 col-md-offset-1" Style="display:none">
+       
+       <div id="msj-success" class="alert alert-success alert-dismissible" role="alert" style="display:none">
+       </div>
+       <div class="table-responsive">
+       <table class="table">
+          <thead>
+            <td><strong>Nombre</strong></td>
+            <td><strong>Tipo</strong></td>
+            <td><strong>Descargar</strong></td>
+          </thead> 
+          <tbody id="tablaPlaneacionAlm">
+            
+          </tbody>
+       </table>
+  </div>
      </div>

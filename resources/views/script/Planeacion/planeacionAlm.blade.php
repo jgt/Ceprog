@@ -69,38 +69,40 @@
 
 		function listar(route)
 		{
-			var tabla = $('#plcalm-table').DataTable({
+			var tabla = $('#tablaPlaneacionAlm');
 
-				filter: false,
-				paging: false,
-				destroy:true,
-				processing: true,
-	       		serverSide: true,
-	       		ajax:route,
-	       		language: { url: "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"},
-	       		columns:[
+			$.get(route, function(resp){
 
-	        		{data: 'filename'},
-	        		{data: 'mime'},
-	        		{defaultContent: "<button type='button' class='descargar btn btn-primary'><i class='fa fa-cloud-download' aria-hidden='true'></i></button>"}
-	        					
-	        		]
+				tabla.html(" ");
+
+				$(resp).each(function(key, value){
+
+					var filename = value.original_filename;
+					var cadena = filename.split(' ').join('%20');
+					tabla.append("<tr><td>"+value.filename+"</td><td>"+value.mime+"</td><td><button type='button' class='btn btn-primary' value="+cadena+" OnClick='file(this)'><i class='fa fa-download' aria-hidden='true'></i></tr>");
 
 				});
-
-				descargar("#plcalm-table tbody", tabla);
-		}
-
-		function descargar(tbody, tabla)
-		{
-			$(tbody).on("click", "button.descargar", function(){
-				var data = tabla.row($(this).parents('tr')).data();
-				var route = '/plcDescargar/'+data.filename;
-				window.open(route);
 
 			});
 		}
 
 	});
+
+	function file(btn)
+	{
+		var route = '/plcDescargar/'+btn.value;
+		$.blockUI();
+
+		$.get(route, function(resp){
+
+			$.unblockUI();
+			window.open(route);
+
+		}).fail(function(resp){
+
+			alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo.");
+
+		});
+	}
 
 </script>

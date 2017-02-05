@@ -3,64 +3,60 @@
 
 		$(document).on('ready', function(){
 
-			function crearUsuario(){
+			function crearUsuario()
+			{
+				var route = 'admin/create';
+				var roles = $('#roleSelect');
+				var carreras = $('#crrs');
+				var semestres = $('#smes');
+				var materias = $('#mtausr');
 
-			var route = $('#adminCrt').attr('href');
-			var roles = $('#roleSelect');
-			var carreras = $('#crrs');
-			var semestres = $('#smes');
-			var materias = $('#mtausr');
+				$('#crrs').change(function(){
 
-			$('#crrs').change(function(){
+					semestres.html(" ");
+				});
 
-				semestres.html(" ");
-			});
+				$.get(route, function(resp){
 
-			$.get(route, function(resp){
+					roles.html(" ");
+					carreras.html(" ");
+					materias.html(" ");
+						
+					$(resp).each(function(key, value){
 
-				roles.html(" ");
-				carreras.html(" ");
-				materias.html(" ");
-				roles.append("<option value="+0+" disabled selected hidden>Selecciona tu opcion...</option>");
-				carreras.append("<option value="+0+" disabled selected hidden>Selecciona tu opcion...</option>");
-				materias.append("<option value="+0+" disabled selected hidden>Selecciona tu opcion...</option>");
-				semestres.append("<option value="+0+" disabled selected hidden>Selecciona tu opcion...</option>");
-					
-				$(resp).each(function(key, value){
+						$(value.roles).each(function(key, role){
 
-					$(value.roles).each(function(key, role){
-
-						roles.append("<option value="+role.id+">"+role.name+"</option>");
-
-					});
-
-					$(value.materias).each(function(key, mat){
-
-						materias.append("<option value="+mat.id+">"+mat.name+"</option>");
-					});
-
-					$(value.carreras).each(function(key, carrera){
-
-					carreras.append("<option value="+carrera.id+">"+carrera.name+"</option>");
-
-					$('#crrs').change(function(){
-
-								var carreraId = this.value;
-
-							$(carrera.semestres).each(function(key, sem){
-				
-								if(carreraId == sem.carrera_id)
-								{	
-									
-									semestres.append("<option value="+sem.id+">"+sem.name+"</option>");
-									
-								}
-
-							});
+							roles.append("<option value="+role.id+">"+role.name+"</option>");
 
 						});
-			
-					});
+
+						$(value.materias).each(function(key, mat){
+
+							materias.append("<option value="+mat.id+">"+mat.name+"</option>");
+						});
+
+						$(value.carreras).each(function(key, carrera){
+
+						carreras.append("<option value="+carrera.id+">"+carrera.name+"</option>");
+
+						$('#crrs').change(function(){
+
+									var carreraId = this.value;
+
+								$(carrera.semestres).each(function(key, sem){
+					
+									if(carreraId == sem.carrera_id)
+									{	
+										
+										semestres.append("<option value="+sem.id+">"+sem.name+"</option>");
+										
+									}
+
+								});
+
+							});
+				
+						});
 
 				});
 
@@ -92,7 +88,8 @@
 			});
 
 			});
-		}
+
+			}
 
 			$('a#Cusuario').on('click', function(e){
 
@@ -170,6 +167,7 @@
 						alertify.alert('Usuario creado correctamente');
 						$('input#form').val("");	
 						crearUsuario();
+						datosDocente(resp);
 
 
 					},
@@ -197,5 +195,21 @@
 			});
 
 		});
+
+		function datosDocente(resp)
+		{
+			$(resp).each(function(key, value){
+
+				$(value.roles).each(function(key, rol){
+
+					if(rol.slug == 'prf')
+					{
+						
+					}
+
+				});
+
+			});
+		}
 
 	</script>
