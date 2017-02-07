@@ -103,6 +103,8 @@
         var route = form.attr('action');
         var metodo = form.attr('method');
         $('#valor').val('0.5');
+        $(this).attr('disabled', true);
+        $.blockUI();
 
         $.ajax({
 
@@ -114,6 +116,8 @@
 
           success:function(resp){
 
+            $('#crearExa').attr('disabled', false);
+            $.unblockUI();
             alertify.alert('El examen ha sido creado correctamente');
             $('#porcen').val(parseInt(0));
             $('#preForo').hide();
@@ -141,7 +145,8 @@
                 alertify.alert('Lo siento hubo problemas con el internet por favor intentalo de nuevo');
              }else if(error)
              {
-
+                 $('#crearExa').attr('disabled', false);
+                 $.unblockUI();
                  alertify.alert('Porfavor rellena todos los campos del formulario.');
              }
 
@@ -170,6 +175,9 @@
         var np = $('#np').val();
         var valor = $('#valor').val();
         var porcen = $('#porcen').val();
+        CKEDITOR.instances.enunciado.updateElement();
+        $(this).attr('disabled', true);
+        $.blockUI();
 
       if(porcen <= 20)
         {
@@ -183,6 +191,8 @@
 
           success:function(resp){
 
+            $('#createPreg').attr('disabled', false);
+            $.unblockUI();
             sum = sum+parseFloat($('#valor').val());
             $('#porcen').val(sum);
             $('#valor').val(" ");
@@ -214,9 +224,13 @@
 
             if(resp == 'timeout')
             {
+              $('#createPreg').attr('disabled', false);
+              $.unblockUI();
               alertify.alert('Lo sentimos la pregunta no fue creada por problemas de conexion');
             }else{
 
+              $('#createPreg').attr('disabled', false);
+              $.unblockUI();
               alertify.alert('Por favor rellena todos los campos solicitados en el formulario');
               $('#modalRespuestas').modal('hide');
             }
@@ -250,6 +264,8 @@
        var route = form.attr('action');
        var metodo = form.attr('method');
        var respR = $('#respC').val();
+       $(this).attr('disabled', true);
+       $.blockUI();
 
       $.ajax({
 
@@ -261,7 +277,8 @@
           success:function(resp){
 
               $('#enunciado').val(' ');
-
+              $('#createResp').attr('disabled', false);
+              $.unblockUI();
               if(resp)
               {
                 alertify.alert('La respuesta fueron guardadas correctamente');
@@ -274,9 +291,13 @@
 
             if(resp == 'timeout')
             {
+              $('#createResp').attr('disabled', false);
+              $.unblockUI();
               alertify.alert('Lo sentimos la opcion no se ha podido crear por problemas de conexion');
             }
 
+            $('#createResp').attr('disabled', false);
+            $.unblockUI();
             alertify.alert('Los campos del formulario estan vacios.');
 
           }

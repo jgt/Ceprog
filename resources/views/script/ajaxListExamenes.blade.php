@@ -466,6 +466,9 @@
           var form = $('#storePreguntaIcm');
           var route = form.attr('action');
           var metodo = form.attr('method');
+          CKEDITOR.instances.enunciadoIcm.updateElement();
+          $(this).attr('disabled', true);
+          $.blockUI();
 
           $.ajax({
 
@@ -476,7 +479,8 @@
 
               success:function(resp)
               {
-
+                $('#createP').attr('disabled', false);
+                $.unblockUI();
                 alertify.alert('La pregunta ha sido creada.');
                 $('#modalRespuestasIcm').modal('show');
                 $('#crearPreguntas').modal('hide');
@@ -505,6 +509,8 @@
               {
                 if(error)
                 {
+                  $('#createP').attr('disabled', false);
+                  $.unblockUI();
                   alertify.alert("Hay errores en el formulario.");
                 }
 
@@ -525,6 +531,8 @@
             var form = $('#storeRespuestaIcm');
             var route = form.attr('action');
             var metodo = form.attr('method');
+            $(this).attr('disabled', true);
+            $.blockUI();
 
             $.ajax({
 
@@ -538,6 +546,8 @@
 
                     if(resp)
                     {
+                      $('#createRespIcm').attr('disabled', false);
+                      $.unblockUI();
                       alertify.alert('La respuesta fueron guardadas correctamente');
                       $('#modalRespuestasIcm').modal('hide');
                     }
@@ -548,6 +558,8 @@
 
                      if(error)
                      {
+                        $('#createRespIcm').attr('disabled', false);
+                        $.unblockUI();
                         alertify.alert('Tienes errores en el formulario.');
                      }
 

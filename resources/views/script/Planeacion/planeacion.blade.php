@@ -153,13 +153,16 @@
 	function file(btn)
 	{
 		var route = '/plcDescargar/'+btn.value;
+		$.blockUI();
 
 		$.get(route, function(resp){
 
+			$.unblockUI();
 			window.open(route);
 
 		}).fail(function(resp){
 
+			$.unblockUI();
 			alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo.");
 
 		});

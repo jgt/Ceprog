@@ -100,6 +100,7 @@
 
 		}).fail(function(resp){
 
+			$.unblockUI();
 			alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo.");
 
 		});

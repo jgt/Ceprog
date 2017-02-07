@@ -17,7 +17,7 @@
 
   {!! Form::label('contenido', 'Enunciado ', ['class' => 'form-group']) !!}
 
-   {!! Form::textarea('contenido', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'enunciado']) !!}
+   {!! Form::textarea('contenido', null, ['class' => 'form-control ckeditor', 'rows' => '3', 'id' => 'enunciado']) !!}
     </div>
 
     <div class="form-group">

@@ -30,6 +30,7 @@
      <link href="{{'estiloPdf/css/custom.css'}}" rel="stylesheet">
 
       <link rel="stylesheet" href="{{ asset('css/vendor/datetime.css')}}" rel="stylesheet" type="text/css">
+
         
         <link rel="stylesheet" href="{{ asset('css/vendor/datatables.css')}}">
         <link rel="stylesheet" href="{{ asset('css/vendor/datatables.responsive.css')}}">
