@@ -122,7 +122,7 @@
 		        	alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo.");
 		        }
 			});
-
+			
 		});
 
 		$('#cdoListdocente').on('click', function(e){

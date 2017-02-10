@@ -46,20 +46,20 @@
                     <li><a href="{{ route('planeacion', $materia)}}" id="planeacion">Crear Unidad</a></li>
                     <li><a href="{{ route('plc.show', $materia)}}" id="plcMaestro">Subir Planeación </a></li>
                     <li><a href="{{ route('examen', $materia)}}" id="createExa">Crear Examen</a></li>
-                    <li class="treeview">
-                      <a href="{{ route('listplan', $materia)}}" id="herramientas"><i class="fa fa-angle-left pull-right"></i><i class="fa fa-cog" aria-hidden="true"></i>Unidades</a>
-                      <ul class="treeview-menu" id="listUni"></ul>
-                       
-                    </li>
                     <li><a href="{{ route('almSem', $materia->id)}}" id="menuListUser">Lista de Alumnos</a></li>
+                    <li><a href="{{ route('listplan', $materia)}}" id="herramientas"><i class='fa fa-plus fa-fw'></i>Unidades</a>
+                      <ul class="treeview-menu" id="listUni"></ul>
+                    </li>
                     <li><a href="{{ route('listPlaneacion', $materia) }}" id="mtaPlan">Lista de Planeaciones</a></li>
                     <li><a href="{{route('listExamen', $materia )}}" id="LexamenMaestro">Lista de exámenes </a></li>
                     <li><a href="{{route('recursoIndex')}}" id="recursosMaestro">Lista Recursos</a></li>
                     <li><a href="{{ route('allTutorial')}}" id="prfTutorial">Tutoriales</a></li>
                 <li><a href="{{ route('listplan', $materia)}}" id="ListUniSub"><i class='fa fa-plus fa-fw'></i>Base Teórica</a>
-                    <ul class="treeview-menu" id="nameUni"></ul>  
+                    <ul class="treeview-menu" id="nameUni"></ul> 
+                </li>
                 <li><a href="{{ route('forosMateria', $materia)}}" id="foroMateria"><i class='fa fa-plus fa-fw'></i>Foros</a>
                          <ul class="treeview-menu" id="foroList"></ul>  
+                </li>
                 </ul>
                  @endforeach
         </ul><!-- /.sidebar-menu -->

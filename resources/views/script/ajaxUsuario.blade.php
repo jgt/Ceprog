@@ -194,17 +194,87 @@
 				
 			});
 
+			$('#admCdoEnd').on('click', function(e){
+
+				e.preventDefault();
+
+				var form = $('#form-admEnd');
+				var metodo = form.attr('method');
+				var route = '/datosMaestro';
+				var formData = new FormData($('#form-admEnd')[0]);
+				$(this).attr('disabled', true);
+				$.blockUI();
+				
+					$.ajax({
+
+						url:route,
+						type:metodo,
+						data:formData,
+						contentType: false,
+				        processData: false,
+				        cache: false,
+
+				        success:function(resp)
+				        {
+				        	$('#form-admEnd').fadeOut();
+							$('#user').fadeIn();
+				        	$('#admCdoEnd').attr('disabled', false);
+				        	$('#admFormacion').val(" ");
+				        	$('#admCelular').val(" ");
+				        	$('#admAnti').val(" ");
+				        	$('#admModelo').val(" ");
+				        	$('#admCtn').val(" ");
+				        	$('#admEtr').val(" ");
+				        	$('#admInd').val(" ");
+				        	$('#admPla').val(" ");
+				        	$('#admErom').val(" ");
+				        	$('#admApa').val(" ");
+							$.unblockUI();
+							alertify.alert("Se han agregado los datos al docente correctamente.");
+				        },
+
+				        error:function(error, request)
+				        {
+				        	$('#admCdoEnd').attr('disabled', false);
+							$.unblockUI();
+							alertify.alert("Error al procesar la solicitud por favor intentalo de nuevo.");
+				        }
+
+
+					});
+
+				});
+
 		});
 
 		function datosDocente(resp)
 		{
 			$(resp).each(function(key, value){
 
+				$('#admUserId').val(value.id);
+
 				$(value.roles).each(function(key, rol){
 
 					if(rol.slug == 'prf')
 					{
-						
+						var route = '/admin/create';
+						var select = $('#admSltCampus');
+						$('#form-admEnd').fadeIn();
+						$('#user').fadeOut();
+
+						$.get(route, function(resp){
+
+							$(resp).each(function(key, value){
+
+								$(value.campus).each(function(key, cmp){
+
+									select.append("<option value="+cmp.id+">"+cmp.nombre+"</option>");
+
+								});
+
+							});
+
+						});
 					}
 
 				});

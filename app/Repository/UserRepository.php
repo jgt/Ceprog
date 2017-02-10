@@ -38,7 +38,7 @@ class UserRepository extends BaseRepository {
 	public function listaUser(Request $request)
 	{
 
-		 $users =  User::with('imagenes')->select('users.*');
+		 $users =  User::with('imagenes', 'roles', 'materias', 'semestres.carrera')->select('users.*');
 		 return $users;
 
 
@@ -80,30 +80,15 @@ class UserRepository extends BaseRepository {
 
 		$user = $this->search($id);
 		$user->update($request->all());
+		$user->roles()->sync($request->get('roles'));
 
-		if($user->is('adm'))
+		if($user->is('alm'))
 		{
-
-		$user->carreras()->sync($request->get('carrera_list'));
-		$user->semestres()->sync($request->get('semestre_list'));
-		$user->roles()->sync($request->get('role_list'));
-		$user->materias()->sync($request->get('materia_list'));
-		
-		}else if($user->is('alm'))
-
-		{
-			$user->carreras()->sync($request->get('carrera_list'));
-			$user->semestres()->sync($request->get('semestre_list'));
-			$user->roles()->sync($request->get('role_list'));
-			
+			$user->semestres()->sync($request->get('semes'));		
 		}else if($user->is('prf'))
 		{
-
-			$user->materias()->sync($request->get('materia_list'));
-			$user->roles()->sync($request->get('role_list'));
+			$user->materias()->sync($request->get('materias'));
 		}
-		
-
 
 		return $user;
 	}

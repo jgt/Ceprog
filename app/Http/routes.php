@@ -136,6 +136,12 @@ Route::group(['middleware' => 'allRoles'], function(){
 	Route::get('plcDescargar/{filename}', ['as' => 'plcDescargar', 'uses' => 'PlaneacionController@plcDescargar']);
 });
 
+Route::group(['middleware' => 'adminCordinador'], function(){
+
+	Route::post('datosMaestro', ['as' => 'datosMaestro', 'uses' => 'CordinadorController@datosDocente']);
+
+});
+
 
 Route::group(['middleware' => 'cordinador'], function(){
 
@@ -144,8 +150,7 @@ Route::group(['middleware' => 'cordinador'], function(){
 
 	Route::post('rptSemestral', ['as' => 'rptSemestral', 'uses' => 'CordinadorController@crearReporteSem']);
 	Route::post('cdoStore', ['as' => 'cdoStore', 'uses' => 'CordinadorController@store']);
-	Route::post('datosMaestro', ['as' => 'datosMaestro', 'uses' => 'CordinadorController@datosDocente']);
-
+	
 });
 
 

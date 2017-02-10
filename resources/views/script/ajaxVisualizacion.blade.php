@@ -148,7 +148,7 @@
 									
 								$(sub.imagenes).each(function(key, img){
 
-									ulSubtemas.append("<li><img src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
+									ulSubtemas.append("<li><img class='img-responsive' alt='Responsive image' src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
 								});
 		
 							});
@@ -164,7 +164,7 @@
 									video.append("<li><video width='600'  height='300' controls='controls'><source src='/uploads/"+videos.original_filename+"' type='video/webm'/><source src='/uploads/"+videos.original_filename+"' type='video/ogg'/><source src='/uploads/"+videos.original_filename+"' type='video/mp4'/></video></li><hr>");
 								}else{
 
-									video.append("<li><img src='/uploads/"+videos.original_filename+"' alt=''></li><hr>");
+									video.append("<li><img class='img-responsive' alt='Responsive image' src='/uploads/"+videos.original_filename+"' alt=''></li><hr>");
 								}
 
 								
@@ -324,7 +324,7 @@
 									
 								$(sub.imagenes).each(function(key, img){
 
-									subtemaAlm.append("<li><img src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
+									subtemaAlm.append("<li><img class='img-responsive' alt='Responsive image' src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
 								});
 		
 							});
@@ -341,7 +341,7 @@
 
 								}else{
 
-									videosAlm.append("<li><img src='/uploads/"+value.original_filename+"' alt=''></li><hr>");
+									videosAlm.append("<li><img class='img-responsive' alt='Responsive image' src='/uploads/"+value.original_filename+"' alt=''></li><hr>");
 								}
 
 								

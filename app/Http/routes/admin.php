@@ -6,7 +6,7 @@ Route::get('picturePerfil/{id}', ['as' => 'picturePerfil', 'uses' => 'AdminContr
 Route::get('notification/{id}', ['as' => 'notification', 'uses' => 'AdminController@notification']);
 Route::post('downCarrera/{id}', ['as' => 'downCarrera', 'uses' => 'AdminController@downCarrera']);
 //borra un usuario de la lista del personal.
-Route::get('deleteU/{id}', ['as' => 'deleteU', 'uses' => 'AdminController@delete']);
+Route::post('deleteU/{id}', ['as' => 'deleteU', 'uses' => 'AdminController@delete']);
 
 Route::get('foro', ['as' => 'foro', 'uses' => 'ForoController@create']);//verificar
 Route::post('foro', ['as' => 'foro.store', 'uses' => 'ForoController@foro']);
@@ -20,11 +20,16 @@ Route::resource('carrera', 'CarreraController');
 Route::resource('semestre', 'SemestreController');
 Route::resource('materia', 'MateriaController');
 
-
+Route::post('agregarRole/{id}', ['as' => 'agregarRole', 'uses' => 'RoleController@agregarRole']);
 Route::get('deleteCarrera/{id}', ['as' => 'deleteCarrera', 'uses' => 'CarreraController@deleteCarrera']);
 
 Route::post('storeTutorial', ['as' => 'storeTutorial', 'uses' => 'VideosController@storeTutorial']);
 
 Route::get('alumnosSem/{id}', ['as' => 'alumnosSem', 'uses' => 'SemestreController@alumnosSem']);
 Route::resource('plc', 'PlaneacionController');
+
+//agregar programas
+Route::get('agregarPrograma', ['as' => 'agregarPrograma', 'uses' => 'CarreraController@agregarPrograma']);
+Route::post('attachPrograma/{id}', ['as' => 'attachPrograma', 'uses' => 'CarreraController@attachPrograma']);
+Route::post('attachMaterias/{id}', ['as' => 'attachMaterias', 'uses' => 'MateriaController@attachMaterias']);
 

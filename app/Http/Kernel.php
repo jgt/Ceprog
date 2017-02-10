@@ -28,6 +28,7 @@ class Kernel extends HttpKernel {
 
 		'allRoles' => 'App\Http\Middleware\AdminAlmPrf',
 		'adminMaestro' => 'App\Http\Middleware\AdminMaestro',
+		'adminCordinador' => 'App\Http\Middleware\AdminCordinador',
 		'alumnosAdmision' => 'App\Http\Middleware\AlumnosAdmision',
 		'alumnosMaestros' => 'App\Http\Middleware\AlumnosMaestros',
 		'cordinador' => 'App\Http\Middleware\Cordinador',

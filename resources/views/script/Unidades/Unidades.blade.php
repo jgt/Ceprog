@@ -1,12 +1,12 @@
 <script>
 	$(document).on('ready', function(){
 
-		$('#herramientas').on('click', function(e){
+		$('a#herramientas').on('click', function(e){
 
 			e.preventDefault();
 
 			var route = $(this).attr('href');
-			var ul = $('#listUni');
+			var ul = $('ul#listUni');
 
 			$.get(route, function(resp){
 

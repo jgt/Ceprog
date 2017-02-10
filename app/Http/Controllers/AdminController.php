@@ -79,6 +79,7 @@ class AdminController extends Controller {
 	{	
 
     $roles = Role::all();
+    $campus = Campus::get();
     $carreras = Carrera::with('semestres')->get();
     $materias = Materia::all();
 
@@ -86,7 +87,8 @@ class AdminController extends Controller {
 
     	'roles' => $roles,
     	'carreras' => $carreras,
-    	'materias' => $materias
+    	'materias' => $materias,
+    	'campus' => $campus
 
     ];
 	

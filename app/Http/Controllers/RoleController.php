@@ -18,10 +18,8 @@ class RoleController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		$roles = Role::name($request->get('name'))->paginate(5);
-
-		return view('listarole', compact('roles'));
-
+		$roles = Role::get();
+		return response()->json($roles);
 	}
 
 	/**
@@ -111,6 +109,13 @@ class RoleController extends Controller {
 		flash()->overlay('Ha sido borrado', 'El role ' . $role->name);
 
 		return redirect('role');
+	}
+
+	public function agregarRole($id, Request $request)
+	{
+		$user = User::find($id);
+		$user->attachRole($request->get('role_list'));
+		return response()->json($user);
 	}
 
 }

@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\EditCarrera;
 use App\Http\Controllers\Controller;
 use App\Carrera;
+use App\User;
 
 use Illuminate\Http\Request;
 use App\Repository\CarreraRepository;
@@ -24,11 +25,7 @@ class CarreraController extends Controller {
 	{
 
 		$carreras = $this->carreraRepository->listaCarreras($request);
-		
-		if($request->ajax())
-		{
-			return response()->json($carreras);
-		}
+		return response()->json($carreras);
 	}
 
 	
@@ -104,6 +101,19 @@ class CarreraController extends Controller {
 			return response()->json($borrar);
 		}
 
+	}
+
+	public function agregarPrograma(Request $request)
+	{
+		$carreras = $this->carreraRepository->getModel()->with('semestres')->get();
+		return response()->json($carreras);
+	}
+
+	public function attachPrograma($id, Request $request)
+	{
+		$user = User::find($id);
+		$user->semestres()->attach($request->get('semProg'));
+		return response()->json($user);
 	}
 
 }

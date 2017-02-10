@@ -25,17 +25,6 @@ class DtaM extends Request
     {
         return [
             
-            'formacion' => 'required',
-            'celular' => 'required',
-            'antiguedad' => 'required',
-            'curriculum' => 'required',
-            'modelo' => 'required',
-            'contrato' => 'required',
-            'entrevista' => 'required',
-            'identidad' => 'required',
-            'planeacion' => 'required',
-            'erom' => 'required',
-            'apa' => 'required',
             'campus' => 'required',
             'user_id' => 'required'
         ];

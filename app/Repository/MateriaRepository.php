@@ -29,8 +29,7 @@ class MateriaRepository extends BaseRepository {
 
 	public function listaMaterias(Request $request)
 	{
-
-		return	Materia::name($request->get('name'))->paginate(5);
+		return	Materia::get();
 	}
 
 	public function crearMateria(Request $request)

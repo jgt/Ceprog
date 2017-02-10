@@ -30,7 +30,6 @@
  @include('ajax.modalPlan')
  @include('ajax.modalPlanMateria')
  @include('ajax.modalShowUser')
- @include('ajax.modalUpdateUser')
  @include('ajax.Carreras.modalPlan')
  @include('ajax.Carreras.modalPlanMateria')
  @include('ajax.Carreras.modalEditPlan')
@@ -64,6 +63,10 @@
  @include('ajax.Actividad.deleteActividad')
  @include('ajax.Rubricas.modalDelete')
  @include('ajax.reportes.reporteSemestral')
+ @include('ajax.Usuarios.modalEliminar')
+ @include('ajax.Usuarios.modalAgregarRole')
+ @include('ajax.Usuarios.modalPrograma')
+ @include('ajax.Usuarios.modalMateria')
 
 <div class="container">
 
@@ -72,6 +75,8 @@
 					
 					
 					@include('ajax.Unidades.editUnidad')
+					@include('ajax.Usuarios.editarPersonal')
+					@include('ajax.admListaPersonal')
 					@include('ajax.reportes.semestral')
 					@include('ajax.Cordinador.crearDocentes')
 					@include('ajax.Cordinador.listDocentes')
@@ -113,7 +118,6 @@
 					@include('ajax.listTutorial')
 					@include('ajax.listTutorialAlm')
 					@include('ajax.listaExamenes')
-					@include('ajax.admListaPersonal')
 					@include('ajax.VunidadEstudiante')
 					@include('ajax.listaExamenesMaestros')
 					@include('ajax.listaPreguntas')

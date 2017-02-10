@@ -16,6 +16,9 @@
 		$('#mtausr').select2();
 		$('#cdoMta').select2();
 		$('#sltCampus').select2();
+		$('#admSltCampus').select2();
+		$('#semProg').select2();
+		$('#matProg').select2();
 
 
 	</script>

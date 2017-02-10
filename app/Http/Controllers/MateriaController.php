@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Materia;
 use App\Semestre;
 use App\Carrera;
+use App\User;
 
 use Illuminate\Http\Request;
 use App\Repository\MateriaRepository;
@@ -34,9 +35,8 @@ class MateriaController extends Controller {
 	
 	public function index(Request $request)
 	{
-		
 		$materias = $this->materiaRepository->listaMaterias($request);
-        return view('materias.listaMaterias', compact('materias'));
+        return response()->json($materias);
 	}
 
 
@@ -98,6 +98,13 @@ class MateriaController extends Controller {
    		$materias = $semestre->materias()->get();
 
    		return response()->json($materias);
+   }
+
+   public function attachMaterias($id, Request $request)
+   {
+   		$user = User::find($id);
+   		$user->materias()->attach($request->get('matProg'));
+   		return response()->json($user);
    }
 }
 
