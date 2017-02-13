@@ -22,10 +22,10 @@
     <main>
       <hr>
       <h2>Descripción</h2>
-      <p>{$actividad->descripcion}</p>
+      <p>{!! $actividad->descripcion !!}</p>
       <br><br>
       <h2>Objetivos</h2>
-      <p>{$actividad->estrategia}</p>
+      <p>{!! $actividad->estrategia !!}</p>
       <br><br>
       <h2>Caracteristicas de entrega</h2>
       <p>{{$actividad->caracteristicas}}</p>
