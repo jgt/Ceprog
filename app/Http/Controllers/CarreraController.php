@@ -5,6 +5,8 @@ use App\Http\Requests\EditCarrera;
 use App\Http\Controllers\Controller;
 use App\Carrera;
 use App\User;
+use App\Campus;
+use Datatables;
 
 use Illuminate\Http\Request;
 use App\Repository\CarreraRepository;
@@ -23,50 +25,34 @@ class CarreraController extends Controller {
 
 	public function index(Request $request)
 	{
-
-		$carreras = $this->carreraRepository->listaCarreras($request);
-		return response()->json($carreras);
+		$carreras = Carrera::get();
+		return Datatables::of($carreras)->make(true);
 	}
-
 	
 	public function create(Request $request)
 	{
 		
-		return view('carreras.planestudio');
+
 	}
 
-	
 	public function store(EditCarrera $request)
 	{
-		
 		 $carrera = $this->carreraRepository->crearCarrera($request);
-         
-         if($request->ajax())
-         {
-         	return response()->json($carrera);
-         }
+         return response()->json($carrera);
 	}
 
-	
 	public function show($id)
 	{
 		
 		
 	}
 
-	
 	public function edit($id, Request $request)
 	{
 
-		$carrera = $this->carreraRepository->search($id);
-    	
-    	if($request->ajax())
-    	{
-    		return response()->json($carrera);
-    	}
+		
 	}
 
-	
 	public function update(EditCarrera $request, $id)
 	{
 
@@ -114,6 +100,12 @@ class CarreraController extends Controller {
 		$user = User::find($id);
 		$user->semestres()->attach($request->get('semProg'));
 		return response()->json($user);
+	}
+
+	public function campusCarrera()
+	{
+		$campus = Campus::get();
+		return response()->json($campus);
 	}
 
 }

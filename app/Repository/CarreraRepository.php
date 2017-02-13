@@ -23,11 +23,9 @@ class CarreraRepository extends BaseRepository {
 
 	public function crearCarrera(Request $request)
 	{
-
-
 		$plan = Carrera::create($request->all());
-       
-       return $plan;
+		$plan->campuses()->attach($request->get('campus_carrera'));
+        return $plan;
 	}
 
 

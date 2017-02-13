@@ -188,6 +188,8 @@
 			var route = '/storeActividad';
 			$(this).attr('disabled', true);
 			$.blockUI();
+			CKEDITOR.instances.estrategia.updateElement();
+			CKEDITOR.instances.descripAct.updateElement();
 
 			$.ajax({
 
@@ -453,6 +455,9 @@
              var route = '/updateActividad/'+id
              $(this).attr('disabled', true);
              $.blockUI();
+             CKEDITOR.instances.descEdit.updateElement();
+             CKEDITOR.instances.objEdit.updateElement();
+
 
              $.ajax({
 
@@ -1054,13 +1059,13 @@
 
 			$.get(route, function(resp){
 
-				console.log(resp);
 				$('#listAct').fadeIn();
 				if(resp.length >= 1)
 	         	{  
 		            tablaActividad.html(" ");
 
 		            $(resp).each(function(key, value){
+
 		              tablaActividad.append("<tr><td>"+value.actividad+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='verArchivos(this)'><i class='fa fa-file-archive-o'></i></button></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='editarAct(this);'><i class='fa fa-calendar'></i></button></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='fileApoyo(this);'><i class='fa fa-folder'></i></td><td><button class='btn btn-primary'value="+value.id+"  OnClick='actividadPdf(this)'><i class='fa fa-file-word-o'></i></td><td><button class='btn btn-primary' value="+value.id+"  OnClick='listRubricas(this);'><i class='fa fa-search'></i></button></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearRubricas(this)'><i class='fa fa-plus-circle' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' OnClick='actUser(this)' value="+value.id+"><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td><td><button class='btn btn-danger' value="+value.id+"  OnClick='borrarActividad(this)'><i class='fa fa-eraser'></i></button></td></tr>");
 		            });
 
@@ -1129,6 +1134,9 @@
               $('#fechfEdit').val(value.fechaF);
               $('#actID').val(value.id);
               $('#unID').val(value.unidad_id);  
+              CKEDITOR.instances.descEdit.setData(value.descripcion);
+			  CKEDITOR.instances.objEdit.setData(value.estrategia);
+			  
             });
 
             $(resp.rubricas).each(function(key, value){

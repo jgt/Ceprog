@@ -25,7 +25,7 @@
   
   <div class="form-group">
         {!! Form::label('revoe', 'Clave') !!}
-        {!! Form::text('revoe', null, ['class' => 'form-control', 'id' => 'revoeEdit', 'rows' => '3' ]) !!}
+        {!! Form::text('revoe', null, ['class' => 'form-control', 'id' => 'revoeEdit']) !!}
    <input name="actividad_id" type="hidden" id="subT">
   </div>
 

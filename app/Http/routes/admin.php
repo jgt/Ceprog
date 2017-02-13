@@ -33,3 +33,5 @@ Route::get('agregarPrograma', ['as' => 'agregarPrograma', 'uses' => 'CarreraCont
 Route::post('attachPrograma/{id}', ['as' => 'attachPrograma', 'uses' => 'CarreraController@attachPrograma']);
 Route::post('attachMaterias/{id}', ['as' => 'attachMaterias', 'uses' => 'MateriaController@attachMaterias']);
 
+Route::get('campus', ['as' => 'campus', 'uses' => 'CarreraController@campusCarrera']);
+

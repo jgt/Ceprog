@@ -72,8 +72,8 @@
 
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-					
-					
+
+		<div class="panel-body panel-default">
 					@include('ajax.Unidades.editUnidad')
 					@include('ajax.Usuarios.editarPersonal')
 					@include('ajax.admListaPersonal')
@@ -81,8 +81,13 @@
 					@include('ajax.Cordinador.crearDocentes')
 					@include('ajax.Cordinador.listDocentes')
 					@include('ajax.Cordinador.reporteSemestral')
+					@include('ajax.Carreras.ajaxListCarreras')
+					@include('ajax.ExamenDocente.listaExamenDocente')
+					@include('ajax.listaExamenesMaestros')
+					@include('ajax.listaExamenes')
 					@include('ajax.Actividad.listActividad')
 					@include('ajax.Calificaciones.crearCalificacion')
+					@include('ajax.listForoadm')
 					@include('ajax.Actividad.editar')
 					@include('ajax.Subtemas.listSubtemas')
 					@include('ajax.Videos.modalVideos')
@@ -99,7 +104,6 @@
 					@include('ajax.ExamenDocente.listPreguntas')
 					@include('ajax.ExamenDocente.editPreguntaDocente')
 					@include('ajax.ExamenDocente.listExamenAdmin')
-					@include('ajax.ExamenDocente.listaExamenDocente')
 					@include('ajax.ExamenDocente.crearPreguntaDocente')
 					@include('ajax.ExamenDocente.crearExamenDocente')
 					@include('ajax.Materias.listMaterias')
@@ -117,18 +121,13 @@
 					@include('ajax.crearUsuario')
 					@include('ajax.listTutorial')
 					@include('ajax.listTutorialAlm')
-					@include('ajax.listaExamenes')
 					@include('ajax.VunidadEstudiante')
-					@include('ajax.listaExamenesMaestros')
 					@include('ajax.listaPreguntas')
 					@include('ajax.chatCeprog')
 					@include('ajax.admForo')
-					@include('ajax.Carreras.ajaxListCarreras')
 					@include('ajax.admRole')
-					@include('ajax.listForoadm')
 					@include('ajax.vizualizacionUnidad')
 					@include('ajax.notasRubricas')
-
 		</div>
 	</div>
 </div>

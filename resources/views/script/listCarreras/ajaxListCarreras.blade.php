@@ -52,7 +52,14 @@
 		  $('#menUnidad').fadeOut();
 		  $('div#preguntaExmamen').hide();
 
-			listCarrera();
+			if (! $.fn.DataTable.isDataTable('#carrera-table')){
+				listCarrera();
+			}else{
+
+				var tabla = $('#carrera-table').DataTable();
+				tabla.ajax.reload();
+
+			}
 
 		});
 
@@ -322,13 +329,21 @@
 			type: metodo,
 			data: form.serialize(),
 
-			success:function(resp){
+			success:function(resp)
+			{
 
+				if (! $.fn.DataTable.isDataTable('#carrera-table')){
+					listCarrera();
+				}else{
+
+					var tabla = $('#carrera-table').DataTable();
+					tabla.ajax.reload();
+
+				}
 				$('#mdlSemdos').attr('disabled', false);
+				$('#campusSelect').select2("val", " ");
 				$.unblockUI();
-				alertify.alert('El semestre ha sido creado correctamente.');
-				$('#nameSemmodaldos').val(resp.name);
-				$('#idSemmodaldos').val(resp.id);
+				alertify.alert("<strong>"+resp.name+"</strong> ha sido creado correctamente.");
 			},
 
 			error:function(error, request){
@@ -420,78 +435,110 @@
 
 				success:function(resp){
 
+					if (! $.fn.DataTable.isDataTable('#carrera-table')){
+						listCarrera();
+					}else{
+
+						var tabla = $('#carrera-table').DataTable();
+						tabla.ajax.reload();
+
+					}
 					$('#editPlancrr').attr('disabled', false);
 					$.unblockUI();
-					alertify.alert('La carrera fue editada correctamente.');
-					listCarrera();
-					
+					alertify.alert("La carrera <strong>"+resp.name+"</strong> fue editada correctamente.");
+				
 				},
 
-				error:function(error, request){
-
-
-								if(error == "timeout")
-
-									{
-										$('#editPlancrr').attr('disabled', false);
-										$.unblockUI();
-										alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
-									}else{
-
-										$('#editPlancrr').attr('disabled', false);
-										$.unblockUI();
-										alertify.alert('Tienes errores en el formulario.');
-									}
-
-							}
-
+				error:function(error, request)
+				{	
+					$('#editPlancrr').attr('disabled', false);
+					$.unblockUI();
+					alertify.alert('Problemas de conexión por favor intentalo cuando tengas internet.');
+				}					
+										
 			});
 
 	}
 	//funcion para lista de todas las carreras
 	function listCarrera(){
 
-			var route = $('#craList').attr('href');
-			var tabla = $('#tablaDataCarrera');
+			var route = '{{ route('carrera.index') }}';
+			var tabla = $('#carrera-table').DataTable({
+
+			destroy:true,
+			processing: true,
+        	serverSide: true,
+        	ajax: route,
+        	language: { url: "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"},
+        	columns: [
+
+        		{data: 'name'},
+        		{data: 'plan'},
+        		{data: 'revoe'},
+        		{defaultContent:"<button type='button' class='editarCarrera btn btn-warning'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button> <button type='button' class='crearSemestre btn btn-success'><i class='fa fa-hdd-o' aria-hidden='true'></i></button> <button type='button' class='listSemestre btn btn-default'><i class='fa fa-folder' aria-hidden='true'></i></button> <button type='button' class='borrarCarrera btn btn-danger'><i class='fa fa-eraser' aria-hidden='true'></i></button>"}
+        	]
+
+		});
+
+		editarCarrera('#carrera-table', tabla);
+		crearSemestre('#carrera-table', tabla);
+		listSemestre('#carrera-table', tabla);
+		borrarCarrera('#carrera-table', tabla);
+	}
+	
+	function editarCarrera(tbody, tabla)
+	{
+		$(tbody).on("click", "button.editarCarrera", function(){
+			var data = tabla.row($(this).parents('tr')).data();
+			$('#mdlEditcrt').modal('show');
+			$('#carreraIdEdit').val(data.id);
+			$('#nameMedit').val(data.name);
+			$('#planNameedit').val(data.plan);
+			$('#revoeEdit').val(data.revoe);
+		});
+	}
+
+	function crearSemestre(tbody, tabla)
+	{
+		$(tbody).on("click", "button.crearSemestre", function(){
+			var data = tabla.row($(this).parents('tr')).data();
+			var route = '/campus';
+			var select = $('#campusSelect');
+			$('#idCarrmodaldos').val(data.id);
+			$('#carrModaldos').val(data.name);
+			$('#mdlPlandos').modal('show');
 
 			$.get(route, function(resp){
 
-				tabla.html(" ");
+				select.html(" ");
 
-				$(resp.data).each(function(key, value){
+				$(resp).each(function(key, value){
 
-					var idCarrera = $('#studentCarrId').val(value.id);
-
-					tabla.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='asignarId(this);' id="+value.name+" data-toggle='modal' data-target='#mdlPlandos'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='editCarrera(this);' data-toggle='modal' data-target='#mdlEditcrt'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='listSemestres(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrar(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+					select.append("<option value="+value.id+">"+value.nombre+"</option>");
 
 				});
 
 			});
-	}
-	// Funcion para lista de semestres que tiene cada carrera
-	function listSemestres(btn){
-
-		var id = btn.value;
-		var link = $('#smeList').attr('href');
-		var route = link.split('%7Bsemestre%7D').join(id);
-		var semestre = $('#tablaDataSemestre');
-		$('#crr').hide();
-		$('#mtaList').hide();
-		$('#semm').show();
-
-
-		$.get(route, function(resp){
-
-			semestre.html(" ");
-
-			$(resp).each(function(key, sem){
-
-				semestre.append("<tr><td>"+sem.name+"</td><td><button class='btn btn-primary' value="+sem.id+" OnClick='alumnosSem(this);'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='editSemestre(this);' data-toggle='modal' data-target='#editSemm'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='listMaterias(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='crearMat(this);' data-toggle='modal' data-target='#mdlMateriados'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+sem.id+" OnClick='borrarSemm(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
-
-			});
 		});
-
 	}
+
+	function listSemestre(tbody, tabla)
+	{
+		$(tbody).on("click", "button.listSemestre", function(){
+			var data = tabla.row($(this).parents('tr')).data();
+			console.log(data);
+		});
+	}
+
+	function borrarCarrera(tbody, tabla)
+	{
+		$(tbody).on("click", "button.borrarCarrera", function(){
+			var data = tabla.row($(this).parents('tr')).data();
+			console.log(data);
+		});
+	}
+
+
 	// Funcion para mostrar todas las materias que tiene el semestre elegido.
 	function listMaterias(btn){
 
@@ -586,49 +633,6 @@
 			$('#nameEditSem').val(resp.name);
 			$('#semmId').val(resp.id);
 			$('#editSem').val(resp.carrera_id);
-
-		});
-
-	}
-
-
-	function asignarId(btn){
-
-		var id = btn.value;
-		var name = btn.id;
-		$('#idCarrmodaldos').val(id);
-		$('#carrModaldos').val(name);
-
-
-	}
-
-	function editCarrera(btn){
-
-		var id = btn.value;
-		var link = $('#editcrra').attr('href');
-		var route = link.split('%7Bcarrera%7D').join(id);
-		
-		$.get(route, function(resp){
-
-			$('#nameMedit').val(resp.name);
-			$('#planNameedit').val(resp.plan);
-			$('#revoeEdit').val(resp.revoe);
-			$('#carreraIdEdit').val(resp.id);
-
-		});
-
-	}
-
-	function borrar(btn){
-
-		var id = btn.value;
-		var link = $('#crrDelete').attr('href');
-		var route = link.split('%7Bid%7D').join(id);	
-
-		$.get(route, function(resp){
-
-			alertify.alert("La carrera ha sido borrada.");
-			listCarrera();
 
 		});
 

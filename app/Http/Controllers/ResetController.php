@@ -33,10 +33,10 @@ class ResetController extends Controller {
 
 	public function resetC(Peticion $request, $id)
    {	
-
+   	  $users = User::find($id);
+      $users->update($request->all());
    	  $imagen = new ImagenUser;
    	  $dir = public_path().'/imagen';
-      $users->update($request->all());
    	  $user = Auth::user()->id;
    	  $file = Request::file('archivo');	
    	  $nombre = $file->getClientOriginalName();

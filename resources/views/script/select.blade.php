@@ -19,6 +19,7 @@
 		$('#admSltCampus').select2();
 		$('#semProg').select2();
 		$('#matProg').select2();
+		$('#campusSelect').select2();
 
 
 	</script>

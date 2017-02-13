@@ -4,12 +4,10 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Semestre</h4>
+        <h4 class="modal-title">Crear Semestre</h4>
       </div>
       <div class="modal-body">
        {!! Form::open(['route' => 'semestre.store', 'method' => 'POST', 'form' => 'form-group', 'id' => 'form-mdldos']) !!}
-         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-  @include('errors.error')
 
    <div class="form-group">
   {!! Form::label('name', 'Semestre:', ['class' => 'form-group']) !!}
@@ -20,8 +18,12 @@
   {!! Form::label('carrera', 'Carrera', ['class' => 'form-group']) !!}
    {!! Form::text('carrera', null, ['class' => 'form-control', 'id' => 'carrModaldos', 'disabled']) !!}
    {!! Form::text('carrera_id', null, ['id' => 'idCarrmodaldos', 'Style' => 'display:none']) !!}
-   <input name="actividad_id" type="hidden" id="subT">
   </div>
+
+  <div class="form-group">
+    {!! Form::label('campus_carrera', 'Elige el Campus:', ['class' => 'form-group']) !!}
+    {!! Form::select('campus_carrera', [], null, ['class' => 'form-control', 'id' => 'campusSelect',  'style' => 'width:570px', 'multiple']) !!}
+   </div>
 
   {!! Form::close() !!}
       </div>

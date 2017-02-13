@@ -5,7 +5,7 @@
    <div class="form-group">
   {!! Form::label('cognoscitivo', 'Nivel Cognitivo:', ['class' => 'control-label col-xs-3']) !!}
   <div class="col-xs-9">
-    {!! Form::textarea('cognoscitivo', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'cognoscitivo']) !!}
+    {!! Form::text('cognoscitivo', null, ['class' => 'form-control', 'id' => 'cognoscitivo']) !!}
   </div>
    </div>
 
@@ -19,14 +19,14 @@
    <div class="form-group">
   {!! Form::label('descripcion', 'Descripción de la actividad:', ['class' => 'control-label col-xs-3']) !!}
    <div class="col-xs-9">
-     {!! Form::textarea('descripcion', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'descripAct']) !!}
+     {!! Form::textarea('descripcion', null, ['class' => 'form-control ckeditor', 'rows' => '3', 'id' => 'descripAct']) !!}
    </div>
   </div>
    
     <div class="form-group">
   {!! Form::label('objetivo', 'Objetivo:', ['class' => 'control-label col-xs-3']) !!}
    <div class="col-xs-9">
-     {!! Form::textarea('estrategia', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'estrategia']) !!}
+     {!! Form::textarea('estrategia', null, ['class' => 'form-control ckeditor', 'rows' => '3', 'id' => 'estrategia']) !!}
    </div>
   </div>
 
@@ -47,14 +47,14 @@
   <div class="form-group">
   {!! Form::label('caracteristicas', 'Caracteristicas de entrega:', ['class' => 'control-label col-xs-3']) !!}
    <div class="col-xs-9">
-     {!! Form::textarea('caracteristicas', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'caracteristicas']) !!}
+     {!! Form::text('caracteristicas', null, ['class' => 'form-control', 'id' => 'caracteristicas']) !!}
    </div>
   </div>
 
   <div class="form-group">
   {!! Form::label('realizacion', 'Sugerencias de realización:', ['class' => 'control-label col-xs-3']) !!}
   <div class="col-xs-9">
-     {!! Form::textarea('realizacion', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'realizacion']) !!}
+     {!! Form::text('realizacion', null, ['class' => 'form-control', 'id' => 'realizacion']) !!}
   </div>
   </div>
 

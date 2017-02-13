@@ -17,7 +17,7 @@
     <div class="form-group">
     {!! Form::label('cognoscitivo', 'Nivel Cognitivo ', ['class' => 'form-group']) !!}
 
-    {!! Form::textarea('cognoscitivo', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'cogEdit']) !!}
+    {!! Form::text('cognoscitivo', null, ['class' => 'form-control', 'id' => 'cogEdit']) !!}
     </div>
   
   <div class="form-group">
@@ -29,13 +29,13 @@
    <div class="form-group">
    {!! Form::label('descripcion', 'Descripción de la actividad ', ['class' => 'form-group']) !!}
 
-   {!! Form::textarea('descripcion', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'descEdit']) !!}
+   {!! Form::textarea('descripcion', null, ['class' => 'form-control ckeditor', 'rows' => '3', 'id' => 'descEdit']) !!}
    </div>
 
    <div class="form-group">
 
    {!! Form::label('objetivo', 'Objetivo ', ['class' => 'form-group']) !!}
-   {!! Form::textarea('estrategia', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'objEdit']) !!}
+   {!! Form::textarea('estrategia', null, ['class' => 'form-control ckeditor', 'rows' => '3', 'id' => 'objEdit']) !!}
 
      </div>
      
@@ -57,7 +57,7 @@
 
    {!! Form::label('caracteristicas', 'Caracteristicas de entrega ', ['class' => 'form-group']) !!}
 
-   {!! Form::textarea('caracteristicas', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'carcEdit']) !!}
+   {!! Form::text('caracteristicas', null, ['class' => 'form-control', 'id' => 'carcEdit']) !!}
   </div>
   
 
@@ -65,7 +65,7 @@
 
   {!! Form::label('realizacion', 'Sugerencias de realización  ', ['class' => 'form-group']) !!}
 
-   {!! Form::textarea('realizacion', null, ['class' => 'form-control', 'rows' => '3', 'id' => 'reaEdit']) !!}
+   {!! Form::text('realizacion', null, ['class' => 'form-control', 'id' => 'reaEdit']) !!}
     </div>
   <div class="form-group">
 
