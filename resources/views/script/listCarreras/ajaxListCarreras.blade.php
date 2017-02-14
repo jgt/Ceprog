@@ -200,22 +200,7 @@
 					$('#semmEditar').attr('disabled', false);
 					$.unblockUI();
 					alertify.alert("El semestres ha sido editado correctamente.");
-
-					var id = resp.carrera_id;
-					var link = $('#smeList').attr('href');
-					var route = link.split('%7Bsemestre%7D').join(id);
-					var semestre = $('#tablaDataSemestre');
-					
-					$.get(route, function(resp){
-
-						semestre.html(" ");
-
-						$(resp).each(function(key, sem){
-
-							semestre.append("<tr><td>"+sem.name+"</td><td><button class='btn btn-primary' value="+sem.id+" OnClick='alumnosSem(this);'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='editSemestre(this);' data-toggle='modal' data-target='#editSemm'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='listMaterias(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+sem.id+" OnClick='crearMat(this);' data-toggle='modal' data-target='#mdlMateriados'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+sem.id+" OnClick='borrarSemm(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
-
-						});
-					});
+					semestres();
 				},
 
 				error: function(request, error){
@@ -310,6 +295,66 @@
 
 		});
 		
+	});
+
+	$('#crt-forceCampus').on('click', function(e){
+
+		e.preventDefault();
+		$('#campElegir').modal('hide');
+		$('#semm').fadeIn();
+		$('#crr').fadeOut();
+		semestres();
+
+	});
+
+	$('#backMateria').on('click', function(e){
+
+		e.preventDefault();
+		$('#semm').fadeIn();
+		$('#mtaList').fadeOut();
+	});
+
+	$('#crt-forceCarrera').on('click', function(e){
+
+		e.preventDefault();
+		var id = $('#idForceCarrera').val();
+		var form = $('#form-forceCarrera');
+		var metodo = form.attr('method');
+		var route = '/deleteCarrera/'+id;
+		$(this).attr('disabled', true);
+		$.blockUI();
+
+		$.ajax({
+
+			url:route,
+			type:metodo,
+			data:form.serialize(),
+
+			success:function(resp)
+			{	
+				if (! $.fn.DataTable.isDataTable('#carrera-table')){
+					listCarrera();
+				}else{
+
+					var tabla = $('#carrera-table').DataTable();
+					tabla.ajax.reload();
+
+				}
+				$('#forcedltCarrera').modal('hide');
+				$('#crt-forceCarrera').attr('disabled', false);
+				$.unblockUI();
+				alertify.alert("El programa ha sido eliminado correctamente.");
+			},
+
+			error:function(error, request)
+			{
+				$('#crt-forceCarrera').attr('disabled', false);
+				$.unblockUI();
+				alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo.");
+			}
+
+		});
+
 	});
 
 	//Todas las funciones estan apartir de aqui.
@@ -526,7 +571,21 @@
 	{
 		$(tbody).on("click", "button.listSemestre", function(){
 			var data = tabla.row($(this).parents('tr')).data();
-			console.log(data);
+			var route = '/campus';
+			var tab = $('#tablaCampuses');
+			$('#campElegir').modal('show');
+
+			$.get(route, function(resp){
+
+				tab.html(" ");
+
+				$(resp).each(function(key, value){
+
+					tab.append("<li><input type='radio' checked id='cmpsId' carreraId="+data.id+" name='radio_list' value="+value.id+">"+value.nombre+"</input></li>");
+
+				});
+
+			});
 		});
 	}
 
@@ -534,8 +593,44 @@
 	{
 		$(tbody).on("click", "button.borrarCarrera", function(){
 			var data = tabla.row($(this).parents('tr')).data();
-			console.log(data);
+			$('#idForceCarrera').val(data.id);
+			$('#forcedltCarrera').modal('show');
 		});
+	}
+
+	function semestres()
+	{
+		var id = $('input:radio[id=cmpsId]:checked').val();
+		var carreraId = $('input:radio[id=cmpsId]:checked').attr('carreraId');
+		var route = '/smetrList/'+id;
+		var semestre = $('#tablaDataSemestre');
+
+		$.get(route, function(resp){
+
+			semestre.html(" ");
+
+			if(!resp.length == 0)
+			{
+				$(resp).each(function(key, value){
+
+					if(value.carrera_id == carreraId)
+					{
+						semestre.append("<tr><td>"+value.name+"</td><td><button class='btn btn-primary' value="+value.id+" OnClick='alumnosSem(this);'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='editSemestre(this);' data-toggle='modal' data-target='#editSemm'</button><i class='fa fa-pencil-square-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='listMaterias(this);'</button><i class='fa fa-folder-o' aria-hidden='true'></i></td><td><button class='btn btn-primary' value="+value.id+" OnClick='crearMat(this);' data-toggle='modal' data-target='#mdlMateriados'</button><i class='fa fa-plus-circle' aria-hidden='true'></i></td><td><button class='btn btn-danger' value="+value.id+" OnClick='borrarSemm(this);'</button><i class='fa fa-eraser' aria-hidden='true'></i></td></tr>");
+					}
+
+				});
+
+			}else{
+
+				$('#campElegir').modal('hide');
+				$('#semm').fadeOut();
+				$('#crr').fadeIn();
+				alertify.alert("Este programa no tiene ningun semestre en el campus que eligiste.");
+
+			}
+
+		});
+		
 	}
 
 
@@ -627,12 +722,33 @@
 		var id = btn.value;
 		var link = $('#semmEdit').attr('href');
 		var route = link.split('%7Bsemestre%7D').join(id);
+		var ul = $('#semEditCmp');
 
 		$.get(route, function(resp){
 
-			$('#nameEditSem').val(resp.name);
-			$('#semmId').val(resp.id);
-			$('#editSem').val(resp.carrera_id);
+			ul.html(" ");
+
+			$(resp.semestre).each(function(key, value){
+
+				$('#nameEditSem').val(value.name);
+				$('#semmId').val(value.id);
+				$('#editSem').val(value.carrera_id);
+
+				$(resp.campus).each(function(key, cmp){
+
+					ul.append("<li style='list-style:none'><input name='cmp_list[]' type='checkbox' value="+cmp.id+">"+cmp.nombre+"</input></li>");
+
+					$(value.campuses).each(function(key,semc){
+
+						if(semc.id == cmp.id)
+						{
+							$("input:checkbox[value="+cmp.id+"]").attr('checked', true);
+						}
+					});
+
+				});
+
+			});
 
 		});
 

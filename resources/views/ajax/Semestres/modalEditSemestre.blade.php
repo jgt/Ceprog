@@ -16,6 +16,11 @@
     {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'nameEditSem']) !!}
      {!! Form::text('semestre_id', null, ['class' => 'form-control', 'Style' => 'display:none', 'id' => 'semmId']) !!}
    </div>
+
+   <div class="form-group">
+   {!! Form::label('campus', 'Campus:', ['class' => 'form-group']) !!}
+   <ul id="semEditCmp"></ul>
+  </div>
   
   <div class="form-group">
    {!! Form::text('carrera_id', null, ['id' => 'editSem', 'Style' => 'display:none']) !!}

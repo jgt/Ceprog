@@ -21,8 +21,8 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('campus_carrera', 'Elige el Campus:', ['class' => 'form-group']) !!}
-    {!! Form::select('campus_carrera', [], null, ['class' => 'form-control', 'id' => 'campusSelect',  'style' => 'width:570px', 'multiple']) !!}
+    {!! Form::label('campus', 'Elige el Campus:', ['class' => 'form-group']) !!}
+    {!! Form::select('campus', [], null, ['class' => 'form-control', 'id' => 'campusSelect',  'style' => 'width:570px', 'multiple']) !!}
    </div>
 
   {!! Form::close() !!}

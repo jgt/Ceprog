@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Carrera;
 use App\Semestre;
+use App\Campus;
 
 use Illuminate\Http\Request;
 use App\Repository\SemestreRepository;
@@ -40,16 +41,9 @@ class SemestreController extends Controller {
 
 	
 	public function store(CrearSemestre $request)
-	{
-		
-     $semestre = $this->semestreRepository->crearSemestre($request);
-      
-      if($request->ajax())
-      {
-
-      	return response()->json($semestre);
-      }
-
+	{	
+	     $semestre = $this->semestreRepository->crearSemestre($request);
+	     return response()->json($semestre);
 	}
 
 	
@@ -69,27 +63,19 @@ class SemestreController extends Controller {
 	public function edit($id, Request $request)
 	{
 		
-		$semestre = $this->semestreRepository->search($id);
-
-		if($request->ajax())
-		{
-			return response()->json($semestre);
-		}
-  	    
+		$semestre = $this->semestreRepository->search($id)->where('id', $id)->with('campuses')->get();
+		$campus = Campus::get();
+		$detalles = ['semestre' => $semestre, 'campus' => $campus];
+		return response()->json($detalles);  	    
 	}
 
 	
 	public function update($id, EditarSemestre $request)
 	{
-		
-			$semestre = $this->semestreRepository->updateSemestre($request, $id);
-  	        
-  	        if($request->ajax())
-  	        {
-  	        	return response()->json($semestre);
-  	        }
+		$semestre = $this->semestreRepository->updateSemestre($request, $id);
+		$semestre->campuses()->sync($request->get('cmp_list'));
+  	    return response()->json($semestre);
 	}
-
 	
 	public function destroy($id)
 	{
@@ -108,8 +94,13 @@ class SemestreController extends Controller {
 	{
 		$semestre = $this->semestreRepository->search($id);
 		$alumnos = $semestre->users()->get();
-
 		return response()->json($alumnos);
 	}
 
+	public function smetrList($id)
+	{
+		$campus = Campus::find($id);
+		$semestres = $campus->semestres()->get();
+		return response()->json($semestres);
+	}
 }

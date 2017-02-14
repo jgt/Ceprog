@@ -24,6 +24,11 @@ class Semestre extends Model {
 		return $this->belongsToMany('App\User');
 	}
 
+	public function campuses()
+	{
+		return $this->belongsToMany('App\Campus');
+	}
+
 	public function getMateriaListAttribute()
 	{
 

@@ -18,9 +18,8 @@ class SemestreRepository extends BaseRepository {
 
 	public function crearSemestre(Request $request)
 	{
-
 		$semestre = Semestre::create($request->all());
-
+		$semestre->campuses()->attach($request->get('campus'));
      	return $semestre;
 	}
 

@@ -21,7 +21,7 @@ Route::resource('semestre', 'SemestreController');
 Route::resource('materia', 'MateriaController');
 
 Route::post('agregarRole/{id}', ['as' => 'agregarRole', 'uses' => 'RoleController@agregarRole']);
-Route::get('deleteCarrera/{id}', ['as' => 'deleteCarrera', 'uses' => 'CarreraController@deleteCarrera']);
+Route::post('deleteCarrera/{id}', ['as' => 'deleteCarrera', 'uses' => 'CarreraController@deleteCarrera']);
 
 Route::post('storeTutorial', ['as' => 'storeTutorial', 'uses' => 'VideosController@storeTutorial']);
 
@@ -34,4 +34,5 @@ Route::post('attachPrograma/{id}', ['as' => 'attachPrograma', 'uses' => 'Carrera
 Route::post('attachMaterias/{id}', ['as' => 'attachMaterias', 'uses' => 'MateriaController@attachMaterias']);
 
 Route::get('campus', ['as' => 'campus', 'uses' => 'CarreraController@campusCarrera']);
+Route::get('smetrList/{id}', ['as' => 'smetrList', 'uses' => 'SemestreController@smetrList']);
 

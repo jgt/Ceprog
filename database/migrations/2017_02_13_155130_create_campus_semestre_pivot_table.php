@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCampusCarreraPivotTable extends Migration
+class CreateCampusSemestrePivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateCampusCarreraPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('campus_carrera', function (Blueprint $table) {
+        Schema::create('campus_semestre', function (Blueprint $table) {
             $table->integer('campus_id')->unsigned()->index();
             $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
-            $table->integer('carrera_id')->unsigned()->index();
-            $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
-            $table->primary(['campus_id', 'carrera_id']);
+            $table->integer('semestre_id')->unsigned()->index();
+            $table->foreign('semestre_id')->references('id')->on('semestres')->onDelete('cascade');
+            $table->primary(['campus_id', 'semestre_id']);
         });
     }
 
@@ -28,6 +28,6 @@ class CreateCampusCarreraPivotTable extends Migration
      */
     public function down()
     {
-        Schema::drop('campus_carrera');
+        Schema::drop('campus_semestre');
     }
 }

@@ -67,6 +67,8 @@
  @include('ajax.Usuarios.modalAgregarRole')
  @include('ajax.Usuarios.modalPrograma')
  @include('ajax.Usuarios.modalMateria')
+ @include('ajax.Carreras.modalCampus')
+ @include('ajax.Carreras.modalDeleteCarrera')
 
 <div class="container">
 

@@ -64,29 +64,16 @@ class CarreraController extends Controller {
         }
 	}
 
-
-
 	public function destroy($id, Request $request)
 	{
-		
 		$borrar = $this->carreraRepository->deleteCarrera($id);
-		
-		if($request->ajax())
-		{
-			return response()->json($borrar);
-		}
+		return response()->json($borrar);
 	}
 
 	public function deleteCarrera($id, Request $request)
 	{
-		
 		$borrar = $this->carreraRepository->deleteCarrera($id);
-		
-		if($request->ajax())
-		{
-			return response()->json($borrar);
-		}
-
+		return response()->json($borrar);
 	}
 
 	public function agregarPrograma(Request $request)

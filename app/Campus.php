@@ -16,8 +16,8 @@ class Campus extends Model
     	return $this->belongsToMany('App\DatosDocente');
     }
 
-    public function carreas()
+    public function semestres()
     {
-    	return $this->belongsToMany('App\Carrera');
+    	return $this->belongsToMany('App\Semestre');
     }
 }

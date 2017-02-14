@@ -41,9 +41,6 @@
 
       @endforeach
     </main>
-    <footer>
-      Universidad ceprog Construimos tu futuro.
-    </footer>
 </body>
 </html>
 
