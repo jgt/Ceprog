@@ -185,7 +185,7 @@
 							
 							success:function(resp)
 							{	
-								setTimeout(mensaje, 500);
+								setInterval(mensaje, 2500);
 								var div = $('#mchat');
 								$('#btn-input').val(" ");	
 							}
