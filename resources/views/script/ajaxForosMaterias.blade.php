@@ -11,33 +11,33 @@
 
 			$.get(route, function(resp){
 
-						div.html(" ");
+				div.html(" ");
+				console.log(resp);
+				$(resp).each(function(key, value){
 
-						$(resp).each(function(key, value){
+					if(value.id == id)
+					{
+						$(value.comentarios).each(function(key, comt){
 
-								if(value.id == id)
-								{
-									$(value.comentarios).each(function(key, comt){
+							$(comt.users).each(function(key, user){
 
-										$(comt.users).each(function(key, user){
+								$(user.imagenes).each(function(key, img){
 
-											$(user.imagenes).each(function(key, img){
-
-												div.append("<ul class='chat'><li class='left clearfix'><span class='chat-img pull-left'><img class='img-circle' width='50px' src='imagen/"+img.original_img+"' alt='User Avatar'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"+user.name+"</strong><small class='pull-right text-muted'><span class='glyphicon glyphicon-time'>"+comt.created_at+"</span></small></div><p>"+comt.comment+"</p></div></li></ul>");
+									div.append("<ul class='chat'><li class='left clearfix'><span class='chat-img pull-left'><img class='img-circle' width='50px' src='imagen/"+img.original_img+"' alt='User Avatar'></span><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>"+user.name+"</strong><small class='pull-right text-muted'><span class='glyphicon glyphicon-time'>"+comt.created_at+"</span></small></div><p>"+comt.comment+"</p></div></li></ul>");
 
 
-
-											});
-
-										});
 
 									});
-								}
+
+								});
 
 							});
+					}
+
+				});
 
 
-					});
+			});
 		}
 
 		$('a#foroMateria').on('click', function(e){
@@ -165,32 +165,33 @@
 
 				});
 
-				$('#btn-chat').on('click', function(e){
+				$('#btn-input').keypress(function(e){
 
-					e.preventDefault();
+					if(e.which == 13)
+					{
+						var foroId = $('#foroId').val();
+						var foro = $('#fmchat');
+						var link = foro.attr('action');
+						var metodo = foro.attr('method');
+						var route = link.split('%7Bid%7D').join(foroId);
 
-					var foroId = $('#foroId').val();
-					var foro = $('#fmchat');
-					var link = foro.attr('action');
-					var metodo = foro.attr('method');
-					var route = link.split('%7Bid%7D').join(foroId);
-					console.log(route);
-					$.ajax({
+						$.ajax({
 
+							url: route,
+							headers: { 'X-CSFR-TOKEN': token},
+							type: metodo,
+							data: foro.serialize(),
 
-						url: route,
-						headers: { 'X-CSFR-TOKEN': token},
-						type: metodo,
-						data: foro.serialize(),
-
-						success:function(resp){
-							setInterval(mensaje, 500);
-							var div = $('#mchat');
-							$('#btn-input').val(" ");
 							
-						}
+							success:function(resp)
+							{	
+								setTimeout(mensaje, 500);
+								var div = $('#mchat');
+								$('#btn-input').val(" ");	
+							}
 
-					});
+						});
+					}
 
 				});
 
@@ -305,9 +306,17 @@
 	$('#bchat').on('click', function(e){
 
 			e.preventDefault();
-			var div = $('#mchat');
-			div.html(" ");
+			$('#chatForo').fadeOut();
+			$('#chatOnline').fadeIn();
 
 		});
+
+	$('#chatOnline').on('click', function(e){
+
+		e.preventDefault();
+
+		$('#chatForo').fadeIn();
+		$('#chatOnline').fadeOut();
+	});
 
 </script>

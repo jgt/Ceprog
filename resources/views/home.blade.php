@@ -6,7 +6,7 @@
 
 
 @section('main-content')
- 
+
  @include('ajax.modalUnidad')
  @include('ajax.modalRespuestas')
  @include('ajax.Subtemas.modalEditsubtemas')
@@ -69,6 +69,8 @@
  @include('ajax.Usuarios.modalMateria')
  @include('ajax.Carreras.modalCampus')
  @include('ajax.Carreras.modalDeleteCarrera')
+ @include('ajax.chatOnline.modalChat')
+
 
 <div class="container">
 
