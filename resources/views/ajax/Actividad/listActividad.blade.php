@@ -10,7 +10,6 @@
             <td><strong>Ver Pdf</strong></td>
             <td><strong>Rubricas</strong></td>
             <td><strong>Crear Rubricas</strong></td>
-            <td><strong>Calificar</strong></td>
             <td><strong>Borrar</strong></td>
           </thead> 
           <tbody id="tablaActividad">

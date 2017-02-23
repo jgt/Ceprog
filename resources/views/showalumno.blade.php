@@ -53,7 +53,7 @@
                   <br>
                   {!! $subtema->subtemas !!} 
                   {!! $subtema->descripcion !!}
-                  <img src="{{$imagen->ruta}}">
+                  <img class="img-responsive" alt="Responsive image" src="{{$imagen->ruta}}">
 
                   @empty
 

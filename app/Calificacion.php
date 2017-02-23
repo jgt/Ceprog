@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Calificacion extends Model
 {
     
-     protected $fillable = ['promedio', 'user_id', 'actividad_id'];
+    protected $fillable = ['promedio', 'comentario', 'user_id', 'actividad_id'];
 
 
 	public function user()
@@ -26,5 +26,4 @@ class Calificacion extends Model
 
 		return $this->belongsToMany('App\Rubrica')->withPivot('nota');
 	}
-
 }

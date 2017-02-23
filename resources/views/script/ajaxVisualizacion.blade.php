@@ -53,6 +53,13 @@
 			  $('#calAct').fadeOut();
 			  $('#menUnidad').fadeOut();
 			  $('div#preguntaExmamen').hide();
+			  $('#vizuaPaquete').fadeOut();
+			  $('#calAct').fadeOut();
+			  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
@@ -119,6 +126,13 @@
 				  $('#calAct').fadeOut();
 				  $('#menUnidad').fadeOut();
 				  $('div#preguntaExmamen').hide();
+				  $('#vizuaPaquete').fadeOut();
+				  $('#calAct').fadeOut();
+				  $('#vizuaActividad').fadeOut();
+				  $('#claPaquete').fadeOut();
+				  $('#consUser').fadeOut();
+				  $('#ltsMatexamen').fadeOut();
+				  $('#vizuaNota').fadeOut();
 
 					var id = $(this).attr('href');
 					var route = '/baseTeoricaSubTemas/'+id;
@@ -230,6 +244,13 @@
 			  $('#calAct').fadeOut();
 			  $('#menUnidad').fadeOut();
 			  $('div#preguntaExmamen').hide();
+			  $('#vizuaPaquete').fadeOut();
+			  $('#calAct').fadeOut();
+			  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 			
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -294,6 +315,13 @@
 				  $('#calAct').fadeOut();
 				  $('#menUnidad').fadeOut();
 				  $('div#preguntaExmamen').hide();
+				  $('#vizuaPaquete').fadeOut();
+				  $('#calAct').fadeOut();
+				  $('#vizuaActividad').fadeOut();
+				  $('#claPaquete').fadeOut();
+				  $('#consUser').fadeOut();
+				  $('#ltsMatexamen').fadeOut();
+				  $('#vizuaNota').fadeOut();
 
 					var id = $(this).attr('href');
 					var route = '/baseTeoricaSubTemas/'+id;

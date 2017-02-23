@@ -61,6 +61,15 @@ Route::group(['middleware' => 'admin',], function(){
 Route::group(['middleware' => 'alumnosMaestros'], function(){
 
 	require __DIR__ .'/routes/alumnos_maestros.php';
+
+	Route::group(['namespace' => 'menuMaestro'], function(){
+
+		Route::get('verPaquete/{id}', ['as' => 'verPaquete', 'uses' => 'MenuController@verPaquete']);
+		Route::get('pdfUndprf/{id}', ['as' => 'pdfUndprf', 'uses' => 'MenuController@pdfPaquete']);
+		Route::get('verAct/{id}', ['as' => 'verAct', 'uses' => 'MenuController@verActividad']);
+		Route::get('pdfActMaestro/{id}', ['as' => 'pdfActMaestro', 'uses' => 'MenuController@pdfActividad']);
+	});
+
 });
 
 
@@ -82,11 +91,27 @@ Route::group(['middleware' => 'maestro'], function(){
 		
 	});
 
+	Route::group(['namespace' => 'menuMaestro'], function(){
+
+		Route::post('uploadsVideo/{id}', ['as' => 'uploadsVideo', 'uses' => 'MenuController@uploads']);
+		Route::post('uploadsApoyo/{id}', ['as' => 'uploadsApoyo', 'uses' => 'MenuController@uploadsApoyo']);
+		Route::get('calificarAlm/{id}', ['as' => 'calificarAlm', 'uses' => 'MenuController@calificar']);
+		Route::get('rptPaquete/{id}/{materia}', ['as' => 'rptPaquete', 'uses', 'MenuController@reporteUser']);
+		Route::get('consultarUser/{id}/{act}', ['as' => 'consultarUser', 'uses' => 'MenuController@consultar']);
+		Route::post('editComentario/{id}', ['as' => 'editComentario', 'uses' => 'MenuController@editComentario']);
+		Route::get('mtaExmlist/{id}', ['as' => 'mtaExmlist', 'uses' => 'MenuController@listExamen']);
+		Route::get('hojaResp/{id}', ['as' => 'hojaResp', 'uses' => 'MenuController@hojaRespuestas']);
+		Route::get('impExamen/{id}', ['as' => 'impExamen', 'uses' => 'MenuController@imprimirExam']);
+		
+	});
+	
 });
 
 	
 
 Route::group(['middleware' => 'alumnos'], function(){
+
+	require __DIR__ .'/routes/alumnos.php';
 
 	Route::group(['namespace' => 'administrador'], function(){
 
@@ -97,36 +122,13 @@ Route::group(['middleware' => 'alumnos'], function(){
 		Route::get('alumnoReportePdf/{id}', ['as' => 'alumnoReportePdf', 'uses' => 'QuizDocenteController@alumnoReportePdf']);
 	});
 
-	Route::get('fileSend/{id}', ['as' => 'fileSend', 'uses' => 'DescargaController@index']);
+	Route::group(['namespace' => 'menuAlumnos'], function(){
 
-	Route::post('terminarExamen/{id}', ['as' => 'terminarExamen', 'uses' => 'ExamenController@terminarExamen']);
-	Route::post('resultadoExamen/{id}', ['as' => 'resultadoExamen', 'uses' => 'ExamenController@resultadoExamen']);
-	Route::get('realizarExamen/{id}', ['as' => 'realizarExamen', 'uses' => 'ExamenController@realizarExamen']);
-	
+		Route::get('promedio/{id}', ['as' => 'promedio', 'uses' => 'AlumnoMenuController@promedio']);
+		Route::get('activarAct/{id}', ['as' => 'activarAct', 'uses' => 'AlumnoMenuController@activacionAct']);
+		Route::get('verNotaAlm/{id}', ['as' => 'verNotaAlm', 'uses' => 'AlumnoMenuController@verNota']);
 
-	Route::get('archivosUserList', ['as' => 'archivosUserList', 'uses' => 'FileEntryController@enviado']);
-	Route::get('calCarrera/{id}', ['as' => 'calCarrera', 'uses' => 'ActividadController@calCarrera']);
-	
-	Route::get('download/{filename}', ['as' => 'download', 'uses' => 'VideosController@download']);
-
-	Route::get('promedio/{id}', ['as' => 'promedio', 'uses' => 'ActividadController@promedio']);
-
-	Route::get('verPlaneacion/{id}', ['as' => 'verPlaneacion', 'uses' => 'ActividadController@verActividades']);
-	Route::get('verPlaneacionPdf/{id}', ['as' => 'verPlaneacionPdf', 'uses' => 'ActividadController@verPdf']);
-
-	Route::get('Ecomentario/{id}', ['as' => 'Ecomentario', 'uses' => 'ForoEstudianteController@comentario']);
-
-	Route::get('mat', ['as' => 'mat', 'uses' => 'ActividadController@verCarreras']);
-
-	Route::get('materias/{id}', ['as' => 'materias', 'uses' => 'ActividadController@verMaterias']);
-
-	Route::get('act/{id}', ['as' => 'act', 'uses' => 'ActividadController@verUnidades']);
-
-	Route::get('archivos', ['as' => 'archivos', 'uses' => 'DescargaController@index']);
-
-	Route::get('descarga/{id}', ['as' => 'descarga', 'uses' => 'DescargaController@create']);
-	Route::post('descarga/{id}', ['as' => 'descarga', 'uses' => 'DescargaController@add']);
-	Route::get('borrar/{filename}', ['as' => 'borrar', 'uses' => 'DescargaController@borrar']);
+	});
 
 });
 
@@ -145,11 +147,7 @@ Route::group(['middleware' => 'adminCordinador'], function(){
 
 Route::group(['middleware' => 'cordinador'], function(){
 
-	Route::get('cdoMaterias', ['as' => 'cdoMaterias', 'uses' => 'CordinadorController@create']);
-	Route::get('cdoDocentes', ['as' => 'cdoDocentes', 'uses' => 'CordinadorController@listDocente']);
-
-	Route::post('rptSemestral', ['as' => 'rptSemestral', 'uses' => 'CordinadorController@crearReporteSem']);
-	Route::post('cdoStore', ['as' => 'cdoStore', 'uses' => 'CordinadorController@store']);
+	require __DIR__ .'/routes/cordinador.php';
 	
 });
 

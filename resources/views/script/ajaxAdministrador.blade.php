@@ -57,7 +57,15 @@
 		    $('#listAct').fadeOut();
 		    $('#calAct').fadeOut();
 		    $('#menUnidad').fadeOut();
+		    $('#vizuaPaquete').fadeOut();
 		    $('div#preguntaExmamen').hide();
+		    $('#calAct').fadeOut();
+		    $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
+
 			var route = '{{route('admin.index')}}';
 			if (! $.fn.DataTable.isDataTable('#users-table')){
 				listarPersonal(route);
@@ -108,7 +116,14 @@
 		  $('#listAct').fadeOut();
 		  $('#calAct').fadeOut();
 		  $('#menUnidad').fadeOut();
+		  $('#vizuaPaquete').fadeOut();
 		  $('div#preguntaExmamen').hide();
+		  $('#calAct').fadeOut();
+		  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 
 		});
 
@@ -151,7 +166,14 @@
 		  $('#listAct').fadeOut();
 		  $('#calAct').fadeOut();
 		  $('#menUnidad').fadeOut();
+		  $('#vizuaPaquete').fadeOut();
 		  $('div#preguntaExmamen').hide();
+		  $('#calAct').fadeOut();
+		  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -759,6 +781,13 @@
 		  $('#calAct').fadeOut();
 		  $('#menUnidad').fadeOut();
 		  $('div#preguntaExmamen').hide();
+		  $('#vizuaPaquete').fadeOut();
+		  $('#calAct').fadeOut();
+		  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 
 
 		});
@@ -842,6 +871,13 @@
 		  $('#calAct').fadeOut();
 		  $('#menUnidad').fadeOut();
 		  $('div#preguntaExmamen').hide();
+		  $('#vizuaPaquete').fadeOut();
+		  $('#calAct').fadeOut();
+		  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -946,6 +982,13 @@
 		  $('#calAct').fadeOut();
 		  $('#menUnidad').fadeOut();
 		  $('div#preguntaExmamen').hide();
+		  $('#vizuaPaquete').fadeOut();
+		  $('#calAct').fadeOut();
+		  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 
 
 		});

@@ -82,6 +82,13 @@
         $('#calAct').fadeOut();
         $('#menUnidad').fadeOut();
         $('div#preguntaExmamen').hide();
+        $('#vizuaPaquete').fadeOut();
+        $('#calAct').fadeOut();
+        $('#vizuaActividad').fadeOut();
+      $('#claPaquete').fadeOut();
+      $('#consUser').fadeOut();
+      $('#ltsMatexamen').fadeOut();
+      $('#vizuaNota').fadeOut();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
@@ -300,6 +307,13 @@
           $('#calAct').fadeOut();
           $('#menUnidad').fadeOut();
           $('div#preguntaExmamen').hide();
+          $('#vizuaPaquete').fadeOut();
+          $('#calAct').fadeOut();
+          $('#vizuaActividad').fadeOut();
+          $('#claPaquete').fadeOut();
+          $('#consUser').fadeOut();
+          $('#ltsMatexamen').fadeOut();
+          $('#vizuaNota').fadeOut();
         
         $.get(route, function(resp){
 

@@ -95,8 +95,15 @@ class PortafolioController extends Controller {
 
 	public function calificacion($id, $user, Request $request)
 	{	
-		$user = $this->userRepository->search($user);
-		$actividad = $this->actividadRepository->search($id);
+		$user = $this->userRepository->getModel()
+			->with(['fileentry' => function($query) use ($id){
+
+				$query->where('actividad_id', $id);
+
+			}])->find($user);
+
+		$actividad = $this->actividadRepository
+			->search($id);
 
 		$detalles = [
 

@@ -29,7 +29,43 @@
 
 @include('script.Cordinador.crearDocente')
 
-@include('script.Unidades.Unidades')
+@include('script.Cordinador.crearUnidad')
+
+@include('script.Cordinador.menuPaquetes')
+
+@include('script.Maestros.subirVideo')
+
+@include('script.Maestros.pdfUnidad')
+
+@include('script.Maestros.calificar')
+
+@include('script.Maestros.listaExamen')
+
+@include('script.Maestros.verPaquete')
+
+@include('script.Maestros.actividadPdf')
+
+@include('script.Maestros.subirApoyo')
+
+@include('script.Maestros.verActividad')
+
+@include('script.Alumnos.verSemana')
+
+@include('script.Alumnos.pdfSemana')
+
+@include('script.Alumnos.notaPdf')
+
+@include('script.Alumnos.activarAct')
+
+@include('script.Alumnos.responderAct')
+
+@include('script.Alumnos.verActividad')
+
+@include('script.Alumnos.pdfActividad')
+
+@include('script.Alumnos.documentosEnviados')
+
+@include('script.Alumnos.verNota')
 
 @include('script.Recursos.recursosMaestro')
 
@@ -59,11 +95,9 @@
 
 @include('script.ajaxListExamenes')
 
-@include('script.ajaxPlaneacion')
-
 @include('script.ajaxListUnidad')
 
-@include('script.ajaxAlumnos')
+@include('script.ajaxImagen')
 
 @include('script.ajaxVisualizacion')
 

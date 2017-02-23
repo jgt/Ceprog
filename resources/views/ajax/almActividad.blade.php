@@ -2,7 +2,6 @@
         
         <a href="{{ Auth::user()}}" id="AuthUser" Style="display:none"></a>
         <a href="{{ route('pdf')}}" id="pdfAct" Style="display:none"></a>
-        <a href="{{ route('borrar')}}" id="borrarA" Style="display:none"></a>
         <a href="{{ route('material')}}" id="materialAlm" Style="display:none"></a>
         <a href="" id="a" Style="display:none"></a>
       <div class="table-responsive">

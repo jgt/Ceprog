@@ -79,7 +79,7 @@ class AdminController extends Controller {
 	{	
 
     $roles = Role::all();
-    $campus = Campus::get();
+    $campus = Campus::with('semestres.carrera')->get();
     $carreras = Carrera::with('semestres')->get();
     $materias = Materia::all();
 

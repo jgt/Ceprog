@@ -22,7 +22,6 @@
  @include('ajax.modalActUser')
  @include('ajax.modalListVideos')
  @include('ajax.modalMapoyoAlm')
- @include('ajax.modalResponder')
  @include('ajax.modalFile')
  @include('ajax.modalTutoPrf')
  @include('ajax.modalTutorialAlm')
@@ -70,6 +69,9 @@
  @include('ajax.Carreras.modalCampus')
  @include('ajax.Carreras.modalDeleteCarrera')
  @include('ajax.chatOnline.modalChat')
+ @include('ajax.Maestro.modalVideo')
+ @include('ajax.Maestro.modalApoyo')
+ @include('ajax.Alumnos.modalResponder')
 
 
 <div class="container">
@@ -79,6 +81,14 @@
 
 		<div class="panel-body panel-default">
 					@include('ajax.Unidades.editUnidad')
+					@include('ajax.Maestro.consultar')
+					@include('ajax.Maestro.listaExamenes')
+					@include('ajax.Maestro.calificar')
+					@include('ajax.Maestro.verPaquete')
+					@include('ajax.Maestro.verActividad')
+					@include('ajax.Alumnos.verSemana')
+					@include('ajax.Alumnos.verActividad')
+					@include('ajax.Alumnos.verNota')
 					@include('ajax.Usuarios.editarPersonal')
 					@include('ajax.admListaPersonal')
 					@include('ajax.reportes.semestral')

@@ -42,9 +42,16 @@ class DescargaController extends Controller {
 
 	public function index($id, Request $request)
 	{
-		$actividad = $this->actividadRepository->search($id);
-		$archivos = $actividad->fileentries()->where('user_id', Auth::user()->id)->get();
+		$archivos = $this->actividadRepository->search($id)
+			->where('id', $id)
+			->with('fileentries')
+			->whereHas('fileentries', function($query){
+				$query->where('user_id', Auth::user()->id);
+			})
+			->get();
+
 		return response()->json($archivos);
+		
 	}
 
 
@@ -58,7 +65,7 @@ class DescargaController extends Controller {
 	public function add($id, Peticion $request) {
 
 		$actividad = $this->actividadRepository->search($id);
-		$archivos= $this->fileentryRepository->file($request, $id);
+		$archivos= $this->fileentryRepository->arch($request, $id);
 		
 		if($request->ajax())
 		{

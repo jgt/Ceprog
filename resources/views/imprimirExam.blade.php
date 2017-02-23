@@ -33,7 +33,7 @@
       <ol class="olNumeros">
       @foreach($examen->preguntas as $pregunta)
           
-          <li><p>{{$pregunta->contenido}}</p></li>
+          <li><p>{!! $pregunta->contenido !!}</p></li>
        
 
          <ol class="olLetras">

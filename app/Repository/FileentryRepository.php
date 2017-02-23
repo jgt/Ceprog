@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Request;
 use App\Fileentry;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use File as Archivo;
 use Illuminate\Http\Response;
 use Auth;
 use Input;
@@ -20,59 +21,58 @@ class FileentryRepository extends BaseRepository {
 		return new Fileentry();
 	}
 
-	public function file(Peticion $request, $id)
+	public function arch(Peticion $request, $id)
 	{
 
 		$user = Auth::user()->id;
-		$file = Request::file('archivo');
-		$nombre = $file->getClientOriginalName();
-		$extension = $file->getClientOriginalExtension();
-		$exists = Storage::disk('local')->exists($nombre);
+		$dir = public_path().'/respuestas/';
+		$file = $dir.$this->filename($request);
 	
-			if (!($exists)) {
+		if (!file_exists($file)) {
 
-			Storage::disk('local')->put($nombre,  File::get($file));
-			$entry = Fileentry::create([
+			$this->movePath($request);
+			return Fileentry::create([
 
-			'mime' => $file->getClientMimeType(),
-			'original_filename' => 	$file->getClientOriginalName(),
-			'filename' => $nombre,
-			'mensaje' => Input::get('mensaje'),
+			'mime' => $this->type($request),
+			'original_filename' => 	$this->filename($request),
+			'filename' => $this->filename($request),
 			'usuario' => Input::get('usuario'),
 			'actividad_id'   => $id,
 			'user_id'        => $user
 
 			]);
 
-		$entry->save();
+		}else{
 
-		return $entry;
-
-		}else if($exists){
-
-
-			$contador = $user + rand(1, 10);
-			$modificacion = $nombre . $contador;
-			Storage::disk('local')->put($modificacion,  File::get($file));
-			$change = Fileentry::create([
-
-			'mime' => $file->getClientMimeType(),
-			'original_filename' => 	$modificacion,
-			'filename' => $modificacion,
-			'mensaje' => Input::get('mensaje'),
-			'usuario' => Input::get('usuario'),
-			'actividad_id'   => $id,
-			'user_id'        => $user
-
-			]);
-
-		$change->save();
-
-		return $change;
-				
+			return abort(404, 'El archivo ya existe');			
 		}
 
 	}
+
+	protected function file(Asignacion $request)
+    {
+        return $request->file('archivo');
+    }
+
+    protected function path()
+    {
+        return public_path().'/respuestas';
+    }
+
+    protected function fileName(Asignacion $request)
+    {
+        return $this->file($request)->getClientOriginalName();
+    }
+
+    protected function type(Asignacion $request)
+    {
+        return $request->file('archivo')->getClientMimeType();
+    }
+
+	protected function movePath(Asignacion $request)
+    {
+        return $this->file($request)->move($this->path(), $this->filename($request));
+    }
 
 	public function descargar($filename)
 	{
@@ -81,22 +81,17 @@ class FileentryRepository extends BaseRepository {
 
 	}
 
-	public function borrar($filename)
+	public function borrar($id)
 	{
+		$file = $this->ruta($this->search($id)->filename);
+        Archivo::delete($file);
+        $this->search($id)->delete();
+	}
 
-		$archivo = Fileentry::where('filename', '=', $filename)->firstOrFail();
-		$exists = Storage::disk('local')->exists($archivo->filename);
-
-		if ($exists) {
-			
-
-			Storage::delete($archivo->filename);
-			$archivo->delete();
-
-
-			flash()->overlay('Ha sido borrado sactifactoriamente', 'El archivo '.$archivo->filename);
-
-		}
+	public function ruta($filename)
+	{
+		$archivo = public_path().'/respuestas/'.$filename;
+        return $archivo;
 	}
 
 	public function archivosUser($fileentryId)

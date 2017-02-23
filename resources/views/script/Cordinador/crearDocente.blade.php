@@ -8,6 +8,13 @@
 
 			$('#cdoCrTdoc').fadeIn();
 			$('#cdoListdoc').fadeOut();
+			$('#vizuaPaquete').fadeOut();
+			$('#calAct').fadeOut();
+			$('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 
 			var route = '/cdoMaterias/';
 			var select = $('#cdoMta');
@@ -133,6 +140,13 @@
 			$('#form-cdoEnd').fadeOut();
 			$('#cdoCrTdoc').fadeOut();
 			$('#showRpt').fadeOut();
+			$('#vizuaPaquete').fadeOut();
+			$('#calAct').fadeOut();
+			$('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 			var route = $(this).attr('href');
 			listar(route);
 			
@@ -280,6 +294,7 @@
 
 			});
 		}
+
 		
 	});
 

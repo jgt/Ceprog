@@ -77,24 +77,6 @@ class ActividadController extends Controller {
          return $pdf->stream();		
 	}
 
-	public function promedio($id, Request $request)
-	{
-
-		$idUser = Auth::user()->id;
-		$materia = Unidad::find($id)->materia_id;
-		$user = Auth::user();
-		$actividades = Unidad::find($id)->actividades()->get();
-		$actividadesId = $this->actividadRepository->getModel()->where('unidad_id',$id)->lists('id');
-		$promedio = $this->calificacionRepository->promedioActividad($actividadesId);
-		$totalExamen = $this->materiaRepository->sumaExamenes($idUser, $materia);
-		$pdf = App::make('dompdf.wrapper');
-        $customPaper = array(0,0,950,950);
-        $paper_orientation = 'landscape';
-        $pdf->setPaper($customPaper,$paper_orientation);
-       $pdf->loadview('calificacionAlm', compact('actividades', 'promedio', 'user', 'totalExamen'));
-        return $pdf->stream('Calificacion.pdf');	
-	}
-
 	public function verExamen($id, Request $request)
 	{	
 

@@ -113,7 +113,13 @@
 				  $('#calAct').fadeOut();
 				  $('#menUnidad').fadeOut();
 				  $('div#preguntaExmamen').hide();
-					
+				  $('#vizuaPaquete').fadeOut();
+				  $('#calAct').fadeOut();
+				  $('#vizuaActividad').fadeOut();
+				  $('#claPaquete').fadeOut();
+					$('#consUser').fadeOut();
+					$('#ltsMatexamen').fadeOut();
+					$('#vizuaNota').fadeOut();
 
 					var id = $(this).attr('href');
 					$('#foroId').val(id);
@@ -180,6 +186,7 @@
 							url: route,
 							headers: { 'X-CSFR-TOKEN': token},
 							type: metodo,
+							cache: false,
 							data: foro.serialize(),
 
 							
@@ -253,6 +260,13 @@
 		  $('#calAct').fadeOut();
 		  $('#menUnidad').fadeOut();
 		  $('div#preguntaExmamen').hide();
+		  $('#vizuaPaquete').fadeOut();
+		  $('#calAct').fadeOut();
+		  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 				
 
 			var route = $(this).attr('href');

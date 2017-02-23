@@ -107,6 +107,13 @@ $(document).on('ready', function(){
 	  $('#listAct').fadeOut();
 	  $('#calAct').fadeOut();
 	  $('#menUnidad').fadeOut();
+	  $('#vizuaPaquete').fadeOut();
+	  $('#calAct').fadeOut();
+	  $('#vizuaActividad').fadeOut();
+	  $('#claPaquete').fadeOut();
+	  $('#consUser').fadeOut();
+	  $('#ltsMatexamen').fadeOut();
+	  $('#vizuaNota').fadeOut();
 
 		var route = $(this).attr('href');
 		var carrera = $('#selectMatdocente');

@@ -9,6 +9,7 @@
 				var form = $('#apoyoM_id');
 				var route = form.attr('action');
 				var metodo = form.attr('method');
+				console.log(route);
 
 				var formData = new FormData($('apoyoM_id')[0]);
 

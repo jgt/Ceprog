@@ -137,6 +137,13 @@
 			  $('#calAct').fadeOut();
 			  $('#menUnidad').fadeOut();
 			  $('div#preguntaExmamen').hide();
+			  $('#vizuaPaquete').fadeOut();
+			  $('#calAct').fadeOut();
+			  $('#vizuaActividad').fadeOut();
+			$('#claPaquete').fadeOut();
+			$('#consUser').fadeOut();
+			$('#ltsMatexamen').fadeOut();
+			$('#vizuaNota').fadeOut();
 
 				
 			      
