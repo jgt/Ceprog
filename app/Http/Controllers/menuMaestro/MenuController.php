@@ -62,11 +62,8 @@ class MenuController extends Controller
     {
     	$unidad = $this->unidadRepository
             ->getModel()
-    		->with('materia.semestre', 'subtemas.imagenes')
-            ->with(['videos' => function($query) use ($id){
-                $query->where('unidad_id', $id);
-
-            }])->find($id);
+    		->with('materia.semestre', 'subtemas.imagenes', 'videos')
+            ->find($id);
 
 		return response()->json($unidad);
     }
