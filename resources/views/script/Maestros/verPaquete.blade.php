@@ -90,24 +90,21 @@
 		
 					});
 
-
-					$(value.videos).each(function(key, video){
-
-							if(value.videos > 0)
-							{
-								if(video.mime == 'video/mp4')
+					if(value.videos.length > 0)
+					{
+						$(value.videos).each(function(key, video){
+							
+							if(video.mime == 'video/mp4')
 								{
+									console.log(video);
 									vdo.append("<li style='list-style:none;'><h3><strong>Videos de la Unidad</strong></h3><video width='600'  height='300' controls='controls'><source src='/uploads/"+video.original_filename+"' type='video/webm'/><source src='/uploads/"+video.original_filename+"' type='video/ogg'/><source src='/uploads/"+video.original_filename+"' type='video/mp4'/></video></li><hr>");
 								}else{
 
 									vdo.append("<li style='list-style:none;'><img class='img-responsive' alt='Responsive image' src='/uploads/"+video.original_filename+"' alt=''></li><hr>");
 								}
-							}else{
-
-								vdo.append("");
-							}
-
-					});
+						});
+					}
+					
 
 				});
 
