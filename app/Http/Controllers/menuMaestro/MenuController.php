@@ -62,7 +62,7 @@ class MenuController extends Controller
     {
     	$unidad = $this->unidadRepository->search($id)
     		->where('id', $id)
-    		->with('materia.semestre', 'videos', 'subtemas.imagenes')
+    		->with('materia.semestre', 'subtemas.imagenes', 'videos')
     		->get();
 		return response()->json($unidad);
     }
