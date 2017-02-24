@@ -64,13 +64,18 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#vizAct').fadeOut();
 			
-			var tabla = $('#vizuaActividad');
+			var tabla = $('#tdbAct');
+			var tbdRub = $('#tbdRub');
+			var tbdFile = $('#tbdArchivos');
 			var route = $(this).attr('href');
 
 			$.get(route, function(resp){
 
 				tabla.html(" ");
+				tbdRub.html(" ");
+				tbdFile.html(" ");
 
 				$(resp).each(function(key, act){
 
@@ -78,7 +83,7 @@
 
 					$(act.rubricas).each(function(key, rub){
 
-						tabla.append("<h3>"+rub.name+"</h3><p style='text-align: justify;'>"+rub.descripcion+"</p><hr>");
+						tbdRub.append("<li><h3>"+rub.name+"</h3><p style='text-align: justify;'>"+rub.descripcion+"</p></li><hr>");
 
 					});
 
@@ -86,7 +91,8 @@
 
 						var filename = apo.original_filename;
                 		var cadena = filename.split(' ').join('%20');
-						tabla.append("<ul><li><a href='material/"+cadena+"'>"+apo.original_filename+"</a></li></ul>");
+                		$('#tltFile').html("Archivos de la actividad");
+						tbdFile.append("<ul><li><a href='material/"+cadena+"'>"+apo.original_filename+"</a></li></ul>");
 
 					});
 

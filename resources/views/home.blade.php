@@ -81,10 +81,10 @@
 
 		<div class="panel-body panel-default">
 					@include('ajax.Unidades.editUnidad')
+					@include('ajax.Maestro.verPaquete')
 					@include('ajax.Maestro.consultar')
 					@include('ajax.Maestro.listaExamenes')
 					@include('ajax.Maestro.calificar')
-					@include('ajax.Maestro.verPaquete')
 					@include('ajax.Maestro.verActividad')
 					@include('ajax.Alumnos.verSemana')
 					@include('ajax.Alumnos.verActividad')

@@ -60,13 +60,20 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#vizuaSemana').fadeOut();
+			$('#vizAct').fadeOut();
 			
 			var route = $(this).attr('href');
-			var paquete = $('#vizuaPaquete');
+			var paquete = $('#paquete');
+			var subT = $('#subtPqt');
+			var vdo = $('#videoPaquete');
+			var subPaquete = $('#subPaquete');
 			
 			$.get(route, function(resp){
 
+				subPaquete.html(" ");
 				paquete.html(" ");
+				subT.html(" ");
 				
 				$(resp).each(function(key, value){
 
@@ -74,22 +81,28 @@
 
 					$(value.subtemas).each(function(key, sub){
 
-						paquete.append("<ul><li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li></ul>");
+						if(sub.imagenes.length > 0)
+						{
+							$(sub.imagenes).each(function(key, img){
+				
+								subPaquete.append("<li style='list-style:none;'><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p><img class='img-responsive' alt='Responsive image' src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
+							});
 
-						$(sub.imagenes).each(function(key, img){
+						}else{
 
-							paquete.append("<li style='list-style:none;'><img class='img-responsive' alt='Responsive image' src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
-						});
+							subPaquete.append("<li style='list-style:none;'><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p><hr></li>");
+
+						}
 
 
 						$(value.videos).each(function(key, video){
 
 							if(video.mime == 'video/mp4')
 							{
-								paquete.append("<li style='list-style:none;'><h3><strong>Videos de la Unidad</strong></h3><video width='600'  height='300' controls='controls'><source src='/uploads/"+video.original_filename+"' type='video/webm'/><source src='/uploads/"+video.original_filename+"' type='video/ogg'/><source src='/uploads/"+video.original_filename+"' type='video/mp4'/></video></li><hr>");
+								vdo.append("<li style='list-style:none;'><h3><strong>Videos de la Unidad</strong></h3><video width='600'  height='300' controls='controls'><source src='/uploads/"+video.original_filename+"' type='video/webm'/><source src='/uploads/"+video.original_filename+"' type='video/ogg'/><source src='/uploads/"+video.original_filename+"' type='video/mp4'/></video></li><hr>");
 							}else{
 
-								paquete.append("<li style='list-style:none;'><img class='img-responsive' alt='Responsive image' src='/uploads/"+video.original_filename+"' alt=''></li><hr>");
+								vdo.append("<li style='list-style:none;'><img class='img-responsive' alt='Responsive image' src='/uploads/"+video.original_filename+"' alt=''></li><hr>");
 							}
 
 								
