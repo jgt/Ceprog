@@ -101,15 +101,13 @@
 								vdo.append("<li style='list-style:none;'><img class='img-responsive' alt='Responsive image' src='/uploads/"+video.original_filename+"' alt=''></li><hr>");
 							}
 
-								
-						});
+					});
 
 				});
 
 			});
 
 		});
-
 	});
 
 </script>
