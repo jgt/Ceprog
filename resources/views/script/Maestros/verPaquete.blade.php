@@ -80,21 +80,16 @@
 					paquete.append("<h3 style='text-transform: uppercase;'><strong>"+value.materia.name+"</strong></h3><h3 style='text-transform: uppercase;'><strong>"+value.materia.semestre.name+"</strong></h3><hr><p style='text-align: justify;'>"+value.objetivo+"</p><hr><p style='text-align: justify;'>"+value.actividadP+"</p><hr><h3 style='text-transform: uppercase;'><strong>"+value.unidad+"</strong></h3><h4 style='text-transform: uppercase;'><strong>"+value.tema+"</strong></h4><hr>");
 
 					$(value.subtemas).each(function(key, sub){
+	
+						subPaquete.append("<li><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p></li>");
+									
+						$(sub.imagenes).each(function(key, img){
 
-						if(sub.imagenes.length > 0)
-						{
-							$(sub.imagenes).each(function(key, img){
-				
-								subPaquete.append("<li style='list-style:none;'><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p><img class='img-responsive' alt='Responsive image' src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
-							});
-
-						}else{
-
-							subPaquete.append("<li style='list-style:none;'><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p><hr></li>");
-
-						}
-
+							subPaquete.append("<li><img class='img-responsive' alt='Responsive image' src='/uploads/"+img.original_filename+"'><p>("+img.filename+")</p><hr></li>");
+						});
+		
 					});
+
 
 					$(value.videos).each(function(key, video){
 
