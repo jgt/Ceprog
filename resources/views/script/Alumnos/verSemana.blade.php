@@ -99,8 +99,9 @@
 							ulSub.append("<li style='list-style:none;'><h4><strong>"+sub.subtemas+"</strong></h4><p style='text-align: justify;'>"+sub.descripcion+"</p><hr></li>");
 						}
 
+					});
 
-						$(value.videos).each(function(key, video){
+					$(value.videos).each(function(key, video){
 
 							if(video.mime == 'video/mp4')
 							{
@@ -112,8 +113,6 @@
 
 								
 						});
-
-					});
 
 				});
 

@@ -94,8 +94,9 @@
 
 						}
 
+					});
 
-						$(value.videos).each(function(key, video){
+					$(value.videos).each(function(key, video){
 
 							if(video.mime == 'video/mp4')
 							{
@@ -107,8 +108,6 @@
 
 								
 						});
-
-					});
 
 				});
 
