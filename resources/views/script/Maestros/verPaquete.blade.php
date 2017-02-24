@@ -76,7 +76,7 @@
 				subT.html(" ");
 				
 				$(resp).each(function(key, value){
-
+					console.log(value);
 					paquete.append("<h3 style='text-transform: uppercase;'><strong>"+value.materia.name+"</strong></h3><h3 style='text-transform: uppercase;'><strong>"+value.materia.semestre.name+"</strong></h3><hr><p style='text-align: justify;'>"+value.objetivo+"</p><hr><p style='text-align: justify;'>"+value.actividadP+"</p><hr><h3 style='text-transform: uppercase;'><strong>"+value.unidad+"</strong></h3><h4 style='text-transform: uppercase;'><strong>"+value.tema+"</strong></h4><hr>");
 
 					$(value.subtemas).each(function(key, sub){

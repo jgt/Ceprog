@@ -60,10 +60,14 @@ class MenuController extends Controller
 
     public function verPaquete($id)
     {
-    	$unidad = $this->unidadRepository->search($id)
-    		->where('id', $id)
-    		->with('materia.semestre', 'subtemas.imagenes', 'videos')
-    		->get();
+    	$unidad = $this->unidadRepository
+            ->getModel()
+    		->with('materia.semestre', 'subtemas.imagenes')
+            ->with(['videos' => function($query) use ($id){
+                $query->where('unidad_id', $id);
+
+            }])->find($id);
+
 		return response()->json($unidad);
     }
 
