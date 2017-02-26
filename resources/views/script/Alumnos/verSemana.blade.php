@@ -82,7 +82,7 @@
 				vdo.html(" ");
 				
 				$(resp).each(function(key, value){
-
+						
 						paquete.append("<h3 style='text-transform: uppercase;'><strong>"+value.materia.name+"</strong></h3><h3 style='text-transform: uppercase;'><strong>"+value.materia.semestre.name+"</strong></h3><hr><p style='text-align: justify;'>"+value.objetivo+"</p><hr><p style='text-align: justify;'>"+value.actividadP+"</p><hr><h3 style='text-transform: uppercase;'><strong>"+value.unidad+"</strong></h3><h4 style='text-transform: uppercase;'><strong>"+value.tema+"</strong></h4><hr>");
 
 						$(value.subtemas).each(function(key, sub){
@@ -102,7 +102,7 @@
 								
 								if(video.mime == 'video/mp4')
 									{
-										console.log(video);
+										
 										vdo.append("<li style='list-style:none;'><h3><strong>Videos de la Unidad</strong></h3><video width='600'  height='300' controls='controls'><source src='/uploads/"+video.original_filename+"' type='video/webm'/><source src='/uploads/"+video.original_filename+"' type='video/ogg'/><source src='/uploads/"+video.original_filename+"' type='video/mp4'/></video></li><hr>");
 									}else{
 

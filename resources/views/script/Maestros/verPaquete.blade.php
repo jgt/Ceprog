@@ -74,6 +74,7 @@
 				subPaquete.html(" ");
 				paquete.html(" ");
 				subT.html(" ");
+				vdo.html(" ");
 				
 				$(resp).each(function(key, value){
 
@@ -96,7 +97,7 @@
 							
 							if(video.mime == 'video/mp4')
 								{
-									console.log(video);
+			
 									vdo.append("<li style='list-style:none;'><h3><strong>Videos de la Unidad</strong></h3><video width='600'  height='300' controls='controls'><source src='/uploads/"+video.original_filename+"' type='video/webm'/><source src='/uploads/"+video.original_filename+"' type='video/ogg'/><source src='/uploads/"+video.original_filename+"' type='video/mp4'/></video></li><hr>");
 								}else{
 
@@ -105,7 +106,6 @@
 						});
 					}
 					
-
 				});
 
 			});
