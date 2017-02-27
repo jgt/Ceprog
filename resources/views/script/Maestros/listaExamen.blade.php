@@ -2,7 +2,7 @@
 	
 	$(document).on('ready', function(){
 
-		$('#exmList').on('click', function(e){
+		$('a#exmList').on('click', function(e){
 
 			e.preventDefault();
 

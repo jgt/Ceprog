@@ -26,7 +26,6 @@ Route::post('deleteCarrera/{id}', ['as' => 'deleteCarrera', 'uses' => 'CarreraCo
 Route::post('storeTutorial', ['as' => 'storeTutorial', 'uses' => 'VideosController@storeTutorial']);
 
 Route::get('alumnosSem/{id}', ['as' => 'alumnosSem', 'uses' => 'SemestreController@alumnosSem']);
-Route::resource('plc', 'PlaneacionController');
 
 //agregar programas
 Route::get('agregarPrograma', ['as' => 'agregarPrograma', 'uses' => 'CarreraController@agregarPrograma']);

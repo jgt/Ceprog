@@ -10,6 +10,7 @@ use App\Repository\ExamenDocenteRepository;
 use App\Repository\MateriaRepository;
 use App\Repository\UserRepository;
 use App\Repository\CarreraRepository;
+use App\Repository\CampusRepository;
 use App\Http\Requests\Docente;
 use App\Http\Requests\PreguntaMaestro;
 use App\Http\Requests\RespuestaMaestro;
@@ -28,17 +29,20 @@ class ExamenDocenteController extends Controller
     private $materiaRepository;
     private $userRepository;
     private $carreraRepository;
+    private $campusRepository;
     
     public function __construct(
         ExamenDocenteRepository $examenDocente,
         MateriaRepository $materiaRepository,
         UserRepository $userRepository,
-        CarreraRepository $carreraRepository)
+        CarreraRepository $carreraRepository,
+        CampusRepository $campusRepository)
     {
         $this->examenDocente = $examenDocente;
         $this->materiaRepository = $materiaRepository;
         $this->userRepository = $userRepository;
         $this->carreraRepository = $carreraRepository;
+        $this->campusRepository = $campusRepository;
     }
 
     public function index()
@@ -250,4 +254,17 @@ class ExamenDocenteController extends Controller
     }
     
     
+    public function reporteCampus($id)
+    {
+        $pdf = App::make('dompdf.wrapper');
+        $fecha = Carbon::now();
+        $rangos = Rango::all(); 
+        $materias = $this->campusRepository->materiaCampus($id);
+        $suma = $this->materiaRepository->sumaValor();
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape'; 
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('reporteGeneralDoc', compact('materias', 'fecha', 'rangos', 'suma'));
+        return $pdf->stream();
+    }
 }

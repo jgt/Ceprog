@@ -96,3 +96,7 @@ Route::post('storePregunta', ['as' => 'storePregunta', 'uses' => 'ExamenControll
 Route::get('examenP/{id}', ['as' => 'examenP', 'uses' => 'ExamenController@createPregunta']);
 Route::get('examen/{id}', ['as' => 'examen', 'uses' => 'ExamenController@createExamen']);
 Route::post('storeExamen', ['as' => 'storeExamen', 'uses' => 'ExamenController@storeExamen']);
+
+//Planeacion
+Route::resource('plc', 'PlaneacionController');
+

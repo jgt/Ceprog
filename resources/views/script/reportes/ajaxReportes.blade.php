@@ -69,6 +69,25 @@
 
 		});
 
+		$('a#campusReporte').on('click', function(e){
+
+			e.preventDefault();
+
+			var route = $(this).attr('href');
+			$.blockUI();
+
+			$.get(route, function(resp){
+
+				$.unblockUI()
+				window.open(route);
+
+			}).fail(function(resp){
+
+				alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo.");
+			});
+
+		});
+
 	});
 
 	function carrerasPdf(btn){

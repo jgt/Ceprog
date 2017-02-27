@@ -69,7 +69,7 @@
                  @endforeach
                  <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
                   <td class="service">{{$materia->mat_results}}</td>
-                  <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}} / 25</td>
+                  <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
                     </tr>
                     {{-- */ $count=$count+1 /* --}}
                     @if($count==$lineaspag)

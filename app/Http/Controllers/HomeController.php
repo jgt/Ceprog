@@ -12,6 +12,7 @@ use App\Repository\SemestreRepository;
 use App\Tutorial;
 use Auth;
 use App\Carrera;
+use App\Campus;
 use App;
 
 class HomeController extends Controller {
@@ -75,13 +76,14 @@ class HomeController extends Controller {
 	        $users = $this->userRepository->listaUser($request);
 	        $materiasForo = $this->materiaRepository->showMaterias();
 	        $alumnos = $this->userRepository->alumnosMenu($request);
+	        $campus = Campus::get();
 
          if($request->ajax())
         {
             return response()->json($alumnos);
         }
 
-        return view('home', compact('materias', 'roles', 'users', 'materiasForo', 'carreras', 'mta', 'semestres', 'alumnos'));
+        return view('home', compact('materias', 'roles', 'users', 'materiasForo', 'carreras', 'mta', 'semestres', 'alumnos', 'campus'));
 		
 	}
 

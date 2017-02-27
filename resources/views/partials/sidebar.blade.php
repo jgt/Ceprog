@@ -180,14 +180,6 @@
             <li class="header">Administrador</li>
             <!-- Optionally, you can add icons to the links -->
                 <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Reportes</span><i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                     <li><a href="{{ route('plc.index') }}" id="planeacionAdm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Planeaciones</a></li>
-                     <li><a href="{{ route('reporteGeneralDoc') }}" id="rptGenDoc"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Reporte General</a></li>
-                     <li><a href="{{ route('listMateriasDocente') }}" id="listaEPD"><i class="fa fa-database" aria-hidden="true"></i>Reporte Examen Docente</a></li>
-                  </ul>
-                </li>
-                <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Herramientas</span><i class="fa fa-angle-left pull-right"></i></a>
                 
                 <ul class="treeview-menu">
@@ -223,6 +215,22 @@
         <ul class="sidebar-menu">
             <li class="header">Cordinador</li>
             <!-- Optionally, you can add icons to the links -->
+             <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Reportes</span><i class="fa fa-angle-left pull-right"></i></a>
+                  <ul class="treeview-menu">
+                      <li><a href="#"><i class='fa fa-plus fa-fw'></i> Reporte Campus</a>
+                          <ul class="treeview-menu">
+                            @foreach($campus as $campu)
+                              <li><a href="{{ route('campusReporte', $campu) }}" id="campusReporte"><i class="fa fa-university" aria-hidden="true"></i> {{$campu->nombre}}</a></li>
+                            @endforeach
+                          </ul>
+
+                      </li>
+                     <li><a href="{{ route('plc.index') }}" id="planeacionAdm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Planeaciones</a></li>
+                     <li><a href="{{ route('reporteGeneralDoc') }}" id="rptGenDoc"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Reporte General</a></li>
+                     <li><a href="{{ route('listMateriasDocente') }}" id="listaEPD"><i class="fa fa-database" aria-hidden="true"></i>Reporte Examen Docente</a></li>
+                  </ul>
+                </li>
             <li class="treeview">
                <a href="#"><i class='fa fa-link'></i> <span>Herramientas</span><i class="fa fa-angle-left pull-right"></i></a>  
                   <ul class="treeview-menu">

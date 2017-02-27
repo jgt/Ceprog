@@ -69,8 +69,6 @@ class MenuController extends Controller
         $materiasForo = $this->materiaRepository->showMaterias();
         $alumnos = $this->userRepository->alumnosMenu($request);
 
-        
-
         if($request->ajax())
         {
             return response()->json($alumnos);
