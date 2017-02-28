@@ -23,7 +23,7 @@ Route::get('notaAlumno/{id}', ['as' => 'notaAlumno', 'uses' => 'PortafolioContro
 Route::get('planeacion/{id}', ['as' => 'planeacion', 'uses' => 'DisenoController@planeacion']);
 Route::post('plcStore/{id}', ['as' => 'plcStore', 'uses' => 'PlaneacionController@plcStore']);
 Route::post('borrarPlc/{id}', ['as' => 'borrarPlc', 'uses' => 'PlaneacionController@borrarPlc']);
-
+Route::get('reporteUser/{id}/{materia}', ['as' => 'reporteUser', 'uses' => 'MenuController@reporteUser']);
 
 
 
