@@ -130,8 +130,7 @@
 
 		var id = btn.value;
 		var idMateria = $('#prbPrueba').val() 
-		var link = $('#reportePdf').attr('href');
-		var route = link.split('%7Bid%7D').join(id).split('%7Bmateria%7D').join(idMateria);
+		var route = '/rptAlmCdo/'+id+'/'+idMateria;
 		
 		$.get(route, function(resp){
 

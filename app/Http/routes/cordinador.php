@@ -71,6 +71,7 @@ Route::get('baseTeorica/{id}', ['as' => 'idUnidad', 'uses' => 'DisenoController@
 Route::get('baseTeoricaSubTemas/{id}', ['as' => 'idSubtemas', 'uses' => 'DisenoController@baseTeoricaSubTemas']);
 
 //Reporte de nota de las actividades
+Route::get('rptAlmCdo/{id}/{materia}', ['as' => 'rptAlmCdo', 'uses' => 'CordinadorController@reporteAlumnos']);
 Route::get('listActUser/{id}', ['as' => 'listActUser', 'uses' => 'MenuController@listActUser']);
 Route::get('almSem/{id}', ['as' => 'almSem', 'uses' => 'MenuController@listAlumnos']);
 

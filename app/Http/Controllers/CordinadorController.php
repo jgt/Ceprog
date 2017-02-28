@@ -15,6 +15,7 @@ use App\Seguimiento;
 use App\Campus;
 use Bican\Roles\Models\Role;
 use Auth;
+use App;
 use Datatables;
 
 use Illuminate\Http\Request;
@@ -85,6 +86,25 @@ class CordinadorController extends Controller {
 	{
 		$reporte = Seguimiento::create($request->all());
 		return response()->json($reporte);
+	}
+
+	public function reporteAlumnos($id, $materia, Request $request)
+	{
+		$pdf = App::make('dompdf.wrapper');
+        $users = $this->userRepository->search($id);
+        $course = $this->materiaRepository->search($materia);
+        $actividades = $this->materiaRepository->actMat($materia);
+        $totalExamen = $this->materiaRepository->sumaExamenes($id, $materia);
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('reportePdf', compact('users', 'actividades','totalExamen'));
+        return $pdf->stream('Reporte.pdf');
+
+        if($request->ajax())
+        {
+            return response()->json($actividades);
+        }
 	}
 	
 }
