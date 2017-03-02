@@ -29,7 +29,7 @@
       @foreach($examen->preguntas as $pregunta)
           
           <li><p>{!! $pregunta->contenido !!}</p></li>
-  
+
          <ol class="olLetras">
           @foreach($pregunta->respuestas as $respuesta)
 
@@ -43,6 +43,7 @@
              @endforeach
           @endforeach
           </ol>
+           <hr>
       @endforeach
       </ol>
       <div id="notices">
