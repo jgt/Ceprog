@@ -173,6 +173,7 @@ class MenuController extends Controller
     public function exmMaestro($materia)
     {
         $respuestas = $this->materiaRepository->search($materia)
+            ->where('id', $materia)
             ->with('examenes.resultados')->get();
 
         return response()->json($respuestas);

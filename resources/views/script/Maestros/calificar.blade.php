@@ -437,8 +437,6 @@
 
 					var newRow = "<tr><td>"+exa.modulo+"</td><td>Sin nota</td></tr>";
 
-					if(exa.materia_id == btn.id)
-					{
 						$(exa.resultados).each(function(key, resul){
 
 							if(resul.examen_id == exa.id && resul.user_id == btn.value)
@@ -449,7 +447,6 @@
 
 
 						});
-					}
 
 					tabla.append(newRow);
 
