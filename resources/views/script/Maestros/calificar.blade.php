@@ -437,16 +437,19 @@
 
 					var newRow = "<tr><td>"+exa.modulo+"</td><td>Sin nota</td></tr>";
 
-					$(exa.resultados).each(function(key, resul){
+					if(exa.materia_id == btn.id)
+					{
+						$(exa.resultados).each(function(key, resul){
 
-						if(resul.examen_id == exa.id && resul.user_id == btn.value)
-						{
+							if(resul.examen_id == exa.id && resul.user_id == btn.value)
+							{
 
-							newRow = "<tr><td>"+exa.modulo+"</td><td><button type='button' OnClick='crrExm(this)' id="+user+" value="+exa.id+" class='btn btn-primary'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></button></td></tr>";
-						}
+								newRow = "<tr><td>"+exa.modulo+"</td><td><button type='button' OnClick='crrExm(this)' id="+user+" value="+exa.id+" class='btn btn-primary'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></button></td></tr>";
+							}
 
 
-					});
+						});
+					}
 
 					tabla.append(newRow);
 
