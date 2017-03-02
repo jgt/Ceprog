@@ -90,13 +90,13 @@
 												{	
 													tabla.html(" ");
 
-													var newRow = "<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='calPaquete(this);'</button><i class='fa fa-pencil-square-o'></i></td><td>Sin calificar</td><td><button class='btn btn-primary' id="+value.unidad.materia_id+" value="+user.id+" OnClick='respPdf(this);' </button><i class='fa fa-pencil-square-o'></i></td></tr>";
+													var newRow = "<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='calPaquete(this);'</button><i class='fa fa-pencil-square-o'></i></td><td>Sin calificar</td><td><button class='btn btn-primary' id="+value.unidad.materia_id+" value="+user.id+" OnClick='respPdf(this);' </button><i class='fa fa-pencil-square-o'></i></td><td><button type='button' value="+user.id+" OnClick='examen(this)' id="+value.unidad.materia.id+" class='btn btn-primary'><i class='fa fa-file-pdf-o aria-hidden='true'></i></button></td></tr>";
 
 													$(user.calificaciones).each(function(key, nota){
 														
 											        	if(user.id == nota.user_id && value.id == nota.actividad_id) 
 											        	{
-											            	newRow = "<tr><td>"+user.name+"</td><td>Calificado</td><td><button type='button' OnClick='consulUser(this)' class='btn btn-primary' id="+value.id+" value="+user.id+"><i class='fa fa-folder-open' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' id="+value.unidad.materia_id+" value="+user.id+" OnClick='respPdf(this);' </button><i class='fa fa-pencil-square-o'></i></td></tr>";
+											            	newRow = "<tr><td>"+user.name+"</td><td>Calificado</td><td><button type='button' OnClick='consulUser(this)' class='btn btn-primary' id="+value.id+" value="+user.id+"><i class='fa fa-folder-open' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' id="+value.unidad.materia_id+" value="+user.id+" OnClick='respPdf(this);' </button><i class='fa fa-pencil-square-o'></i></td><td><button type='button' value="+user.id+" OnClick='examen(this)' id="+value.unidad.materia.id+" class='btn btn-primary'><i class='fa fa-file-pdf-o aria-hidden='true'></i></button></td></tr>";
 											        	}
 
 											    	});
@@ -106,13 +106,13 @@
 												
 										});
 
-										var newRow = "<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='calPaquete(this);'</button><i class='fa fa-pencil-square-o'></i></td><td>Sin calificar</td><td><button class='btn btn-primary' id="+value.unidad.materia_id+" value="+user.id+" OnClick='respPdf(this);' </button><i class='fa fa-pencil-square-o'></i></td></tr>";
+										var newRow = "<tr><td>"+user.name+"</td><td><button class='btn btn-primary' value="+value.id+" id="+user.id+" OnClick='calPaquete(this);'</button><i class='fa fa-pencil-square-o'></i></td><td>Sin calificar</td><td><button class='btn btn-primary' id="+value.unidad.materia_id+" value="+user.id+" OnClick='respPdf(this);' </button><i class='fa fa-pencil-square-o'></i></td><td><button type='button' value="+user.id+" OnClick='examen(this)' id="+value.unidad.materia.id+" class='btn btn-primary'><i class='fa fa-file-pdf-o aria-hidden='true'></i></button></td></tr>";
 
 										$(user.calificaciones).each(function(key, nota){
 
 								        	if(user.id == nota.user_id && value.id == nota.actividad_id) 
 								        	{
-								            	newRow = "<tr><td>"+user.name+"</td><td>Calificado</td><td><button type='button' OnClick='consulUser(this)' class='btn btn-primary' id="+value.id+" value="+user.id+"><i class='fa fa-folder-open' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' id="+value.unidad.materia_id+" value="+user.id+" OnClick='respPdf(this);' </button><i class='fa fa-pencil-square-o'></i></td></tr>";
+								            	newRow = "<tr><td>"+user.name+"</td><td>Calificado</td><td><button type='button' OnClick='consulUser(this)' class='btn btn-primary' id="+value.id+" value="+user.id+"><i class='fa fa-folder-open' aria-hidden='true'></i></button></td><td><button class='btn btn-primary' id="+value.unidad.materia_id+" value="+user.id+" OnClick='respPdf(this);' </button><i class='fa fa-pencil-square-o'></i></td><td><button type='button' value="+user.id+" OnClick='examen(this)' id="+value.unidad.materia.id+" class='btn btn-primary'><i class='fa fa-file-pdf-o aria-hidden='true'></i></button></td></tr>";
 								        	}
 
 								    	});
@@ -416,6 +416,64 @@
 
 			alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo");
 			$.unblockUI();
+		});
+	}
+
+	function examen(btn)
+	{
+		var user = btn.value;
+		var materia = btn.id;
+		var route = '/exmMaestro/'+materia;
+		var tabla = $('#tablaExamen');
+
+		$.get(route, function(resp){
+
+			tabla.html(" ");
+			$('#modalExm').modal('show');
+
+			$(resp).each(function(key, value){
+
+				$(value.examenes).each(function(key, exa){
+
+					var newRow = "<tr><td>"+exa.modulo+"</td><td>Sin nota</td></tr>";
+
+					$(exa.resultados).each(function(key, resul){
+
+						if(resul.examen_id == exa.id && resul.user_id == btn.value)
+						{
+
+							newRow = "<tr><td>"+exa.modulo+"</td><td><button type='button' OnClick='crrExm(this)' id="+user+" value="+exa.id+" class='btn btn-primary'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></button></td></tr>";
+						}
+
+
+					});
+
+					tabla.append(newRow);
+
+				});
+
+			});
+
+		});
+	}
+
+	function crrExm(btn)
+	{
+		var user = btn.id;
+		var examen = btn.value;
+		var route = '/ntoExam/'+user+'/'+examen;
+		$.blockUI();
+
+		$.get(route, function(resp){
+
+			window.open(route);
+			$.unblockUI();
+
+		}).fail(function(resp){
+
+			$.unblockUI();
+			alertify.alert("Error al procesar la solicitud, por favor intentalo de nuevo.");
+
 		});
 	}
 

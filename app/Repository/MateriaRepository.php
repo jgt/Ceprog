@@ -171,4 +171,21 @@ class MateriaRepository extends BaseRepository {
 		return $total;
 	}
 
+	public function respuestaUser($id, $materia)
+	{
+		$materia = $this->search($materia);
+
+		foreach ($materia->examenes as $examen) {
+			foreach ($examen->preguntas as $pregunta) {
+				foreach ($pregunta->respuestas as $resp) {
+					foreach ($resp->respuestasUsers as $respUser) {
+						
+						return $respUser->where('user_id', $id)->get();
+					}
+				
+				}
+			}
+		}
+	}
+
 }

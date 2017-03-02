@@ -7,6 +7,7 @@
             <td><strong>Calificar</strong></td>
             <td><strong>Consultar</strong></td>
             <td><strong>Reportes</strong></td>
+            <td><strong>Examen</strong></td>
           </thead> 
           <tbody id="tablaClaPaquete">
             

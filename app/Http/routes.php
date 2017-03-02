@@ -100,6 +100,10 @@ Route::group(['middleware' => 'maestro'], function(){
 		Route::get('mtaExmlist/{id}', ['as' => 'mtaExmlist', 'uses' => 'MenuController@listExamen']);
 		Route::get('hojaResp/{id}', ['as' => 'hojaResp', 'uses' => 'MenuController@hojaRespuestas']);
 		Route::get('impExamen/{id}', ['as' => 'impExamen', 'uses' => 'MenuController@imprimirExam']);
+
+		//reporte de examenes respuestas estudiantes
+		Route::get('exmMaestro/{materia}', ['as' => 'exmMaestro', 'uses' => 'MenuController@exmMaestro']);
+		Route::get('ntoExam/{id}/{examen}', ['as' => 'ntoExam', 'uses' => 'MenuController@notaExamenes']);
 		
 	});
 	

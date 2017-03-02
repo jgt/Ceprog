@@ -72,6 +72,7 @@
  @include('ajax.Maestro.modalVideo')
  @include('ajax.Maestro.modalApoyo')
  @include('ajax.Alumnos.modalResponder')
+ @include('ajax.Maestro.modalExamen')
 
 
 <div class="container">

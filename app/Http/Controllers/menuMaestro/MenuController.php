@@ -169,4 +169,24 @@ class MenuController extends Controller
         $pdf->loadview('imprimirExam', compact('examen'));
         return $pdf->stream();
     }
+
+    public function exmMaestro($materia)
+    {
+        $respuestas = $this->materiaRepository->search($materia)
+            ->with('examenes.resultados')->get();
+
+        return response()->json($respuestas);
+    }
+
+    public function notaExamenes($id, $examen)
+    {
+        $pdf = App::make('dompdf.wrapper');
+        $examen = Examen::find($examen);
+        $user = User::find($id);
+        $customPaper = array(0,0,950,950);
+        $paper_orientation = 'landscape';
+        $pdf->setPaper($customPaper,$paper_orientation);
+        $pdf->loadview('showNtoExamen', compact('examen', 'user'));
+        return $pdf->stream();
+    }
 }

@@ -28,4 +28,6 @@ class Pregunta extends Model
       {
          return $this->respuestas()->where('estado', 1);
       }
+
+
 }
