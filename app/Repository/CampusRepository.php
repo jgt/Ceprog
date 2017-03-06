@@ -15,15 +15,18 @@ class CampusRepository extends BaseRepository {
 
 	public function materiaCampus($id)
 	{
-		$campu = $this->search($id);
+		$semestres = $this->search($id)->semestres;
 
-		foreach($campu->semestres as $semestre)
+		foreach($semestres as $semestre)
 		{
-			foreach ($semestre->materias as $materia) {
+			foreach($semestre->materias as $materia) {
 				
-				return $materia->has('resultados')->get();
+				$mta[] = $materia;
 			}
+
 		}
+
+		return $mta;
 	}
 	
 }
