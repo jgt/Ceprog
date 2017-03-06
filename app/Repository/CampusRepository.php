@@ -19,7 +19,10 @@ class CampusRepository extends BaseRepository {
 
 		foreach($campu->semestres as $semestre)
 		{
-			return $semestre->materias()->has('resultados')->get();
+			foreach ($semestre->materias as $materia) {
+				
+				return $materia->has('resultados')->get();
+			}
 		}
 	}
 	
