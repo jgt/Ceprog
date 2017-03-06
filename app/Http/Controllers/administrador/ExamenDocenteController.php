@@ -264,7 +264,7 @@ class ExamenDocenteController extends Controller
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape'; 
         $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('reporteGeneralDoc', compact('materias', 'fecha', 'rangos', 'suma'));
+        $pdf->loadview('reporteCampus', compact('materias', 'fecha', 'rangos', 'suma'));
         return $pdf->stream();
     }
 }
