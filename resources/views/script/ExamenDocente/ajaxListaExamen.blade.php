@@ -650,8 +650,7 @@
 	function createPreguntadDocente(btn)
 	{
 		var id = btn.value;
-		var link = $('#uptPregDoc').attr('href');
-		var route = link.split('%7Bid%7D').join(id);
+		var route = '/updatePreguntaDocente/'+id;
 		var examenId = $('#exaDocenteIdEdit').val(id);
 		$('#listExamenAdmin').hide();
 		$('#mdlEditPreguntaDoc').show();
