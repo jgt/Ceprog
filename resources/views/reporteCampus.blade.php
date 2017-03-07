@@ -28,7 +28,7 @@
         </header>
         <main>
         {{-- */ $count=1 /* --}}
-        {{-- */ $lineaspag=30 /* --}}
+        {{-- */ $lineaspag=10 /* --}}
         @foreach($materias as $materia)
             @if($count==1)
                 <table class="page-break">
