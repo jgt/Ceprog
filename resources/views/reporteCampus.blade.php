@@ -2,7 +2,7 @@
         <html lang="en">
         <head>
             <meta charset="utf-8">
-            <title>Reporte General</title>
+            <title>Reporte General {{ $campo->nombre }}</title>
             <link rel="stylesheet" href="{{'estiloPdf/css/pdfDocente.css'}}" media="all" />
         </head>
         <body>
@@ -10,7 +10,7 @@
             <div id="logo">
                 <img src="img/logo_10A_FullColor.png">
             </div>
-            <h1>Reporte General</h1>
+            <h1>Reporte General {{ $campo->nombre }}</h1>
             <div id="company" class="clearfix">
                 <div>Universidad Ceprog</div>
                 <div>Carretera Palenque - Catazajá Km <br /> 26+500 a un costado del Aeropuerto </div>

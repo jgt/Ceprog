@@ -259,12 +259,13 @@ class ExamenDocenteController extends Controller
         $pdf = App::make('dompdf.wrapper');
         $fecha = Carbon::now();
         $rangos = Rango::all(); 
+        $campo = $this->campusRepository->search($id);
         $materias = $this->campusRepository->materiaCampus($id);
         $suma = $this->materiaRepository->sumaValor();
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape'; 
         $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('reporteCampus', compact('materias', 'fecha', 'rangos', 'suma'));
+        $pdf->loadview('reporteCampus', compact('materias', 'fecha', 'rangos', 'suma', 'campo'));
         return $pdf->stream();
     }
 }
