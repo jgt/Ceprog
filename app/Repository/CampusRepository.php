@@ -21,7 +21,10 @@ class CampusRepository extends BaseRepository {
 		{
 			foreach($semestre->materias as $materia) {
 				
-				$mta[] = $materia;
+				if($materia->has('resultados'))
+				{
+					$mta[] = $materia;
+				}
 			}
 
 		}
