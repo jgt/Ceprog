@@ -4,8 +4,11 @@
   clear: both;
 }
 
-.page-break {
-    page-break-after: always;
+hr {
+  page-break-after: always;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 a {
