@@ -20,10 +20,10 @@
             <div id="project">
                 <div><span>Proyecto</span> Evaluacion docente</div>
                 <div><span>Fecha</span>{{$fecha}}</div>
-                <div><span>Lineamientos:</span>4 puntaje maximo</div>
+                <div><span>Lineamientos:</span>6 puntaje maximo</div>
                 <div><span>Planeacion:</span>4 puntaje maximo</div>
-                <div><span>Motivacion:</span>4 puntaje maximo</div>
-                <div><span>Desenvolvimiento de la asignatura:</span>7 puntaje maximo</div>
+                <div><span>Motivacion:</span>7 puntaje maximo</div>
+                <div><span>Desenvolvimiento de la asignatura:</span>8 puntaje maximo</div>
             </div>
         </header>
         @foreach($materias as $materia)
