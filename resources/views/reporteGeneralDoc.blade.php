@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="utf-8">
@@ -26,12 +26,8 @@
                 <div><span>Desenvolvimiento de la asignatura:</span>7 puntaje maximo</div>
             </div>
         </header>
-        <main>
-        {{-- */ $count=1 /* --}}
-        {{-- */ $lineaspag=30 /* --}}
         @foreach($materias as $materia)
-            @if($count==1)
-                <table class="page-break">
+                <table>
                     <thead>
                     <tr>
                         <th class="service">Materias</th>
@@ -45,7 +41,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @endif
                     {{--*/ $porcentaje=0 /*--}}
                     <tr>
                         <td class="service">{{$materia->name}}</td>
@@ -71,14 +66,9 @@
                   <td class="service">{{$materia->mat_results}}</td>
                   <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
                     </tr>
-                    {{-- */ $count=$count+1 /* --}}
-                    @if($count==$lineaspag)
                     </tbody>
                 </table>
- {{-- */ $count=1 /* --}}
-@endif
 @endforeach
-</main>
 <footer>
 Universidad ceprog Construimos tu futuro.
 </footer>
