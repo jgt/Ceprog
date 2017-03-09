@@ -157,6 +157,7 @@ Route::group(['middleware' => 'cordinador'], function(){
 		Route::get('reporteGeneralDoc', ['as' => 'reporteGeneralDoc', 'uses' => 'ExamenDocenteController@reporteGeneral']);
 		Route::get('listMateriasDocente', ['as' => 'listMateriasDocente', 'uses' => 'ExamenDocenteController@listMateias']);
 		Route::get('campusReporte/{id}', ['as' => 'campusReporte', 'uses' => 'ExamenDocenteController@reporteCampus']);
+		Route::get('almEncuesta/{id}', ['as' => 'almEncuesta', 'uses' => 'ExamenDocenteController@alumnosEncuestados']);
 
 	});
 	

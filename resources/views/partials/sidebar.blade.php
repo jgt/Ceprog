@@ -221,7 +221,13 @@
                       <li><a href="#"><i class='fa fa-plus fa-fw'></i> Reporte Campus</a>
                           <ul class="treeview-menu">
                             @foreach($campus as $campu)
-                              <li><a href="{{ route('campusReporte', $campu) }}" id="campusReporte"><i class="fa fa-university" aria-hidden="true"></i> {{$campu->nombre}}</a></li>
+                              <li><a href="#"><i class="fa fa-university" aria-hidden="true"></i> {{$campu->nombre}}</a>
+                              <ul class="treeview-menu">
+                                <li><a href="{{ route('campusReporte', $campu) }}" id="campusReporte"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Opinión Estudiantil</a></li>
+                                <li><a href="{{ route('almEncuesta', $campu) }}" id="almEncuesta"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Opiniones realizadas</a></li>
+                              </ul>
+
+                              </li>
                             @endforeach
                           </ul>
 
