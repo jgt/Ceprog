@@ -59,12 +59,12 @@
                         @endforeach
                       @endforeach
                     @endforeach
-                    <td class="service">{{number_format($total/$materia->mat_results,1)}}%</td>
+                    <td class="service">{{number_format($total/count($materia->resultados),1)}}%</td>
                     {{--*/ $porcentaje += $total /*--}}
                  @endforeach
-                 <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
-                  <td class="service">{{$materia->mat_results}}</td>
-                  <td class="service">{{number_format($porcentaje/$materia->mat_results,1)}}</td>
+                 <td class="service">{{number_format($porcentaje/count($materia->resultados),1)}}</td>
+                  <td class="service">{{count($materia->resultados)}}</td>
+                  <td class="service">{{number_format($porcentaje/count($materia->resultados),1)}}</td>
                     </tr>
                     </tbody>
                 </table>
