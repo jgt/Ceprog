@@ -31,20 +31,35 @@ class ExamenDocenteRepository extends BaseRepository {
 		$mat =  Materia::find($materia);
 		$preguntas = PreguntaDocente::where('examen_docente_id', $id)->orderBy('id', 'desc')->get();
 		$preguntaNext= [];
+		$nota =0;
 
 		foreach ($preguntas as  $pregunta) {
                 //comprobamos si las preguntas ya fueron contestadas por el alumno.
-            $repuestaUser = RespuestaDocente::where('pregunta_docente_id', $pregunta->id)->where('user_id',Auth::user()->id)->where('materia_id', $mat->id)->count();
+              $repuestaUser = RespuestaDocente::where('pregunta_docente_id', $pregunta->id)->where('user_id',Auth::user()->id)->where('materia_id', $mat->id)->count();
+
+              $resps = PosibleRespuesta::where('pregunta_docente_id', $pregunta->id)->get();
+
+              foreach ($resps as $resp) {
+              		
+              		$correctas = RespuestaDocente::where('posible_respuesta_id',$resp->id)->where('user_id',Auth::user()->id)->get();
+	
+              		foreach ($correctas as $correcta) {
+              			
+              			$nota += $correcta->posibleRespuesta->valor;
+              		}
+
+              }
+
             
-          if(! $repuestaUser)
-          {
-          	 $preguntaNext = PreguntaDocente::where('id', $pregunta->id)->with('respuestasDocentes')->orderBy('id', 'desc')->get();
-          	 
-          }
+	          if(! $repuestaUser)
+	          {
+	          	 $preguntaNext = PreguntaDocente::where('id', $pregunta->id)->with('respuestasDocentes')->orderBy('id', 'desc')->get();
+	          	 
+	          }
 
-            }
+        }
 
-            $detalles = ['pregunta' => $preguntaNext];
+            $detalles = ['pregunta' => $preguntaNext, 'nota' => $nota];
 
 		return $detalles;
 	}

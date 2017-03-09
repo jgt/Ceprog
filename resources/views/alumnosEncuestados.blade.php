@@ -25,7 +25,6 @@
 
                 <ul style="list-style:none;">
                     <li>{{ $materia->name }} - {{ $materia->semestre->name }}</li>
-                    <hr>
                     <li>
                         <ul>
                             @foreach($materia->semestre->users as $user)

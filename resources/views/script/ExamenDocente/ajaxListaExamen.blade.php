@@ -156,14 +156,13 @@
 						pregunta.html(" ");
           				respuesta.html(" ");
           				$('#nextQuizDocente').attr('disabled', false);
-
-          				var resultado = $('#resulDocente').val(resp.nota);
 						
 						if(resp.pregunta.length == 0)
 			          	{
 			          		alertify.alert("Gracias por tu opinión.");
 			            	$('#nextQuizDocente').hide();
                   			$('#endQuizDocente').show();
+			            	var resultado = $('#resulDocente').val(resp.nota);
 			            	
 			          	}else{
 
@@ -229,7 +228,8 @@
 
 	            	$.get(route, function(resp){
 
-	            		window.open(route);
+	            		$.unblockUI();
+	            		$('#quizDocente').modal('hide');
 
 	            	})
 
@@ -238,14 +238,8 @@
 	            		$('#endQuizDocente').attr('disabled', false);
 						alertify.alert("Error al procesar la solicitud.");
 
-					})
+					});
 
-					.done(function(){
-
-						$.unblockUI();
-	            		$('#quizDocente').modal('hide');
-
-					})
 
 	            },
 

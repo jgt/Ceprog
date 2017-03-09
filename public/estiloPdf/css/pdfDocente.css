@@ -4,12 +4,6 @@
   clear: both;
 }
 
-hr {
-  page-break-after: always;
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
 
 a {
   color: #5D6975;
