@@ -230,6 +230,7 @@
 
 	            		$.unblockUI();
 	            		$('#quizDocente').modal('hide');
+	            		location.reload();
 
 	            	})
 
