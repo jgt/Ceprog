@@ -31,7 +31,7 @@
 
                                 @foreach($user->resultadoDocenteUser as $resul)
 
-                                    @if($resul->materia_id == $materia->id)
+                                    @if($resul->materia_id == $materia->id && $user->id == $resul->user_id)
 
                                         <li>{{ $user->name }} - resultado: {{ $resul->resultado }}</li>
 
