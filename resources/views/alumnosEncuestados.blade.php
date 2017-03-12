@@ -24,7 +24,10 @@
                 <h3>Programa academico: {{ $materia->semestre->carrera->name }}</h3>
 
                 <ul style="list-style:none;">
-                    <li>Materia: <strong>{{ $materia->name }}</strong> - Semestre: <strong>{{ $materia->semestre->name }}</strong></li>
+                    @foreach($materia->users as $maestro)
+                    <li>Materia: <strong>{{ $materia->name }}</strong> - Semestre: <strong>{{ $materia->semestre->name }}</strong> - Maestro: <strong>{{ $maestro->name }}</strong></li>
+
+                    @endforeach
                     <li>
                         <ul>
                             @foreach($materia->semestre->users as $user)
@@ -33,7 +36,7 @@
 
                                     @if($resul->materia_id == $materia->id && $user->id == $resul->user_id)
 
-                                        <li>{{ $user->name }}</li>
+                                        <li>{{ $user->name }}</li>       
 
                                     @endif
                                 @endforeach
