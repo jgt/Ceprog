@@ -35,4 +35,26 @@ class CampusRepository extends BaseRepository {
 		return $mta;
 	}
 
+	public function alumnosTotales($id)
+	{
+		$campus = $this->getModel()->find($id);
+		$alm = 0;
+		$semestres = $campus->semestres()->with(['materias' => function($query) { 
+
+			$query->has('resultados')->with('semestre.users'); 
+
+		}])->get();
+
+		foreach ($semestres as $semestre) {
+			
+			foreach($semestre->users as $user) {
+				
+				$alm +=$user->resultadoDocenteUser->count();
+
+			}
+		}
+
+		return $alm;
+	}
+	
 }

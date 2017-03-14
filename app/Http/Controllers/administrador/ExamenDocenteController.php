@@ -275,10 +275,11 @@ class ExamenDocenteController extends Controller
         $fecha = Carbon::now();
         $campo = $this->campusRepository->search($id);
         $materias = $this->campusRepository->materiaCampus($id);
+        $alumnos = $this->campusRepository->alumnosTotales($id);
         $customPaper = array(0,0,950,950);
         $paper_orientation = 'landscape'; 
         $pdf->setPaper($customPaper,$paper_orientation);
-        $pdf->loadview('alumnosEncuestados', compact('materias', 'fecha', 'campo'));
+        $pdf->loadview('alumnosEncuestados', compact('materias', 'fecha', 'campo', 'alumnos'));
         return $pdf->stream();
     }
 }
