@@ -9,6 +9,7 @@ Route::get('listExamen/{id}', ['as' => 'listExamen', 'uses' => 'ActividadControl
 Route::get('forosMateria/{id}', ['as' => 'forosMateria', 'uses' => 'ForoController@forosMaterias']);
 Route::get('comentario/{id}', ['as' => 'comentario', 'uses' => 'ForoController@comentario']);
 Route::post('preguntas/{id}', ['as' => 'preguntas', 'uses' => 'ForoController@store']);	
+Route::get('listPlaneacion/{id}', ['as' => 'listPlaneacion', 'uses' => 'PlaneacionController@listPlaneacion']);
 
 
 

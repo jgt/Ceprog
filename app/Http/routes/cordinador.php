@@ -27,7 +27,6 @@ Route::get('showActividad/{id}', ['as' => 'showActividad', 'uses' => 'ActividadC
 Route::get('deleteActividad/{id}', ['as' => 'deleteActividad', 'uses' => 'ActividadController@deleteActividad']);
 Route::get('portafolio/{id}', ['as' => 'portafolio', 'uses' => 'PortafolioController@portafolio']);
 Route::get('material/{id}', ['as' => 'material', 'uses' => 'FileEntryController@material']);
-Route::get('listPlaneacion/{id}', ['as' => 'listPlaneacion', 'uses' => 'PlaneacionController@listPlaneacion']);
 Route::get('planpdf/{id}', ['as' => 'planpdf', 'uses' => 'ActividadController@planPdf']);
 
 //Rubricas de las actvidades

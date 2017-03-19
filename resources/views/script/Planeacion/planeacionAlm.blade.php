@@ -84,6 +84,7 @@
 
 				$(resp).each(function(key, value){
 
+
 					var filename = value.original_filename;
 					var cadena = filename.split(' ').join('%20');
 					tabla.append("<tr><td>"+value.filename+"</td><td>"+value.mime+"</td><td><button type='button' class='btn btn-primary' value="+cadena+" OnClick='file(this)'><i class='fa fa-download' aria-hidden='true'></i></tr>");
