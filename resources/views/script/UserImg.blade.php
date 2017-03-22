@@ -26,7 +26,8 @@
 		        	alertify.alert('Tu cuenta ha sido actualizada.');
 
 		        	var img = $('.img-circle').attr('src', '/imagen/'+resp.original_img);    
-		        	var imgUser = $('.user-image').attr('src', '/imagen/'+resp.original_img);  	
+		        	var imgUser = $('.user-image').attr('src', '/imagen/'+resp.original_img);  
+		        	location.reload();
 
 
 		        },
