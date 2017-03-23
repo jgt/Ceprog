@@ -65,5 +65,14 @@ class AuthController extends Controller {
 
     }
 
+     public function login(Request $request)
+     
+     {
+        if (empty($request->session()->token())) {
+            return $this->sendLoginForm();
+        }
 
+        $this->validateLogin($request);
+     }
+ 
 }

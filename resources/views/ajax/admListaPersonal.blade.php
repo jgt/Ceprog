@@ -1,6 +1,6 @@
 <div id="listPersonal"  Style="display:none">
         
-       <table class="table table-bordered" id="users-table">
+       <table class="display responsive no-wrap" width="100%" id="users-table">
         <thead>
             <tr>
 
