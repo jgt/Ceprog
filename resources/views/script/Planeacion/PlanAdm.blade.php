@@ -83,8 +83,8 @@
 		{
 			var tabla = $('#plcadmin-table').DataTable({
 
-				filter: false,
-				paging: false,
+				filter: true,
+				paging: true,
 				destroy:true,
 				processing: true,
 	       		serverSide: true,
