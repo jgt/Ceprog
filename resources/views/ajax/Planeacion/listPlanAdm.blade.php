@@ -8,6 +8,7 @@
                 <th>Materia</th>
                 <th>Planeacion</th>
                 <th>Usuario</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
         </thead>

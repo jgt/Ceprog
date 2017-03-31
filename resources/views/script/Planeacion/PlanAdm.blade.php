@@ -95,6 +95,7 @@
 	        		{data: 'name'},
 	        		{data: 'planeacion.filename', name: 'planeacion.filename'},
 	        		{data: 'planeacion.user.name', name: 'planeacion.user.name'},
+	        		{data: 'planeacion.created_at', name: 'planeacion.created_at'},
 	        		{defaultContent: "<button type='button' class='descargar btn btn-primary'><i class='fa fa-cloud-download' aria-hidden='true'></i></button>"}
 	        					
 	        		]

@@ -26,6 +26,7 @@
 <script src="{{ asset('js/vendor/datatables.js')}}"></script>
 <script src="{{ asset('js/vendor/datatables.responsive.js')}}"></script>
 <script src="{{ asset('js/vendor/datatables.tableTools.min.js')}}"></script>
+<script src="{{ asset('js/vendor/responsive.bootstrap.min.js')}}"></script>
 
 @include('script.Cordinador.crearDocente')
 
