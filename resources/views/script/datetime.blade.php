@@ -34,4 +34,24 @@
                  $(function () {
                 $('#datetimepicker10').datetimepicker();
             });
+                 $(function () {
+                $('.datetimepicker11').datetimepicker();
+            });
+                 $(function () {
+                $('.datetimepicker12').datetimepicker();
+            });
+                 $(function () {
+                $('#datetimepicker13').datetimepicker();
+            });
+
+             $(function () {
+                $('#datetimepicker14').datetimepicker();
+            });
+             $(function () {
+                $('#datetimepicker15').datetimepicker();
+            });
+             $(function () {
+                $('#datetimepicker16').datetimepicker();
+            });
+                 
         </script>

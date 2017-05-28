@@ -160,6 +160,8 @@
 
                         <li><a href="{{route('quizDocente.show', $materia )}}" id="Rexamen">Evalua tu Docente</a></li>
 
+                        <li><a href="{{ route('diagAlm', $semestre->carrera->id) }}" id="almEva">Examen diagnostico</a></li>
+
                         <li><a href="{{ route('allTutorial')}}" id="almTutorial">Tutoriales</a></li>
 
                         <li><a href="{{ route('forosMateria', $materia)}}" id="foroMateria"><i class='fa fa-plus fa-fw'></i> Chat</a>
@@ -191,6 +193,7 @@
                 <li><a href="#"><i class='fa fa-plus fa-fw'></i> Administracion</a>
                                       
                     <ul class="treeview-menu">
+                        <li><a href="{{ route('siga') }}">SigaEdu</a></li>
                         <li><a href="{{route('admin.create')}}" id="Cusuario">Crear usuario</a></li>
                         <li><a href="{{route('role.create')}}" id="Croles">Crear role</a></li>
                          <li><a href="{{route('foro')}}" id="foroAdm">Crear foro</a></li>
@@ -215,6 +218,12 @@
         <ul class="sidebar-menu">
             <li class="header">Cordinador</li>
             <!-- Optionally, you can add icons to the links -->
+            <li class="treeview">
+                <a href="#"><i class='fa fa-link'></i> <span>Evaluacion Diagnostico</span><i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                      <li><a href="{{ route('exaDiag') }}" id="exaDiag"><i class='fa fa-plus fa-fw'></i> Crear Evaluacion</a></li> 
+                      <li><a href="{{ route('evdList') }}" id="listEvadig"><i class='fa fa-plus fa-fw'></i> Examenes Creados</a></li>      
+                </ul>
              <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Reportes</span><i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">

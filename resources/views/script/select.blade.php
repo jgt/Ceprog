@@ -20,6 +20,7 @@
 		$('#semProg').select2();
 		$('#matProg').select2();
 		$('#campusSelect').select2();
+		$('#selectMatdocenteEva').select2();
 
 
 	</script>

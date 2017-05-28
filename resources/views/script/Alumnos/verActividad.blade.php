@@ -66,6 +66,10 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 			
 			var tabla = $('#vizAct');
 			var route = $(this).attr('href');

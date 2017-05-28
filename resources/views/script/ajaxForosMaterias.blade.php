@@ -120,6 +120,10 @@
 					$('#consUser').fadeOut();
 					$('#ltsMatexamen').fadeOut();
 					$('#vizuaNota').fadeOut();
+					$('#crtExaDiag').fadeOut();
+					$('#evaList').fadeOut();
+					$('#preguntaDiagnostico').fadeOut();	
+					$('#listEva').fadeOut();
 
 					var id = $(this).attr('href');
 					$('#foroId').val(id);
@@ -267,6 +271,10 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 				
 
 			var route = $(this).attr('href');

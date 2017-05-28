@@ -1,4 +1,4 @@
-{!! Form::model(Request::all(), ['route' => 'almSem', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
+{!! Form::open(['route' => 'almSem', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
 							
 	<div class="form-group">
 								

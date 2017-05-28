@@ -63,6 +63,14 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 
 			var route = $(this).attr('href');
 			var tablaAlumnos = $('#tablaAlumnosList');

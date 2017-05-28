@@ -33,8 +33,6 @@
 
         
         <link rel="stylesheet" href="{{ asset('css/vendor/datatables.css')}}">
-        <link rel="stylesheet" href="{{ asset('css/vendor/datatables.responsive.css')}}">
-        <link rel="stylesheet" href="{{ asset('css/vendor/datatables.tableTools.min.css')}}">
         <link href="{{'estiloPdf/css/customChat.css'}}" rel="stylesheet">
 
    

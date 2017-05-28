@@ -65,6 +65,10 @@
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
 			$('#vizAct').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 			
 			var tabla = $('#tdbAct');
 			var tbdRub = $('#tbdRub');

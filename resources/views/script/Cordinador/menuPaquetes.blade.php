@@ -72,6 +72,10 @@
 					$('#consUser').fadeOut();
 					$('#ltsMatexamen').fadeOut();
 					$('#vizuaNota').fadeOut();
+					$('#crtExaDiag').fadeOut();
+					$('#evaList').fadeOut();
+					$('#preguntaDiagnostico').fadeOut();	
+					$('#listEva').fadeOut();
 
 					var id = $(this).attr('value');
 					var menu = $('#menUnidad');
@@ -617,6 +621,10 @@
 			$('#vizuaNota').fadeOut();
 			$('div#preguntaExmamen').hide();
 			$('#ltsMatexamen').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 			$('#editseriacion').attr('disabled', false);
 			$('#editclave').attr('disabled', false);
 			$('#editobjetivo').attr('disabled', false);
@@ -686,6 +694,10 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 		
 		}
 
@@ -744,6 +756,10 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 		
 		}
 
@@ -802,6 +818,10 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 		}	
 
 	function pdf(btn)
@@ -875,6 +895,10 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 
 			$.get(route, function(resp){
 
@@ -1067,6 +1091,10 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 
 			$.get(route, function(resp){
 

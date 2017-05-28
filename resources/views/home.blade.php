@@ -73,6 +73,12 @@
  @include('ajax.Maestro.modalApoyo')
  @include('ajax.Alumnos.modalResponder')
  @include('ajax.Maestro.modalExamen')
+ @include('ajax.ExamenDiagnostico.modalCreateRespuesta')
+ @include('ajax.ExamenDiagnostico.modalEditeva')
+ @include('ajax.ExamenDiagnostico.modalDeleteEva')
+ @include('ajax.ExamenDiagnostico.modalDeletePregunta')
+ @include('ajax.ExamenDiagnostico.modalCreatePregunta')
+ @include('ajax.Alumnos.modalEvaAlumnos')
 
 
 <div class="container">
@@ -80,7 +86,13 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 
-		<div class="panel-body panel-default">
+		<div class="panel-body panel-default" id="homeCeprog">
+					
+					@include('ajax.Alumnos.examenDiagnostico')
+					@include('ajax.ExamenDiagnostico.listaPreguntas')
+					@include('ajax.ExamenDiagnostico.listEvaluacionDiagnostico')
+					@include('ajax.ExamenDiagnostico.exaDiagnostico')
+					@include('ajax.ExamenDiagnostico.createPregunta')
 					@include('ajax.Unidades.editUnidad')
 					@include('ajax.Maestro.verPaquete')
 					@include('ajax.Maestro.consultar')

@@ -58,6 +58,10 @@
 		  $('#consUser').fadeOut();
 		  $('#ltsMatexamen').fadeOut();
 		  $('#vizuaNota').fadeOut();
+		  $('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 
 			if (! $.fn.DataTable.isDataTable('#carrera-table')){
 				listCarrera();

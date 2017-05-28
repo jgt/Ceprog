@@ -62,6 +62,10 @@
 			$('#vizuaNota').fadeOut();
 			$('#vizuaSemana').fadeOut();
 			$('#vizAct').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 			
 			var route = $(this).attr('href');
 			var paquete = $('#paquete');

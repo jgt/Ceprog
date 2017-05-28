@@ -89,6 +89,10 @@
       $('#consUser').fadeOut();
       $('#ltsMatexamen').fadeOut();
       $('#vizuaNota').fadeOut();
+      $('#crtExaDiag').fadeOut();
+      $('#evaList').fadeOut();
+      $('#preguntaDiagnostico').fadeOut();  
+      $('#listEva').fadeOut();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
@@ -314,6 +318,10 @@
           $('#consUser').fadeOut();
           $('#ltsMatexamen').fadeOut();
           $('#vizuaNota').fadeOut();
+          $('#crtExaDiag').fadeOut();
+      $('#evaList').fadeOut();
+      $('#preguntaDiagnostico').fadeOut();  
+      $('#listEva').fadeOut();
         
         $.get(route, function(resp){
 

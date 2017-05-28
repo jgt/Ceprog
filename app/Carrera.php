@@ -18,6 +18,11 @@ class Carrera extends Model {
 		return $this->belongsToMany('App\Administrador\EvaluacionMaestro\ExamenDocente');
 	}
 
+	public function evaDigs()
+	{
+		return $this->belongsToMany('App\Administrador\EvaluacionDiagnostico\Evadig');
+	}
+
 	public function semestres()
 	{
 

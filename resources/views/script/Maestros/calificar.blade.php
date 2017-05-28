@@ -64,6 +64,10 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 
 			var route = $(this).attr('href');
 			var tabla = $('#tablaClaPaquete');
@@ -278,6 +282,10 @@
 		$('#claPaquete').fadeOut();
 		$('#ltsMatexamen').fadeOut();
 		$('#vizuaNota').fadeOut();
+		$('#crtExaDiag').fadeOut();
+		$('#evaList').fadeOut();
+		$('#preguntaDiagnostico').fadeOut();	
+		$('#listEva').fadeOut();
 
 		var idUser = btn.value;
 		var idAct = btn.id;
@@ -332,6 +340,10 @@
 		$('#vizuaActividad').fadeOut();
 		$('#vizuaPaquete').fadeOut();
 		$('#vizuaNota').fadeOut();
+		$('#crtExaDiag').fadeOut();
+		$('#evaList').fadeOut();
+		$('#preguntaDiagnostico').fadeOut();	
+		$('#listEva').fadeOut();
 		$('#subCal').show();
 		$('#subEnd').hide();
 		$('#sumar').show();

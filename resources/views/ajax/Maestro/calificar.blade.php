@@ -1,7 +1,7 @@
 <div id="claPaquete" Style="display:none">
         @include('include.buscarAlm', ['submitButtonText' => 'Buscar'])
-       <div class="table-responsive">
-       <table class="table">
+  <div class="table-responsive">
+      <table class="table">
           <thead>
             <td><strong>Alumno</strong></td>
             <td><strong>Calificar</strong></td>
@@ -12,6 +12,6 @@
           <tbody id="tablaClaPaquete">
             
           </tbody>
-       </table>
-      </div>
-     </div>
+      </table>
+  </div>
+</div>

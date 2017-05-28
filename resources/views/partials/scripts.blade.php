@@ -19,18 +19,18 @@
 
 <script src="{{ asset('js/vendor/blockUi.js')}}" type="text/javascript"></script>
 
-<script src="{{ asset('js/vendor/jquery.fresh-tilled-soil-webrtc.js')}}" type="text/javascript"></script>
-
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 
 <script src="{{ asset('js/vendor/datatables.js')}}"></script>
-<script src="{{ asset('js/vendor/datatables.responsive.js')}}"></script>
-<script src="{{ asset('js/vendor/datatables.tableTools.min.js')}}"></script>
-<script src="{{ asset('js/vendor/responsive.bootstrap.min.js')}}"></script>
+
+
+@include('script.Alumnos.examenDiagAlumnos')
 
 @include('script.Cordinador.crearDocente')
 
 @include('script.Cordinador.crearUnidad')
+
+@include('script.Cordinador.examenDiagnostico')
 
 @include('script.Cordinador.menuPaquetes')
 

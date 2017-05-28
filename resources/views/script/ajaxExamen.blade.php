@@ -62,21 +62,25 @@
       $('#admPlc').hide();
       $('#plcAlm').hide();
       $('#act').fadeOut();
-    $('#crtSub').fadeOut();
-    $('#editUnidad').fadeOut();
-    $('#videoUnidad').fadeOut();
-    $('#listSubtemas').fadeOut();
-    $('#listAct').fadeOut();
-    $('#calAct').fadeOut();
-    $('#menUnidad').fadeOut();
-    $('div#preguntaExmamen').hide();
-    $('#vizuaPaquete').fadeOut();
-    $('#calAct').fadeOut();
-    $('#vizuaActividad').fadeOut();
+      $('#crtSub').fadeOut();
+      $('#editUnidad').fadeOut();
+      $('#videoUnidad').fadeOut();
+      $('#listSubtemas').fadeOut();
+      $('#listAct').fadeOut();
+      $('#calAct').fadeOut();
+      $('#menUnidad').fadeOut();
+      $('div#preguntaExmamen').hide();
+      $('#vizuaPaquete').fadeOut();
+      $('#calAct').fadeOut();
+      $('#vizuaActividad').fadeOut();
       $('#claPaquete').fadeOut();
       $('#consUser').fadeOut();
       $('#ltsMatexamen').fadeOut();
       $('#vizuaNota').fadeOut();
+      $('#crtExaDiag').fadeOut();
+      $('#evaList').fadeOut();
+      $('#preguntaDiagnostico').fadeOut();  
+      $('#listEva').fadeOut();
 
       var route = $(this).attr('href');
       

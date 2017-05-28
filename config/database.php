@@ -75,12 +75,12 @@ return [
 			'schema'   => 'public',
 		],
 
-		'sqlsrv' => [
+		'edu' => [
 			'driver'   => 'sqlsrv',
-			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'forge'),
-			'username' => env('DB_USERNAME', 'forge'),
-			'password' => env('DB_PASSWORD', ''),
+			'host'     => env('EDU_HOST', '189.129.211.98'),
+			'database' => env('EDU_DATABASE', 'SigaEdu'),
+			'username' => env('EDU_USERNAME', 'usercprog'),
+			'password' => env('EDU_PASSWORD', 'uc3pr0g'),
 			'prefix'   => '',
 		],
 

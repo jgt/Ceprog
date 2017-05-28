@@ -54,6 +54,12 @@ Route::group(['middleware' => 'admin',], function(){
 		Route::get('examenDocentePdf/{id}', ['as' => 'examenDocentePdf', 'uses' => 'ExamenDocenteController@examenDocentePdf']);
 	});
 
+	Route::group(['namespace' => 'SigaEdu'], function(){
+
+		Route::get('siga', ['as' => 'siga', 'uses' => 'SigaEduController@show']);
+
+	});
+
 });
 
 Route::group(['middleware' => 'alumnosMaestros'], function(){
@@ -158,6 +164,25 @@ Route::group(['middleware' => 'cordinador'], function(){
 		Route::get('listMateriasDocente', ['as' => 'listMateriasDocente', 'uses' => 'ExamenDocenteController@listMateias']);
 		Route::get('campusReporte/{id}', ['as' => 'campusReporte', 'uses' => 'ExamenDocenteController@reporteCampus']);
 		Route::get('almEncuesta/{id}', ['as' => 'almEncuesta', 'uses' => 'ExamenDocenteController@alumnosEncuestados']);
+
+	});
+
+	Route::group(['namespace' => 'ExamenDiagnostico'], function(){
+
+
+		Route::post('exaDiag', ['as' => 'exaDiag', 'uses' => 'ExamenDiagController@store']);
+		Route::post('crtPrediag', ['as' => 'crtPrediag', 'uses' => 'ExamenDiagController@createPregunta']);
+		Route::post('crtRespdiag', ['as' => 'crtRespdiag', 'uses' => 'ExamenDiagController@createRespuesta']);
+		Route::post('updateEva/{id}', ['as' => 'updateEva', 'uses' => 'ExamenDiagController@updateEva']);
+		Route::post('deleteEva/{id}', ['as' => 'deleteEva', 'uses' => 'ExamenDiagController@borrarEva']);
+		Route::post('deletePeva/{id}', ['as' => 'deletePeva', 'uses' => 'ExamenDiagController@deletePregunta']);
+
+		Route::get('areas', ['as' => 'areas', 'uses' => 'ExamenDiagController@areas']);
+		Route::get('evdList', ['as' => 'evdList', 'uses' => 'ExamenDiagController@index']);
+		Route::get('carrEva', ['as' => 'carrEva', 'uses' => 'ExamenDiagController@carreras']);
+		Route::get('evaPdf/{id}', ['as' => 'evaPdf', 'uses' => 'ExamenDiagController@evaPdf']);
+		Route::get('diagAlm/{id}', ['as' => 'diagAlm', 'uses' => 'ExamenDiagController@indexAlumnos']);
+		Route::get('realizarEva/{id}', ['as' => 'realizarEva', 'uses' => 'ExamenDiagController@realizarExamen']);
 
 	});
 	

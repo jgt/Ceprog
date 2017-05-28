@@ -1,4 +1,25 @@
 <script>
+$.fn.dataTable.ext.search.push(
+		    function( settings, data, dataIndex ) {
+		        var dateStart = parseDateValue($("#dateStart").val());
+				var dateEnd = parseDateValue($("#dateEnd").val());
+		        var evalDate = parseDateValue(data[3]);
+		 
+		        if (evalDate >= dateStart && evalDate <= dateEnd) {
+					return true;
+				}
+				else {
+					return false;
+				}
+		    }
+		);
+
+		function parseDateValue(rawDate) {
+			var dateArray= rawDate.split("/");
+			var parsedDate= dateArray[1] + dateArray[2]+ dateArray[0];
+			return parsedDate;
+		}
+		
 	$(document).on('ready', function(){
 
 		$('#planeacionAdm').on('click', function(e){
@@ -77,6 +98,10 @@
 		  $('#consUser').fadeOut();
 		  $('#ltsMatexamen').fadeOut();
 		  $('#vizuaNota').fadeOut();
+		  $('#crtExaDiag').fadeOut();
+			$('#evaList').fadeOut();
+			$('#preguntaDiagnostico').fadeOut();	
+			$('#listEva').fadeOut();
 		}
 
 		function listar(route)
@@ -103,6 +128,23 @@
 				});
 
 				descargar("#plcadmin-table tbody", tabla);
+
+				
+				var dateControls= $("#baseDateControl").children("div").clone();
+				$("#feedbackTable_filter").prepend(dateControls);
+
+				$("#dateStart").keyup(function(){ 
+					tabla.draw(); 
+				});
+				$("#dateStart").change(function(){ 
+					tabla.draw(); 
+				});
+				$("#dateEnd").keyup(function() { 
+					tabla.draw(); 
+				});
+				$("#dateEnd").change(function(){ 
+					tabla.draw(); 
+				});
 		}
 
 		function descargar(tbody, tabla)
