@@ -79,6 +79,7 @@
  @include('ajax.ExamenDiagnostico.modalDeletePregunta')
  @include('ajax.ExamenDiagnostico.modalCreatePregunta')
  @include('ajax.Alumnos.modalEvaAlumnos')
+ @include('ajax.ExamenDiagnostico.modalRespIncompletas')
 
 
 <div class="container">

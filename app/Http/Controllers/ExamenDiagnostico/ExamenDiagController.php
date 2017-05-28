@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\Evadigs;
+use App\Http\Requests\Quist;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -13,7 +14,9 @@ use App\Carrera;
 use App\Administrador\EvaluacionDiagnostico\Evadig;
 use App\Administrador\EvaluacionDiagnostico\PreguntaDiag;
 use App\Administrador\EvaluacionDiagnostico\Area;
+use App\Administrador\EvaluacionDiagnostico\RespuestaDiagnostico;
 use App\Administrador\EvaluacionDiagnostico\Evaposresp;
+use Auth;
 use Datatables;
 use App;
 use Carbon\Carbon;
@@ -141,8 +144,9 @@ class ExamenDiagController extends Controller
         return response()->json($pregunta);
     }
 
-    public function createRespuesta(Request $request)
+    public function createRespuesta(Quist $request)
     {
+       
         $name= $request->input('name');
         $estado= $request->input('estado');
         $pregunta_id = $request->input('pregunta_id');

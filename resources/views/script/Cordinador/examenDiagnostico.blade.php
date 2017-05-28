@@ -178,6 +178,42 @@
 			});
 		}
 
+		function crearRespuestasIncompletas()
+		{
+			var form = $('#crtRespdiagIn');
+			var metodo = form.attr('method');
+			var route = form.attr('action');
+			$('#crtEvarespIn').attr('disabled', true);
+			$.blockUI();
+
+			$.ajax({
+
+
+				url:route,
+				type:metodo,
+				data:form.serialize(),
+
+				success:function(resp)
+				{
+					$.unblockUI();
+					$('#EvarespIn').modal('hide');
+					$('input#evaNameIn').val(' ');
+					$('#crtEvarespIn').attr('disabled', false);
+					alertify.alert('La respusta ha sido creada correctamente');
+
+				},
+
+				error:function()
+				{
+					$.unblockUI();
+					$('#crtEvarespIn').attr('disabled', false);
+					alertify.alert('Error al procesar la solicitud');
+				}
+
+
+			});
+		}
+
 
 		//Lista de examenes para el rol cordinador
 
@@ -313,6 +349,8 @@
 
 					$.unblockUI();
 					alertify.alert('La pregunta ha sido creada correctamente');
+					$('#EvarespIn').modal('show');
+					$('#prtEvaIn').val(resp.id);
 
 					$('#crearPrg').modal('show');
 					$('#enuIcm').val(' ');
@@ -336,6 +374,14 @@
 
 
 			});
+
+		});
+
+		//respuestas incompletas
+		$('#crtEvarespIn').on('click', function(e){
+
+			e.preventDefault();
+			crearRespuestasIncompletas();
 
 		});
 

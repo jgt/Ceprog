@@ -49,7 +49,37 @@
 	function realizarEva(btn)
 	{
 		var id = btn.value;
+		var route = 'realizarEva/'+id;
+		var divPreg = $('#almPregQuiz');
+        var ulQuiz = $('#almQuizResp');
 		$('#quizEvalm').modal('show');
+
+		$.get(route, function(resp){
+
+          divPreg.html(" ");
+          ulQuiz.html(" ");
+  
+          if(resp.pregunta.length == 0)
+          {
+            alertify.alert("Ya tienes una nota en este examen.");
+            $('#quizEvalm').modal('hide');
+            
+          }else{
+
+              $(resp.pregunta).each(function(key, preg){
+
+              var preguntaId = $('#pregId').val(preg.id);
+
+              divPreg.append("<li><p>"+preg.contenido+"</p></li>");
+
+              $(preg.respuestas).each(function(key, respu){
+
+                ulQuiz.append("<li><input type='radio' name='respuesta' value="+respu.id+">"+respu.name+"</li>");
+              });
+            });
+          }
+    
+        });
 	}
 
 </script>

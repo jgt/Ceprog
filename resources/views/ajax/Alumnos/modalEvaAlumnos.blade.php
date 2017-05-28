@@ -11,17 +11,15 @@
        <h4 align=" left"><strong>Instrucción</strong></h4>
         <p align=" left">Selecciona el inciso que contenga la respuesta correcta.</p>
       <hr>
-        <a href="{{ route('pdfExamen')}}" id="pdfExamen" Style="display:none"></a>
-
-        {!! Form::open(['route' => 'resultadoExamen', 'method' => 'POST', 'id' => 'dpg'])!!}
-        {!! Form::text('examen_id', null, ['Style' => 'display:none', 'id' => 'exaId'])!!}
-        {!! Form::text('pregunta_id', null, ['Style' => 'display:none', 'id' => 'pregId'])!!}
-        {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none', 'id' => 'preguntaId'])!!}
-        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
+       
+        {!! Form::open(['route' => 'realizarEva', 'method' => 'POST', 'id' => 'almEvadiag'])!!}
+        {!! Form::text('examen_id', null, ['Style' => 'display:none', 'id' => 'almEvaId'])!!}
+        {!! Form::text('pregunta_id', null, ['Style' => 'display:none', 'id' => 'almPregId'])!!}
+        {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none', 'id' => 'almEvaUser'])!!}
         
-        <ol type="1" id="pregQuiz"></ol> 
+        <ol type="1" id="almPregQuiz"></ol> 
         <hr> 
-        <ol type="A" id="quizResp"></ol>
+        <ol type="A" id="almQuizResp"></ol>
 
       {!! Form::close()!!}
       </div>
