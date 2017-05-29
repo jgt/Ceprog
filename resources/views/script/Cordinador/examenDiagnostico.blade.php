@@ -10,6 +10,7 @@
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 
 		});
 

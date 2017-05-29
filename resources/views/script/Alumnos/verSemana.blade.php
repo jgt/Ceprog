@@ -71,6 +71,7 @@
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 			
 			var route = $(this).attr('href');
 			var paquete = $('#semPqt');

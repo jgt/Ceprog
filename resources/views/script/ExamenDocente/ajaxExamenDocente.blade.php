@@ -115,6 +115,7 @@ $(document).on('ready', function(){
 	  $('#ltsMatexamen').fadeOut();
 	  $('#vizuaNota').fadeOut();
 	  $('#crtExaDiag').fadeOut();
+	  $('#evaListAlm').fadeOut();
 	  $('#evaList').fadeOut();
 	  $('#preguntaDiagnostico').fadeOut();	
 	  $('#listEva').fadeOut();

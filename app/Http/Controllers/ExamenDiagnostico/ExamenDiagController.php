@@ -16,6 +16,7 @@ use App\Administrador\EvaluacionDiagnostico\PreguntaDiag;
 use App\Administrador\EvaluacionDiagnostico\Area;
 use App\Administrador\EvaluacionDiagnostico\RespuestaDiagnostico;
 use App\Administrador\EvaluacionDiagnostico\Evaposresp;
+use App\Administrador\EvaluacionDiagnostico\ResultadoDiag;
 use Auth;
 use Datatables;
 use App;
@@ -73,6 +74,38 @@ class ExamenDiagController extends Controller
             $detalles = ['pregunta' => $preguntaNext, 'nota' => $nota];
 
             return response()->json($detalles);
+
+    }
+
+    public function nextQuestion($id, Request $request)
+    {
+
+      $examen = Evadig::find($id);
+      $respuesta = RespuestaDiagnostico::create([
+
+            'pregunta_diag_id' => $request->get('preg_id'),
+            'evaposresp_id' => $request->get('respeva'),
+            'user_id' => Auth::user()->id
+
+        ]);
+    
+        return response()->json($respuesta);
+    }
+
+    public function terminarExamen($id, Request $request)
+    {
+            
+        $this->validate($request, [
+
+            'user_id' => 'required',
+            'evadig_id' => 'required',
+            'resultado' => 'required'
+
+
+            ]);
+
+        $resultado = ResultadoDiag::create($request->all());
+        return response()->json($resultado);
 
     }
     

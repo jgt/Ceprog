@@ -173,6 +173,8 @@ Route::group(['middleware' => 'cordinador'], function(){
 		Route::post('exaDiag', ['as' => 'exaDiag', 'uses' => 'ExamenDiagController@store']);
 		Route::post('crtPrediag', ['as' => 'crtPrediag', 'uses' => 'ExamenDiagController@createPregunta']);
 		Route::post('crtRespdiag', ['as' => 'crtRespdiag', 'uses' => 'ExamenDiagController@createRespuesta']);
+		Route::post('resultadoEva/{id}', ['as' => 'resultadoEva', 'uses' => 'ExamenDiagController@terminarExamen']);
+		Route::post('nxtQuestion/{id}', ['as' => 'nxtQuestion', 'uses' => 'ExamenDiagController@nextQuestion']);
 		Route::post('updateEva/{id}', ['as' => 'updateEva', 'uses' => 'ExamenDiagController@updateEva']);
 		Route::post('deleteEva/{id}', ['as' => 'deleteEva', 'uses' => 'ExamenDiagController@borrarEva']);
 		Route::post('deletePeva/{id}', ['as' => 'deletePeva', 'uses' => 'ExamenDiagController@deletePregunta']);

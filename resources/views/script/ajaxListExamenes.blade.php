@@ -93,6 +93,7 @@
       $('#evaList').fadeOut();
       $('#preguntaDiagnostico').fadeOut();  
       $('#listEva').fadeOut();
+      $('#evaListAlm').fadeOut();
 
           var tabla = $('#tablaExamenesDocente');
           var route = $(this).attr('href');
@@ -322,6 +323,7 @@
       $('#evaList').fadeOut();
       $('#preguntaDiagnostico').fadeOut();  
       $('#listEva').fadeOut();
+      $('#evaListAlm').fadeOut();
         
         $.get(route, function(resp){
 

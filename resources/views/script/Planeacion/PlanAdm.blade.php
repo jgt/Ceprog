@@ -102,6 +102,7 @@ $.fn.dataTable.ext.search.push(
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 		}
 
 		function listar(route)

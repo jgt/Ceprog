@@ -14,7 +14,7 @@
        
         {!! Form::open(['route' => 'realizarEva', 'method' => 'POST', 'id' => 'almEvadiag'])!!}
         {!! Form::text('examen_id', null, ['Style' => 'display:none', 'id' => 'almEvaId'])!!}
-        {!! Form::text('pregunta_id', null, ['Style' => 'display:none', 'id' => 'almPregId'])!!}
+        {!! Form::text('preg_id', null, ['Style' => 'display:none', 'id' => 'almPregId'])!!}
         {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none', 'id' => 'almEvaUser'])!!}
         
         <ol type="1" id="almPregQuiz"></ol> 
@@ -24,8 +24,8 @@
       {!! Form::close()!!}
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-primary" id="nextQuiz">Siguiente</a>
-        <a href="#" class="btn btn-danger" Style="display:none" id="endQuiz">Terminar examen</a>
+        <a href="#" class="btn btn-primary" id="almNextQuiz">Siguiente</a>
+        <a href="#" class="btn btn-danger" Style="display:none" id="almEndQuiz">Terminar examen</a>
 
         {!! Form::open(['route' => 'terminarExamen', 'method' => 'POST', 'id' => 'exForm'])!!}
               <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">

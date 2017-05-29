@@ -64,6 +64,7 @@
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 
 			var ul = $('ul#nameUni');
 			var materia = $(this).parents('ul');
@@ -141,6 +142,7 @@
 				  $('#evaList').fadeOut();
 				  $('#preguntaDiagnostico').fadeOut();	
 				  $('#listEva').fadeOut();
+				  $('#evaListAlm').fadeOut();
 
 					var id = $(this).attr('href');
 					var route = '/baseTeoricaSubTemas/'+id;
@@ -263,6 +265,7 @@
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 			
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -338,6 +341,7 @@
 				  $('#evaList').fadeOut();
 			      $('#preguntaDiagnostico').fadeOut();	
 			      $('#listEva').fadeOut();
+			      $('#evaListAlm').fadeOut();
 
 					var id = $(this).attr('href');
 					var route = '/baseTeoricaSubTemas/'+id;

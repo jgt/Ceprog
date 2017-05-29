@@ -19,6 +19,7 @@
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 
 			var route = '/cdoMaterias/';
 			var select = $('#cdoMta');
@@ -151,6 +152,7 @@
 			$('#consUser').fadeOut();
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
+			$('#evaListAlm').fadeOut();
 			var route = $(this).attr('href');
 			listar(route);
 			

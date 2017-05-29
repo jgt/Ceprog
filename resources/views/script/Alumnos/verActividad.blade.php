@@ -70,6 +70,7 @@
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 			
 			var tabla = $('#vizAct');
 			var route = $(this).attr('href');

@@ -69,6 +69,7 @@ $(document).on('ready', function(){
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 
 		$.get(route, function(resp){
 

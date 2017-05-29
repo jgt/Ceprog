@@ -124,6 +124,7 @@
 					$('#evaList').fadeOut();
 					$('#preguntaDiagnostico').fadeOut();	
 					$('#listEva').fadeOut();
+					$('#evaListAlm').fadeOut();
 
 					var id = $(this).attr('href');
 					$('#foroId').val(id);
@@ -275,6 +276,7 @@
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#evaListAlm').fadeOut();
 				
 
 			var route = $(this).attr('href');
