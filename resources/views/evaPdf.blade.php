@@ -28,8 +28,14 @@
       <ol class="olNumeros">
       @foreach($examen->preguntas as $pregunta)
           
-          <li><p>{{$pregunta->contenido}}</p></li>
-       
+          @if($pregunta->imagen)
+
+          <li><p>{{$pregunta->contenido}}</p><img src="diagnostico/{{ $pregunta->imagen }}" class="img-responsive" alt=""></li>
+          @else
+
+          <li><p>{{ $pregunta->contenido }}</p></li>
+
+          @endif
 
          <ol class="olLetras">
           @foreach($pregunta->posibleResp as $respuesta)

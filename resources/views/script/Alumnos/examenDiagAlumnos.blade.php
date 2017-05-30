@@ -6,7 +6,7 @@
 
 			e.preventDefault();
 
-			$('#evaListAlm').fadeIn();
+			$('#evaListAlm').fadeOut();
 			$('#tbMateriaDoc').hide();
 			$('#preForo').hide();
 			$('#chatForo').hide();
