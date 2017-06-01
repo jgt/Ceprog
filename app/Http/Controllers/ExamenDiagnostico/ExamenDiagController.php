@@ -44,7 +44,7 @@ class ExamenDiagController extends Controller
     {
 
         $examen = Evadig::find($id);
-        $preguntas = PreguntaDiag::where('evadig_id',$id)->with('area')->get();
+        $preguntas = PreguntaDiag::where('evadig_id',$id)->with('area')->orderBy('contador', 'asc')->get();
         $preguntaNext= [];
         $nota =0;
 
@@ -66,7 +66,7 @@ class ExamenDiagController extends Controller
               //enviamos todas las preguntas que no han sido contestadas
                 if(! $repuestaUser):
 
-                    $preguntaNext = PreguntaDiag::where('id', $pregunta->id)->with('posibleResp', 'area')->get();
+                    $preguntaNext = PreguntaDiag::where('id', $pregunta->id)->with('posibleResp', 'area')->orderBy('contador', 'asc')->get();
 
                 endif;
             }
