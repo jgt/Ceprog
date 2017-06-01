@@ -158,7 +158,7 @@
 
               }else{
 
-              	divPreg.append("<li><p>"+preg.contenido+"</p></li>");
+              	divPreg.append("<h1>"+preg.area.name+"</h1><li><p>"+preg.contenido+"</p></li>");
               }
 
               
@@ -226,7 +226,7 @@
 
 		              }else{
 
-		              	divPreg.append("<li><p>"+preg.contenido+"</p></li>");
+		              	divPreg.append("<h1>"+preg.area.name+"</h1><li><p>"+preg.contenido+"</p></li>");
 		              }
 
 		              
