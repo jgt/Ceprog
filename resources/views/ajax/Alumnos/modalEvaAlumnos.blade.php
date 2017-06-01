@@ -17,7 +17,7 @@
         {!! Form::text('preg_id', null, ['Style' => 'display:none', 'id' => 'almPregId'])!!}
         {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none', 'id' => 'almEvaUser'])!!}
         
-        <ol type="1" id="almPregQuiz"></ol> 
+        <ol id="almPregQuiz"></ol> 
         <hr> 
         <ol type="A" id="almQuizResp"></ol>
 

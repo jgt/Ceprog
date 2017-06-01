@@ -153,7 +153,7 @@
 
               if(preg.imagen)
               {
-              	divPreg.append("<li><p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
+              	divPreg.append("<li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
 
               }else{
 
@@ -220,7 +220,7 @@
 		              		
 		              if(preg.imagen)
 		              {
-		              	divPreg.append("<li><p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
+		              	divPreg.append("<li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
 
 		              }else{
 

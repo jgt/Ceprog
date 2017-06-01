@@ -108,9 +108,14 @@
                 <a href="{{ route('idSubtemas')}}" id="idSubtemas" style="display:none;"></a>
 
                 <a href="#"><i class='fa fa-link'></i> <span>{{$semestre->carrera->name}}</span><i class="fa fa-angle-left pull-right"></i></a>
+                
+                <ul class="treeview-menu">
+                  <li><a href="{{ route('diagAlm', $semestre->carrera->id) }}" id="almEva"><i class="fa fa-circle" aria-hidden="true"></i> Examen diagnostico</a></li>
+                </ul>
+
                 @foreach($semestre->materias as $materia)
                 <ul class="treeview-menu">
-                    
+
                  <li><a href="#"><i class='fa fa-plus fa-fw'></i> {{$materia->name}}</a>
                     <ul class="treeview-menu" data-id="{{ $materia->id}}">
                   
@@ -159,8 +164,6 @@
                         <li><a href="{{ route('listPlaneacion', $materia) }}" id="listplcAlm">Planeacion</a></li>
 
                         <li><a href="{{route('quizDocente.show', $materia )}}" id="Rexamen">Evalua tu Docente</a></li>
-
-                        <li><a href="{{ route('diagAlm', $semestre->carrera->id) }}" id="almEva">Examen diagnostico</a></li>
 
                         <li><a href="{{ route('allTutorial')}}" id="almTutorial">Tutoriales</a></li>
 
