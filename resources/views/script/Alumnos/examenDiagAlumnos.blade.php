@@ -6,13 +6,13 @@
 
 			e.preventDefault();
 
-			$('#evaListAlm').fadeOut();
+			$('#evaListAlm').fadeIn();
 			$('#tbMateriaDoc').hide();
 			$('#preForo').hide();
 			$('#chatForo').hide();
 			$('#listPersonal').hide();
 			$('#alumnosListUser').hide();
-			$('#prflistTuto').show();
+			$('#prflistTuto').hide();
 			$('div#act').hide();
 			$('div#listAct').hide();
 			$('div#examen').fadeOut();
@@ -217,7 +217,7 @@
 
 		              var id = $('#almEvaId').val(preg.evadig_id);
 		              var preguntaId = $('#almPregId').val(preg.id);
-
+		              		
 		              if(preg.imagen)
 		              {
 		              	divPreg.append("<li><p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");

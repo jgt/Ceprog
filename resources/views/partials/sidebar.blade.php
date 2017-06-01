@@ -227,6 +227,18 @@
              <li class="treeview">
                 <a href="#"><i class='fa fa-link'></i> <span>Reportes</span><i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
+                  <li><a href="#"><i class='fa fa-plus fa-fw'></i> Evaluacion Diagnostico</a>
+                    
+                    <ul class="treeview-menu">
+                      <li><a href=""><i class="fa fa-folder" aria-hidden="true"></i>
+                      Reporte por alumnos</a></li>
+                      <li><a href=""><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                      Reporte por carreras</a></li>
+                      <li><a href=""><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                      Reporte general</a></li>
+                    </ul>
+
+                  </li>
                       <li><a href="#"><i class='fa fa-plus fa-fw'></i> Reporte Campus</a>
                           <ul class="treeview-menu">
                             @foreach($campus as $campu)
