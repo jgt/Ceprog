@@ -2,7 +2,7 @@
 	
 	$(document).on('ready', function(){
 
-		$('#almEva').on('click', function(e){
+		$('a#almEva').on('click', function(e){
 
 			e.preventDefault();
 
@@ -153,7 +153,8 @@
 
               if(preg.imagen)
               {
-              	divPreg.append("<li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
+
+              	divPreg.append("<h1>"+preg.area.name+"</h1><li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
 
               }else{
 
@@ -190,7 +191,7 @@
 
         	success:function(resp)
         	{
-        		$('#almNextQuiz').attr('disabled', false);
+        		
         		$.unblockUI();
         		
         		//siguente pregunta
@@ -203,6 +204,7 @@
 
 		          divPreg.html(" ");
 		          ulQuiz.html(" ");
+		          $('#almNextQuiz').attr('disabled', false);
 		  
 		          if(resp.pregunta.length == 0)
 		          {
@@ -220,7 +222,7 @@
 		              		
 		              if(preg.imagen)
 		              {
-		              	divPreg.append("<li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
+		              	divPreg.append("<h1>"+preg.area.name+"</h1><li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
 
 		              }else{
 
