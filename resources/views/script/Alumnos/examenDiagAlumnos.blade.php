@@ -154,11 +154,11 @@
               if(preg.imagen)
               {
 
-              	divPreg.append("<h1>"+preg.area.name+"</h1><li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
+              	divPreg.append("<h1>"+preg.area.name+"</h1><hr><li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
 
               }else{
 
-              	divPreg.append("<h1>"+preg.area.name+"</h1><li><p>"+preg.contenido+"</p></li>");
+              	divPreg.append("<h1>"+preg.area.name+"</h1><hr><li><p>"+preg.contenido+"</p></li>");
               }
 
               
@@ -222,11 +222,11 @@
 		              		
 		              if(preg.imagen)
 		              {
-		              	divPreg.append("<h1>"+preg.area.name+"</h1><li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
+		              	divPreg.append("<h1>"+preg.area.name+"</h1><hr><li>"+preg.contador+"<p>"+preg.contenido+"</p><img class='img-responsive' alt='Responsive image' src='/diagnostico/"+preg.imagen+"'></li>");
 
 		              }else{
 
-		              	divPreg.append("<h1>"+preg.area.name+"</h1><li><p>"+preg.contenido+"</p></li>");
+		              	divPreg.append("<h1>"+preg.area.name+"</h1><hr><li><p>"+preg.contenido+"</p></li>");
 		              }
 
 		              
