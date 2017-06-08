@@ -25,6 +25,7 @@
     </header>
     <main>
     <hr>
+        
       <ol class="olNumeros">
       @foreach($examen->preguntas as $pregunta)
           
