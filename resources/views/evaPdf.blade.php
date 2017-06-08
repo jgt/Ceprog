@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Example Docente</title>
+    <title>Example Diagnostico</title>
      <link rel="stylesheet" href="{{'estiloPdf/css/pdfDocente.css'}}" media="all" />
   </head>
   <body>
@@ -10,7 +10,7 @@
       <div id="logo">
         <img src="img/logo.jpg">
       </div>
-      <h1>Examen Docente</h1>
+      <h1>Examen Diagnostico</h1>
       <div id="company" class="clearfix">
          <div>Universidad Ceprog</div>
         <div>Carretera Palenque - Catazajá Km <br /> 26+500 a un costado del Aeropuerto </div>

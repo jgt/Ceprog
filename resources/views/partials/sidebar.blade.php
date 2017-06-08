@@ -233,12 +233,11 @@
                   <li><a href="#"><i class='fa fa-plus fa-fw'></i> Evaluacion Diagnostico</a>
                     
                     <ul class="treeview-menu">
-                      <li><a href=""><i class="fa fa-folder" aria-hidden="true"></i>
+                      <li><a href="{{ route('userDiag') }}" id="rptDiag"><i class="fa fa-folder" aria-hidden="true"></i>
                       Reporte por alumnos</a></li>
                       <li><a href=""><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                       Reporte por carreras</a></li>
-                      <li><a href=""><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                      Reporte general</a></li>
+                      
                     </ul>
 
                   </li>

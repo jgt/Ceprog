@@ -17,7 +17,7 @@
         {!! Form::text('preg_id', null, ['Style' => 'display:none', 'id' => 'almPregId'])!!}
         {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none', 'id' => 'almEvaUser'])!!}
         
-        <ol id="almPregQuiz"></ol> 
+        <div id="divPregQuiz"></div>
         <hr> 
         <ol type="A" id="almQuizResp"></ol>
 
@@ -27,11 +27,11 @@
         <a href="#" class="btn btn-primary" id="almNextQuiz">Siguiente</a>
         <a href="#" class="btn btn-danger" Style="display:none" id="almEndQuiz">Terminar examen</a>
 
-        {!! Form::open(['route' => 'terminarExamen', 'method' => 'POST', 'id' => 'exForm'])!!}
+        {!! Form::open(['route' => 'resultadoEva', 'method' => 'POST', 'id' => 'endFormexa'])!!}
               <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
 
               {!! Form::text('resultado', null, ['Style' => 'display:none', 'id' => 'ntEx'])!!}
-              {!! Form::text('examen_id', null, ['Style' => 'display:none', 'id' => 'qexaId'])!!}
+              {!! Form::text('evadig_id', null, ['Style' => 'display:none', 'id' => 'endExa'])!!}
               {!! Form::text('user_id', Auth::user()->id, ['Style' => 'display:none'])!!}
 
               {!! Form::close()!!}

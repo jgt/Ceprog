@@ -23,9 +23,6 @@ class CreateResultadoDiagsTable extends Migration
             $table->integer('evadig_id')->unsigned();
             $table->foreign('evadig_id')->references('id')->on('evadigs')->onDelete('cascade');
 
-            $table->integer('carrera_id')->unsigned()->index();
-            $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
-
             $table->timestamps();
         });
     }

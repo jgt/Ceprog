@@ -70,6 +70,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 			var route = $(this).attr('href');
 			var tabla = $('#tablaLtsExm');

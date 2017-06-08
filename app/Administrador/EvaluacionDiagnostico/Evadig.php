@@ -27,4 +27,9 @@ class Evadig extends Model
     {
         return $this->hasMany('App\Administrador\EvaluacionDiagnostico\PreguntaDiag');
     }
+
+    public function resulDiag()
+    {
+        return $this->hasMany('App\Administrador\EvaluacionDiagnostico\ResultadoDiag');
+    }
 }

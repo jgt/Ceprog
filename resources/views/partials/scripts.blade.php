@@ -28,6 +28,8 @@
 
 @include('script.Cordinador.crearDocente')
 
+@include('script.Cordinador.reporteDiag')
+
 @include('script.Cordinador.crearUnidad')
 
 @include('script.Cordinador.examenDiagnostico')

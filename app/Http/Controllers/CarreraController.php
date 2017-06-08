@@ -85,6 +85,7 @@ class CarreraController extends Controller {
 	public function attachPrograma($id, Request $request)
 	{
 		$user = User::find($id);
+		$user->carreras()->attach($request->get('carr'));
 		$user->semestres()->attach($request->get('semProg'));
 		return response()->json($user);
 	}

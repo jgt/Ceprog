@@ -71,6 +71,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 			
 			var tabla = $('#vizAct');
 			var route = $(this).attr('href');

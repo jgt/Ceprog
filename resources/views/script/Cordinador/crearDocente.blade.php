@@ -20,6 +20,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 			var route = '/cdoMaterias/';
 			var select = $('#cdoMta');
@@ -153,6 +154,7 @@
 			$('#ltsMatexamen').fadeOut();
 			$('#vizuaNota').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 			var route = $(this).attr('href');
 			listar(route);
 			

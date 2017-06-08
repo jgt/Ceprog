@@ -57,6 +57,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 			
 			var route = $('#reportesCarrera').attr('href');
 			var tablaReporte = $('#tablaReportes');

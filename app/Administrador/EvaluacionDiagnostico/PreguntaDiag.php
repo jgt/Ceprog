@@ -24,5 +24,10 @@ class PreguntaDiag extends Model
     {
     	return $this->hasMany('App\Administrador\EvaluacionDiagnostico\Evaposresp');
     }
+
+    public function respDiagnostico()
+    {
+        return $this->hasMany('App\Administrador\EvaluacionDiagnostico\RespuestaDiagnostico');
+    }
     
 }

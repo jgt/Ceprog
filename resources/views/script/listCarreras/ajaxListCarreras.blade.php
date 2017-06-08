@@ -63,6 +63,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 			if (! $.fn.DataTable.isDataTable('#carrera-table')){
 				listCarrera();

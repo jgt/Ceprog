@@ -70,6 +70,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 			
 			var tabla = $('#tdbAct');
 			var tbdRub = $('#tbdRub');

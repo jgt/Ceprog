@@ -119,6 +119,7 @@ $(document).on('ready', function(){
 	  $('#evaList').fadeOut();
 	  $('#preguntaDiagnostico').fadeOut();	
 	  $('#listEva').fadeOut();
+	  $('#reporteDiag').hide();
 
 		var route = $(this).attr('href');
 		var carrera = $('#selectMatdocente');

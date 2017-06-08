@@ -90,6 +90,7 @@
 		$('#preguntaDiagnostico').fadeOut();	
 		$('#listEva').fadeOut();
 		$('#evaListAlm').fadeOut();
+		$('#reporteDiag').hide();
 		
 		var route = $(this).attr('href');
 		var tablaExamen = $('#tablaExamenesDoc');
@@ -325,6 +326,7 @@
 			  $('#preguntaDiagnostico').fadeOut();	
 			  $('#listEva').fadeOut();
 			  $('#evaListAlm').fadeOut();
+			  $('#reporteDiag').hide();
  
 			var route = $('#docenteListexa').attr('href');
 			var listaExamenes = $('#tablaExamenesAdm');

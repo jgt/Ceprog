@@ -70,6 +70,7 @@ $(document).on('ready', function(){
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 		$.get(route, function(resp){
 

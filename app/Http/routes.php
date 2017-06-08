@@ -144,6 +144,7 @@ Route::group(['middleware' => 'alumnos'], function(){
 		Route::post('nxtQuestion/{id}', ['as' => 'nxtQuestion', 'uses' => 'ExamenDiagController@nextQuestion']);
 		Route::get('diagAlm/{id}', ['as' => 'diagAlm', 'uses' => 'ExamenDiagController@indexAlumnos']);
 		Route::get('realizarEva/{id}', ['as' => 'realizarEva', 'uses' => 'ExamenDiagController@realizarExamen']);
+		Route::post('resultadoEva', ['as' => 'resultadoEva', 'uses' => 'ExamenDiagController@terminarExamen']);
 
 	});
 
@@ -182,7 +183,6 @@ Route::group(['middleware' => 'cordinador'], function(){
 		Route::post('exaDiag', ['as' => 'exaDiag', 'uses' => 'ExamenDiagController@store']);
 		Route::post('crtPrediag', ['as' => 'crtPrediag', 'uses' => 'ExamenDiagController@createPregunta']);
 		Route::post('crtRespdiag', ['as' => 'crtRespdiag', 'uses' => 'ExamenDiagController@createRespuesta']);
-		Route::post('resultadoEva/{id}', ['as' => 'resultadoEva', 'uses' => 'ExamenDiagController@terminarExamen']);
 		Route::post('updateEva/{id}', ['as' => 'updateEva', 'uses' => 'ExamenDiagController@updateEva']);
 		Route::post('deleteEva/{id}', ['as' => 'deleteEva', 'uses' => 'ExamenDiagController@borrarEva']);
 		Route::post('deletePeva/{id}', ['as' => 'deletePeva', 'uses' => 'ExamenDiagController@deletePregunta']);
@@ -191,6 +191,12 @@ Route::group(['middleware' => 'cordinador'], function(){
 		Route::get('evdList', ['as' => 'evdList', 'uses' => 'ExamenDiagController@index']);
 		Route::get('carrEva', ['as' => 'carrEva', 'uses' => 'ExamenDiagController@carreras']);
 		Route::get('evaPdf/{id}', ['as' => 'evaPdf', 'uses' => 'ExamenDiagController@evaPdf']);
+
+		//Reportes del examen diagnostico
+
+		Route::get('userDiag', ['as' => 'userDiag', 'uses' => 'ReporteExamenController@index']);
+		Route::get('pdfUserdiag/{id}', ['as' => 'pdfUserdiag', 'uses' => 'ReporteExamenController@pdfDiag']);
+		Route::post('borrarReporte/{id}/{user}', ['as' => 'borrarReporte', 'uses' => 'ReporteExamenController@borrarReporte']);
 
 	});
 	

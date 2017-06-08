@@ -11,6 +11,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 		});
 
@@ -263,6 +264,7 @@
 			$('#evaList').fadeIn();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#reporteDiag').hide();
 		});
 
 		$('#crt-forcePregunta').on('click', function(e){

@@ -69,6 +69,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 			var route = $(this).attr('href');
 			var tabla = $('#tablaClaPaquete');
@@ -288,6 +289,7 @@
 		$('#preguntaDiagnostico').fadeOut();	
 		$('#listEva').fadeOut();
 		$('#evaListAlm').fadeOut();
+		$('#reporteDiag').hide();
 
 		var idUser = btn.value;
 		var idAct = btn.id;

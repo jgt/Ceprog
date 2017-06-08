@@ -1,0 +1,1 @@
+reporteDiagnostico.blade.php

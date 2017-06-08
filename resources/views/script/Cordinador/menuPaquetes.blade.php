@@ -77,6 +77,7 @@
 					$('#preguntaDiagnostico').fadeOut();	
 					$('#listEva').fadeOut();
 					$('#evaListAlm').fadeOut();
+					$('#reporteDiag').hide();
 
 					var id = $(this).attr('value');
 					var menu = $('#menUnidad');
@@ -637,6 +638,7 @@
 			$('#editUs').attr('disabled', false);
 			$('#unidadId').attr('disabled', false);
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 		}
 
@@ -701,6 +703,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 		
 		}
 
@@ -764,6 +767,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 		
 		}
 
@@ -827,6 +831,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 		}	
 
 	function pdf(btn)
@@ -905,6 +910,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 			$.get(route, function(resp){
 
@@ -1102,6 +1108,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteDiag').hide();
 
 			$.get(route, function(resp){
 

@@ -12,10 +12,10 @@ class RespuestaDiagnostico extends Model
 
     public function pregunta()
     {
-    	return $this->belongsTo('App\Administrador\EvaluacionDiagnostico\PreguntaDiag');
+    	return $this->belongsTo('App\Administrador\EvaluacionDiagnostico\PreguntaDiag', 'pregunta_diag_id');
     }
 
-    public function respuesta()
+    public function evaposresp()
     {
     	return $this->belongsTo('App\Administrador\EvaluacionDiagnostico\Evaposresp');
     }

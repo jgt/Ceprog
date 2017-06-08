@@ -69,6 +69,7 @@
 			$('#evaList').fadeOut();
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
+			$('#reporteDiag').hide();
 
 			var route = $(this).attr('href');
 			listar(route);
@@ -85,7 +86,7 @@
 		$('#almEndQuiz').on('click', function(e){
 
 			e.preventDefault();
-			$('#quizEvalm').modal('hide');
+			terminarExamen();
 
 		});
 
@@ -127,7 +128,7 @@
 	{
 		var id = btn.value;
 		var route = 'realizarEva/'+id;
-		var divPreg = $('#almPregQuiz');
+		var divPreg = $('#divPregQuiz');
         var ulQuiz = $('#almQuizResp');
 		$('#quizEvalm').modal('show');
 
@@ -148,6 +149,7 @@
         	  $('#almEndQuiz').hide();
               $(resp.pregunta).each(function(key, preg){
 
+              var resl = $('#endExa').val(preg.evadig_id);
               var id = $('#almEvaId').val(preg.evadig_id);
               var preguntaId = $('#almPregId').val(preg.id);
 
@@ -158,7 +160,7 @@
 
               }else{
 
-              	divPreg.append("<h1>"+preg.area.name+"</h1><hr><li><p>"+preg.contenido+"</p></li>");
+              	divPreg.append("<h1>"+preg.area.name+"</h1><hr><li>"+preg.contador+"<p>"+preg.contenido+"</p></li>");
               }
 
               
@@ -181,6 +183,7 @@
 		var metodo = form.attr('method');
 		var route = 'nxtQuestion/'+id;
 		$('#almNextQuiz').attr('disabled', true);
+		var count = 0;
         $.blockUI();
 
         $.ajax({
@@ -197,7 +200,7 @@
         		//siguente pregunta
         		var idExa = $('#almEvaId').val();
         		var route = 'realizarEva/'+idExa;
-				var divPreg = $('#almPregQuiz');
+				var divPreg = $('#divPregQuiz');
 		        var ulQuiz = $('#almQuizResp');
 
 		        $.get(route, function(resp){
@@ -217,6 +220,7 @@
 
 		              $(resp.pregunta).each(function(key, preg){
 
+		              
 		              var id = $('#almEvaId').val(preg.evadig_id);
 		              var preguntaId = $('#almPregId').val(preg.id);
 		              		
@@ -226,7 +230,7 @@
 
 		              }else{
 
-		              	divPreg.append("<h1>"+preg.area.name+"</h1><hr><li><p>"+preg.contenido+"</p></li>");
+		              	divPreg.append("<h1>"+preg.area.name+"</h1><hr><ol><li>"+preg.contador+"<p>"+preg.contenido+"</p></li></ol>");
 		              }
 
 		              
@@ -253,6 +257,39 @@
 
 
         });
+	}
+
+	function terminarExamen()
+	{
+		var form = $('#endFormexa');
+		var metodo = form.attr('method');
+		var route = form.attr('action');
+		$('#almEndQuiz').attr('disabled', true);
+		$.blockUI();
+
+		$.ajax({
+
+			url:route,
+			type:metodo,
+			data:form.serialize(),
+
+			success:function(resp)
+			{
+				$('#quizEvalm').modal('hide');
+				$('#almEndQuiz').attr('disabled', false);
+				$.unblockUI();
+			},
+
+			error:function()
+			{
+				alertify.alert('Error al procesar la solicitud');
+				$('#almEndQuiz').attr('disabled', false);
+				$.unblockUI();
+			}
+
+
+		});
+
 	}
 
 

@@ -10,9 +10,9 @@ class Evaposresp extends Model
     protected $fillable = ['name', 'estado', 'pregunta_diag_id'];
 
 
-    public function pregunta()
+    public function preguntaDiag()
     {
-    	return $this->belongsTo('App\Administrador\EvaluacionDiagnostico\Evaposresp');
+    	return $this->belongsTo('App\Administrador\EvaluacionDiagnostico\PreguntaDiag');
     }
 
     public function users()

@@ -83,7 +83,8 @@ class UserRepository extends BaseRepository {
 		$user->roles()->sync($request->get('roles'));
 
 		if($user->is('alm'))
-		{
+		{	
+			
 			$user->semestres()->sync($request->get('semes'));		
 		}else if($user->is('prf'))
 		{
@@ -251,6 +252,38 @@ class UserRepository extends BaseRepository {
 		}
 
 		return $filename;
+	}
+
+	public function preguntasDiagnostico($id)
+	{
+		$user = $this->search($id);
+		$resultados = $user->resultadoDiag()->get();
+
+		foreach ($resultados as $resul) {
+			
+			return count($resul->exa->preguntas);
+		}
+	}
+
+	public function puntosExamen($id)
+	{
+		$user = $this->search($id);
+		$resultados = $user->resultadoDiag()->get();
+		$respuestas = $user->respuestasDiagnostico()->get();
+		$total = 0;
+
+		foreach ($resultados as $resul) {
+			foreach ($respuestas as $resp) {
+				
+				if ($resul->evadig_id == $resp->pregunta->evadig_id && $resp->evaposresp->estado == 1) {
+					
+					$total +=$resp->pregunta->valor;
+				}
+			}
+		}
+
+		return $total;
+		
 	}
 
 }
