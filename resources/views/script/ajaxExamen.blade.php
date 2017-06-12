@@ -83,6 +83,7 @@
       $('#listEva').fadeOut();
       $('#evaListAlm').fadeOut();
       $('#reporteDiag').hide();
+      $('#reporteCarr').fadeOut();
 
       var route = $(this).attr('href');
       

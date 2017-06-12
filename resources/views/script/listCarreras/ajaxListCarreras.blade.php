@@ -64,6 +64,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			if (! $.fn.DataTable.isDataTable('#carrera-table')){
 				listCarrera();

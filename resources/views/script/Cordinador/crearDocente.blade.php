@@ -21,6 +21,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			var route = '/cdoMaterias/';
 			var select = $('#cdoMta');

@@ -71,6 +71,7 @@ $(document).on('ready', function(){
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 		$.get(route, function(resp){
 

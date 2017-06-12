@@ -186,6 +186,7 @@ Route::group(['middleware' => 'cordinador'], function(){
 		Route::post('updateEva/{id}', ['as' => 'updateEva', 'uses' => 'ExamenDiagController@updateEva']);
 		Route::post('deleteEva/{id}', ['as' => 'deleteEva', 'uses' => 'ExamenDiagController@borrarEva']);
 		Route::post('deletePeva/{id}', ['as' => 'deletePeva', 'uses' => 'ExamenDiagController@deletePregunta']);
+		Route::post('borrarReporte/{id}/{user}', ['as' => 'borrarReporte', 'uses' => 'ReporteExamenController@borrarReporte']);
 
 		Route::get('areas', ['as' => 'areas', 'uses' => 'ExamenDiagController@areas']);
 		Route::get('evdList', ['as' => 'evdList', 'uses' => 'ExamenDiagController@index']);
@@ -196,7 +197,9 @@ Route::group(['middleware' => 'cordinador'], function(){
 
 		Route::get('userDiag', ['as' => 'userDiag', 'uses' => 'ReporteExamenController@index']);
 		Route::get('pdfUserdiag/{id}', ['as' => 'pdfUserdiag', 'uses' => 'ReporteExamenController@pdfDiag']);
-		Route::post('borrarReporte/{id}/{user}', ['as' => 'borrarReporte', 'uses' => 'ReporteExamenController@borrarReporte']);
+		Route::get('carrerasEvadiag', ['as' => 'carrerasEvadiag', 'uses' => 'ReporteExamenController@listaCarreras']);
+		Route::get('carrPdfdiag/{id}', ['as' => 'carrPdfdiag', 'uses' => 'ReporteExamenController@carreraPdf']);
+		
 
 	});
 	

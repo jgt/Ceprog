@@ -72,6 +72,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 			
 			var tabla = $('#vizAct');
 			var route = $(this).attr('href');

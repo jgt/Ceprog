@@ -58,6 +58,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 			
 			var route = $('#reportesCarrera').attr('href');
 			var tablaReporte = $('#tablaReportes');

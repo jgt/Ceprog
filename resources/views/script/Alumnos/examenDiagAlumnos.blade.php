@@ -70,6 +70,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			var route = $(this).attr('href');
 			listar(route);

@@ -92,6 +92,7 @@
 					
 					@include('ajax.Alumnos.examenDiagnostico')
 					@include('ajax.ExamenDiagnostico.listaPreguntas')
+					@include('ajax.ExamenDiagnostico.reporteCarreras')
 					@include('ajax.ExamenDiagnostico.reporteExamen')
 					@include('ajax.ExamenDiagnostico.listEvaluacionDiagnostico')
 					@include('ajax.ExamenDiagnostico.exaDiagnostico')

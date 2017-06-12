@@ -126,6 +126,7 @@
 					$('#listEva').fadeOut();
 					$('#evaListAlm').fadeOut();
 					$('#reporteDiag').hide();
+					$('#reporteCarr').fadeOut();
 
 					var id = $(this).attr('href');
 					$('#foroId').val(id);
@@ -279,6 +280,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 				
 
 			var route = $(this).attr('href');

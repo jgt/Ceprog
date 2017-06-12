@@ -70,6 +70,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			    var route = $('#allTutorialPrf').attr('href');
 			    var tutorial = $('#tablaTutorialPrf');
@@ -162,6 +163,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			    var route = $('#allTutorialAlm').attr('href');
 			    var tutorialAlm = $('#tablaTutorialAlm');

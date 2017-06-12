@@ -71,7 +71,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
-
+			$('#reporteCarr').fadeOut();
 			var route = '{{route('admin.index')}}';
 			if (! $.fn.DataTable.isDataTable('#users-table')){
 				listarPersonal(route);
@@ -136,6 +136,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 		});
 
@@ -192,6 +193,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			var route = $('#allTutorial').attr('href');
 			var tutorial = $('#tablaTutorial');
@@ -812,6 +814,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 
 		});
@@ -908,6 +911,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			var materia = $(this).parents('ul');
 			var id = materia.data('id');
@@ -1025,6 +1029,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 
 		});

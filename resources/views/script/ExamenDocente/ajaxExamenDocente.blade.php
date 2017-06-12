@@ -120,6 +120,7 @@ $(document).on('ready', function(){
 	  $('#preguntaDiagnostico').fadeOut();	
 	  $('#listEva').fadeOut();
 	  $('#reporteDiag').hide();
+	  $('#reporteCarr').fadeOut();
 
 		var route = $(this).attr('href');
 		var carrera = $('#selectMatdocente');

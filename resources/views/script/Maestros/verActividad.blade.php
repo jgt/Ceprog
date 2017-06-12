@@ -71,6 +71,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 			
 			var tabla = $('#tdbAct');
 			var tbdRub = $('#tbdRub');

@@ -91,6 +91,7 @@
 		$('#listEva').fadeOut();
 		$('#evaListAlm').fadeOut();
 		$('#reporteDiag').hide();
+		$('#reporteCarr').fadeOut();
 		
 		var route = $(this).attr('href');
 		var tablaExamen = $('#tablaExamenesDoc');
@@ -327,6 +328,7 @@
 			  $('#listEva').fadeOut();
 			  $('#evaListAlm').fadeOut();
 			  $('#reporteDiag').hide();
+			  $('#reporteCarr').fadeOut();
  
 			var route = $('#docenteListexa').attr('href');
 			var listaExamenes = $('#tablaExamenesAdm');

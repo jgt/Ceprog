@@ -78,6 +78,7 @@
 					$('#listEva').fadeOut();
 					$('#evaListAlm').fadeOut();
 					$('#reporteDiag').hide();
+					$('#reporteCarr').fadeOut();
 
 					var id = $(this).attr('value');
 					var menu = $('#menUnidad');
@@ -639,6 +640,7 @@
 			$('#unidadId').attr('disabled', false);
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 		}
 
@@ -704,6 +706,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 		
 		}
 
@@ -768,6 +771,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 		
 		}
 
@@ -832,6 +836,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 		}	
 
 	function pdf(btn)
@@ -911,6 +916,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			$.get(route, function(resp){
 
@@ -1109,6 +1115,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			$.get(route, function(resp){
 

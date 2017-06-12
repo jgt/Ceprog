@@ -71,6 +71,7 @@
 			$('#preguntaDiagnostico').fadeOut();	
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
+			$('#reporteCarr').fadeOut();
 
 			if (! $.fn.DataTable.isDataTable('#reporteAlm-table')){
 					  listarUser(route)

@@ -70,6 +70,7 @@
 			$('#listEva').fadeOut();
 			$('#evaListAlm').fadeOut();
 			$('#reporteDiag').hide();
+			$('#reporteCarr').fadeOut();
 
 			var route = $(this).attr('href');
 			var tabla = $('#tablaClaPaquete');
@@ -290,6 +291,7 @@
 		$('#listEva').fadeOut();
 		$('#evaListAlm').fadeOut();
 		$('#reporteDiag').hide();
+		$('#reporteCarr').fadeOut();
 
 		var idUser = btn.value;
 		var idAct = btn.id;
