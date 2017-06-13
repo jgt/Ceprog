@@ -43,6 +43,45 @@
 
 		});
 
+		$('#ctrPregedit').on('click', function(e){
+
+			e.preventDefault();
+			var id = $('#editPregEva').val();
+			var form = $('#form-edtPregunta');
+			var metodo = form.attr('method');
+			var route = 'updatePreDiag/'+id;
+			CKEDITOR.instances.editEnuIcm.updateElement();
+
+			$.ajax({
+
+				url:route,
+				type:metodo,
+				data:form.serialize(),
+
+				success:function(resp)
+				{
+					if (! $.fn.DataTable.isDataTable('#listevadiag-table')){
+						listar(route);
+					}else{
+
+						var tabla = $('#listevadiag-table').DataTable();
+						tabla.ajax.reload();
+
+					}
+				
+					$('#edtPrgdiav').modal('hide');
+					alertify.alert('La pregunta ha sido edita correctamente');
+				},
+
+				error:function()
+				{
+					alertify.alert('Error al procesar la solicitud');
+				}
+
+			});
+
+		});
+
 		//funciones para el examen diagnostico
 
 		function crearExamen(route)
@@ -579,7 +618,7 @@
 
 				$(data.preguntas).each(function(key, resp){
 
-					preguntas.append("<tr><td>"+resp.contenido+"</td><td><button value="+resp.id+" type='button' class='btn btn-danger' OnClick='borrarEva(this)'>Borrar</button></td></tr>");
+					preguntas.append("<tr><td>"+resp.contenido+"</td><td><button id="+data.id+" value="+resp.id+" type='button' class='btn btn-warning' OnClick='editarEva(this)'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button></td><td><button value="+resp.id+" type='button' class='btn btn-danger' OnClick='borrarEva(this)'><i class='fa fa-eraser' aria-hidden='true'></i></button></td></tr>");
 
 				});
 				
@@ -627,6 +666,27 @@
 			var id = btn.value;
 			$('#dltPregunta').val(id);
 			$('#forcePreg').modal('show');
+		}
+
+		function editarEva(btn)
+		{
+
+			var id = btn.value;
+			var exaId = btn.id;
+			var route = 'pregEditdiag/'+id;
+			var ruta = '{{ route('areas') }}';
+			$('#edtPrgdiav').modal('show');
+			$('#editQuizEva').val(exaId);
+			$('#editValEva').val(2);
+
+			$.get(route, function(resp){
+
+				CKEDITOR.instances.editEnuIcm.setData(resp.contenido);
+				$('#editPregEva').val(resp.id);
+				$('#editNmpEva').val(resp.contador);
+				$('#areaId').val(resp.area_id);
+			});
+
 		}
 
 

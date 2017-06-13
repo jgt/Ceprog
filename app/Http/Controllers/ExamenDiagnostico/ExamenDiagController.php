@@ -124,6 +124,20 @@ class ExamenDiagController extends Controller
         return response()->json($eva);
     }
 
+    public function edit($id)
+    {  
+        $pregunta = PreguntaDiag::find($id);
+        return response()->json($pregunta);
+        
+    }
+
+    public function updatePregunta($id, Request $request)
+    {
+        $pregunta = PreguntaDiag::find($id);
+        $pregunta->update($request->all());
+        return response()->json($pregunta);
+    }
+
     public function areas()
     {
         $area = Area::get();

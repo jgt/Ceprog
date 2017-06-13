@@ -183,6 +183,7 @@ Route::group(['middleware' => 'cordinador'], function(){
 		Route::post('exaDiag', ['as' => 'exaDiag', 'uses' => 'ExamenDiagController@store']);
 		Route::post('crtPrediag', ['as' => 'crtPrediag', 'uses' => 'ExamenDiagController@createPregunta']);
 		Route::post('crtRespdiag', ['as' => 'crtRespdiag', 'uses' => 'ExamenDiagController@createRespuesta']);
+		Route::post('updatePreDiag/{id}', ['as' => 'updatePreDiag', 'uses' => 'ExamenDiagController@updatePregunta']);
 		Route::post('updateEva/{id}', ['as' => 'updateEva', 'uses' => 'ExamenDiagController@updateEva']);
 		Route::post('deleteEva/{id}', ['as' => 'deleteEva', 'uses' => 'ExamenDiagController@borrarEva']);
 		Route::post('deletePeva/{id}', ['as' => 'deletePeva', 'uses' => 'ExamenDiagController@deletePregunta']);
@@ -192,6 +193,7 @@ Route::group(['middleware' => 'cordinador'], function(){
 		Route::get('evdList', ['as' => 'evdList', 'uses' => 'ExamenDiagController@index']);
 		Route::get('carrEva', ['as' => 'carrEva', 'uses' => 'ExamenDiagController@carreras']);
 		Route::get('evaPdf/{id}', ['as' => 'evaPdf', 'uses' => 'ExamenDiagController@evaPdf']);
+		Route::get('pregEditdiag/{id}', ['as' => 'pregEditdiag', 'uses' => 'ExamenDiagController@edit']);
 
 		//Reportes del examen diagnostico
 

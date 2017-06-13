@@ -72,7 +72,16 @@
 			$('#listEva').fadeOut();
 			$('#reporteDiag').hide();
 			var route = $(this).attr('href');
-			listarCarreras(route);
+			
+
+			if (! $.fn.DataTable.isDataTable('#reporteCarr-table')){
+					listarCarreras(route);
+				}else{
+
+					var tabla = $('#reporteCarr-table').DataTable();
+					tabla.ajax.reload();
+
+				}
 
 		});
 
@@ -111,12 +120,15 @@
 						$.unblockUI();
 						window.open(route);
 
+					}).fail(function(){
+
+						alertify.alert('Error al procesar la solicitud, por favor recarge la pagina');
 					});
 
 				}else{
 
 					$.unblockUI();
-					alert('Esta carrera no tiene ningun reporte');
+					alertify.alert('Esta carrera no tiene ningun reporte');
 				}
 			});	
 	
